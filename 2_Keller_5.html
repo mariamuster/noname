@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
   <meta charset="UTF-8">
@@ -7,51 +7,272 @@
   <link rel="stylesheet" href="button.css">
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="dialog.css">
+  <style>
+    @font-face {
+      font-family: 'Lex';
+      src: url('fonts/Lexend_Regular.ttf') format('truetype');
+    }
 
+    body {
+      font-family: 'Lex', sans-serif;
+    }
 
-</head>
-<style>
-  svg {
-    border: none;
-  }
+    svg {
+      border: none;
+    }
 
-      a:hover>path,
-a:hover>rect {
-  fill: rgba(65, 65, 65, 0.7) !important;
-}
+    /* Allgemeine hover/focus-Stile für Links */
+    a:hover > path,
+    a:hover > rect {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
 
-a:focus {       
-  outline: none;
-}a:focus>path, 
-a:focus>rect {
-  stroke: black;
-  fill: rgba(65, 65, 65, 0.2);
-  stroke-width: 3px;
-  outline-offset: 4px;
-  filter: drop-shadow(0 0 0px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
-}
-</style>
+    a:focus { outline: none; }
+    a:focus-visible > path,
+    a:focus-visible > rect {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      outline-offset: 4px;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    }
+
+    /* Wesen-Hitbereich: transparent, aber anklickbar */
+    #wesen-link > path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    #wesen-link:hover > path,
+    #wesen-link:focus-visible > path {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
+
+    /* Dialog */
+    #dialog-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+    }
+
+    #dialog-overlay.open {
+      display: block;
+    }
+
+    #dialog-svg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .d-weiter-btn,
+    .d-zu-btn {
+      cursor: pointer;
+    }
+
+    a.d-zu-btn > path {
+      pointer-events: all;
+    }
+
+    a.d-weiter-btn > path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    a.d-weiter-btn:hover > path,
+    a.d-weiter-btn:focus-visible > path {
+      fill: rgba(65, 65, 65, 0.15) !important;
+    }
+  </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/2_Keller_H.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+    <img src="img/2_Keller_H.svg"
+      alt="Grundriss eines Kellers mit einem Wesen und einem Pfeil nach oben."
       class="responsive-img" tabindex="0" />
+
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="2_Keller_6.html" aria-label="Treppe hoch" role="button">
-        <path id="STROKE_40c71c34-63ec-4c56-91e7-bbb2e68414bb" data-name="STROKE 40c71c34-63ec-4c56-91e7-bbb2e68414bb"
-          class="cls-1"
-          d="M509.1,546.1c1-13.2,0-27.9.2-41.3,0-11.4,2.1-26.4,1.8-37.8-2.3-51.4-1-102.7-3.5-154.3-1-27,3.4-53.9,5.4-80.5,1.1-26.9,1.8-53.8.7-80.8v-12.2c0-.4.4-1.1-3.3-1.1-16.4-.4-34.6,1-51.1.4-16.1-1-23.2-1.8-41.2-2-38.3-1-72.2,1.2-109.9,0-21.1-.3-43,2.3-64.1,4.1-23.6,1.2-47.3,1-70.8,1.4-1.2,48.1-4.2,96.6-4.2,144.7-.7,14.7,0,28.6.7,43.5.5,20.2.2,39.1,1.9,59-.3,25.3.8,50.7,1.9,76,0,73.58.7,83,.7,83,54.3.7,109,1.6,163.4.9,56.7,0,113.6-2.7,170.1,1.9,0,0,1.29-3.83,1.3-4.9Z" />
-        <text class="room-label" x="20%" y="33%">Weiter</text>
+
+      <!-- Wesen — öffnet Dialog -->
+      <a href="#" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
+        <!-- Wesen-Körper (exakte Form aus SVG) -->
+        <path d="M580.7,778.2c.3,1.4.4,33.9,0,35.1,0,2-.7,3.8-2.3,4.8-.7.4-2.7.7-3.4.2-2.7-1.3-3.6-4.9-3.5-7.6-.2-9.7.4-27.2-.2-36.6-.2-1.2-.8-2.3-1.7-3.1,0,0-.2,0-.2-.2l-.3-.2c-.6-.2-1.9-.4-2.5,0-2.7,1.6-5,4.2-8,5.3-1.3.2-3.7.5-4.9-.3-.2,0-.4-.2-.5-.4-1.2-1-1.1-3.8-.5-5.2.2-1.1,2-3.1,2.5-4.1,1.4-1.8,4.8-5.3,2.9-7.5-2.6-1.2-6.3.5-8.9,1.2-2,.5-4.7,1-6.8.4-.5,0-.9-.5-1.3-.9-.3-.2-.7-1.2-.9-1.6,0-1.3,0-2.8.9-3.8,1.1-3.1,13.3-8.4,9.3-11.7,0,0-.2,0-.3-.2-4.2-2.4-16.7,2.4-14.7-6,2.6-5.8,9.9-3,13.9-6.3,4.5-4.9-6.2-6.1-8.5-8.8-2.7-2.2-3.9-6.2-.5-8.4,1.6-.9,4.3-1.3,6-.7.2,0,.5,0,.8.2,2.1.7,5.5,1.9,7.7,1h.2s0-.2.3-.4c1.5-3.6-6-8-6.8-12.3-.3-.7-.2-1.8-.2-2.5s0-1.6.5-1.8c.5-.6,1.2-.9,2.1-.8.8,0,2.1-.2,2.9.2,3.8.7,6.6,4.6,10.5,4.9.9,0,1.7-.4,2.2-1.1.3-.8.5-2.2,0-3.1-.6-1.3-1.5-2.5-2.2-3.8-.4-.8-.8-1.4-1-2.3-.3-1.5-.4-3.7.2-5,.4-1.9,2.3-3.7,4.4-3.5,4.2,0,6.3,7.5,10.5,8.9.4,0,1,.2,1.4-.2.4,0,.6-.5.6-.9.6-4.6.7-10.3,2.9-14.5l.9-.9c6.1-2,7.5,7.8,8.7,11.9,0,.2,0,.3.2.4,1.9,3.7,4.1,3.6,5-.6.8-2.9,3.3-5.9,4.9-8.6.8-1.1,1.4-1.8,2.7-2.2.7,0,1.9-.2,2.5.2.2,0,.4.2.5.3,0,0,.2,0,.2.2.9.8,1.5,1.6,1.9,2.6,1,4.4-1.8,10.3,1.4,14,1.7,0,3.5-2.6,4.5-3.7,4.2-5.8,14.1-10,12.6,1.2-.6,2.9-3.5,5.4-3.6,8.4,0,.8-.3,1.4.2,2,.6.6,1.5,1.4,2.4,1.1,3.7-.4,5.6-4.6,9.3-5.2,5.3-1.8,7.7,4.5,5.4,8.5-1.5,3.8-9,4.8-7.5,9.6.7,1.8,3.1,2.5,4.9,2.4,1.5-.3,3.5-.4,5-.9,1.3-.2,3-.6,4.2,0,1.5.6,2.4,2.2,2.2,3.8.4,4.9-6,5.7-9.5,6.9-2.4.7-5,4.3-2.1,6,3.8,3,9.8.8,12.9,4.5,1,1.5,1,4.1-.4,5.5-3.6,3.1-9.4.8-13.6,1.8-.8,0-2.2,1.7-2.6,2.3,0,5.7,8.3,6.7,10.9,10.8.4,4.4-1.7,6.6-6.1,5.5-.3,0-1.6-.4-1.8-.5-1.5-.4-3.9-1.3-5.4-1.8-11.1-2-2,8.3,0,12.5.4,1.1.3,2.8.3,4s-1,1.5-1.4,1.9c0,0-.3,0-.4.2-1.5,0-4.1-.4-5.5-1.3-1.7-.6-3.3-2.1-4.5-3.3-1.4-1.3-3-4.2-5.2-3.1-2.8,1.8-1.5,7.1-1.8,9.9v31.8c0,1.9-.5,3.4-1.7,4.6l-.3.3c-1.1.7-2.6,1-3.8.5-.3,0-.6-.2-.7-.3-4.6-3.4-3.2-13.9-3.5-19.2-.4-3.9-1.5-8.5-1.3-12.5.2-2.6-.3-6.1-1.4-8.3-4.1-.2-14.4-.5-18.4,0-1.4,0-4,.5-4,.5h.2,0Z"/>
+        <!-- Linkes Auge -->
+        <path d="M567.9,706.2c13.6-4.8,25.1,7,21.6,20.8,0,.3,0,.7-.3,1.1-.8,6.8-7.1,10.6-13.2,12-4.1.4-9,.7-12.6-1.5-6-3-9.2-11.8-8.9-16.4s2.7-12.9,12.6-15.7.8-.3.8-.3h0Z"/>
+        <!-- Rechtes Auge -->
+        <path d="M602.7,708.5c-14.8,11.5-5.7,35.2,13.2,31.9,6-.9,10.9-5.5,13.4-10.8,2.7-5.6,1.9-13.4-2.8-17.8-3.1-3.2-7.5-5.8-11.8-6.7-4.1-.2-9,.2-12,3.4h0Z"/>
       </a>
 
-  
-
+      <!-- Pfeil — erscheint nach Dialog, führt zu Keller 6 -->
+      <a href="2_Keller_6.html" id="pfeil-link" aria-label="Weiter nach oben" role="button"
+        style="visibility:hidden;pointer-events:none;">
+        <path
+          style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          d="M338.4,212.2s84.1,75.6,105.9,93.6c-19.7,0-37.1,1.3-57,0-1.3,30.3,0,57.8,0,57.8h-97.4s-3-27.1,0-57.8c-18.4.4-39,.6-57.6,0l105.9-93.6h.2Z"/>
+      </a>
 
     </svg>
   </div>
 
+  <!-- Dialog-Overlay -->
+  <div id="dialog-overlay" aria-hidden="true">
+    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true" tabindex="-1">
+      <defs>
+        <style>
+          .d-feld {
+            fill: #fff;
+            stroke: #1d1e1c;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
 
+          .d-zu-shape {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 3px;
+            stroke-miterlimit: 10;
+          }
+
+          .d-btn-shape {
+            fill: #fff;
+            stroke: #1d1e1c;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+        </style>
+      </defs>
+
+      <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
+
+      <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
+        <!-- Dialogblase -->
+        <path class="d-feld"
+          d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
+
+        <!-- Schliessen-Button -->
+        <a class="d-zu-btn" href="#" id="dlg1-zu" role="button" aria-label="Dialog schliessen">
+          <path class="d-zu-shape"
+            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+          <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
+        </a>
+
+        <!-- Weiter-Button -->
+        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter"
+          visibility="hidden">
+          <path class="d-btn-shape"
+            d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
+          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle"
+            x="1300" y="820">Weiter</text>
+        </a>
+
+        <!-- Dialogtext -->
+        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000"
+          visibility="hidden" x="300" y="720"></text>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    const DIALOGS = [
+      {
+        group: 'dlg-1',
+        weiterId: 'dlg1-weiter',
+        lines: ['dlg1-line1'],
+        endX: { end: 1300, start: 300 },
+        conversation: [
+          { text: 'Weisst du wo Büro 146 ist?', align: 'end' },
+          { text: 'Probiers mal oben.', align: 'start' },
+          { text: 'Ok, danke.', align: 'end' },
+        ],
+      },
+    ];
+
+    let convStep = 0;
+    let openerLink = null;
+
+    const overlay = document.getElementById('dialog-overlay');
+    const dlgSvg = document.getElementById('dialog-svg');
+
+    function renderLines(def) {
+      const entry = def.conversation[convStep - 1];
+      const lineEl = document.getElementById(def.lines[0]);
+      lineEl.textContent = entry.text;
+      lineEl.setAttribute('text-anchor', entry.align === 'end' ? 'end' : 'start');
+      lineEl.setAttribute('x', entry.align === 'end' ? def.endX.end : def.endX.start);
+      lineEl.setAttribute('visibility', 'visible');
+
+      const w = document.getElementById(def.weiterId);
+      if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
+    }
+
+    function openDialog(opener) {
+      openerLink = opener;
+      convStep = 1;
+      const def = DIALOGS[0];
+      document.getElementById(def.group).setAttribute('visibility', 'visible');
+      renderLines(def);
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      dlgSvg.focus();
+    }
+
+    function closeDialog() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
+      convStep = 0;
+      if (openerLink) openerLink.focus();
+      // Pfeil einblenden
+      const pfeil = document.getElementById('pfeil-link');
+      pfeil.style.visibility = 'visible';
+      pfeil.style.pointerEvents = 'auto';
+    }
+
+    function advanceConversation() {
+      const def = DIALOGS[0];
+      if (convStep < def.conversation.length) {
+        convStep++;
+        renderLines(def);
+      } else {
+        closeDialog();
+      }
+    }
+
+    document.getElementById('wesen-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      openDialog(this);
+    });
+
+    dlgSvg.addEventListener('click', function (e) {
+      if (e.target.closest('.d-weiter-btn')) { e.preventDefault(); advanceConversation(); return; }
+      if (e.target.closest('.d-zu-btn')) { e.preventDefault(); closeDialog(); return; }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') { closeDialog(); return; }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(dlgSvg.querySelectorAll('a[role="button"]')).filter(el => {
+          let p = el.parentElement;
+          while (p && p !== dlgSvg) {
+            if (p.getAttribute('visibility') === 'hidden') return false;
+            p = p.parentElement;
+          }
+          return true;
+        });
+        if (!focusable.length) { e.preventDefault(); return; }
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      }
+    });
+  </script>
 </body>
 
 </html>

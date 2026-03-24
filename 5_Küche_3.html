@@ -67,6 +67,15 @@ a:focus-visible>rect {
     .d-zu-btn {
       cursor: pointer;
     }
+
+    /* Pfeil-Link */
+    #pfeil-link {
+      cursor: pointer;
+    }
+    #pfeil-link > path {
+      pointer-events: all;
+    }
+    #pfeil-link:focus { outline: none; }
   </style>
 </head>
 
@@ -82,19 +91,13 @@ a:focus-visible>rect {
         <text class="room-label" x="920" y="360">Danke</text>
       </a>
 
-      <!-- Tür -->
-      <a href="5_Küche_4.html" aria-label="Weiter" role="button">
-        <path id="STROKE_b53cb0b5-3318-44d8-a481-cecd8dc350b51" data-name="STROKE b53cb0b5-3318-44d8-a481-cecd8dc350b51"
-          class="cls-1"
-          d="M1459,950.7c22.6,28.1,75.5,86,75.5,86-1.9-125.4,4.3-245.9,5.2-371.2,2-170-3.2-335.8,3.7-505.7l-147.8,52.4c-1.3,117.3-6,232.8-2.7,350.1-2.3,105.1-6.7,204-3,309.1,0,0,35.7,39.7,69.2,79.3h-.1Z" />
-        <text class="room-label" x="19%" y="45%"></text>
+      <!-- Pfeil — erscheint nach Dialog, führt zu 5_Küche_4 -->
+      <a id="pfeil-link" href="5_Küche_4.html" aria-label="Weiter" role="button"
+        style="visibility:hidden;pointer-events:none;">
+        <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          d="M1538.7,449.9s-49.9,55.6-61.8,70c0-13-.7-24.5,0-37.5-20.1-.9-38.2,0-38.2,0v-64.3s17.9-2,38.2,0c-.4-12.1-.4-25.8,0-38l61.8,70h0v-.2Z"/>
       </a>
-    </svg>
-  <!-- Pfeil overlay — shown after dialog is closed -->
-    <svg id="pfeil-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-      style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none;">
-      <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-        d="M1538.7,449.9s-49.9,55.6-61.8,70c0-13-.7-24.5,0-37.5-20.1-.9-38.2,0-38.2,0v-64.3s17.9-2,38.2,0c-.4-12.1-.4-25.8,0-38l61.8,70h0v-.2Z"/>
+
     </svg>
   </div>
 
@@ -164,8 +167,10 @@ a:focus-visible>rect {
         conversation: [
           { text: 'Ist das alles?', align: 'end' },
           { text: 'Ja! Danke!', align: 'start' },
-          { text: 'Kann ich dir sonst noch etwas helfen?', align: 'end' },
-          { text: 'Nein danke, den Rest schaff ich allein.', align: 'start' },
+          { text: 'Wie war das mit Büro 146?', align: 'end' },
+          { text: 'Ich weiss es nicht,', align: 'start' },
+          { text: 'aber frag mal im Badezimmer', align: 'start' },
+
         ],
       },
     ];
@@ -205,7 +210,9 @@ a:focus-visible>rect {
       document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
       convStep = 0;
       if (openerLink) openerLink.focus();
-      document.getElementById('pfeil-overlay').style.display = '';
+      const pfeil = document.getElementById('pfeil-link');
+      pfeil.style.visibility = 'visible';
+      pfeil.style.pointerEvents = 'auto';
     }
 
     function advanceConversation() {
@@ -244,6 +251,14 @@ a:focus-visible>rect {
         const first = focusable[0], last = focusable[focusable.length - 1];
         if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
         else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      }
+    });
+
+    // Pfeil: Tastatur-Aktivierung (Enter / Space)
+    document.getElementById('pfeil-link').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.location.href = '5_Küche_4.html';
       }
     });
   </script>

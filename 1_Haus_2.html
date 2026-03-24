@@ -1,26 +1,18 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <title>Haus 2</title>
+  <title>Haus 1</title>
   <link rel="stylesheet" href="button.css" />
   <link rel="stylesheet" href="image.css" />
   <link rel="stylesheet" href="dialog.css" />
   <style>
-    @font-face {
-      font-family: "Lex";
-      src: url("fonts/Lex.ttf") format("truetype");
-    }
-
-    body {
-      font-family: "Lex", sans-serif;
-    }
-
     svg {
-      border: 0cm solid rgba(0, 0, 0, 0.454);
+      border: 0cm solid rgba(0, 0, 0, 0.6);
     }
 
+    
     a>path,
     a>rect {
       fill: transparent;
@@ -43,69 +35,7 @@ a:focus>rect {
   filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
 }
 
-
-    /* ── Dialog-Overlay ── */
-    #dialog-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-    }
-
-    #dialog-overlay.open {
-      display: block;
-    }
-
-    #dialog-svg {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    /* ── Text im Dialog ── */
-    #dialog-text {
-      font-family: "Lex", sans-serif;
-      font-size: 28px;
-      fill: #000;
-    }
-
-    /* ── Zu-Button klickbar ── */
-    #zu-btn {
-      cursor: pointer;
-    }
-
-    #zu-btn:hover path,
-    #zu-btn:focus path {
-      fill: rgba(65, 65, 65, 0.2);
-    }
-
-    #zu-btn:focus {
-      outline: none;
-    }
-
-    #zu-btn:focus path {
-      stroke-width: 5px;
-    }
-
-    /* Pfeil */
-    .pfeil-shape {
-      fill: aqua !important;
-      pointer-events: all;
-    }
-
-    #pfeil-btn:hover > path {
-      fill: rgb(0, 180, 180) !important;
-    }
-
-    #zu-btn:hover path {
-      fill: rgba(180, 180, 180, 0.8) !important;
-    }
-
-    #pfeil-btn:not(:focus) > path {
-      filter: none !important;
-      stroke: #000;
-    }
+    
   </style>
 </head>
 
@@ -113,114 +43,18 @@ a:focus>rect {
   <div class="room-wrapper">
     <img src="img/1_Haus_2.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
       class="responsive-img" tabindex="0" />
-
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
+
+
       xmlns="http://www.w3.org/2000/svg">
-      <a href="#" id="panel-link" aria-label="Panel öffnen – du brauchst einen Code" aria-haspopup="dialog"
-        role="button">
-        <path id="Panel"
-          d="M917.7,527.3c0-3.5.9-9-3.2-10.4-6.1-.7-8.1-2.2-12.9-5.6-6-4-11.3-3-17.4.3-2.1,1.3-3.7,3.3-6.1,4.1-1.7.6-3.6.6-5.3,1.3-1.5.7-3.1,1.6-3.8,3.2-1.5,13.5-.8,47.6-1.4,50.8,0,2.4.7,5.3,2.3,7.2,2.6,2,6,1.8,9,3.3,3.7,1.6,6.7,4.4,10.7,5.4,3.4.6,7.7.3,10.8-1.2,3.2-2.6,7.4-4.3,11.1-6.1,8.8-1.5,5.9-5.6,5.9-12.4s.2-35.9.4-39.9h0Z" />
+      <a href="1_Haus_3.html" aria-label="Weiter nach links" role="button">
+  <path class="cls-1" d="M979.4,852.87c-4.26-.09-8.49-.18-12.7-.29-44.98-1.14-86.71-3.48-118.8-6.58-5.71-.55-11.83-1.02-18.3-1.42-21.09-1.31-45.94-1.85-72.9-1.89-48.52-.06-103.85,1.52-156.4,3.24-2.7-156.56-1.1-330.89.5-487.43-1.1-124.7-13.2-264.3,131.9-311.5,64.8-20.3,146.7-16.5,197.8,33,55.5,64.3,46.1,145.6,48.9,224.7,5.98,171.86.04,376.56,0,548.17Z"/>
+         <text class="room-label" x="47.5%" y="25%">Weiter</text>
       </a>
 
-      <a id="pfeil-btn" href="1_haus_3.html" aria-label="Zurück" role="button" style="display:none">
-        <path class="pfeil-shape" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-          d="M800,895.3s-79.6-71.6-100.1-88.5c18.6.2,35-1.2,53.8,0,1.2-28.7,0-54.6,0-54.6h92.2s2.8,25.5-.1,54.6c17.4-.4,36.9-.5,54.4,0l-100.1,88.5Z" />
-      </a>
 
     </svg>
   </div>
-
-  <div id="dialog-overlay" aria-hidden="true">
-    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
-      role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1">
-      <defs>
-        <style>
-          .d-st0 {
-            stroke: #000;
-            stroke-miterlimit: 10;
-          }
-
-          .d-st0,
-          .d-st1 {
-            fill: #fff;
-            stroke-width: 3px;
-          }
-
-          .d-st1 {
-            isolation: isolate;
-            stroke: #1d1e1c;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-          }
-        </style>
-      </defs>
-
-      <rect width="1600" height="900" fill="rgba(0,0,0,0.55)" id="dialog-backdrop" />
-
-      <path id="Feld" class="d-st1"
-        d="M1450,604.6c-435.7-10.9-863.2,1.7-1300-4.4,0,0,2.8,95.6,3.1,145.9-5.9,44.2.2,121.7.2,121.7,430.3.3,862.2-8.1,1291.9-.4l4.8-262.8h0Z" />
-
-      <text id="dialog-title" class="d-st0" x="0" y="0" font-family="Lex, sans-serif" font-size="0">
-        Hinweis
-      </text>
-      <text class="dialog-content" font-family="Lex, sans-serif" font-size="40" fill="#000" x="550" y="720">
-        Du brauchst einen Code.
-      </text>
-
-      <a id="zu-btn" href="#" role="button" aria-label="Dialog schliessen" tabindex="0">
-        <path id="Zu" class="d-st0" d="M176.6,548.3c-50.3-33.2-93.2,41.8-46.6,75,53.9,28.3,99.3-39.3,46.6-75Z" />
-
-        <!-- X im Kreis -->
-        <text font-family="Lex, sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">
-          ✕
-        </text>
-      </a>
-    </svg>
-  </div>
-
-  <script>
-    const overlay = document.getElementById("dialog-overlay");
-    const dialogSvg = document.getElementById("dialog-svg");
-    const zuBtn = document.getElementById("zu-btn");
-    const panelLink = document.getElementById("panel-link");
-    const backdrop = document.getElementById("dialog-backdrop");
-
-    function openDialog() {
-      overlay.classList.add("open");
-      overlay.setAttribute("aria-hidden", "false");
-      dialogSvg.focus();
-    }
-
-    function closeDialog() {
-      overlay.classList.remove("open");
-      overlay.setAttribute("aria-hidden", "true");
-      const pfeil = document.getElementById("pfeil-btn");
-      pfeil.style.display = "inline";
-      pfeil.focus();
-    }
-
-    panelLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      openDialog();
-    });
-
-    zuBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      closeDialog();
-    });
-
-    backdrop.addEventListener("click", closeDialog);
-
-    document.addEventListener("keydown", function (e) {
-      if (!overlay.classList.contains("open")) return;
-      if (e.key === "Escape") closeDialog();
-
-      if (e.key === "Tab") {
-        e.preventDefault();
-        zuBtn.focus();
-      }
-    });
-  </script>
 </body>
 
 </html>

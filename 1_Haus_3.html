@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Haus 3</title>
+    <link rel="stylesheet" href="button.css" />
+    <link rel="stylesheet" href="image.css" />
+    <link rel="stylesheet" href="dialog.css" />
+    <style>
+      @font-face {
+        font-family: "Lex";
+        src: url("fonts/Lex.ttf") format("truetype");
+      }
+      body {
+        font-family: "Lex", sans-serif;
+      }
+
+      svg {
+        border: 0cm solid rgba(0, 0, 0, 0.454);
+      }
+
+      /* Figuren */
+      a.figur-link > path {
+        fill: transparent;
+        pointer-events: all;
+      }
+      a.figur-link:hover > path {
+        fill: rgba(65, 65, 65, 0.7) !important;
+      }
+      a.figur-link:focus-visible > path {
+        fill: rgba(65, 65, 65, 0.4) !important;
+      }
+      a>path,
+      a>rect {
+        fill: transparent;
+        pointer-events: all;
+      }
+
+      a:hover>path,
+      a:hover>rect {
+        fill: rgba(65, 65, 65, 0.7) !important;
+      }
+
+      a:focus {
+        outline: none;
+      }
+      a:focus-visible>path,
+      a:focus-visible>rect {
+        stroke: black;
+        fill: transparent;
+        stroke-width: 3px;
+        filter: drop-shadow(0 0 6px white) drop-shadow(0 0 3px white);
+      }
+
+      /* Pfeil */
+      .pfeil-shape {
+        fill: aqua !important;
+        pointer-events: all;
+      }
+      #pfeil-btn:hover > path {
+        fill: rgb(0, 180, 180) !important;
+      }
+      #pfeil-btn:not(:focus-visible) > path {
+        filter: none !important;
+        stroke: #000;
+      }
+
+      /* Zu-buttons */
+      .d-zu-btn:hover path {
+        fill: rgba(180, 180, 180, 0.8) !important;
+      }
+
+      /* Weiter-Button */
+      a.d-weiter-btn > path {
+        fill: #fff;
+        pointer-events: inherit;
+      }
+      a.d-weiter-btn:hover > path {
+        fill: rgba(180, 180, 180, 0.9) !important;
+      }
+      a.d-weiter-btn:focus-visible > path {
+        stroke: black !important;
+        stroke-width: 8px !important;
+        paint-order: stroke fill;
+        filter: drop-shadow(0 0 6px white) drop-shadow(0 0 3px white) !important;
+      }
+
+      /* Feld + Zu */
+      a.d-feld-btn > path {
+        pointer-events: all;
+      }
+      a.d-zu-btn > path {
+        fill: #fff;
+        pointer-events: all;
+      }
+      a.d-zu-btn:focus-visible > path {
+        stroke: black !important;
+        stroke-width: 8px !important;
+        paint-order: stroke fill;
+        filter: drop-shadow(0 0 6px white) drop-shadow(0 0 3px white) !important;
+      }
+
+      /* Tür */
+      a.tuer-link > path {
+        fill: transparent;
+        pointer-events: all;
+      }
+      a.tuer-link:hover > path {
+        fill: rgba(65, 65, 65, 0.7) !important;
+      }
+
+      #dialog-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+      }
+      #dialog-overlay.open {
+        display: block;
+      }
+
+      #dialog-svg {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .d-weiter-btn,
+      .d-feld-btn,
+      .d-zu-btn {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="room-wrapper">
+      <img
+        src="img/1_Haus_4.svg"
+        alt="Grundriss eines Raums mit drei Figuren und einer Tür."
+        class="responsive-img"
+        tabindex="0"
+      />
+
+      <svg
+        class="room-overlay"
+        viewBox="0 0 1600 900"
+        preserveAspectRatio="xMidYMid meet"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <a
+          href="#"
+          class="figur-link"
+          data-dialog-index="0"
+          aria-label="Figur links ansprechen"
+          aria-haspopup="dialog"
+          role="button"
+        >
+          <path
+            d="M103.5,832.7c.5.8,1.6,2.5,2.5,3.2.5.4,1.2.8,1.8,1.2,2.5,1.6,5.1,3.4,7.7,4.9,3.9,1.5,8.5-.2,12.2-1.9.5-.2,1.4-.8,1.8-1.1.3-.2,1.2-1,1.5-1.3,3.6-3.7,6.8-8.2,8.6-13,1.5-3.3.8-7.2,1.5-10.6.8-3.9,0-8.2-.7-12.1-.5-7.3-2.5-14.6-5.9-21.1-.7-2.6.2-5-.5-7.9-.8-5.2-3.7-9.1-5.6-13.8-11.9-21.8-41.9-27.8-63.5-17.8-10.8,5.2-16.6,16.7-20.9,27.2,0,0,0,.2-.2.4-.7,2.5-1.4,5.2-1.6,8-.2,1.9.2,3.6-.4,5.3-2.4,11-4.6,22.2-4.2,33.5,1.1,12.2,11.2,27.1,24.4,27.6,5.3-1.5,8.8-6.9,13-9.9,1.3,1.9,2.7,5.1,4.8,6.4,12.3,7.5,14.7-.3,23.6-7.3h0Z"
+          />
+        </a>
+
+        <a
+          href="#"
+          class="figur-link"
+          data-dialog-index="1"
+          aria-label="Figur mitte ansprechen"
+          aria-haspopup="dialog"
+          role="button"
+        >
+          <path
+            d="M406.9,781.2c-11.9,14.3,4.8,23.3-2.7,40.7-1.3,4.6-4,8.6-4.5,13.4-.2,5.7-2.2,11-6.2,15.1-2.6,2.6-6.5,3.4-10,4.7-6.6,3-14.2-.6-19.9-4-17.2-24.2,6.1-30.1-2.5-51.2-2.6-28.6,8.4-40.7,26.2-60.9,7.7-9.9,17-23,31.1-22.4,26.5-1.6,41.5,23.1,45.6,46.3,4.8,15.8,9.7,31.2,12.1,47.6,1.8,7.6-.2,15.4.2,23.1,1,7.9.7,16-3.5,22.9-8.5,14.3-31.9,13.7-37.9-2.4-3.8-27.7,8.8-59.3-6.8-85-5.6-7.8-11.8-7.3-14.3,2.4-1,3.8-4,7.4-6.9,9.7h0Z"
+          />
+        </a>
+
+        <a
+          href="#"
+          class="figur-link"
+          data-dialog-index="2"
+          aria-label="Figur rechts ansprechen"
+          aria-haspopup="dialog"
+          role="button"
+        >
+          <path
+            d="M1236.5,843c0,5.3-1.3,21,7.3,19.7h.5c5.8-2.5,4.7-15.1,4.5-20.5,0-1.3-.2-13.4-.2-13.4,0,0,2.5.4,3.2.7,4.3.9,9.1.4,13.5,0,2.8.2,6.2-.6,8.8-1.1-.7,5.5-.9,14.8-.8,20.5,0,4.3-1,11.1,3.9,13.2h.2s.2,0,.5.2c.4,0,.6,0,.8.3.7,0,2.5.2,3.1,0,5-2.3,3.2-8.6,4-13-.4-7.5,1-15.8,0-23.1,0-.7,0-2.8-.2-3.4,0,0,1-.8,1-.9,1.3-1.7,3.4-3.4,5-5,2.6-2.9,5.1-5.4,6.9-8.9,3.5-7.6,8.3-15.6,7.8-24.2-.2-9.7-5.8-19.4-11.5-27.1-10.4-10.9-26.6-18.4-41.3-15.6-13.7,1-24.2,13.9-30.5,25.3-3.5,8.3-5.2,17.4-5.2,26.4.5,5,2.1,10.7,4.5,15.1,3.9,5.5,8.6,10.5,14.3,14v20.7h-.1Z"
+          />
+        </a>
+
+        <a
+          href="#"
+          id="tuer-link"
+          class="tuer-link"
+          aria-label="Zur Tür"
+          role="button"
+        >
+          <path
+            d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,36,6,10.1,11.7,8.4,26.5,8.9,40.9,1.1,31.4,0,68.1,0,99.4l-68.9-1.4Z"
+          />
+          <text class="room-label" x="47.5%" y="25%">Weiter</text>
+        </a>
+
+        <a id="pfeil-btn" href="1_haus_3.html" aria-label="Weiter" role="button" style="display:none">
+          <path class="pfeil-shape" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+            d="M794.1,795.2s31.3,28.1,39.4,34.8c-7.3,0-13.8.4-21.1,0-.5,11.3,0,21.5,0,21.5h-36.2s-1.1-10.1,0-21.5c-6.8.2-14.5.2-21.4,0l39.4-34.8h0Z"/>
+        </a>
+      </svg>
+    </div>
+
+    <div id="dialog-overlay" aria-hidden="true">
+      <svg
+        id="dialog-svg"
+        viewBox="0 0 1600 900"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+        role="dialog"
+        aria-modal="true"
+        tabindex="-1"
+      >
+        <defs>
+          <style>
+            .d-feld {
+              fill: #fff;
+              stroke: #1d1e1c;
+              stroke-width: 3px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            .d-btn-shape {
+              fill: #fff;
+              stroke: #1d1e1c;
+              stroke-width: 3px;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+            .d-zu-shape {
+              fill: #fff;
+              stroke: #000;
+              stroke-width: 3px;
+              stroke-miterlimit: 10;
+            }
+          </style>
+        </defs>
+
+        <rect
+          id="dialog-backdrop"
+          width="1600"
+          height="900"
+          fill="rgba(0,0,0,0)"
+        />
+
+        <!-- ════════════════════════
+           DIALOG 1
+      ════════════════════════ -->
+        <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
+          <path
+            class="d-feld"
+            d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z"
+          />
+
+          <a
+            class="d-zu-btn"
+            href="#"
+            id="dlg1-zu"
+            role="button"
+            aria-label="Dialog schliessen"
+          >
+            <path
+              class="d-zu-shape"
+              d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z"
+            />
+            <text
+              font-family="Lex,sans-serif"
+              font-size="40"
+              fill="#000"
+              text-anchor="middle"
+              x="153"
+              y="600"
+            >
+              ✕
+            </text>
+          </a>
+
+          <!-- Weiter-Button -->
+          <a
+            class="d-weiter-btn"
+            href="#"
+            id="dlg1-weiter"
+            role="button"
+            aria-label="Weiter"
+            style="display:none"
+          >
+            <path
+              class="d-btn-shape"
+              d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z"
+            />
+            <text
+              id="dlg1-weiter-label"
+              font-family="Lex,sans-serif"
+              font-size="25"
+              fill="#000"
+              text-anchor="middle"
+              x="1300"
+              y="820"
+            >
+              Weiter
+            </text>
+          </a>
+
+          <text
+            id="dlg1-line1"
+            font-family="Lex,sans-serif"
+            font-size="40"
+            fill="#000"
+            visibility="hidden"
+            x="0"
+            y="720"
+          ></text>
+        </g>
+
+        <!-- ════════════════════════
+           DIALOG 2 
+      ════════════════════════ -->
+        <g id="dlg-2" visibility="hidden" transform="translate(0,-370)">
+          <path
+            class="d-feld"
+            d="M150,604.7c12,82.6,3.2,259.9,3.2,259.9,93.6-4.3,187.6,7.1,281.4,9.4,100.4-2.8,203.4-8,303.8-1.1,106.8-6.4,211.6,7.5,318.8,1.1,130.2,6.7,261.1-13.2,390.6-3.9,0,0,4.5-103.4,1-155.7-1.4-32.5-3.8-106.6-3.8-106.6-265.8-14.2-537.1-6.1-804.7,2.4-167.2,6.2-490.3-5.4-490.3-5.4Z"
+          />
+
+          <a
+            class="d-zu-btn"
+            href="#"
+            id="dlg2-zu"
+            role="button"
+            aria-label="Dialog schliessen"
+          >
+            <path
+              class="d-zu-shape"
+              d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z"
+            />
+            <text
+              font-family="Lex,sans-serif"
+              font-size="40"
+              fill="#000"
+              text-anchor="middle"
+              x="153"
+              y="600"
+            >
+              ✕
+            </text>
+          </a>
+
+          <a
+            class="d-weiter-btn"
+            href="#"
+            id="dlg2-weiter"
+            role="button"
+            aria-label="Weiter"
+            style="display:none"
+          >
+            <path
+              class="d-btn-shape"
+              d="M1271.7,780.6c-23.7-.5-73.4-.5-73.4-.5-11,18.6-6.1,63.9-6.1,63.9,38.4-4.1,79,5.4,118.3,3.7,31,2.8,80.4-3.4,80.4-3.4,4.9-20.2,2.8-41.5-.4-61.7,0,0-79.8-1.2-118.7-2Z"
+            />
+            <text
+              font-family="Lex,sans-serif"
+              font-size="25"
+              fill="#000"
+              text-anchor="middle"
+              x="1300"
+              y="820"
+            >
+              Weiter
+            </text>
+          </a>
+
+          <text
+            id="dlg2-line1"
+            font-family="Lex,sans-serif"
+            font-size="40"
+            fill="#000"
+            visibility="hidden"
+            x="0"
+            y="720"
+          ></text>
+        </g>
+
+        <!-- ════════════════════════
+           DIALOG 3 
+      ════════════════════════ -->
+        <g id="dlg-3" visibility="hidden" transform="translate(0,-370)">
+          <path
+            class="d-feld"
+            d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z"
+          />
+
+          <a
+            class="d-zu-btn"
+            href="#"
+            id="dlg3-zu"
+            role="button"
+            aria-label="Dialog schliessen"
+          >
+            <path
+              class="d-zu-shape"
+              d="M167.5,541.4c-54.3-12.3-82.6,60.3-28.4,83.7,60.4,27.1,86.3-66.5,28.4-83.7Z"
+            />
+            <text
+              font-family="Lex,sans-serif"
+              font-size="40"
+              fill="#000"
+              text-anchor="middle"
+              x="153"
+              y="600"
+            >
+              ✕
+            </text>
+          </a>
+
+          <a
+            class="d-weiter-btn"
+            href="#"
+            id="dlg3-weiter"
+            role="button"
+            aria-label="Weiter"
+            style="display:none"
+          >
+            <path
+              class="d-btn-shape"
+              d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z"
+            />
+            <text
+              font-family="Lex,sans-serif"
+              font-size="25"
+              fill="#000"
+              text-anchor="middle"
+              x="1300"
+              y="820"
+            >
+              Weiter
+            </text>
+          </a>
+
+          <text
+            id="dlg3-line1"
+            font-family="Lex,sans-serif"
+            font-size="40"
+            fill="#000"
+            visibility="hidden"
+            x="0"
+            y="720"
+          ></text>
+        </g>
+      </svg>
+    </div>
+
+    <script>
+      // ── Dialogdefinitionen
+
+      const DIALOGS = [
+        {
+          group: "dlg-1",
+          closeOnFeld: true,
+          closeOnZu: false,
+          weiterId: "dlg1-weiter",
+          lines: ["dlg1-line1"],
+          endX: { end: 1300, start: 300 },
+
+          // Gespräch
+          conversation: [
+            { text: "Kannst du mir helfen?", align: "end" },
+            { text: "Keine Zeit", align: "start" },
+          ],
+        },
+        {
+          group: "dlg-2",
+          closeOnFeld: false,
+          closeOnZu: true,
+          weiterId: "dlg2-weiter",
+          lines: ["dlg2-line1"],
+          endX: { end: 1300, start: 300 },
+          conversation: [
+            { text: "Entschuldigung?", align: "end" },
+            { text: "Ja?", align: "start" },
+            { text: "Kannst du mir helfen?", align: "end" },
+            { text: "Ich denke nicht.", align: "start" },
+          ],
+        },
+        {
+          group: "dlg-3",
+          closeOnFeld: false,
+          closeOnZu: true,
+          weiterId: "dlg3-weiter",
+          lines: ["dlg3-line1"],
+          endX: { end: 1300, start: 300 },
+          conversation: [
+            { text: "Entschuldigung?", align: "end" },
+            { text: "Ja?", align: "start" },
+            { text: "Weisst du den Code?", align: "end" },
+            { text: "Ja! 1234.", align: "start" },
+          ],
+        },
+      ];
+
+      // Track which dialogs are completed (by index)
+      const completed = new Set();
+      let activeIdx = 0;
+      let convStep = 0;
+      let openerLink = null;
+
+      const overlay = document.getElementById("dialog-overlay");
+      const dlgSvg = document.getElementById("dialog-svg");
+
+      function renderLines(def) {
+        const entry = def.conversation[convStep - 1];
+        const lineEl = document.getElementById(def.lines[0]);
+        lineEl.textContent = entry.text;
+        lineEl.setAttribute("text-anchor", entry.align === "end" ? "end" : "start");
+        lineEl.setAttribute("x", entry.align === "end" ? def.endX.end : def.endX.start);
+        lineEl.setAttribute("visibility", "visible");
+
+        const w = document.getElementById(def.weiterId);
+        if (w) {
+          const isLast = convStep >= def.conversation.length;
+          w.style.display = isLast ? "none" : "inline";
+        }
+      }
+
+      function showDialog(idx) {
+        DIALOGS.forEach((d) => {
+          document.getElementById(d.group).setAttribute("visibility", "hidden");
+          const w = document.getElementById(d.weiterId);
+          if (w) w.style.display = "none";
+          // Clear all text lines
+          d.lines.forEach((lineId) => {
+            const el = document.getElementById(lineId);
+            if (el) {
+              el.textContent = "";
+              el.setAttribute("visibility", "hidden");
+            }
+          });
+        });
+        activeIdx = idx;
+        convStep = 1;
+        const def = DIALOGS[idx];
+        document.getElementById(def.group).setAttribute("visibility", "visible");
+        renderLines(def);
+      }
+
+      function openDialog(opener) {
+        const idx = parseInt(opener.getAttribute("data-dialog-index"), 10);
+        // Dialog 3 (index 2) only available after dialogs 0 and 1 are done
+        if (idx === 2 && (!completed.has(0) || !completed.has(1))) return;
+        // Already completed dialogs can't be reopened
+        if (completed.has(idx)) return;
+        openerLink = opener;
+        showDialog(idx);
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        dlgSvg.focus();
+      }
+
+      function closeDialog() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        // If conversation was fully read, mark as completed on close
+        const def = DIALOGS[activeIdx];
+        if (def && convStep >= def.conversation.length && !completed.has(activeIdx)) {
+          completed.add(activeIdx);
+          if (openerLink) {
+            openerLink.style.pointerEvents = "none";
+            openerLink.setAttribute("tabindex", "-1");
+            openerLink.setAttribute("aria-disabled", "true");
+          }
+        }
+        if (completed.size >= 3) {
+          const pfeil = document.getElementById("pfeil-btn");
+          pfeil.style.display = "inline";
+          pfeil.focus();
+        } else if (openerLink) {
+          openerLink.focus();
+        }
+      }
+
+      function advanceConversation() {
+        const def = DIALOGS[activeIdx];
+        if (convStep < def.conversation.length) {
+          convStep++;
+          renderLines(def);
+        } else {
+          completed.add(activeIdx);
+          if (openerLink) {
+            openerLink.style.pointerEvents = "none";
+            openerLink.setAttribute("tabindex", "-1");
+            openerLink.setAttribute("aria-disabled", "true");
+          }
+          closeDialog();
+        }
+      }
+
+      // ── Event-Listener ─────────────────────────────────────────────
+
+      document.getElementById("tuer-link").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = completed.size >= 2 ? "1_Haus_4.html" : "1_Haus_2.html";
+      });
+
+      document.querySelectorAll(".figur-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          openDialog(this);
+        });
+      });
+
+      dlgSvg.addEventListener("click", function (e) {
+        if (e.target.closest(".d-weiter-btn")) {
+          e.preventDefault();
+          advanceConversation();
+          return;
+        }
+        if (e.target.closest(".d-zu-btn")) {
+          e.preventDefault();
+          closeDialog();
+          return;
+        }
+        if (e.target.closest(".d-feld-btn")) {
+          e.preventDefault();
+          closeDialog();
+          return;
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (!overlay.classList.contains("open")) return;
+        if (e.key === "Escape") {
+          closeDialog();
+          return;
+        }
+
+        if (e.key === "Tab") {
+          e.preventDefault();
+          const focusable = Array.from(
+            dlgSvg.querySelectorAll('a[role="button"]'),
+          ).filter((el) => {
+            if (el.getAttribute("visibility") === "hidden") return false;
+            if (el.getAttribute("tabindex") === "-1") return false;
+            let p = el.parentElement;
+            while (p && p !== dlgSvg) {
+              if (p.getAttribute("visibility") === "hidden") return false;
+              p = p.parentElement;
+            }
+            return true;
+          });
+          if (!focusable.length) return;
+          const idx = focusable.indexOf(document.activeElement);
+          if (e.shiftKey) {
+            const prev = idx <= 0 ? focusable[focusable.length - 1] : focusable[idx - 1];
+            prev.focus();
+          } else {
+            const next = idx === -1 || idx >= focusable.length - 1 ? focusable[0] : focusable[idx + 1];
+            next.focus();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

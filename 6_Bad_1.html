@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bad 1</title>
+  <link rel="stylesheet" href="button.css">
+  <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="dialog.css">
+  <style>
+    @font-face {
+      font-family: 'Lex';
+      src: url('fonts/Lexend_Regular.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Lex', sans-serif;
+    }
+
+    svg {
+      border: 0cm solid rgba(0, 0, 0, 0.454);
+    }
+
+                 a:hover>path,
+a:hover>rect {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+
+a:focus { outline: none; }
+a:focus-visible>path,
+a:focus-visible>rect {
+  stroke: black;
+  fill: rgba(65, 65, 65, 0.2);      
+  stroke-width: 3px;
+  outline-offset: 4px;
+  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+}
+
+    a.d-zu-btn>path {
+      pointer-events: all;
+    }
+
+    a.d-weiter-btn>path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    a.d-weiter-btn:hover>path,
+    a.d-weiter-btn:focus>path {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
+
+    /* Wesen animation*/
+    #wesen-w1 {
+      opacity: 1;
+    }
+
+    #wesen-w2 {
+      opacity: 0;
+    }
+
+    #wesen-w1.animating,
+    #wesen-w2.animating {
+      animation-duration: 1s;
+      animation-timing-function: step-end;
+      animation-iteration-count: infinite;
+    }
+
+    #wesen-w1.animating {
+      animation-name: blink-w1;
+    }
+
+    #wesen-w2.animating {
+      animation-name: blink-w2;
+    }
+
+    @keyframes blink-w1 {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes blink-w2 {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Wesen clickable overlay */
+    #wesen-link {
+      cursor: pointer;
+    }
+
+    #wesen-link>path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    /* Sync hover-path visibility with the blink animation */
+    #wesen-link>.hover-w1 {
+      animation-name: blink-w1;
+      animation-duration: 1s;
+      animation-timing-function: step-end;
+      animation-iteration-count: infinite;
+    }
+
+    #wesen-link>.hover-w2 {
+      animation-name: blink-w2;
+      animation-duration: 1s;
+      animation-timing-function: step-end;
+      animation-iteration-count: infinite;
+    }
+
+    #wesen-link:hover>.hover-w1,
+    #wesen-link:focus>.hover-w1,
+    #wesen-link:hover>.hover-w2,
+    #wesen-link:focus>.hover-w2 {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
+
+    #wesen-link.disabled {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    #wesen-link.disabled>.hover-w1,
+    #wesen-link.disabled>.hover-w2 {
+      fill: transparent !important;
+      animation: none;
+    }
+
+    /* Wanne button */
+    #wanne-btn {
+      display: none;
+      cursor: pointer;
+    }
+
+    #wanne-btn.visible {
+      display: block;
+    }
+
+    #wanne-btn>path {
+      fill: transparent;
+      pointer-events: all;
+      stroke: #000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3px;
+    }
+
+    #wanne-btn:hover>path,
+    #wanne-btn:focus>path {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
+
+    /* Dialog overlay */
+    #dialog-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+    }
+
+    #dialog-overlay.open {
+      display: block;
+    }
+
+    #dialog-svg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .d-weiter-btn,
+    .d-zu-btn {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="room-wrapper">
+    <img src="img/6_Bad_1.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+      class="responsive-img" tabindex="0" />
+
+    <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <!-- ═══════════════════════════════════════════
+           WESEN
+      ════════════════════════════════════════════ -->
+
+      <!-- W1  -->
+      <g id="wesen-w1" class="animating">
+        <!-- body -->
+        <path fill="#a598f7" stroke="#000" stroke-linejoin="round" stroke-linecap="round" stroke-width="3"
+          d="M404.4,776.1c-2.7,5.1-9.8,5.9-15,6.3-18.5.9-33.3,3.6-43.7,20.6-7.3,12.6-12.4,18.8-28.1,19.5-24.2-3.5-38.2-11.9-63.2,1.7-7.6,4.5-16.6,7.7-21.7,14.2-3.6,4.3-1.7,11.6,4.9,9.3,82.9-38.6,45,32.6,137.2-49.2,10.8-13.4,50.7-12.8,29.8,7-8.2,4.8-18.3,7.6-25,14.5-19,17.1-10.7,36.4-32.9,47.7-6.8,4.3-14.8,7.2-19.8,13.8-7.2,7.8-1.7,16.7,8.2,10.8,11-6.2,18.3-17.9,27.4-26.4,3.5-3.5,9.7-6.4,12.4-10.5,4-20.3,15.5-27.6,30.5-40.1,15.2-9.5,47.7-20.2,30,10.5-6.8,12.9-25.6,20.2-24.3,36.9.8,8.3,3.6,15.7,8,22.7,2.7,4.8,5.7,8.7,5.5,14.2.1,10.5-10.7,10.8-18.4,14.4-6.6,3-19.2,11.1-15.6,18.2,10.9-1.8,22.5-9.1,32.1-14.7,7.9-7.6,14.9-19.6,12.9-31-5.8-14.3-12.3-15.4-3.7-32.3,4.4-5.8,12.3-9.1,15.9-15.9,6.6-10.3,30.3-55.8,37.6-24-1.8,14.7-15.1,29.2-10,44.3,5.6,14.6,15,32.1,6.3,47.5-5.4,7.5-14.5,12.5-19.6,20.5-2.2,3.1-3.6,5.7-.3,6.9,18.3-2.1,30.2-23.1,32.7-39.9,1.2-16.5-7.3-32.9-1.3-49.3,4.5-11.6,9.4-24.9,18.2-33.9,16.1-13.1,33.4,6.3,34,22.7-3.5,24.5-18.2,39.1-1.9,64.1,11,16.1.3,35.8-2.5,52.8-1.4,6.9,6.8,17,12.2,8.2,4.8-7.4,4.7-16.9,5.3-25.3,2.6-15.8,1.5-32.4-5-47.2-12.3-23.8-4.9-29,2.2-51.4,1.9-8.2,2.1-17.7,8.2-24.3,4.6-5.2,16.1-9.5,20.4-2,8.3,18.6-11.3,37.3-5.4,56.8,2.3,15.4,22,21.2,22.7,37.5-1.6,15-10.7,33.3-.8,47,6.1,5.6,15,1.6,19.9-3.7,6.8-10.1-6.4-19.8-6.3-30.3-1.4-16,.3-35.5-14.2-45.9-9.5-8.7-1.8-21.9-1.1-32.6.4-14.1-6.6-20.3,2.9-34.7,4.5-9.6,8.9-7.9,13.4,0,4.8,8,2.8,16.3,3.9,25.5.3,26.2,15.5,37.5,38.3,45.4,9.7,4.8,12.6,16.8,20,23.9,8.6,7.5,21.4,11,32.4,8.3,16.6-10.2-26.1-33.1-31.7-40.4-6-6.4-3.9-16-7.3-23.4-5.8-14.4-24.7-12.3-33.7-23.5-9.4-9.6-2.3-25.7,10.6-26.6,17.4,1,31.1,11.1,38.8,26.9,18.5,47.6,59.8,21.3,78.9,60.1,3.3,12.3,1.2,33.1,19.4,32.8,8.6-.8,19.5-3.5,26.8,2.8,6.7,7.3,12.5,16.4,22.7,19.3,13.4,6.5,31,2.4,20-15.6-6.3-9.5-17.8-15.4-28-19.6-12.9-4.2-28.4.3-40.5-6.4-14.4-12.8-4.2-35.5-28.9-43.7-19.8-8.1-27.9-4.2-39.1-25.1-5.1-6.4-15.8-9.2-19.9-16.3-7.4-13.7,5.3-21.2,17.2-14.3,25.7,11.5,35,41.9,60.2,54,7.1,4.5,16.2,3.8,23.9,5.3,14,2.2,22.5,8.8,32.1,18.7,12.7,8.5,25.3-3.7,39-4.5,17.6-4,33.4,9.3,50.7,2.1,9.7-3.3,18.6-9.5,26.3-15.6,1.7-9.3-10.7-9.6-17.1-7.9-24.6,10.5-16.2,15.4-46.6,8-19.8-3.8-42.4,7.7-59.9-6.2-7.4-4.4-15.6-9.7-23.3-13.4-7.9-2.5-16.5-3.1-23.7-7.8-13.1-6.2-21.6-34.3-.3-32.5,27.4,5.5,41.4,29.7,72.5,22.7,9.1-1.5,17.8.6,26.6.3,11-2.1,21.8-8.4,33.3-9,11.2-2.1,36.8,11.9,29.5-10.4-24.9-26.5-35.1.2-59.1-1.5-16.1-4-32.9-13.8-49.8-6.6-6.3,2.3-12,5.1-18.6,3-11.7-5.6-24.9-10.4-37.5-13.3-6.1-2.6-6.3-11-.7-14.2,9.4-4.6,21.1-2.9,31.3-3.3,10.7,1.8,21.2,6.4,32.4,5.2,13.9.5,22.8-12.2,36.1-13.2,7.8-.9,16.7,1.2,24.3-.2,7-2,18.4-7.4,16.7-16.3-4-7.4-14.4-7.1-21.9-7-24.9,2.2-41.1,27.4-67.5,25.1-21.1.8-60.4-9.5-68.6-31.1-6.1-11.5-10.1-24-18.9-33.7-19-18.9-36.1-52.3-58.2-66.8-53.8-38.3-130.3-30.3-161-21.8-37,10.3-101.2,27.2-117.2,91.6-2.6,10.6,2.5,30.2,4.5,43.5,1.5,13.3,1.6,27.1-.5,40.2v.4Z" />
+        <!-- eyes -->
+        <path fill="none" stroke="#000" stroke-linejoin="round" stroke-linecap="round" stroke-width="3"
+          d="M575.8,737c-7.7,12.5-21.7,9.2-32.3,2.2" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4"
+          d="M506.6,736.5c9-15.7,2.3-39.7-12.3-49.4-17-10.8-45.4-5.5-55.4,12.8-21.7,50.2,38.2,83.5,67.7,36.5h0Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4"
+          d="M690.4,712.2c19.7-55.4-52.9-71.5-71.4-28.7-13.8,47.4,47.2,70,71.4,28.7Z" />
+      </g>
+
+      <!-- W2  -->
+      <g id="wesen-w2" class="animating">
+        <path fill="#a598f7" stroke="#000" stroke-linejoin="round" stroke-linecap="round" stroke-width="3"
+          d="M708.1,611.4c-1.9-16.9-6-30.1-12.6-44.9-3.5-10.3-7.5-21.9-13.8-31.3-16.2-23.8-40.4-42.4-67.7-51.5-18.1-3.2-39.7-6.6-58.2-3.9-17.4,2.8-34.3,7.8-51.6,10.7-15.6,3.3-30.9,11.6-43.4,21.6-39.4,29.1-51.8,61.5-42.1,109.3,3.8,32.1,21.1,65.1,14.1,97.7-8,23.9-20.2,47.6-36.6,67-5,8.1-10.6,15.3-12,25.1-2.4,10.1,4.3,14.5,10.5,6.1,14.6-37.5,10.5-21.5,33.4-47.9,8-11.4,9.5-23.2,13.9-36.4,4.8-14.9,11.1-29.9,21.1-41.8,9.9-11.1,16.5-4.9,12.2,7.8-3.6,11.2-12.2,23-15.4,34.4-4,14.2-7.1,30.4-13.2,44-3.5,8.7-11.8,18.5-15.4,27.1-4.3,10.3,1.7,25.8,13.2,14.3,10.2-21.1,19-42.5,30.1-64,12-23.1,3.1-56.3,21.5-74.7,19-7,7.3,25.5,7.8,34.9-1,11.6-4.3,22.1-5.7,33.8-1.1,12.8-3.2,24.4-9.8,35.6-6.4,11.9-8.6,29.5.8,40.1,3.1,2.6,10.2.6,10.7-3.8,1.2-4.1-1.3-7.4-2.7-11.1-3.1-12.9,7-25.7,9.1-38.2,4.7-27.1,8.7-54.3,18.9-80,2.5-10.7,20.9-26,23.8-7.6,1,12.4-17.2,19.3-12.1,32.2,3.3,7.9,3,16.9,1.1,25.3-.8,9.3-2.5,17.4-9,24.3-4.8,6.4-9.5,9.1-10.4,16.6.9,10.1,1.1,20.3,4.3,30,1.6,4.8,1.5,9.8,4.5,13.8,2.5,3.4,9.9,6,12.3,1.4,3.4-10.6-4-21.9-7.3-31.9-4.2-7.6,3.7-13.7,9.1-17.9,29-20.2,9.7-34.6,13-64.4,1.3-13.4,11.5-24.2,16.6-36.4,7.8-11.7,18.2-7.3,15,6.6-.9,21.9-3.1,43.8-6.4,65.5,1.8,14.9-1.7,28.2-4.1,42.6-.5,5.7-.9,12.3-1.6,17.9-1.8,7.3-1.7,18,8.6,16.2,3.5-1.1,4.2-5.7,6.2-8.8,4.9-9.7,10.7-19.7,12-30.7,1.6-12.6.4-26.4.6-39,.8-8.4,2.1-15.7,1.8-23.3.9-13.9-10.4-51.5,11.9-50.7,20.2,8.6-.4,32.3,1,47.4.5,14.5,5.1,29.3,4.7,43.9,0,9.9.6,20.1.6,30-.2,5.9-1.4,12.6.8,18.1,2.2,6.2,9.9,17.6,16.2,8.6,7.4-14.3,6.7-31.5,8.5-47.4,2.6-27.6,3.2-46.9-6.7-73-2.9-10.4-5.3-21.1-.4-30.9,4-5.1,14.5-7.5,17.5,0,3,8.9,1,19.1.9,28.8-.6,11.1-.6,19.6-1.3,30.5-1.6,12.3,2.8,23.4,2.7,35.3-1.2,14.8-8.9,54.6,13.5,56.9,12.2-3.2,3.9-19.5,2.8-28,.3-22.9-3.1-45.3-4.4-68.1-.6-14.2,2.6-28,4-42,1.5-7.4.2-19.1,8.9-22,13.4-2.3,14.4,14.7,12.3,26.1-4,21.8-10.3,43.2-6.8,65.5,1.7,11.3,9.3,20.6,14.1,30.5,4.3,13.3,7.4,28.9,15.4,40.5,6.2,4.7,16-1.7,15.3-9.3.2-7.7-4.9-16.4-8-23-4.6-9.3-8.5-17.9-12.8-27.5-18.4-33.1-3.9-33.6-3.2-63.9-1.6-23.1-12.9-45.6-6.3-68.9,1.7-7.8,4.2-9.4,3.7-19.8h0Z" />
+        <!-- eyes -->
+        <path fill="none" stroke="#000" stroke-linejoin="round" stroke-linecap="round" stroke-width="3"
+          d="M547.5,608.8c-6.7,10.9-18.9,8-28.2,1.9" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4"
+          d="M487.2,608.4c7.8-13.7,2-34.6-10.8-43-14.8-9.4-39.5-4.8-48.3,11.2-18.9,43.8,33.3,72.8,59,31.8h0Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-width="4"
+          d="M663.2,608c17.2-48.3-46.1-62.4-62.2-25-12.1,41.3,41.1,61.1,62.2,25Z" />
+      </g>
+
+      <a href="#" id="wesen-link" aria-label="Sag dem Wesen hallo" aria-haspopup="dialog" role="button">
+        <!-- Hover shape for W1 (big wesen, lower) — visible when W1 is shown -->
+        <path class="hover-w1"
+          d="M404.4,776.1c-2.7,5.1-9.8,5.9-15,6.3-18.5.9-33.3,3.6-43.7,20.6-7.3,12.6-12.4,18.8-28.1,19.5-24.2-3.5-38.2-11.9-63.2,1.7-7.6,4.5-16.6,7.7-21.7,14.2-3.6,4.3-1.7,11.6,4.9,9.3,82.9-38.6,45,32.6,137.2-49.2,10.8-13.4,50.7-12.8,29.8,7-8.2,4.8-18.3,7.6-25,14.5-19,17.1-10.7,36.4-32.9,47.7-6.8,4.3-14.8,7.2-19.8,13.8-7.2,7.8-1.7,16.7,8.2,10.8,11-6.2,18.3-17.9,27.4-26.4,3.5-3.5,9.7-6.4,12.4-10.5,4-20.3,15.5-27.6,30.5-40.1,15.2-9.5,47.7-20.2,30,10.5-6.8,12.9-25.6,20.2-24.3,36.9.8,8.3,3.6,15.7,8,22.7,2.7,4.8,5.7,8.7,5.5,14.2.1,10.5-10.7,10.8-18.4,14.4-6.6,3-19.2,11.1-15.6,18.2,10.9-1.8,22.5-9.1,32.1-14.7,7.9-7.6,14.9-19.6,12.9-31-5.8-14.3-12.3-15.4-3.7-32.3,4.4-5.8,12.3-9.1,15.9-15.9,6.6-10.3,30.3-55.8,37.6-24-1.8,14.7-15.1,29.2-10,44.3,5.6,14.6,15,32.1,6.3,47.5-5.4,7.5-14.5,12.5-19.6,20.5-2.2,3.1-3.6,5.7-.3,6.9,18.3-2.1,30.2-23.1,32.7-39.9,1.2-16.5-7.3-32.9-1.3-49.3,4.5-11.6,9.4-24.9,18.2-33.9,16.1-13.1,33.4,6.3,34,22.7-3.5,24.5-18.2,39.1-1.9,64.1,11,16.1.3,35.8-2.5,52.8-1.4,6.9,6.8,17,12.2,8.2,4.8-7.4,4.7-16.9,5.3-25.3,2.6-15.8,1.5-32.4-5-47.2-12.3-23.8-4.9-29,2.2-51.4,1.9-8.2,2.1-17.7,8.2-24.3,4.6-5.2,16.1-9.5,20.4-2,8.3,18.6-11.3,37.3-5.4,56.8,2.3,15.4,22,21.2,22.7,37.5-1.6,15-10.7,33.3-.8,47,6.1,5.6,15,1.6,19.9-3.7,6.8-10.1-6.4-19.8-6.3-30.3-1.4-16,.3-35.5-14.2-45.9-9.5-8.7-1.8-21.9-1.1-32.6.4-14.1-6.6-20.3,2.9-34.7,4.5-9.6,8.9-7.9,13.4,0,4.8,8,2.8,16.3,3.9,25.5.3,26.2,15.5,37.5,38.3,45.4,9.7,4.8,12.6,16.8,20,23.9,8.6,7.5,21.4,11,32.4,8.3,16.6-10.2-26.1-33.1-31.7-40.4-6-6.4-3.9-16-7.3-23.4-5.8-14.4-24.7-12.3-33.7-23.5-9.4-9.6-2.3-25.7,10.6-26.6,17.4,1,31.1,11.1,38.8,26.9,18.5,47.6,59.8,21.3,78.9,60.1,3.3,12.3,1.2,33.1,19.4,32.8,8.6-.8,19.5-3.5,26.8,2.8,6.7,7.3,12.5,16.4,22.7,19.3,13.4,6.5,31,2.4,20-15.6-6.3-9.5-17.8-15.4-28-19.6-12.9-4.2-28.4.3-40.5-6.4-14.4-12.8-4.2-35.5-28.9-43.7-19.8-8.1-27.9-4.2-39.1-25.1-5.1-6.4-15.8-9.2-19.9-16.3-7.4-13.7,5.3-21.2,17.2-14.3,25.7,11.5,35,41.9,60.2,54,7.1,4.5,16.2,3.8,23.9,5.3,14,2.2,22.5,8.8,32.1,18.7,12.7,8.5,25.3-3.7,39-4.5,17.6-4,33.4,9.3,50.7,2.1,9.7-3.3,18.6-9.5,26.3-15.6,1.7-9.3-10.7-9.6-17.1-7.9-24.6,10.5-16.2,15.4-46.6,8-19.8-3.8-42.4,7.7-59.9-6.2-7.4-4.4-15.6-9.7-23.3-13.4-7.9-2.5-16.5-3.1-23.7-7.8-13.1-6.2-21.6-34.3-.3-32.5,27.4,5.5,41.4,29.7,72.5,22.7,9.1-1.5,17.8.6,26.6.3,11-2.1,21.8-8.4,33.3-9,11.2-2.1,36.8,11.9,29.5-10.4-24.9-26.5-35.1.2-59.1-1.5-16.1-4-32.9-13.8-49.8-6.6-6.3,2.3-12,5.1-18.6,3-11.7-5.6-24.9-10.4-37.5-13.3-6.1-2.6-6.3-11-.7-14.2,9.4-4.6,21.1-2.9,31.3-3.3,10.7,1.8,21.2,6.4,32.4,5.2,13.9.5,22.8-12.2,36.1-13.2,7.8-.9,16.7,1.2,24.3-.2,7-2,18.4-7.4,16.7-16.3-4-7.4-14.4-7.1-21.9-7-24.9,2.2-41.1,27.4-67.5,25.1-21.1.8-60.4-9.5-68.6-31.1-6.1-11.5-10.1-24-18.9-33.7-19-18.9-36.1-52.3-58.2-66.8-53.8-38.3-130.3-30.3-161-21.8-37,10.3-101.2,27.2-117.2,91.6-2.6,10.6,2.5,30.2,4.5,43.5,1.5,13.3,1.6,27.1-.5,40.2v.4Z" />
+        <!-- Hover shape for W2 (small wesen, higher) — visible when W2 is shown -->
+        <path class="hover-w2"
+          d="M708.1,611.4c-1.9-16.9-6-30.1-12.6-44.9-3.5-10.3-7.5-21.9-13.8-31.3-16.2-23.8-40.4-42.4-67.7-51.5-18.1-3.2-39.7-6.6-58.2-3.9-17.4,2.8-34.3,7.8-51.6,10.7-15.6,3.3-30.9,11.6-43.4,21.6-39.4,29.1-51.8,61.5-42.1,109.3,3.8,32.1,21.1,65.1,14.1,97.7-8,23.9-20.2,47.6-36.6,67-5,8.1-10.6,15.3-12,25.1-2.4,10.1,4.3,14.5,10.5,6.1,14.6-37.5,10.5-21.5,33.4-47.9,8-11.4,9.5-23.2,13.9-36.4,4.8-14.9,11.1-29.9,21.1-41.8,9.9-11.1,16.5-4.9,12.2,7.8-3.6,11.2-12.2,23-15.4,34.4-4,14.2-7.1,30.4-13.2,44-3.5,8.7-11.8,18.5-15.4,27.1-4.3,10.3,1.7,25.8,13.2,14.3,10.2-21.1,19-42.5,30.1-64,12-23.1,3.1-56.3,21.5-74.7,19-7,7.3,25.5,7.8,34.9-1,11.6-4.3,22.1-5.7,33.8-1.1,12.8-3.2,24.4-9.8,35.6-6.4,11.9-8.6,29.5.8,40.1,3.1,2.6,10.2.6,10.7-3.8,1.2-4.1-1.3-7.4-2.7-11.1-3.1-12.9,7-25.7,9.1-38.2,4.7-27.1,8.7-54.3,18.9-80,2.5-10.7,20.9-26,23.8-7.6,1,12.4-17.2,19.3-12.1,32.2,3.3,7.9,3,16.9,1.1,25.3-.8,9.3-2.5,17.4-9,24.3-4.8,6.4-9.5,9.1-10.4,16.6.9,10.1,1.1,20.3,4.3,30,1.6,4.8,1.5,9.8,4.5,13.8,2.5,3.4,9.9,6,12.3,1.4,3.4-10.6-4-21.9-7.3-31.9-4.2-7.6,3.7-13.7,9.1-17.9,29-20.2,9.7-34.6,13-64.4,1.3-13.4,11.5-24.2,16.6-36.4,7.8-11.7,18.2-7.3,15,6.6-.9,21.9-3.1,43.8-6.4,65.5,1.8,14.9-1.7,28.2-4.1,42.6-.5,5.7-.9,12.3-1.6,17.9-1.8,7.3-1.7,18,8.6,16.2,3.5-1.1,4.2-5.7,6.2-8.8,4.9-9.7,10.7-19.7,12-30.7,1.6-12.6.4-26.4.6-39,.8-8.4,2.1-15.7,1.8-23.3.9-13.9-10.4-51.5,11.9-50.7,20.2,8.6-.4,32.3,1,47.4.5,14.5,5.1,29.3,4.7,43.9,0,9.9.6,20.1.6,30-.2,5.9-1.4,12.6.8,18.1,2.2,6.2,9.9,17.6,16.2,8.6,7.4-14.3,6.7-31.5,8.5-47.4,2.6-27.6,3.2-46.9-6.7-73-2.9-10.4-5.3-21.1-.4-30.9,4-5.1,14.5-7.5,17.5,0,3,8.9,1,19.1.9,28.8-.6,11.1-.6,19.6-1.3,30.5-1.6,12.3,2.8,23.4,2.7,35.3-1.2,14.8-8.9,54.6,13.5,56.9,12.2-3.2,3.9-19.5,2.8-28,.3-22.9-3.1-45.3-4.4-68.1-.6-14.2,2.6-28,4-42,1.5-7.4.2-19.1,8.9-22,13.4-2.3,14.4,14.7,12.3,26.1-4,21.8-10.3,43.2-6.8,65.5,1.7,11.3,9.3,20.6,14.1,30.5,4.3,13.3,7.4,28.9,15.4,40.5,6.2,4.7,16-1.7,15.3-9.3.2-7.7-4.9-16.4-8-23-4.6-9.3-8.5-17.9-12.8-27.5-18.4-33.1-3.9-33.6-3.2-63.9-1.6-23.1-12.9-45.6-6.3-68.9,1.7-7.8,4.2-9.4,3.7-19.8h0Z" />
+      </a>
+
+      <!-- ═══════════════════════════════════════════
+           WANNE 
+      ════════════════════════════════════════════ -->
+      <a href="6_Bad_2.html" id="wanne-btn" aria-label="Badewanne putzen – weiter" role="button">
+        <path fill="transparent"
+          d="M638.4,484.7c-29.6,4.7-59.3,7.5-88.7,13.4-28.6,6.2-56.1,13.6-85.2,18-25.6,3.4-49.9,8.2-75.1,13-23.3,3.5-46.3,6.6-69.6,10.5-110.8,20.3-89.4,15.6-89.4,15.6,41.8,28.9,134,76.6,134,76.6,0,0,16.4-6.6,26.7-10.3,31.7-11.9,65.8-16.6,97.5-28.5,27.4-6.7,53.7-18.4,81.1-25.6,38.9-11.5,77.5-22.2,115.4-36.6,17.7-6.3,36.2-7.8,53.5-15.4,8.3-3.8,19-9.6,28-11.8,0,0-98.9-14.6-128.2-18.9" />
+      </a>
+    </svg>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       DIALOG OVERLAY 
+  ════════════════════════════════════════════ -->
+  <div id="dialog-overlay" aria-hidden="true">
+    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+      role="dialog" aria-modal="true" tabindex="-1">
+      <defs>
+        <style>
+          .d-feld {
+            fill: #fff;
+            stroke: #1d1e1c;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+
+          .d-btn-shape {
+            fill: #fff;
+            stroke: #1d1e1c;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+
+          .d-zu-shape {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 3px;
+            stroke-miterlimit: 10;
+          }
+        </style>
+      </defs>
+
+      <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
+
+      <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
+        <path class="d-feld"
+          d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
+
+        <a class="d-zu-btn" href="#" id="dlg1-zu" role="button" aria-label="Dialog schliessen">
+          <path class="d-zu-shape"
+            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+          <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
+        </a>
+
+        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden"
+          text-anchor="middle" x="800" y="720"></text>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    const DIALOGS = [
+      {
+        group: 'dlg-1',
+        weiterId: null,
+        lines: ['dlg1-line1'],
+        conversation: [
+          { text: 'Hilfst du mir die Badewanne zu putzen?' },
+        ],
+      },
+    ];
+
+    let convStep = 0;
+    let openerLink = null;
+    let dialogEverClosed = false;
+
+    const overlay = document.getElementById('dialog-overlay');
+    const dlgSvg = document.getElementById('dialog-svg');
+    const w1 = document.getElementById('wesen-w1');
+    const w2 = document.getElementById('wesen-w2');
+    const wanneBtn = document.getElementById('wanne-btn');
+
+    /* ── animation helpers ────────────────────── */
+    function stopAnimation() {
+      w1.classList.remove('animating');
+      w2.classList.remove('animating');
+      // freeze W1 visible, W2 hidden
+      w1.style.opacity = '1';
+      w2.style.opacity = '0';
+      // freeze hover paths too: show W1 shape only
+      const hLink = document.getElementById('wesen-link');
+      hLink.querySelectorAll('.hover-w1').forEach(p => { p.style.animationPlayState = 'paused'; p.style.opacity = '1'; });
+      hLink.querySelectorAll('.hover-w2').forEach(p => { p.style.animationPlayState = 'paused'; p.style.opacity = '0'; });
+    }
+
+    function startAnimation() {
+      w1.classList.add('animating');
+      w2.classList.add('animating');
+      w1.style.opacity = '';
+      w2.style.opacity = '';
+      // resume hover path animations
+      const hLink = document.getElementById('wesen-link');
+      hLink.querySelectorAll('.hover-w1, .hover-w2').forEach(p => { p.style.animationPlayState = ''; p.style.opacity = ''; });
+    }
+
+    /* ── dialog helpers ────────────────────────── */
+    function renderLines(def) {
+      const entry = def.conversation[convStep - 1];
+      const lineEl = document.getElementById(def.lines[0]);
+      lineEl.textContent = entry.text;
+      lineEl.setAttribute('visibility', 'visible');
+    }
+
+    function openDialog(opener) {
+      openerLink = opener;
+      convStep = 1;
+      stopAnimation();
+      const def = DIALOGS[0];
+      document.getElementById(def.group).setAttribute('visibility', 'visible');
+      renderLines(def);
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      dlgSvg.focus();
+    }
+
+    function closeDialog() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
+      convStep = 0;
+
+      if (!dialogEverClosed) {
+        dialogEverClosed = true;
+        wanneBtn.classList.add('visible');
+        document.getElementById('wesen-link').classList.add('disabled');
+        document.getElementById('wesen-link').removeAttribute('aria-haspopup');
+        document.getElementById('wesen-link').setAttribute('aria-label', 'Wesen (nicht mehr verfügbar)');
+      }
+
+      if (openerLink) openerLink.focus();
+    }
+
+    function advanceConversation() {
+      const def = DIALOGS[0];
+      if (convStep < def.conversation.length) {
+        convStep++;
+        renderLines(def);
+      } else {
+        closeDialog();
+      }
+    }
+
+    document.getElementById('wesen-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      openDialog(this);
+    });
+
+    dlgSvg.addEventListener('click', function (e) {
+      if (e.target.closest('.d-weiter-btn')) { e.preventDefault(); advanceConversation(); return; }
+      if (e.target.closest('.d-zu-btn')) { e.preventDefault(); closeDialog(); return; }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') { closeDialog(); return; }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(dlgSvg.querySelectorAll('a[role="button"]')).filter(el => {
+          let p = el.parentElement;
+          while (p && p !== dlgSvg) {
+            if (p.getAttribute('visibility') === 'hidden') return false;
+            p = p.parentElement;
+          }
+          return true;
+        });
+        if (!focusable.length) { e.preventDefault(); return; }
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      }
+    });
+
+    startAnimation();
+  </script>
+</body>
+
+</html>

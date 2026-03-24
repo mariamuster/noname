@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Haus 1</title>
+  <link rel="stylesheet" href="button.css" />
+  <link rel="stylesheet" href="image.css" />
+  <link rel="stylesheet" href="dialog.css" />
+  <style>
+    svg {
+      border: 0cm solid rgba(0, 0, 0, 0.6);
+    }
+
+    a>path,
+    a>rect {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+      a:hover>path,
+a:hover>rect {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+
+a:focus {       
+  outline: none;
+}a:focus>path, 
+a:focus>rect {
+  stroke: black;
+  fill: rgba(65, 65, 65, 0.2);
+  stroke-width: 3px;
+  outline-offset: 4px;
+  filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+}
+
+    
+  </style>
+</head>
+
+<body>
+  <div class="room-wrapper">
+    <img src="img/1_Haus_1.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+      class="responsive-img" tabindex="0" />
+    <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <a href="1_Haus_2.html" aria-label="Weiter nach links" role="button">
+        <path id="Door1" class="cls-1"
+          d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,36,6,10.1,11.7,8.4,26.5,8.9,40.9,1.1,31.4,0,68.1,0,99.4l-68.9-1.4Z" />
+        <text class="room-label" x="47.5%" y="25%">Weiter</text>
+      </a>
+
+
+    </svg>
+  </div>
+</body>
+
+</html>

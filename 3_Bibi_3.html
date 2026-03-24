@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bibi 3</title>
+  <link rel="stylesheet" href="button.css">
+  <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="dialog.css">
+  <style>
+    @font-face { font-family: 'AguafinaScript'; src: url('fonts/AguafinaScript-Regular.ttf'); }
+    @font-face { font-family: 'Arimo';         src: url('fonts/Arimo-VariableFont_wght.ttf'); }
+    @font-face { font-family: 'ComicNeue';      src: url('fonts/ComicNeue-Regular.ttf'); }
+    @font-face { font-family: 'CourierPrime';   src: url('fonts/CourierPrime-Regular.ttf'); }
+    @font-face { font-family: 'Lexend';         src: url('fonts/Lexend-Regular.ttf'); }
+    @font-face { font-family: 'LibreCaslonText'; src: url('fonts/LibreCaslonText-Italic.ttf'); font-style: italic; }
+    @font-face { font-family: 'OpenDyslexic';   src: url('fonts/OpenDyslexic3-Regular.ttf'); }
+
+    svg { border: none; }
+    a>path, a>rect { fill: transparent; pointer-events: all; }
+    a:hover>path, a:hover>rect { fill: rgba(65, 65, 65, 0.7); }
+    .pfeil-path {
+      fill: aqua;
+      stroke: #000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3px;
+      pointer-events: all;
+    }
+    #zurueck-svg a:hover > .pfeil-path { fill: rgba(0, 139, 139, 0.9); }
+    #zurueck-svg a:focus-visible > .pfeil-path {
+      stroke: black;
+      stroke-width: 8px;
+      paint-order: stroke fill;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 3px rgb(0, 0, 0));
+    }
+    a:focus { outline: none; }
+    a:focus-visible>path, a:focus-visible>rect {          
+      stroke: black;
+      stroke-width: 8px;
+      paint-order: stroke fill;
+      filter: drop-shadow(0 0 6px red) drop-shadow(0 0 3px red);
+    }
+
+    /* ── Buchtext ──────────────────────────────────────── */
+    .buch-text {
+      position: absolute;
+      top: calc(170 / 900 * 100%);
+      left: calc(350 / 1600 * 100%);
+      width: calc(870 / 1600 * 100%);
+      height: calc(500 / 900 * 100%);
+      display: flex;
+      gap: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #seite-links, #seite-rechts {
+      width: 50%;
+      overflow: hidden;
+      font-family: Georgia, serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #2a1a0a;
+    }
+    #seite-links  { padding: 3% 4% 3% 6%; }
+    #seite-rechts { padding: 3% 1% 3% 0%; }
+    .dysletter { display: inline-block; }
+
+    /* ── Schriftgrössen-Regler oben mitte ──────────────── */
+    #size-control {
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      pointer-events: all;
+    }
+    #size-control label {
+      font-family: Lexend, serif;
+      font-size: 20px;
+      color: #2a1a0a;
+      letter-spacing: 0.08em;
+    }
+    #size-slider {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 220px;
+      height: 10px;
+      border-radius: 0;
+      background: rgba(0,0,0,0.15);
+      cursor: pointer;
+      outline: none;
+    }
+    #size-slider:focus-visible {
+      outline: 3px solid #2a1a0a;
+      outline-offset: 6px;
+      filter: drop-shadow(0 0 6px black) drop-shadow(0 0 6px black);
+
+    }
+    #size-slider::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #000000;
+      border: 3px solid rgb(255, 0, 238);
+      cursor: pointer;
+    }
+    #size-slider::-moz-range-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #000000;
+      border: 3px solid rgba(255, 19, 240);
+      cursor: pointer;
+    }
+    #size-value {
+      font-family: Lex, serif;
+      font-size: 20px;
+      color: #2a1a0a;
+    }
+
+    /* ── Font-Panel links ──────────────────────────────── */
+    #font-panel {
+      position: absolute;
+      left: 1%;
+      top: 20%;
+      bottom: 12%;
+      width: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 5px;
+      z-index: 100;
+      pointer-events: all;
+    }
+
+    /* Pill-Button */
+    .font-btn {
+      position: relative;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .font-btn svg { width: 100%; height: auto; display: block; }
+    .font-btn .btn-bg {
+      fill: #fff;
+      stroke: #000; stroke-width: 3;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: fill 0.15s;
+    }
+    .font-btn:hover .btn-bg, .font-btn:focus-visible .btn-bg { fill: rgba(65,65,65,0.25); }
+    .font-btn:focus { outline: none; }
+    .font-btn:focus-visible { filter: drop-shadow(0 0 1px rgb(0, 0, 0)) drop-shadow(0 0 1px rgb(0, 0, 0)); }
+    .font-btn.active .btn-bg { fill: rgba(255, 19, 240, 0.7); }
+    .font-btn .btn-label {
+      position: absolute;
+      inset: 0;       
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      color: #2a1a0a;
+      pointer-events: none;
+    }
+
+    /* ── Weiter-Pfeil ───────────────────────────── */
+    #zurueck-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 50;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="room-wrapper">
+    <img src="img/3_Bibi_Buch.svg" alt="Aufgeschlagenes Buch." class="responsive-img" tabindex="0" />
+
+    <!-- Buchtext -->
+    <div class="buch-text">
+      <div id="seite-links">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante donec.</p>
+      </div>
+      <div id="seite-rechts">
+        <p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra vestibulum.</p>
+        <p>Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.</p>
+        <p>Donec non enim in turpis pulvinar facilisis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus purus.</p>
+      </div>
+    </div>
+
+    <!-- Schriftgrösse oben mitte -->
+    <div id="size-control">
+      <label for="size-slider">Schriftgrösse</label>
+      <input id="size-slider" type="range" min="12" max="26" value="16" step="1">
+      <span id="size-value">16px</span>
+    </div>
+
+    <!-- Font-Panel links -->
+    <div id="font-panel">
+
+      <button class="font-btn active" data-font="Georgia, serif">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: Georgia, serif;">Georgia</span>
+      </button>
+
+      <button class="font-btn" data-font="AguafinaScript, cursive">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: AguafinaScript, cursive; font-size:20px;">Aguafina</span>
+      </button>
+
+      <button class="font-btn" data-font="Arimo, serif">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: Arimo, serif;">Arimo</span>
+      </button>
+
+      <button class="font-btn" data-font="ComicNeue, cursive">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: ComicNeue, cursive;">Comic Neue</span>
+      </button>
+
+      <button class="font-btn" data-font="CourierPrime, monospace">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: CourierPrime, monospace;">Courier</span>
+      </button>
+
+      <button class="font-btn" data-font="Lexend, sans-serif">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: Lexend, sans-serif;">Lexend</span>
+      </button>
+
+      <button class="font-btn" data-font="LibreCaslonText, serif">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: LibreCaslonText, serif; font-style:italic;">Libre Caslon</span>
+      </button>
+
+      <button class="font-btn" data-font="OpenDyslexic, sans-serif">
+        <svg viewBox="710 685 185 85"><path class="btn-bg" d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/></svg>
+        <span class="btn-label" style="font-family: OpenDyslexic, sans-serif; font-size:13px;">OpenDyslexic</span>
+      </button>
+
+    </div>
+
+    <!-- Weiter-Pfeil -->
+    <svg id="zurueck-svg" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+      <a href="3_Bibi_4.html" aria-label="Weiter" role="button">
+        <path class="pfeil-path" d="M1538.7,449.9s-49.9,55.6-61.8,70c0-13-.7-24.5,0-37.5-20.1-.9-38.2,0-38.2,0v-64.3s17.9-2,38.2,0c-.4-12.1-.4-25.8,0-38l61.8,70h0v-.2Z" />
+      </a>
+    </svg>
+
+  </div>
+
+  <script>
+    function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+    // ── Linke Seite: Y-Wobble ──────────────────────────────────────
+    function wrapLetters(el) {
+      el.childNodes.forEach(node => {
+        if (node.nodeType === 3) {
+          const tmp = document.createElement('span');
+          tmp.innerHTML = node.textContent.split('').map(ch =>
+            ch.trim() === '' ? ch : '<span class="dysletter">' + ch + '</span>'
+          ).join('');
+          node.replaceWith(tmp);
+        }
+      });
+    }
+    document.querySelectorAll('#seite-links p').forEach(wrapLetters);
+
+    function wiggle() {
+      const spans = Array.from(document.querySelectorAll('#seite-links .dysletter'));
+      for (let i = 0; i < 20; i++) {
+        const idx = rand(0, spans.length - 2);
+        const a = spans[idx], b = spans[idx + 1];
+        const shift = rand(2, 2), dur = rand(60, 150);
+        a.style.transition = b.style.transition = 'transform ' + dur + 'ms ease';
+        a.style.transform = 'translateY(' + shift + 'px)';
+        b.style.transform = 'translateY(-' + shift + 'px)';
+        setTimeout(() => { a.style.transform = b.style.transform = ''; }, dur + rand(50, 200));
+      }
+      setTimeout(wiggle, rand(30, 80));
+    }
+    wiggle();
+
+    // ── Rechte Seite: Buchstabentausch ────────────────────────────
+    function wrapWords(container) {
+      container.querySelectorAll('p').forEach(p => {
+        const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) textNodes.push(node);
+        textNodes.forEach(tn => {
+          const frag = document.createDocumentFragment();
+          tn.textContent.split(/(\s+)/).forEach(part => {
+            if (/^\s+$/.test(part) || part === '') {
+              frag.appendChild(document.createTextNode(part));
+            } else {
+              const wordSpan = document.createElement('span');
+              wordSpan.style.display = 'inline-block';
+              wordSpan.style.position = 'relative';
+              part.split('').forEach(ch => {
+                const s = document.createElement('span');
+                s.className = 'dysletter swap-letter';
+                s.textContent = ch; s.style.position = 'relative';
+                wordSpan.appendChild(s);
+              });
+              frag.appendChild(wordSpan);
+            }
+          });
+          tn.replaceWith(frag);
+        });
+      });
+    }
+    wrapWords(document.getElementById('seite-rechts'));
+
+    function swapLetters() {
+      for (let s = 0; s < 3; s++) {
+        const words = Array.from(document.querySelectorAll('#seite-rechts p > span[style]'));
+        if (!words.length) continue;
+        const word = words[rand(0, words.length - 1)];
+        const letters = Array.from(word.querySelectorAll('.swap-letter'));
+        if (letters.length < 2) continue;
+        const i = rand(0, letters.length - 2);
+        const a = letters[i], b = letters[i + 1];
+        const wa = a.getBoundingClientRect().width;
+        const wb = b.getBoundingClientRect().width;
+        const tmp = a.textContent; a.textContent = b.textContent; b.textContent = tmp;
+        a.style.display = 'inline-block'; b.style.display = 'inline-block';
+        a.style.minWidth = wb + 'px'; b.style.minWidth = wa + 'px';
+        setTimeout(() => { a.style.minWidth = ''; b.style.minWidth = ''; }, rand(200, 600));
+      }
+      setTimeout(swapLetters, rand(30, 100));
+    }
+    swapLetters();
+
+    // ── Font switcher ─────────────────────────────────────────────
+    document.querySelectorAll('.font-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const font = btn.getAttribute('data-font');
+        document.querySelectorAll('#seite-links, #seite-rechts').forEach(el => {
+          el.style.fontFamily = font;
+        });
+      });
+    });
+
+    // ── Schriftgrösse ─────────────────────────────────────────────
+    const slider = document.getElementById('size-slider');
+    const sizeVal = document.getElementById('size-value');
+    slider.addEventListener('input', () => {
+      const sz = slider.value + 'px';
+      sizeVal.textContent = sz;
+      document.querySelectorAll('#seite-links, #seite-rechts').forEach(el => {
+        el.style.fontSize = sz;
+      });
+    });
+  </script>
+</body>
+</html>

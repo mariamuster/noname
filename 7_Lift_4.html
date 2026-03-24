@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lift 4</title>
+    <link rel="stylesheet" href="button.css" />
+    <link rel="stylesheet" href="image.css" />
+    <link rel="stylesheet" href="dialog.css" />
+
+    <style>
+      svg {
+        border: none;
+      }
+
+                   a:hover>path,
+a:hover>rect {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+
+a:focus { outline: none; }
+a:focus-visible>path,
+a:focus-visible>rect {
+  stroke: black;
+  fill: rgba(65, 65, 65, 0.2);      
+  stroke-width: 3px;
+  outline-offset: 4px;
+  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+}
+    </style>
+  </head>
+  <body>
+    <div class="room-wrapper">
+      <img
+        src="img/7_Lift_4.svg"
+        alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+        class="responsive-img"
+        tabindex="0"
+      />
+
+      <svg
+        class="room-overlay"
+        viewBox="0 0 1600 900"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <a href="8_Warten.html" aria-label="Weiter" role="button">
+          <path
+            id="Tür"
+            class="cls-1"
+            d="M947,731.1c4.3-101.8,0-201.8-1.5-303.6,1.6-77.3,5.2-154.1,4-231.3l-303.6-2.7c1.1,178-3,356,2.7,534.1l298.4,3.5Z"
+          />
+          <text class="room-label" x="940" y="380">Weiter</text>
+        </a>
+
+      </svg>
+    </div>
+  </body>
+</html>

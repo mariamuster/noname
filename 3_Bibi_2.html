@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bibi 2</title>
+  <link rel="stylesheet" href="button.css">
+  <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="dialog.css">
+  <style>
+    @font-face {
+      font-family: 'Lex';
+      src: url('fonts/Lex.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Lex', sans-serif;
+    }
+
+    svg {
+      border: 0px solid rgba(0, 0, 0, 0.454);
+    }
+
+    a>rect {
+      fill: transparent;
+      pointer-events: all;
+    }
+       a:hover>path,
+a:hover>rect {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+
+a:focus {       
+  outline: none;
+}a:focus>path, 
+a:focus>rect {
+  stroke: black;
+  fill: rgba(65, 65, 65, 0.7);
+  stroke-width: 3px;
+  outline-offset: 4px;
+  filter: drop-shadow(0 0 0px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+}
+
+    a.buch-btn {
+      outline: none;
+    }
+
+    a.buch-btn>path {
+      visibility: hidden;
+      pointer-events: all;
+    }
+
+    a.buch-btn.active>path {
+      visibility: visible;
+      pointer-events: none;
+    }
+
+    a.buch-btn:hover>path,
+    a.buch-btn:focus>path {
+      visibility: visible;
+      fill: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    a.buch-btn.active:hover>path,
+    a.buch-btn.active:focus>path {
+      fill: unset !important;
+    }
+
+    #stapel-btn {
+      pointer-events: none;
+    }
+
+    #stapel-btn>path {
+      fill: transparent;
+      pointer-events: none;
+    }
+
+    #stapel-btn.active {
+      pointer-events: all;
+    }
+
+    #stapel-btn.active>path {
+      pointer-events: all;
+    }
+
+    #stapel-btn.active:hover>path,
+    #stapel-btn.active:focus>path {
+      visibility: visible;
+      fill: rgba(65, 65, 65, 0.5) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="room-wrapper">
+    <img src="img/3_Bibi_2.svg" alt="Bibliothek mit Bücherregalen." class="responsive-img" tabindex="0" />
+
+    <svg id="farbe2-svg" class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g id="farbe2">
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau">
+          <path id="Hellblau"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1126.8,763h-10.9c1.2-19.5-4.6-40.2-4-59.4,2.4-2.3,8.3-1.7,12-1-.7,20,4.2,40.1,2.8,60.3h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau1">
+          <path id="Hellblau1"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M571.4,736.2v22.1c-4.3,0-8.7,0-13-.2,1-21.8-.4-46-1-67.2,4.1-.4,8.1-.4,11.7,1.2,1.3,14.9-.8,30.1,2.4,44.1h-.1Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau2">
+          <path id="Hellblau2"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1383,593c-7.6.2-15.5.2-23.4,0,2-17.5,0-35.4,1.9-53.3,6.6-1.7,14.5.5,21.2.4.2,15.7.4,40.8.4,52.8h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau3">
+          <path id="Hellblau3"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M354.8,593.6c-3.2,0-6.5,0-9.8-.2-2.5-17.3-1.6-35.4-4.2-52.8,4.2.5,8.9-.8,12.1,1.2,2.8,16.6,2.3,34.9,1.9,51.8Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau4">
+          <path id="Hellblau4"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1065.3,596.2h-20.3c.8-20.5-2.3-41.2-3-61.4,3.2-1.7,7.3,0,10.6.7,4.2,0,5.2-.3,10.3,1-.3,19.3,3.2,40.7,2.4,59.6h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau5">
+          <path id="Hellblau5"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M537.6,520.9c0-17.9-1.9-36.7-4-54.4,2.8-.3,6.7-1,8.8-.1,0,17.9,1.5,36.4,2.3,54.2-2.4,0-4.7.2-7.1.3Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau6">
+          <path id="Hellblau6"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1278.1,448.1c-3.2,0-6.4,0-9.7-.1-.3-13.5,1.2-29.6-1.4-42.9,2.5-.4,6.9-1.6,8.8-.7,1.3,14.1.5,29.3,2.2,43.7h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau7">
+          <path id="Hellblau7"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1093,379.5c-4.4.1-8.8.3-13.1.4-.6-17.3-3.3-36.9-2.2-53.7,3.3-1,9.4-.8,10.4,3.4,1.4,8.5,1.1,18.5,2.4,27.1.8,7,2.5,15.7,2.5,22.8h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau8">
+          <path id="Hellblau8"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M259.9,382.2c-4.5,0-9.1-.1-13.6-.2.2-16.7-2.6-33.9-1.2-50.5,3.1-1.5,7.5-2.8,11-2.1,4.7,16.6,2.1,36.3,3.8,52.8h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau9">
+          <path id="Hellblau9"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M584.8,308.2h-11.1c-.2-17.6-1.9-35.8-3.8-53,4.9,1.2,7,0,11.5-1,.8,18.1,2.1,35.8,3.3,53.9h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau10">
+          <path id="Hellblau10"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M364.9,307.9v1h-9.1c.4-16.4-.2-34.5.2-49.7,1.4-1.1,6.2-.8,8.8-.8,1,8.5,1.4,17.1,0,25.7-.8,7.9,1.3,15.8.1,23.7h-.1.1Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau11">
+          <path id="Hellblau11"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1267.5,309.7h-19.2c-.8-15.6-2.9-34.1-2.3-49.2,5.4-1.7,13.4-2.3,19-.9,2,16.1,2.5,34.5,2.5,50.2h0Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau12">
+          <path id="Hellblau12"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1047.7,307.3c-7.8,0-15.1.2-21.6.3-.4-10.1.5-42.5.5-43.8,3.2-.1,18.3-.2,19.8.1,2.8,12,.9,32.1,1.4,43.4h-.1Z" />
+        </a>
+        <a href="#" aria-label="Hellblau" role="button" class="buch-btn" data-id="Hellblau13">
+          <path id="Hellblau13"
+            style="fill:#0089ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M753.4,233.8c-.4-20.6-2.7-44.7-3.6-64.7h0v-6.4c3.4,0,7.8-.6,11.2-.4,2.4,0,5.4-1,7.6.3,1,19.4,3.3,49,3.7,71.5-6.3,0-12.6-.2-18.9-.3h0Z" />
+        </a>
+        <a href="#" aria-label="Pink" role="button" class="buch-btn" data-id="Pink">
+          <path id="Pink" style="fill:#f0f;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1233.9,591.3c-5.4,0-10.8-.2-16.1-.3,0-18.2.4-38,1.2-55.7,2.9-1.3,10.5-3.6,12.5-.5,3.1,16.2,1.8,38.4,2.4,56.5Z" />
+        </a>
+        <a href="#" aria-label="Grün" role="button" class="buch-btn" data-id="Grün">
+          <path id="Grün" style="fill:#009700;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M404.6,449.9c-7.8.2-15.2,0-22.9.2,1-17.5-1.1-34.9-.8-52.2,2-.5,4.6,0,6.6.3,1.5.1,13.7-.3,14.8.3,1.4,1.3.3,19.2.7,20.9.6,9.8,1,20.7,1.6,30.5h0Z" />
+        </a>
+       
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau1">
+          <path id="Blau1" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M285.7,754.5c-2.8,0-5.5,0-8.3-.2h-.1c-3-17.6-5.8-34.8-7.4-52.6h14.1c-.6,17.3.7,37,1.6,52.7h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau2">
+          <path id="Blau2" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M535.7,757.8c-6.7,0-13.3,0-20-.2-.6-20.1,1.2-40.1,1.4-60.1,4.3,0,12.7-.3,17.5-.6.5,19.8.6,41.1,1.1,60.9h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau3">
+          <path id="Blau3" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M823.9,760.3h-14c1.1-9.5-.9-18.9-1.5-28.3-.2-13.7.5-29.4-.9-43,4.4-1.3,9.1-1.1,14.3-2,.3,24,2.8,49.3,2.1,73.3h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau4">
+          <path id="Blau4" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M228.8,672.4c-4.2,0-8.6,0-13.1-.2-.4-13.7-1.3-33.3-1.8-50.3,4.2,0,6-.5,9.7.2,3.6,16,3.3,34.4,5.1,50.3h.1Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau5">
+          <path id="Blau5" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M474.9,672.9c0-11,.2-24-.1-35.7.7,0,1.4,0,1.7-.2.7,0,3.6-.2,5.1,0,0,12,0,24.8.4,35.8h-7.1Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau6">
+          <path id="Blau6" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M474.9,671.6v1.3h-6.4c-.2-12.6,0-30.3-.5-43.9,2.4.2,4.3-.5,6.5,0,.7,13.6.3,29.5.4,42.5h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau7">
+          <path id="Blau7" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M462,672.7c.2-14.8-.5-35.2-.4-49.6h5.8c1.8,15.2.4,35.2,1.1,49.9-2.2,0-4.4,0-6.5.2v-.5h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau8">
+          <path id="Blau8" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M462,672.7v.5c-2.4,0-4.8.2-7.1.3.2-8-.4-40.4-.9-59.9h6.9c0,.2.2.2.2.2,1.2,17.3.5,41,.9,58.9Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau9">
+          <path id="Blau9" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M620.7,595.5c-.2.2-.3,1.1-.3,1.9h-10c-.3-12.9-1.1-25.3-1.6-37.9-.5-6.3-3-13.1-2-19.4,1.8-2.7,8.8-.6,11.9-.9,2.5,18.4,2.3,37.7,1.9,56.4h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau10">
+          <path id="Blau10" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M489.1,597h-11.4c-.4-17.5-3.2-37.2-3.7-54.8,4.5-.4,5.8-.5,11.3.8,2.2,17.6,1.9,36.4,3.7,54.1h.1Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau11">
+          <path id="Blau11" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M390.7,593.7h-13.5c.2-10.7.9-22.2-1.2-32.7-1.2-6.7-2.8-12.9-1.2-19.7,3.9-1.9,10.1-2.5,14.2-1h0c.4,1,.5,4.3.5,7.6h0c-.3,15.5,1.7,30.5,1.2,45.8h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau12">
+          <path id="Blau12" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M307.6,592.2c-4.9,0-9.8-.2-14.7-.2-.5-13.4.2-30.6-.6-42.7h0c-.1-4.9,0-9.9.8-13,.2,0,.4-.2.6-.3,2.5-.8,8.1-.4,10.2-.5-.3,0,3.3,1.3,3,1.4,1.2,18.2,3.1,37.2.7,55.3Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau13">
+          <path id="Blau13" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1148.2,446.3h-8.9c-.6-15.2-.7-31.5-.6-47.8,3.6.2,6.2-.4,9.4,1.2.4,18,.2,46.5.2,46.5h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau14">
+          <path id="Blau14" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1030.7,381.2c0-14.7-4-29.9-3.3-44.6,5.1-.3,13.7-.6,18.7,0-.2,14.3,2.5,30,2.9,44.3-6.1.2-12.3.3-18.3.3h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau15">
+          <path id="Blau15" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M386.6,376.9c0,1.6.4,5.4-.4,7.6h-8.2c.2-16.2,1.9-34.1.1-50.1,1.9-.3,7.2.1,9.4-.3,2.7,13.9.9,29-.9,42.8Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau16">
+          <path id="Blau16" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M592.9,382c-4.2.2-8.3.3-12.4.5-.4-14.4-.2-32.5-3.8-46.1-.3-12.8-.8-11.7,12.8-11.1.6,17.4,2.4,38.9,3.4,56.8h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau17">
+          <path id="Blau17" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M508.9,282.7c.2,7.4,0,16.9.7,24.5h-10.8c.4-15.2,0-35.8-1.6-48.3.7,0,1.7,0,2.3.4,2.7.8,7.3.2,10.1.2,0,0,0,.2.2.5,0,7.5-1.2,15.2-.9,22.7h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau18">
+          <path id="Blau18" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M312.1,309.5c-3.4,0-6.7,0-10.1.1.3-15.3-1.7-31.9,0-46.6h10.2c-.8,15,.7,32-.2,46.4h.1Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau19">
+          <path id="Blau19" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M255.2,189.2c0,13.3-.3,35.6,0,49.5h-17.1c-1.7-24.2-1.7-48.7-4.7-72.7,6.5,0,15.6-.4,22.1-.5-.7,7.8.5,18.4-.2,23.7h-.1Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau20">
+          <path id="Blau20" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1366,234.5h-.2c-.2-22.8.5-49.5.4-72.1-1.4-17.5,4.6-10.3,17.7-11.8v4.7h0c.4,25.9-.4,54.8.5,79.3,0,0-12.2-.2-18.4-.1h0Z" />
+        </a>
+        <a href="#" aria-label="Blau" role="button" class="buch-btn" data-id="Blau21">
+          <path id="Blau21" style="fill:blue;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M529,197.4c-.5,10.9-.5,24.6-.5,36-2.7.1-5.3.2-8,.3-2.3-23.5-1.2-42.9-1.6-69.4,2.5.1,5.6.1,7.9-.5-.3,10.9,2.3,24.4,2.3,33.6h-.1Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange">
+          <path id="Orange" style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1287.1,671.2c-4.5,0-8.9.2-13.4.3.9-21.6.9-34.5.9-55.5,3.1.2,8.4,0,10.7,1.1,2.1,3.6.9,16.9,1.2,22.6.6,9.5.7,21.6.6,31.5h0Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange1">
+          <path id="Orange1"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M400.5,648.8c-.8,8.1-.6,18.2-.5,26.6h-10.3c0-9.7,1.4-22,1-31.6-.4-8.6-1.9-20.2,0-28.9,2.7-1.1,6.6-1.8,9.1,0,.5,10.5.9,23.8.7,33.8h0Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange2">
+          <path id="Orange2"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M563.4,597.1h-22.8c.3-18.3-5.7-38.1-1.8-56.1,4.2-1.6,15.8-3.3,19.5-1.5-.4,18.9,3.4,39.1,5.1,57.6Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange3">
+          <path id="Orange3"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1121.2,593.5c.5-17.6-2.2-35.3-2.8-53,4.1,0,6.8,0,10.3-.6.2,17.2.8,36,1.2,53.4-2.9,0-5.8.2-8.6.3h0Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange4">
+          <path id="Orange4"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M397.3,523.9c-4,0-8.1.3-12.2.4,2.1-18.2-1-39.4.7-57.3,3.5.4,6.7.3,10.5-.1.2,18.1,1.4,38.3,1,57h0Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange5">
+          <path id="Orange5"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1296.9,448.3c-3.2,0-6.4,0-9.6-.1-.7-17.4-2.9-36-2.7-53.4,0-1.1,7.8-1.8,8.8-1.4,1.8,17.1,4.4,36.9,3.5,54.9h0Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange6">
+          <path id="Orange6"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M302.6,351.6c-.5,9.9-.6,21.3-.8,31.3-2.8,0-5.5,0-8.3-.2-.5-14,0-36.3-1.7-49.6,2.8,0,7.5.5,10.6.5,0,6,.7,11.7.3,18h-.1Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange7">
+          <path id="Orange7"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M571.5,383c-4,.2-7.9.5-11.6.8,0-17.7-1.8-36.5-3.9-53.9h0s0-3.6-.2-3.7c0-1.5.2-3.1.5-4.8,3-1.2,7.7-1,10.6,0,2.6,19.8,3.4,42.5,4.6,61.6h0Z" />
+        </a>
+        <a href="#" aria-label="Orange" role="button" class="buch-btn" data-id="Orange8">
+          <path id="Orange8"
+            style="fill:#ff9600;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M832.7,234.7h-10.5c1.2-23.6-2.5-51.5-1.2-73.2,2.6-.8,6.3-1.2,9-1,1.6,24.2,3,49.5,2.7,74.3h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila">
+          <path id="Lila" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M679.7,759.9c-3.9,0-7.7-.3-11.6-.3,1.4-24.4-2.3-49.4-4.4-73.7h11.6c2.7,24.1,5.5,49.6,4.4,74h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila1">
+          <path id="Lila1" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M878.2,759.9c-4.3,0-8.6-.2-12.9-.3-.3-9.8-2.4-19.6-2-29.3-.4-16.2.3-32.6-.5-48.8,4.1-.8,10.2-.9,14.7-.5.3,9.7,2.7,19.3,2.7,28.9-.1,16.5-.3,33.4-1.9,50h-.1Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila2">
+          <path id="Lila2" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1143.3,762.4h-11.8c1.4-22.6-4-45.9-3.7-68.3,4-.8,8-.3,12.2.4.8,9.7,2.7,20.1,2.8,29.8.2,12.6.4,26.4.5,38.1h0Z" />
+        </a>
+      
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila4">
+          <path id="Lila4" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M691.4,759.9h-11.7c1.4-23.9-2.8-51.5-3.7-76.2h11c2.9,24.9,4.7,51.1,4.4,76.2Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila5">
+          <path id="Lila5" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M239.1,672.6c-3.4,0-6.8,0-10.3-.2-1.6-14.1-1.6-30.8-4.1-45.2h11.7c1.1,15.3,2.3,30.3,2.7,45.4h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila6">
+          <path id="Lila6" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M389.7,675.4h-11.3c1.1-19.1-3.3-40.1.3-58.7,2.8.2,8.6-.4,11.8-.4-1.4,8.4-.1,19.4.3,27.5.4,9.6-.9,21.9-1,31.6h-.1,0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila7">
+          <path id="Lila7" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1252.7,591.4h-10c.7-18.8-.2-37.9.9-56.6,2.8-1.6,7.2-.3,10.1.4,2.6,17.5.6,38.6-.9,56.1h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila8">
+          <path id="Lila8" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M630.7,518.3c-2.6,0-5.3-.2-7.9-.3,0-20.4-4.8-40.4-2.9-61,2.8-1,6.8-1,9.7,0,0,0,0,.2.2.3.3,20.5,0,40.5.8,61h.1Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila9">
+          <path id="Lila9" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M343.7,524.9c-3,0-6.1-.3-9.2-.3-1.3-15.2-1.6-31.4-2.4-46.6,2.2,0,6.5,0,9-.6,1.1,15.6,2.6,47.5,2.6,47.5Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila10">
+          <path id="Lila10" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1026.6,448.6c-8,.1-15.8.3-23.8.3,1.3-17.8-3.6-34.7-5-52,7.5-.3,17.2-.8,24.7-.5,0,0,0,.2.2.4,0,17.6,3.4,34.4,3.9,51.8h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila11">
+          <path id="Lila11" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1216.7,447.2c-.3-16.3-1-31.4-1.1-47.5,4.9.9,8.8-1.6,13,.6,0,0,.3,36.1.6,47-4.1,0-8.3-.1-12.4-.2h-.1Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila12">
+          <path id="Lila12" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M622.6,381.3c-3.3,0-6.7,0-10.2.1.2-16.7-1.8-35.2-3.9-52.2,2.9,0,9.2.2,12.5-.5,0,17,1.1,35.7,1.6,52.6h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila13">
+          <path id="Lila13" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1336.6,287.4c-.7,6.2-.4,14.9-.6,21.6-3.2.2-6.5.4-9.7.6,1.7-18.9-1.2-37.5.7-56,2.6-1.1,6.6-1.8,9,0,0,10.8.7,23.6.6,33.9h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila14">
+          <path id="Lila14" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M902.2,236.1c-4.7,0-9.4-.3-14.1-.4,0-22.6-3.4-46.1-5.8-68.5,4.6-.2,9.1-1.3,13.4-.2,4.1,22.2,3.6,46.5,6.4,69.2h0Z" />
+        </a>
+        <a href="#" aria-label="Lila" role="button" class="buch-btn" data-id="Lila15">
+          <path id="Lila15" style="fill:#8782fd;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M484.7,235c-6.4.2-12.9.3-19.3.3-.7-24.6-2.6-49.3-2.9-74,5.8-.6,14.2-2,19.2.4,0,0,0,.2.2.3,1.9,8-.6,16,0,24.2,0,15.8,2.6,33,2.9,48.7h-.1Z" />
+        </a>
+      
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot1">
+          <path id="Rot1" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M926,759.7c0,.2-11.7,0-11.7,0,0-24.1,0-50.2-2.3-74.3.7-.5,1.2-1,1.5-1,1.3-1,5.8-1.1,7.8-2,1.7,11.3,4.9,73.6,4.7,77.3Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot2">
+          <path id="Rot2" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1084,671.4h-17.9c-.4-11.5.2-43.4-.4-55.2,3.3-.2,14.7,0,16.5,0-.4,18.2,2.5,37.6,1.9,55.5h0v-.3h0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot3">
+          <path id="Rot3" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1144.8,520.2c-4.9,0-9.8-.2-14.8-.3.6-16.3-5.2-34.6-1.5-50.1,3.9-1.3,9.4-.3,13.3.7,1.7,7.1.2,18.8,1.3,26.2.9,7.6,1.6,15.5,1.8,23.5h-.1Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot4">
+          <path id="Rot4" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M599.2,518h-4.9c-.6-16.2,1.9-35.9-2.4-51.8-1.2-7.5-1.2-8,6.5-7.7.3,0,6.4-.2,6.4.3,3,9.6.5,20.8,2.4,30.7.5,8.6,2.5,17.1,2.5,25.7h0c0,.5.2,1.9.2,2.5l-10.7.2h0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot5">
+          <path id="Rot5" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1325.6,518.4c.5-19.7-.7-39.8-.7-59.4,3.1-1,6.9.8,10.2.4,2.1.3,11.8-1.3,12.2.9.9,18.8.5,40.2.9,58.2h-22.7,0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot6">
+          <path id="Rot6" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1168.5,379.3c-4.2-.1-8-.3-10.6-.9-.4-2,0-40.2,0-54.6,2.8-.9,6.1-1.5,8.8-.3,4.4,18.1,3.3,37.1,1.7,55.8h0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot7">
+          <path id="Rot7" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M562.3,308.3c-7,.3-14.4.6-21.8.5-.5-11.8.3-41.1-.5-52.4,4.9-.2,17.9-.3,19.9,0-.2,17.5,2.7,34.2,2.4,51.9h0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot8">
+          <path id="Rot8" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M279,264.2c0,13.3-.3,31.8-.6,45.6-6.3,0-12.4.1-18.7.2.6-15.4-.8-35.2.2-50.2-1.6-8.3,13.4-4.6,17.6-2.5.7,1.8,1.2,5.4,1.5,6.9h0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot9">
+          <path id="Rot9" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M334.6,236.1c-8.4,0-14.4.4-20.4.5.4-11,0-24.9-1-35.8.4-12.4,2.2-25.4,1.2-38,5.5.8,12.8-1.8,18,.2,2,10,.2,23.9.4,34.2,0,12.1,1.9,26.7,1.7,38.8h0Z" />
+        </a>
+        <a href="#" aria-label="Rot" role="button" class="buch-btn" data-id="Rot10">
+          <path id="Rot10" style="fill:red;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1319.3,235.7c-4.8.2-9.7.4-14.5.6,0-26.7-.9-52.9-2.4-79.4,5.4-.5,10.6-.4,15.7-.9,1.7,28.3.5,54,1.3,79.7h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach">
+          <path id="Peach" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M376.9,756.3c-4.5,0-9-.2-13.6-.2-1.9-21-1.1-42.2-3.7-63.1,4.8-.3,11.3,0,15.7-.3,1.7,22.6.2,42.7,1.6,63.6Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach1">
+          <path id="Peach1" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M616.4,759.1c-3.8,0-7.6-.2-11.4-.2-.2-17,.2-47.5,0-66.3h8.2c0,22,3,44.5,3.3,66.5h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach2">
+          <path id="Peach2" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M867.2,760.8c-7.2-.2-14.5-.4-21.8-.5.9-22.4.3-47.8-1-70.1-.3-4-.7-7.6,4.6-6.9,5.8.6,11.8,1.4,17.5,1.9,1.5,24,.6,52.5.6,75.6h.1Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach3">
+          <path id="Peach3" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1348.6,632.3v37.4c-6.1,0-12.1.2-18.1.4-.4-17-.5-36.2.2-52.8,5.5-.4,13.1-1.1,18.2,0,1.5,4.5-.4,10.3-.3,15h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach4">
+          <path id="Peach4" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1050.6,519.7h-11.5c-.5-14.8-1.8-30.3-1.4-45.2,2.8-.3,6.4-2.3,9.5-.8,2.6,11.6,2.1,36.9,3.4,46Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach5">
+          <path id="Peach5" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M243.8,447.1h-8.6c-1.1-14.5-.3-29.4.4-43.8,2.1-1.1,6.3-1.8,8.5-.6-.8,15.1,1.3,29.7-.3,44.4h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach6">
+          <path id="Peach6" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1353.6,448.8h-13.4c.5-17-1.5-38.9-.6-56.1,4.1.3,8.5-1.2,12.4-.9,1.2,18.5,1.7,39.1,1.5,57h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach7">
+          <path id="Peach7" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M641.8,305.3c-4.3.3-8.5.7-12.8,1.1-.3-16.2-.4-31.8-.9-47.6,4.5-.7,9-1.1,13.1-.9,0,15.3,1.4,35.8.6,47.4h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach8">
+          <path id="Peach8" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1235.8,279.8v30h-8.9c-2.2-15-2.3-34.2-3.1-49.3h0c-1.1-6.6,4.7-8,9.7-6.6,2.5,7.7,2,18.1,2.4,25.9h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach9">
+          <path id="Peach9" style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1026.1,307.6c-6.3,0-12.9.7-18.8.8-.2-13.7-.6-35.6,0-50.3.3-2.1,3.4-.6,4.7-.8,1.3.2,5,0,6.3,0,6.7-.1,8.3-2.3,8.2,6.5-.4,0-.9,33.6-.5,43.7h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach10">
+          <path id="Peach10"
+            style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M694.7,232.7h-8.5c-4.7-23.4-7.8-50.2-9.8-74.6,3.4,0,9.2-1,12.3.8,5.7,23.8,5.8,49,5.9,73.7h0Z" />
+        </a>
+        <a href="#" aria-label="Peach" role="button" class="buch-btn" data-id="Peach11">
+          <path id="Peach11"
+            style="fill:#ffa5a1;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1153.6,238.9c.5-19.8-.8-47.6-1.2-67.9,3.3-.5,8.6-.5,12,0,2.6,22.4,2.9,45.3,4,67.8-5.2,0-10.1,0-14.8.1h0Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett">
+          <path id="Violett"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1082.8,763.2h-7.8c-1.4-20.6-5.4-42.7-3.5-63,2.5-.7,4.7-.6,7.4,0,1.4,20.2,3.6,42.5,3.8,63h0Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett1">
+          <path id="Violett1"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M424.4,617.8v56.4c-2.8.2-5.5.3-8,.5v-57c0-.7,0-1.2.5-1.8,0,0,.3,0,.5-.2h7c0,.5.2,1.3,0,2.2h0Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett2">
+          <path id="Violett2"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1321.8,592.4c-6.9-.2-13.8-.4-20.6-.6.6-17.4.2-37.8-.7-58.8,4.3-1.5,14.7-1.1,19.8.5,4.8,18.2,1.5,40.7,1.6,58.8h-.1Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett3">
+          <path id="Violett3"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M272.2,549.9c-.5,11.2-.4,30.4-.7,42.2h-14.2c0-15.8-.3-32.3,0-48,5.6.6,9.5-.6,14.8-1.3,0,2.6.3,5.3,0,7h.1Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett4">
+          <path id="Violett4"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M516.8,521.2h-6.2c.3-17.6-3.8-38.9-3.9-57h8.4c0,19.1,1.3,38.1,1.7,57Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett5">
+          <path id="Violett5"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M239,521.8c-3.1,0-6.2-.2-9.2-.4-.6-14.6-.9-29.7-1.9-44.3,3.1,0,7.5-.9,10.6-.8.5,15,1.2,30.5.6,45.5h-.1Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett6">
+          <path id="Violett6"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1051.7,448.1c-.2-15.2-1.5-30.4-3.6-45.3,2.7-.1,6.5-.7,8.5.2,0,14.8,1.2,30,2.3,44.9-2.3,0-7.2.2-7.2.2h0Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett7">
+          <path id="Violett7"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M517.9,307.5c-2-.2-5.1-.3-8.3-.4-.7-12.8-1.2-25.9-.2-38.6,2.4,0,6-.4,7.8,0,1.3,12.4.5,26.8.6,38.9h.1Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett8">
+          <path id="Violett8"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1130.2,306.7h-19.2c0-8.5-1.4-39.1.2-49.1,5.1-2.3,12.5-2.1,17.9-.6,1.5,13.5.8,35.9,1,49.7h0Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett9">
+          <path id="Violett9"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M753.4,233.8c-3.2,0-6.4-.2-9.6-.2,0-21.1-4.9-42.9-5.4-63.9,3.4-.3,8.1-.5,11.4-.6.9,20.6,3.2,43.7,3.6,64.7h0Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett10">
+          <path id="Violett10"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M843.6,234.8c0-21.1-2-42.4-4.2-63.3,4.3-.2,6.8-1.3,11.5-1.2,1.9,21.5,4.8,43.1,4.5,64.7-4,0-7.9,0-11.9-.1h.1Z" />
+        </a>
+        <a href="#" aria-label="Violett" role="button" class="buch-btn" data-id="Violett11">
+          <path id="Violett11"
+            style="fill:#7c00ff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M313.3,200.9c.9,10.9,1.4,24.8,1,35.8-3.9.2-7.8.4-11.8.6-2.5-26-2.2-53,.3-78.8-.6-2.2,10.4-.2,11.4.9.1,1.2.2,2.3.3,3.5h0c.9,12.5-.9,25.6-1.2,38h0Z" />
+        </a>
+        
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb1">
+          <path id="Gelb1" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M422.5,703.5c0,16.3-1.5,37,0,53.4h-13.2c.4-27.3-.2-43.5,2.8-61.1.4-.9,3.8-.5,10.5-1.3-.2,2.2-.2,5.1-.2,9.1h.1Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb2">
+          <path id="Gelb2" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1019.7,762.2c-5.4,0-10.7,0-16.1-.3-.8-18-2.1-38.3-2.2-56.8,4.7-1.1,10.7-2.9,15.2-1.7,3.1,4.1.5,11.9.6,16.5-.3,13.7,1.7,28.9,2.4,42.4h0Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb3">
+          <path id="Gelb3" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M748.5,760.7h-10.8c.8-26.9-1.3-56.4-2.5-83,3.3.3,6.7.6,10,1,0,4.2.3,8.6.4,12.9,2.1,19.7,1.7,51.2,2.9,69.1h0Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb4">
+          <path id="Gelb4" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1184.2,520.9h-9c-.4-18.4-.8-37.5.3-55.8,2.2-1.2,6.5-2.1,8.9-.7-.4,18.9.5,37.8-.2,56.5h0Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb5">
+          <path id="Gelb5" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M633.6,443.9l-.2,1.1c-4.8.1-9.6.2-14.4.3.4-15.6-5-33.1-1.6-48.3,3.9-1.3,9.4-.3,13.3.7,1.8,8,0,18.8,1.3,26.2.5,5.8,1.8,14.1,1.5,20h.1Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb6">
+          <path id="Gelb6" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M381.9,426.3c0,6.4-.3,17.2-.3,23.9h-13.5c-.8-15.3-.6-30.4-1.3-45.5,4.2-.5,9.6-1,13.7-.8,0,7.4,1,15.1,1.3,22.3h.1,0Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb7">
+          <path id="Gelb7" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M226.9,447.2c-3.9,0-7.6-.3-11.1-1,.5-16.9.8-26.6,1.2-39.9h0v-.6c13.9-2.6,9.8,13.3,9.8,21.4s.4,14,0,20h.1Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb8">
+          <path id="Gelb8" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1129.3,378.6c-3.5,0-6.9,0-10.4.2h0c-.2-12.3-.7-24.4-1.6-36.6-.7-5.7-2.5-11.7-1.8-17.4,2-2.8,8.7-.4,12-.8,2.3,17.7,2,36.7,2,54.6h-.2Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb9">
+          <path id="Gelb9" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1289.6,377.7c-7.7.3-15.5.9-23.2,1.4-.5-17.5-2.3-36.9-.6-53.9,5.3-.8,14.3-1.4,19.6-.5,3.1,17.1,2.3,35.8,4.2,53Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb10">
+          <path id="Gelb10" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M490.1,383.3c.4-16.3-1.4-35.7-1.8-51.9-.9-9.3,8-6.4,14.1-5.4,2.8,18.6,1.8,38.6,2.4,57.7-4.9-.1-9.8-.3-14.7-.4h0Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb11">
+          <path id="Gelb11" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M611.7,306.1v1.4c-2.2,0-4.3.2-6.5.2-.3-15.8-3.3-32.1-3.7-47.7,2.2,0,7.2-.2,7.6.3,1.1,14.9,2.6,30.9,2.6,45.8h0Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb12">
+          <path id="Gelb12" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M302,263.1c-1.7,14.7.2,31.2,0,46.5-3.9,0-8.2,0-12.1.1.7-18.2-1.4-36.7.2-54.5,4.8-1.1,3.4-.3,11.2.9.5,2.2,1,4.5.8,7h-.1Z" />
+        </a>
+        <a href="#" aria-label="Gelb" role="button" class="buch-btn" data-id="Gelb13">
+          <path id="Gelb13" style="fill:#ff0;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1196.7,309c-2.8-.1-5.6-.2-8.4-.3,0-8.7.7-22.7-.7-30.3-.8-6.4-3.9-13.9-2-20.5,2.7-1.2,6.8-2.5,9.5-.7-.5,16.5,1.2,36.2,1.6,51.9h0Z" />
+        </a>
+    
+        <a href="#" aria-label="Hellgelb" role="button" class="buch-btn" data-id="Hellgelb1">
+          <path id="Hellgelb1"
+            style="fill:#ffffad;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M289.4,674.2c-7.2-.3-14.3-.5-21.5-.8.1-16.3-3.5-33.6-3.6-49.7,1.8-.9,6.4-.8,8.5-.8,4-.7,8.9-1.7,13.1-1.8,1,16.8.9,36.4,3.5,53.1Z" />
+        </a>
+        <a href="#" aria-label="Hellgelb" role="button" class="buch-btn" data-id="Hellgelb2">
+          <path id="Hellgelb2"
+            style="fill:#ffffad;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M325,524.4c-2.8,0-5.5-.2-8.2-.4-.8-13,1.4-36.2-1.5-48.9,1.6-.5,5.8-.4,7,0,3.9,11.4,2.1,41.4,2.7,49.3Z" />
+        </a>
+        <a href="#" aria-label="Hellgelb" role="button" class="buch-btn" data-id="Hellgelb3">
+          <path id="Hellgelb3"
+            style="fill:#ffffad;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M519.3,446.7c-4.8,0-9.5.2-14.3.2,0-13.7-2.2-29.1-3.3-42.8,0-1.7,0-1.5.8-3.9,4.6-.5,9.8.4,14.9.2-1.1,15.2,2.1,30.7,1.9,46.3h0Z" />
+        </a>
+        <a href="#" aria-label="Hellgelb" role="button" class="buch-btn" data-id="Hellgelb4">
+          <path id="Hellgelb4"
+            style="fill:#ffffad;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M311.4,383.1c-3.2,0-6.4-.2-9.6-.2.8-18.1.5-36.6.8-54.6,2.1-1.5,7.4-.3,9.7.4,2.5,17,.7,37.5-.9,54.4h0Z" />
+        </a>
+        <a href="#" aria-label="Hellgelb" role="button" class="buch-btn" data-id="Hellgelb5">
+          <path id="Hellgelb5"
+            style="fill:#ffffad;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1335.6,378.2c-3.3,0-6.6,0-9.8-.1l-3.7-.5c.9-14,0-24.3-2.9-39-.7-5-.7-9.7,1.7-10.7,3.5-.9,9.1-1.8,12.7-.5-.4.2-.7.4-.7.4l1.5,5.9h0c-.4,15.7,1.7,29.2,1.2,44.6h0Z" />
+        </a>
+        <a href="#" aria-label="Hellgelb" role="button" class="buch-btn" data-id="Hellgelb6">
+          <path id="Hellgelb6"
+            style="fill:#ffffad;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+            d="M1188.3,308.7c-3.5-.2-7.1-.3-10.6-.5,0-.9,0-1.8-.2-1.9-.5-14.2-1-30.7-1.7-44.7,2.6-1.4,6.3-1,9.2-1.1-.6,5.8,1.8,12.2,2.5,17.9,1.3,7.7.5,21.7.7,30.3h0Z" />
+        </a>
+      </g>
+
+  
+    </svg>
+
+    <!-- Bücher auf dem Stapel -->
+    <svg class="room-overlay" style="pointer-events:none" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+      <g id="Buch_Grün" style="display:none">
+        <path style="fill:#009700;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+          d="M823.9,567.8h-.2c-3.3-1-7.2-1.7-10.4-2.9l-35-12.3c5.3-1.2,29.2-11.1,34.2-13,0,0,45.1,13.3,45.5,13.5,0,0-31.5,13.3-34.1,14.6h0Z" />
+        <path style="fill:#fff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+          d="M857.8,553.8c-.2.8,0,8.9,0,9.8-.2,1.5-.4,4.1,0,5.6-5.9,3.9-13.1,6.3-19.4,9.5-4.7,2-9.9,5.4-14.9,6.4.4-3,.3-13.6.2-16.6l34.1-14.6h0Z" />
+        <path style="fill:#fff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+          d="M823.4,585.1c-13.9-5.7-27.9-11.3-42-16.4-1.1-.3-2.8-1-3.8-1.4l.4-.9v-.8c.2-.4.4-.8.5-1.2v-.4c.4-1.4-.5-9.7-1-11,9.1,4.2,42.3,14.1,45.6,15.1,0,0,.2,14.2,0,17.2v-.2h.3Z" />
+      </g>
+      <g id="Buch_Pink" style="display:none">
+        <path style="fill:#f0f;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+          d="M817.3,554.1l-5.4,1.9h-.3s-.2,0-.4.2c-.4,0-.9,0-1.2-.3-3.9-1.6-7.7-3.8-11.5-5.8-4.4-2-8.9-4.3-13.2-6.4-1-.5-2.6-1.2-3.7-1.8,0,0-.2,0-.3-.2h0c.7.2,33.2-9.8,33.3-9.8,5.7,1.3,30.9,10.9,36.6,12.4l-34,9.6h0v.2h.1Z" />
+        <path style="fill:#fff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+          d="M851.5,551.9s-5.7,2-7.7,2.8c-9.5,3.2-24.1,9.1-33.7,11.8.3-.9.4-10.1.6-10.3.3,0,25-7.5,29-8.6h.4c3.6-1.1,7.4-2.7,11.2-3,0,1.8,0,5.6.3,7.3h0Z" />
+        <path style="fill:#fff;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px"
+          d="M810.1,566.5c-2.3-.8-4-2.4-6.3-3.5-7.5-4.8-15.3-9.2-23.2-13.2,0-1.3.6-7.2.6-7.6h0c3.6,1.9,7.6,3.4,11.1,5.4,6,2.7,11.8,6.2,17.8,8.8,0,0,.2,0,.4.2h0s.2,0,.3.2c0,0-.8,9.5-.9,9.7h.2Z" />
+      </g>
+    </svg>
+
+    <!-- Stapel-Button -->
+    <svg class="room-overlay" style="pointer-events:none" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+      <a id="stapel-btn" href="#" aria-label="Weiter zu Bibi 3" role="button" style="pointer-events:all">
+        <path
+          d="M875.9,580.8s-4.1-2.2-5-3.2c0,0-.3-.3-.6-.6h0s.2-9.3.2-9.3c0,0-.2,0,.6-.3,1.1-.5,3.3-2,4.2-2.7,0,0-14.1-8.3-21.1-12.4-1.6-1-3.3-1.9-5-2.9,0-1.1-.1-3.3-.1-3.3-2.2-.6-7.1-2.3-12.8-4.3-3.2-1.9-6.5-3.8-9.6-5.6-.7.5-1.4,1-2,1.5-5.4-1.9-10.1-3.5-12.2-4,0,0-33.3,9.8-33.3,9.8,0,.2,0,0,0,0,0,.4-.7,6.8-.7,8.1.8.4,1.7.9,2.5,1.3-2.1.8-4.6,1.7-5.6,1.9h0c.5,1.3,1.3,9.2,1,10.9-4.5,2.5-9,5-13.4,7.6l-.3.2s-.9,1-1.1,1.4-.2.4-.2.5-.2.5-.2.7c-.2,1.5-.2,4.1-.2,6,.4,2.5,1.7,5.2,2.9,7.4,1.7.8,3.5,2.1,5.2,3,5,2.7,34.6,20.4,42.8,25.1,0,0,12.4-7.6,17.6-10.7,12-7.4,25.1-13.3,37.1-20.5,2.9-1.9,6.7-3.5,9.4-5.6h0Z" />
+      </a>
+    </svg>
+  </div>
+
+  <div id="sr-announce" aria-live="polite" aria-atomic="true"
+    style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"></div>
+
+  <script>
+    function aktiviere(el) {
+      var colorName = (el.dataset.id || el.id).replace(/\d+$/, '');
+
+      el.classList.add('active');
+      el.classList.remove('focused');
+      el.blur();
+
+      if (colorName === 'Grün') {
+        document.getElementById('Buch_Grün').style.display = '';
+      } else if (colorName === 'Pink') {
+        document.getElementById('Buch_Pink').style.display = '';
+      }
+
+      var gruenAktiv = document.querySelector('a.buch-btn[data-id="Grün"].active') !== null;
+      var pinkAktiv = document.querySelector('a.buch-btn[data-id="Pink"].active') !== null;
+      if (gruenAktiv && pinkAktiv) {
+        document.getElementById('stapel-btn').classList.add('active');
+      }
+
+      var live = document.getElementById('sr-announce');
+      live.textContent = '';
+      setTimeout(function () { live.textContent = colorName; }, 50);
+    }
+
+    document.getElementById('stapel-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = '3_Bibi_3.html';
+    });
+
+    document.querySelectorAll('a.buch-btn').forEach(function (path) {
+
+      path.addEventListener('click', function () {
+        if (!this.classList.contains('active')) aktiviere(this);
+      });
+
+      path.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && !this.classList.contains('active')) {
+          e.preventDefault();
+          aktiviere(this);
+        }
+      });
+
+    });
+  </script>
+</body>
+
+</html>

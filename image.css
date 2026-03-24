@@ -1,0 +1,142 @@
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+@font-face {
+  font-family: "Lex";
+  src: url("fonts/Lexend-Regular.ttf");
+}
+
+.room-wrapper {
+  position: relative;
+  /* Always fill as much space as possible while keeping 16:9 and never overflowing */
+  width: min(100vw, 177.78vh); /* 177.78vh = 100vh * (16/9) */
+  height: min(100vh, 56.25vw); /* 56.25vw = 100vw * (9/16) */
+  max-width: 2000px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.responsive-img {
+height: 100%;
+  width: 100%;
+  object-fit: contain; /* verzerrt nicht */
+  display: block;
+  margin: 0;
+  padding: 0;
+  object-position: center center; /* ensure exact centering */
+}
+
+.weiter-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: all;
+  transform: translateX(-.2%) translateY(-1%);
+
+}
+.cursor-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.back-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3; /* topmost */
+  pointer-events: auto;
+}
+
+.weiter-layer a,
+.back-overlay a,
+.cursor-overlay a {
+  pointer-events: all;
+}
+.room-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+  z-index: 1; /* below the dark overlay */
+}
+
+.room-overlay a {
+  pointer-events: all;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cursor-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2; /* above everything visually */
+  pointer-events: auto; /* doesn't block input */
+}
+
+
+.dialog-overlay {
+  border: none;
+  background: white;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 20px;
+  inset: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+.dialog-overlay::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-overlay[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-content {
+  width: 90%;
+  max-width: 500px;
+  font-family: "Lex";
+  text-align: center;
+}
+
+.dialog-text {
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}

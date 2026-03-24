@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bad 2</title>
+  <link rel="stylesheet" href="button.css">
+  <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="dialog.css">
+  <style>
+    @font-face {
+      font-family: 'Lex';
+      src: url('fonts/Lexend_Regular.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Lex', sans-serif;
+      margin: 0;
+    }
+
+    svg {
+      border: 0cm solid rgba(0, 0, 0, 0.454);
+    }
+
+                 a:hover>path,
+a:hover>rect {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+
+a:focus { outline: none; }
+a:focus-visible>path,
+a:focus-visible>rect {
+  stroke: black;
+  fill: rgba(65, 65, 65, 0.2);      
+  stroke-width: 3px;
+  outline-offset: 4px;
+  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+}
+
+    a:focus,
+    g:focus {
+      outline: none;
+    }
+
+    /* D1 kleiner ── */
+    .wesen-d1 {
+      transition: transform 0.15s ease;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    /* ── D2 weg ── */
+    .wesen-d2 {
+      transition: transform 0.12s ease-out;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    /* ── Button Labels ── */
+    .btn-label {
+      font-family: 'Lex', sans-serif;
+      font-size: 28px;
+      fill: #fff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    /* Pfeil */
+    .pfeil-shape {
+      fill: aqua !important;
+      pointer-events: none;
+    }
+
+    /* Fokus-Highlight-Rect  */
+    .focus-highlight {
+      stroke: black;
+  fill: rgba(65, 65, 65, 0.2);      
+  stroke-width: 3px;
+  outline-offset: 4px;
+}
+    /* Abfluss */
+    @keyframes drain {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+
+      60% {
+        transform: translate(var(--dx), var(--dy)) scale(0.3);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    .draining {
+      animation: drain 0.7s ease-in forwards;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="room-wrapper">
+    <img src="img/6_Bad_2.svg" alt="Grundriss Bad 2" class="responsive-img" tabindex="-1" />
+
+    <svg id="main-svg" class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+
+      <!-- ═══════════════════════════════
+           GRENZE 
+      ═══════════════════════════════ -->
+      <path id="Grenze" fill="none" stroke="none"
+        d="M171.4,137.1c10.1,172.2,3.1,536.8,3.1,536.8,0,0,183-9.5,363.4-12,237.7,4,476.5,11.1,714.3,9.6,26.1,0,54.1,2.9,80,5.7v-4c-2.5-92.8-2.2-185.7-1.5-278.7l.3-43c.5-71.4,1.1-142.7.5-213.9-444.2-6.6-1160.1-.5-1160.1-.5h0Z" />
+
+      <!-- Abfluss (drain) -->
+      <path id="Abfluss" fill="#000" d="M1154.5,389.1c0-22.8-34.5-22.3-34.5-1.3s34.5,26.1,34.5,1.3Z" />
+
+      <!-- ═══════════════════════════════
+           D1 – klein
+      ═══════════════════════════════ -->
+
+      <!-- Wesen7  (tabindex 1) -->
+      <g id="wesen7" class="wesen-d1" tabindex="1" role="button" aria-label="Wesen 7">
+        <path fill="#816265" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M746.9,448.7c-19.5-17.4-41.4-4.1-55.2,16.3-14.6,21.5-10.3,37.1,9.2,53.3,11.7,9.7,29.3,15.5,42.3,6.9,12.7-8.3,20.8-24.9,21.5-40.1.5-9.7-4.6-18.5-10.2-26s-5.2-8.3-7.6-10.4Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M741.2,479c1,13.5,12.1,18.3,16.3,8.8s-17.8-27.8-16.3-8.8Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M699.2,470.7c-3.4,1.9-9.4,8.7-7.7,13.8,3.4,10.2,27.7-.5,19.4-13.8-1.8-2.8-9.2-1.4-11.7,0Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M715.2,502.8c4,29.9,29.8-6.6,9.4-13.9s-9.6,8.6-9.4,13.9Z" />
+      </g>
+
+      <!-- Wesen6  (tabindex 2) -->
+      <g id="wesen6" class="wesen-d1" tabindex="2" role="button" aria-label="Wesen 6">
+        <path fill="#6b3010" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M430.2,442.3c-5.2-17.4-35.1-18.6-47.2-5.6-4.7,5.6-5.9,14.9-7,21.9-1,6.5-6.6,13.9-8.4,20-3.2,10.1,2.1,20.2,10.9,26.1s18.9,10,30.3,6.8c28.2-7.9,30.8-16.4,24.3-42.8-1.4-12.3-1-20-2.9-26.4Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M414.6,450.3c-8,1.7-4.2,21.5,5.5,17.7,9.4-3.7,13.2-21.7-5.5-17.7Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M382.1,455.8c-.8,2.8-1.1,9.6,2.3,12.2,6.7,5.3,20.4-14,4.3-17s-6,2.8-6.6,4.8Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M405.2,471c-19.3,7,2.9,11.1,5.3,3.7s-3.4-4.4-5.3-3.7Z" />
+      </g>
+
+      <!-- Wesen4  (tabindex 3) -->
+      <g id="wesen4" class="wesen-d1" tabindex="3" role="button" aria-label="Wesen 4">
+        <path fill="#b27953" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M609.7,275.5c-5.3,6.4-12.6,10.9-13.6,19.1-1.7,12.7-3.8,30.1,7.2,39.8,6.4,5.6,11.3,10.2,19.3,13.9,9.7,4.5,29.4,7.1,32-4.4s18.7-15.6,25.1-29.1-5.2-28.7-18.7-36.2c-4.9-2.7-7.9-6.3-12.7-8.5s-15.8-5.1-16.4-5.1c-6.1-.3-16.9,4.1-22.2,10.5Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M640.8,282.3c-1.7,5.9,2.5,33.8,10.6,27.2s-5.2-45.5-10.6-27.2Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M607.1,291.1c-.4,9,8.8,31.6,14,33.3,10.2,3.3,1.8-40.9-7-42.7s-6.9,6.5-7,9.4h0Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M633.3,327.1c-6.7,4.9,4.8,8.1,7.3,2.1.2-.5.3-1.1.2-1.6-.6-3.9-2.1-18-5.7-2.8s-1.2,1.9-1.8,2.3Z" />
+      </g>
+
+      <!-- Wesen2  (tabindex 4) -->
+      <g id="wesen2" class="wesen-d1" tabindex="4" role="button" aria-label="Wesen 2">
+        <path fill="#8e6008" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M1054.3,257.3c-9.2,4.2-7,21.1-18.9,20-19-1.7-25.8.4-29.8,19.8-2.5,15.3-2.7,31.2,4.4,45.2,6.9,13.6,24.1,17.6,38,14.3,19.9-6.1,35.3-24.3,41-44,3.7-11.3-2.9-21.4-6.2-31.7-2.2-5.6,2.8-11.2-2.2-15.8s-17.2-12.1-26.3-7.8Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M1069.5,281c-4.8,3.7-10.8,19.1-.4,18.5,10.1-.5,15.5-30.2.4-18.5Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M1052.4,269.1c-2.3,3.2-6.3,11.1-3.2,15.4,6.3,8.7,20.4-12.4,14.4-19s-9.5,1.2-11.2,3.6Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M1041,295.6c-21.1,13.6,15,19.3,15.1,1.9-2.2-4.7-11.1-3.9-15.1-1.9Z" />
+      </g>
+
+      <!-- ═══════════════════════════════
+           D2 – weg
+      ═══════════════════════════════ -->
+
+      <!-- Wesen8  (tabindex 5) -->
+      <g id="wesen8" class="wesen-d2" tabindex="5" role="button" aria-label="Wesen 8">
+        <path class="wesen-body" fill="#e8cf8d" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="3"
+          d="M942.7,430.4c-19.4,4.3-37.2,24.1-30.2,45.2,4.4,17.6,14.3,37.6,31.6,45.1,17.1,4.4-14.1-28.6,22.8-16.3,6.7,2.3,14.1,4.6,21.1,4.2,29.9-1.6,11.8-57-5.6-70.8-11-8.8-26.7-10.3-39.7-7.4h0Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M962.1,452.4c1.5,5.9,15,10.6,16.9,7.7,5.4-8.6-21.7-26.2-16.9-7.7Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M923.8,477.1c1.6,3.6,7.6,9.8,12.9,9s-3.3-23.7-11.7-20.7c-3.1,1.1-2.4,9-1.2,11.7Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M954.5,472.9c-6.5,9,8.6,6,6.3-1.5-1.6-1.7-5,0-6.3,1.5Z" />
+      </g>
+
+      <!-- Wesen5  (tabindex 6) -->
+      <g id="wesen5" class="wesen-d2" tabindex="6" role="button" aria-label="Wesen 5">
+        <path class="wesen-body" fill="#90401c" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="3"
+          d="M435.3,309.6c3.6-8-6.5-13.4-7.1-24.4-.3-10.5,4.1-21.3-8.2-27.2-14.7-7.1-29.5,4.4-39.9,13.9-10.5,9.6-6.3,19.2-7.3,29.7-.7,7-4.9,13-5.9,19.8-.9,10.3,9.4,27,21.1,22.2,5.5-3.2,7.2-8.8,11.4-13.4,8.3-9.2,23.6,9,31.5-5,1.4-2.6.9-5.5,1.5-8.2s2-5.3,2.9-7.5h0Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M409.2,283.6c-4.5,4.2-2.5,16.9,8,11.5s5.9-24.6-8-11.5Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M386.5,290.5c10.4,2.5,14.7-13.1,6.2-15.2s-16.4,12.7-6.2,15.2Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M400.6,313.7c1.3-18.9-11,1.4-2.5,8.3s1.9-4.9,2.5-8.3Z" />
+      </g>
+
+      <!-- Wesen3  (tabindex 7) -->
+      <g id="wesen3" class="wesen-d2" tabindex="7" role="button" aria-label="Wesen 3">
+        <path class="wesen-body" fill="#412c00" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="3"
+          d="M570.6,386.3c-3.4-5.5-11.5-4.4-17-5.4-8.3-1.5-16.6-4.5-24.6-6.9s-20.8.3-15.8,12c2.2,5.2,5.3,7.9,8.2,13.7,4.8,9.4,8.8,19.6,6.7,29.6-.9,3.9-3.9,6.8-5.8,10.5-3.8,7.3-2.5,14.4,6.6,16.2s8.5-5.8,15.7-8.5,21.9,1.9,28.1-4.8-.5-17.5.7-25.9,3.4-20.5-2.7-30.5h-.1Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M553.9,405.3c2.3,5.7,21.7-.9,15.9-9.6s-19,1.9-15.9,9.6Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M523.3,390.1c-2.9,6.6,16.7,15.1,18.2,6.4s-16-11.3-18.2-6.4Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M539,412.8c-8.3,11.3,10,9,13.6,2.4s-8.3-9.8-13.6-2.4Z" />
+      </g>
+
+      <!-- Wesen1  (tabindex 8) -->
+      <g id="wesen1" class="wesen-d2" tabindex="8" role="button" aria-label="Wesen 1">
+        <path class="wesen-body" fill="#5f4100" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+          stroke-width="3"
+          d="M849,293c-19-13.3-36.3,9.7-38.5,26.8s4.6,13.8,1.3,21c-4.7,10.3-15.6,45.7,5.6,35.9,20.8-9.6,28.9,2.5,43.9-8s13.7-20.5,12.7-33.9c-1.3-17.2-10.7-31.9-24.9-41.8h0Z" />
+        <path fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M836.5,337.3c.9,7.1,19.7,5.7,13.8-1.3s-15-7.8-13.8,1.3Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M844,306.1c-1,4.5,3.1,17.9,9.1,13.5,5.8-4.2-6-27.7-9.1-13.5Z" />
+        <path fill="black" stroke="white" stroke-miterlimit="10" stroke-width="4" stroke-linecap="round"
+          d="M820.6,318.7c.4,3.2,3.3,9.5,7.2,9.3,7.8-.4,2.6-19.9-3.9-18.7-2.4.5-3.5,7-3.3,9.4h0Z" />
+      </g>
+
+      <!-- ═══════════════════════════════
+           Buttons  (tabindex 9–10)
+      ═══════════════════════════════ -->
+
+      <!-- Button 24px -->
+      <g id="btn-24" class="btn-group" style="cursor:pointer" tabindex="9" role="button" aria-label="24 Pixel">
+        <path fill="transparent" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M1495.5,266.1c18.6-.8,19.9,22.1,15,34.7-.9,3.5-3,7.2-6.4,8.7-3.1,1.3-7.1,1.3-10.3.9-22.5-1.7-50.8-3.4-72.9-4.1-4.3-10.1-7.3-23.2-.9-33.1,24.4-3.8,51-3.1,75.5-7.1h0Z" />
+        <text class="btn-label" id="label-24" text-anchor="middle" x="1460" y="297">24px</text>
+        <rect id="focus-btn-24" class="focus-highlight" rx="6" />
+      </g>
+
+      <!-- Button 44px -->
+      <g id="btn-44" class="btn-group" style="cursor:pointer" tabindex="10" role="button" aria-label="44 Pixel">
+        <path fill="transparent" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M1491.5,425.5c16.8-1.1,20.2,20.7,15.9,32.9-2.2,8.9-5.8,13.6-15.4,13-23.5-2.3-44.8-2.8-69.1-2.2-4-1.1-4.1-8.8-5.2-12.1-2.1-8.5-1.6-18,3.7-25.3,23-2.2,47.1-2.9,70-6.3h0Z" />
+        <text class="btn-label" id="label-44" text-anchor="middle" x="1460" y="458">44px</text>
+        <rect id="focus-btn-44" class="focus-highlight" rx="6" />
+      </g>
+
+      <!-- ═══════════════════════════════
+           Pfeil
+      ═══════════════════════════════ -->
+      <g id="pfeil-btn" style="display:none">
+        <path class="pfeil-shape" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+          d="M800,895.3s-79.6-71.6-100.1-88.5c18.6.2,35-1.2,53.8,0,1.2-28.7,0-54.6,0-54.6h92.2s2.8,25.5-.1,54.6c17.4-.4,36.9-.5,54.4,0l-100.1,88.5Z" />
+      </g>
+
+      <!-- Zurück  (tabindex 11) -->
+      <a id="zurueck-btn" href="6_Bad_3.html" aria-label="Zurück" role="button" tabindex="11"
+        style="cursor:pointer; display:none">
+        <rect x="0" y="810" width="1600" height="90" />
+        <text class="room-label" x="800" y="865" text-anchor="middle">Zurück</text>
+      </a>
+
+      <rect id="wesen-focus-highlight" class="focus-highlight" rx="8" />
+
+    </svg>
+  </div>
+
+  <script>
+    const svg = document.getElementById('main-svg');
+
+    function svgPoint(clientX, clientY) {
+      const pt = svg.createSVGPoint();
+      pt.x = clientX; pt.y = clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse());
+    }
+
+    function getCenter(el) {
+      const bb = el.getBBox();
+      return { x: bb.x + bb.width / 2, y: bb.y + bb.height / 2 };
+    }
+
+    // ── Maus-vs-Tastatur-Erkennung ──
+    let usingMouse = false;
+    document.addEventListener('mousedown', () => { usingMouse = true; });
+    document.addEventListener('keydown', () => { usingMouse = false; });
+
+    // ── Fokus-Highlight-Hilfsfunktionen ──
+    function showHighlight(rectEl, targetEl, padding, tx, ty) {
+      if (usingMouse) return;
+      const p = padding ?? 8;
+      const ox = tx ?? 0;
+      const oy = ty ?? 0;
+      const bb = targetEl.getBBox();
+      rectEl.setAttribute('x', bb.x + ox - p);
+      rectEl.setAttribute('y', bb.y + oy - p);
+      rectEl.setAttribute('width', bb.width + p * 2);
+      rectEl.setAttribute('height', bb.height + p * 2);
+      rectEl.style.opacity = '1';
+    }
+
+    function hideHighlight(rectEl) {
+      rectEl.style.opacity = '0';
+    }
+
+    // ── Grenze ──
+    const gBB = document.getElementById('Grenze').getBBox();
+    const BOUNDS = {
+      minX: gBB.x, maxX: gBB.x + gBB.width,
+      minY: gBB.y, maxY: gBB.y + gBB.height
+    };
+
+    // ── Abfluss ──
+    const abflussCenter = getCenter(document.getElementById('Abfluss'));
+
+    // ── Wesen-Daten ──
+    const d1Wesen = ['wesen7', 'wesen6', 'wesen4', 'wesen2'].map(id => ({
+      el: document.getElementById(id),
+      origCenter: null, scale: 1, tx: 0, ty: 0,
+      alive: true, phase: 'interact'   // phase: 'interact' | 'drain'
+    }));
+
+    const d2Wesen = ['wesen8', 'wesen5', 'wesen3', 'wesen1'].map(id => ({
+      el: document.getElementById(id),
+      origCenter: null, scale: 1, tx: 0, ty: 0,
+      alive: true, phase: 'interact'
+    }));
+
+    const allWesen = [...d1Wesen, ...d2Wesen];
+    allWesen.forEach(w => { w.origCenter = getCenter(w.el); });
+
+    function applyTransform(w) {
+      w.el.style.transform = `translate(${w.tx}px,${w.ty}px) scale(${w.scale})`;
+    }
+
+    let interactionsActive = true;
+    let btn24Clicked = false;
+    let btn44Clicked = false;
+    let targetScale = 1;
+
+    // ════════════════════════════════════════
+    // PHASE 1: Wesen reagieren auf Maus & Tab
+    // ════════════════════════════════════════
+
+    const SHRINK_RADIUS = 200;
+    const FLEE_RADIUS = 200;
+    const FLEE_STRENGTH = 120;
+
+    // D1 klein
+    function updateD1(p) {
+      d1Wesen.forEach(w => {
+        if (!w.alive || w.phase !== 'interact') return;
+        const dx = p.x - (w.origCenter.x + w.tx);
+        const dy = p.y - (w.origCenter.y + w.ty);
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        w.scale = 1 - (dist < SHRINK_RADIUS ? (1 - dist / SHRINK_RADIUS) * 0.9 : 0);
+        applyTransform(w);
+      });
+    }
+
+    // D2 weg
+    function clampD2(w) {
+      const bb = w.el.getBBox();
+      const hw = bb.width / 2, hh = bb.height / 2;
+      w.tx = Math.max(BOUNDS.minX - w.origCenter.x + hw,
+        Math.min(BOUNDS.maxX - w.origCenter.x - hw, w.tx));
+      w.ty = Math.max(BOUNDS.minY - w.origCenter.y + hh,
+        Math.min(BOUNDS.maxY - w.origCenter.y - hh, w.ty));
+    }
+
+    function updateD2(p) {
+      d2Wesen.forEach(w => {
+        if (!w.alive || w.phase !== 'interact') return;
+        const cx = w.origCenter.x + w.tx;
+        const cy = w.origCenter.y + w.ty;
+        const dx = cx - p.x, dy = cy - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < FLEE_RADIUS && dist > 0) {
+          const push = (1 - dist / FLEE_RADIUS) * FLEE_STRENGTH;
+          w.tx += (dx / dist) * push;
+          w.ty += (dy / dist) * push;
+          clampD2(w);
+        }
+        applyTransform(w);
+      });
+    }
+
+    // Maus-Events
+    svg.addEventListener('mousemove', e => {
+      if (!interactionsActive) return;
+      const p = svgPoint(e.clientX, e.clientY);
+      updateD1(p);
+      updateD2(p);
+    });
+
+    svg.addEventListener('mouseleave', () => {
+      if (!interactionsActive) return;
+      d1Wesen.forEach(w => {
+        if (w.alive && w.phase === 'interact') { w.scale = 1; applyTransform(w); }
+      });
+    });
+
+
+    const wesenHighlight = document.getElementById('wesen-focus-highlight');
+
+    allWesen.forEach(w => {
+      w.el.addEventListener('focus', () => {
+        if (!w.alive) return;
+        showHighlight(wesenHighlight, w.el, 10, w.tx, w.ty);
+
+        if (!interactionsActive) return;
+
+        const center = { x: w.origCenter.x + w.tx, y: w.origCenter.y + w.ty };
+        updateD1(center);
+        updateD2(center);
+      });
+
+      w.el.addEventListener('blur', () => {
+        hideHighlight(wesenHighlight);
+
+        if (!interactionsActive) return;
+
+        d1Wesen.forEach(d => {
+          if (d.alive && d.phase === 'interact') { d.scale = 1; applyTransform(d); }
+        });
+      });
+
+
+    });
+
+    // ════════════════════════════════════════
+    // Buttons
+    // ════════════════════════════════════════
+    const btn24El = document.getElementById('btn-24');
+    const btn44El = document.getElementById('btn-44');
+    const label24El = document.getElementById('label-24');
+    const label44El = document.getElementById('label-44');
+    const focusRect24 = document.getElementById('focus-btn-24');
+    const focusRect44 = document.getElementById('focus-btn-44');
+
+    showHighlight(focusRect24, btn24El, 6); hideHighlight(focusRect24);
+    showHighlight(focusRect44, btn44El, 6); hideHighlight(focusRect44);
+
+    function setupButton(btnEl, labelEl, focusRect, action) {
+      const pathEl = btnEl.querySelector('path');
+      const on = () => { pathEl.style.fill = 'rgba(65,65,65,0.15)'; labelEl.style.opacity = '1'; };
+      const off = () => { pathEl.style.fill = 'transparent'; labelEl.style.opacity = '0'; };
+
+      btnEl.addEventListener('mouseenter', on);
+      btnEl.addEventListener('mouseleave', off);
+      btnEl.addEventListener('focus', () => { on(); showHighlight(focusRect, btnEl, 6); });
+      btnEl.addEventListener('blur', () => { off(); hideHighlight(focusRect); });
+      btnEl.addEventListener('click', action);
+      btnEl.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); action(); }
+      });
+    }
+
+    function applyScaleToAll(s) {
+      targetScale = s;
+      allWesen.forEach(w => {
+        if (!w.alive) return;
+        w.scale = s; applyTransform(w);
+      });
+    }
+
+    setupButton(btn24El, label24El, focusRect24, () => {
+      applyScaleToAll(0.35);
+      btn24Clicked = true;
+      checkBothClicked();
+    });
+
+    setupButton(btn44El, label44El, focusRect44, () => {
+      applyScaleToAll(0.65);
+      btn44Clicked = true;
+      checkBothClicked();
+    });
+
+    function checkBothClicked() {
+      if (!btn24Clicked || !btn44Clicked) return;
+      interactionsActive = false;
+      allWesen.forEach(w => {
+        if (!w.alive) return;
+        w.scale = targetScale;
+        applyTransform(w);
+      });
+      enableAllClicks();
+    }
+
+    // ════════════════════════════════════════
+    // PHASE 2: Abfluss 
+    // ════════════════════════════════════════
+
+    function drainWesen(w) {
+      w.phase = 'drain';
+      hideHighlight(wesenHighlight);
+      const cx = w.origCenter.x + w.tx;
+      const cy = w.origCenter.y + w.ty;
+      const ddx = abflussCenter.x - cx;
+      const ddy = abflussCenter.y - cy;
+      const startTx = w.tx, startTy = w.ty, startScale = w.scale;
+      const duration = 600;
+      const t0 = performance.now();
+
+      (function step(now) {
+        const t = Math.min((now - t0) / duration, 1);
+        const ease = t * t;
+        w.el.style.transform = `translate(${startTx + ddx * ease}px,${startTy + ddy * ease}px) scale(${startScale * (1 - ease * 0.97)})`;
+        if (t < 1) requestAnimationFrame(step);
+        else w.el.style.display = 'none';
+      })(performance.now());
+    }
+
+    function enableAllClicks() {
+      allWesen.forEach((w, i) => {
+        if (!w.alive) return;
+        w.el.setAttribute('tabindex', String(12 + i));  // 12–19
+        w.el.setAttribute('aria-label', 'Wesen entfernen');
+
+        function remove() {
+          if (!w.alive) return;
+          w.alive = false;
+          w.el.style.cursor = 'default';
+          w.el.removeAttribute('tabindex');
+          w.el.removeAttribute('role');
+          w.el.removeEventListener('click', remove);
+          w.el.removeEventListener('keydown', onKey);
+          w.el.removeEventListener('focus', onFocus2);
+          w.el.removeEventListener('blur', onBlur2);
+          drainWesen(w);
+          setTimeout(checkAllGone, 650);
+        }
+
+        function onKey(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); remove(); }
+        }
+
+        function onFocus2() { showHighlight(wesenHighlight, w.el, 10, w.tx, w.ty); }
+        function onBlur2() { hideHighlight(wesenHighlight); }
+
+        w.el.style.cursor = 'pointer';
+        w.el.addEventListener('click', remove);
+        w.el.addEventListener('keydown', onKey);
+        w.el.addEventListener('focus', onFocus2);
+        w.el.addEventListener('blur', onBlur2);
+      });
+    }
+
+    function checkAllGone() {
+      if (allWesen.every(w => !w.alive)) {
+        document.getElementById('pfeil-btn').style.display = 'block';
+        document.getElementById('zurueck-btn').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+
+</html>

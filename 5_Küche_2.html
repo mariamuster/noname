@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Küche Kühlschrank</title>
+  <style>
+    body {
+      background-color: black;
+      color: rgb(0, 0, 0);
+      font-family: sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hidden-list {
+      position: absolute;
+      left: -9999px;
+    }
+
+    button.item {
+      background: none;
+      border: none;
+      color: transparent;
+      outline: none;
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      left: -9999px;
+    }
+
+    #screen-reader-output {
+      font-size: 1.2em;
+      text-align: center;
+      color: #000000;
+      min-height: 3em;
+      width: 80%;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Kühlschrank</h1>
+  <p id="screen-reader-output"></p>
+
+  <div class="hidden-list" aria-hidden="false">
+
+    <button class="item">Tiefkühler</button>
+    <button class="item">Erbsen</button>
+    <button class="item">Bohnen</button>
+    <button class="item">Tomatensauce</button>
+    <button class="item">Beerenmix</button>
+    <button class="item">Brot</button>
+    <button class="item">Pizza</button>
+    <button class="item">Kühlschrank</button>
+    <button class="item">Eier</button>
+    <button class="item">Orangensaft</button>
+    <button class="item">Konfitüre</button>
+    <button class="item">Nagellack</button>
+    <button class="item">Sahne</button>
+    <button class="item">Butter</button>
+    <button class="item">Joghurt</button>
+    <button class="item">Parmesan</button>
+    <button class="item">Käse</button>
+    <button class="item">Tofu</button>
+    <button class="item">Tahini</button>
+    <button class="item">Mayonnaise</button>
+    <button class="item">Senf</button>
+    <button class="item">Milch</button>
+    <button class="item">Kartoffeln</button>
+    <button class="item">Karotten</button>
+    <button class="item">Lauch</button>
+    <button class="item">Blattspinat</button>
+    <button class="item">Wirz</button>
+    <button class="item">Randen</button>
+    <button class="item">Pastinaken</button>
+  </div>
+
+  <script>
+    const targets = ["Butter", "Eier", "Milch", "Blattspinat"];
+    let foundItems = [];
+
+    const buttons = [...document.querySelectorAll('.item')];
+    const output = document.getElementById('screen-reader-output');
+
+    function speak(text, delay = 0) {
+      output.textContent = text;
+      if ('speechSynthesis' in window) {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'de-DE';
+        setTimeout(() => {
+          window.speechSynthesis.cancel();
+          window.speechSynthesis.speak(utter);
+        }, delay);
+      }
+    }
+
+    function resetFocus() {
+      buttons[0].focus();
+    }
+
+    function allCollected() {
+      return foundItems.length === targets.length;
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('focus', () => {
+        speak(btn.textContent.trim());
+      });
+
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const item = btn.textContent.trim();
+
+          if (targets.includes(item) && !foundItems.includes(item)) {
+            foundItems.push(item);
+            speak(`${item} gesammelt.`, 100);
+          } else if (targets.includes(item)) {
+            speak(`${item} bereits gesammelt.`, 100);
+          } else {
+            speak(`${item} wird nicht benötigt.`, 100);
+          }
+
+          if (allCollected()) {
+            speak("Alle Zutaten gesammelt. Zurück zur Küche.", 1500);
+            setTimeout(() => window.location.href = "5_Küche_3.html", 4000);
+          } else {
+            // Restart 
+            setTimeout(resetFocus, 1500);
+          }
+        }
+      });
+    });
+
+    // Start
+    buttons[0].focus();
+    speak("Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.");
+  </script>
+</body>
+
+</html>

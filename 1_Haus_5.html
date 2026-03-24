@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Haus 5</title>
+  <link rel="stylesheet" href="button.css" />
+  <link rel="stylesheet" href="image.css" />
+  <link rel="stylesheet" href="dialog.css" />
+  <style>
+    @font-face {
+      font-family: "Lex";
+      src: url("fonts/Lexend-Regular.ttf") format("truetype");
+    }
+
+    body {
+      font-family: "Lex", sans-serif;
+    }
+
+    body {
+      background: rgba(255, 64, 55);
+    }
+
+    svg {
+      border: 0cm solid rgba(0, 0, 0, 0.454);
+    }
+    
+
+    a>path,
+    a>rect {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    a:hover>path,
+    a:hover>rect {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    a:focus {
+      outline: none;
+    }
+    a:not(.ok-btn):focus>path,
+    a:not(.ok-btn):focus>rect {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+    }
+
+    a.key-btn:focus {
+      outline: none;
+    }
+    a.key-btn:focus-visible > rect.focus-ring {
+      display: block;
+    }
+    rect.focus-ring {
+      display: none;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke: black;
+      stroke-width: 3px;
+      rx: 12px;
+      filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+      pointer-events: none;
+    }
+    a.key-btn:focus-visible > path {
+      fill: rgba(65, 65, 65, 0.2);
+    }
+
+    /* Schlüsselloch */
+    a.ok-btn { outline: none; }
+    a.ok-btn>path {
+      pointer-events: all;
+    }
+    a.ok-btn:hover>path {
+      fill: rgba(255, 220, 0, 0.6);
+    }
+    a.ok-btn:focus-visible>path {
+      stroke: black;
+      stroke-width: 8px;
+      paint-order: stroke fill;
+      fill: rgba(255, 220, 0, 0.6);
+      filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+    }
+
+  
+  </style>
+</head>
+
+<body>
+  <div class="room-wrapper">
+    <img src="img/1_Haus_3.svg" alt="Zahlenfeld mit Schlüsselloch." class="responsive-img" tabindex="0" />
+
+    <svg id="main-svg" class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <!-- ── Eingegebene Zahlen ── -->
+      <text id="display" font-family="Lex,sans-serif" font-size="72" fill="#fff" text-anchor="middle" x="840" y="110"
+        letter-spacing="12"></text>
+
+      <path id="ok-highlight"
+        d="M885.5,727.2c-31.5-3-66.5,2.6-97.2,0l27.3-101.6c-33.5-8.1-28.6-54.2,1.4-64.1,45.5-16.7,75.7,31.2,39.2,64.1,14,30.8,19.3,73.9,29.4,101.6h-.1Z"
+        fill="#f6ff00" stroke="black" stroke-width="3" visibility="hidden" />
+      <a id="ok-link" class="ok-btn" href="#" aria-label="Tür öffnen" role="button" style="display: none">
+        <path
+          d="M885.5,727.2c-31.5-3-66.5,2.6-97.2,0l27.3-101.6c-33.5-8.1-28.6-54.2,1.4-64.1,45.5-16.7,75.7,31.2,39.2,64.1,14,30.8,19.3,73.9,29.4,101.6h-.1Z"
+          fill="rgba(255,220,0,0.01)" />
+      </a>
+
+      <!-- ── Tasten 1–9, 0, *, # ── -->
+      <a class="key-btn" href="#" role="button" aria-label="1" data-key="1">
+        <path d="M704.5,287.5c-35.5-23.2-65.8,29.4-33.2,52.8,37.9,20.3,70.4-27.5,33.2-52.8Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="688" y="324">
+          1
+        </text>
+      <rect class="focus-ring" x="648" y="270" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="2" data-key="2">
+        <path
+          d="M791.5,270.3c-7.8-6.3-18.8-2.1-26.3,2.8-16.8,7.8-22.5,35-7.7,47.3,14.6,11.2,38.7,8.7,47.9-8.2,11.7-17.1,1.8-32.5-13.9-41.9Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="778" y="309">
+          2
+        </text>
+      <rect class="focus-ring" x="738" y="255" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="3" data-key="3">
+        <path d="M884.9,268.6c-38.5-8.9-58.2,42.9-19.8,59,42.2,19.5,61-46.7,19.8-59Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="878" y="310">
+          3
+        </text>
+      <rect class="focus-ring" x="838" y="256" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="4" data-key="4">
+        <path d="M968.6,271c-43-.9-51.3,62.8-3.9,63.3,17.9,1.3,31.3-15.9,32.2-32.6-.9-15.1-13.9-27.7-28.3-30.7Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="964" y="314">
+          4
+        </text>
+      <rect class="focus-ring" x="924" y="260" width="80" height="80" rx="16"/>
+      </a>
+
+      <a class="key-btn" href="#" role="button" aria-label="5" data-key="5">
+        <path
+          d="M705.9,377.5c-30.7-25.6-68.2,23.7-37.9,48.9,11.4,9.7,30,6.5,42.2-.3,11.3-7.1,11.3-25.2,6.3-36.3-2.2-5.4-6.9-8.1-10.5-12.3h0Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="689" y="415">
+          5
+        </text>
+      <rect class="focus-ring" x="649" y="361" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="6" data-key="6">
+        <path d="M787.6,360.2c-35.6-7.3-49.5,49-13.6,57.3,40.9,10.2,53-47.4,13.6-57.3Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="782" y="400">
+          6
+        </text>
+      <rect class="focus-ring" x="742" y="346" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="7" data-key="7">
+        <path
+          d="M880.2,355.9c-10.4-3.9-19.8,4.9-26.6,11.7-16.2,17.6-3.3,45.2,19.7,47.2,23.4,5.4,37.4-16.5,33.6-37.7-3.3-11.8-15.7-18.3-26.7-21.2Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="876" y="399">
+          7
+        </text>
+      <rect class="focus-ring" x="836" y="345" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="8" data-key="8">
+        <path d="M967.6,360.1c-9.8-3.2-17.8,6.4-24.6,12.2-18.5,19.6-4.3,49.9,22.2,50,36.4-2.5,40.7-56.8,2.4-62.2h0Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="966" y="403">
+          8
+        </text>
+      <rect class="focus-ring" x="926" y="349" width="80" height="80" rx="16"/>
+      </a>
+
+      <a class="key-btn" href="#" role="button" aria-label="9" data-key="9">
+        <path d="M704.8,466.9c-46.2-10.2-56.4,57.1-7.7,61.2,33.1,1.2,38.8-53.3,7.7-61.2Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="695" y="509">
+          9
+        </text>
+      <rect class="focus-ring" x="655" y="455" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="0" data-key="0">
+        <path
+          d="M790.4,449.6c-38.9-4.1-45.2,56.6-5.3,58.9,18.8,2.6,34.9-14.5,32.9-33-2.6-13.3-13.7-25.2-27.6-25.9h0Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="787" y="490">
+          0
+        </text>
+      <rect class="focus-ring" x="747" y="436" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="Stern" data-key="*">
+        <path d="M882.5,445.1c-38.9-4.1-45.2,56.6-5.3,58.9,40.5,2.8,44.5-54,5.3-58.9Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="880" y="486">
+          ✱
+        </text>
+      <rect class="focus-ring" x="840" y="432" width="80" height="80" rx="16"/>
+      </a>
+      <a class="key-btn" href="#" role="button" aria-label="Raute" data-key="#">
+        <path
+          d="M964.5,457.8c-38.9-4.1-45.2,56.6-5.3,58.9,18.8,2.6,34.9-14.5,32.9-33-2.6-13.2-13.7-25.2-27.5-25.9h-.1Z" />
+        <text font-family="Lex,sans-serif" font-size="38" fill="#000" text-anchor="middle" x="962" y="498">
+          #
+        </text>
+      <rect class="focus-ring" x="922" y="444" width="80" height="80" rx="16"/>
+      </a>
+
+     
+    </svg>
+  </div>
+
+  <script>
+    const CORRECT_CODE = "1234";
+    const MAX_LEN = CORRECT_CODE.length;
+
+    let entered = "";
+
+    const display = document.getElementById("display");
+    const okHighlight = document.getElementById("ok-highlight");
+    const okLink = document.getElementById("ok-link");
+
+    function updateDisplay() {
+      display.textContent = entered;
+    }
+
+    function checkCode() {
+      if (entered === CORRECT_CODE) {
+        okHighlight.setAttribute("visibility", "visible");
+        okLink.style.display = "";
+        setTimeout(() => okLink.focus(), 0);
+      } else {
+        okHighlight.setAttribute("visibility", "hidden");
+        okLink.style.display = "none";
+      }
+    }
+
+    document.querySelectorAll(".key-btn").forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const key = this.getAttribute("data-key");
+        if (key === "*") {
+          entered = "";
+        } else if (key === "#") {
+          entered = entered.slice(0, -1);
+        } else {
+          if (entered.length < MAX_LEN) {
+            entered += key;
+          }
+        }
+        updateDisplay();
+        checkCode();
+      });
+    });
+
+    okLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "1_Haus_6.html";
+    });
+
+    // ── Physische Tastatur
+    document.addEventListener("keydown", function (e) {
+      if (e.key >= "0" && e.key <= "9") {
+        if (entered.length < MAX_LEN) {
+          entered += e.key;
+          updateDisplay();
+          checkCode();
+          const btn = document.querySelector(`.key-btn[data-key="${e.key}"]`);
+          if (btn) {
+            const path = btn.querySelector("path");
+            if (path) {
+              const orig = path.getAttribute("fill");
+              path.setAttribute("fill", "rgba(65,65,65,0.35)");
+              setTimeout(
+                () => path.setAttribute("fill", orig || "transparent"),
+                150,
+              );
+            }
+          }
+        }
+      } else if (e.key === "Backspace") {
+        entered = entered.slice(0, -1);
+        updateDisplay();
+        checkCode();
+      } else if (e.key === "Escape") {
+        entered = "";
+        updateDisplay();
+        checkCode();
+      }
+    });
+
+    // ── Tab/Enter auf SVG-Buttons ──────────────────────────────────
+    document.querySelectorAll(".key-btn").forEach((btn) => {
+      btn.setAttribute("tabindex", "0");
+      btn.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const key = this.getAttribute("data-key");
+          if (key === "*") {
+            entered = "";
+          } else if (key === "#") {
+            entered = entered.slice(0, -1);
+          } else {
+            if (entered.length < MAX_LEN) entered += key;
+          }
+          updateDisplay();
+          checkCode();
+          // visuelles Feedback
+          const path = this.querySelector("path");
+          if (path) {
+            const orig = path.getAttribute("fill");
+            path.setAttribute("fill", "rgba(65,65,65,0.35)");
+            setTimeout(
+              () => path.setAttribute("fill", orig || "transparent"),
+              150,
+            );
+          }
+        }
+      });
+    });
+
+    okLink.setAttribute("tabindex", "0");
+    okLink.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (okLink.style.display !== "none") {
+          window.location.href = "1_Haus_6.html";
+        }
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>

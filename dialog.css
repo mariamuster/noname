@@ -1,0 +1,87 @@
+.dialog-overlay { /* Dialogfeld */
+  border: none;
+  background: white;
+  width: 50vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 40px;
+  inset: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+.dialog-overlay::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-overlay[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-content {
+  width: 90%;
+  max-width: 500px;
+  font-family: "Lex";
+  text-align: center;
+}
+
+.dialog-text {
+  cursor: pointer;
+  font-size: 1.6rem; /* This controls font size */
+  margin-bottom: 20px;
+  line-height: 1.5; /* Reduce line-height to be closer to font size */
+  user-select: none;
+  padding: 15px 0px;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+}
+
+.dialog-text.left {
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: left;
+  background: #fefefe;
+}
+
+.dialog-text.right {
+  margin-right: 0;
+  margin-left: auto;
+  margin-bottom: 50px;
+  text-align: right;
+  background: #f3e5f500;
+}
+
+.dialog-buttons button {
+  background-color: #000000a7; /* Purple background */
+  color: white; /* White text */
+  font-family: "Lex";
+  border: none;
+  border-radius: 2px;
+  padding: 10px 20px;
+  font-size: 0.7rem;
+  font-weight: 100;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialog-buttons button:hover,
+.dialog-buttons button:focus {
+  background-color: #00058c; /* Hover and focus background color */
+  outline: none; /* Optional: remove default outline */
+}
+
+/* Ensure your existing page is visible */
+html,
+body {
+  position: relative;
+  z-index: 1;
+}

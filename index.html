@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Hallo</title>
+  <style>
+    @font-face {
+      font-family: 'Lex';
+      src: url('fonts/Lexend_Regular.ttf') format('truetype');
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lex', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    a {
+      font-size: clamp(3rem, 12vw, 9rem);
+      font-weight: 400;
+      text-decoration: none;
+      color: #000;
+      letter-spacing: -0.02em;
+      transition: opacity 0.2s;
+    }
+
+    a:hover, a:focus {
+      opacity: 0.4;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="1_Haus_1.html">Hallo</a>
+</body>
+</html>

@@ -1,0 +1,54 @@
+/* ═══════════════════════════════════════════
+   Icon-Styles
+   Wird in allen Levels eingebunden
+════════════════════════════════════════════ */
+
+/* Pfad-Styles aus Icon.svg */
+.st0, .st1, .st2 { fill: none; }
+.st0, .st1, .st2, .st3 { stroke-linecap: round; stroke-width: 3px; }
+.st0, .st1, .st3 { stroke-linejoin: round; }
+.st0, .st3 { stroke: #000; }
+.st4 { fill: #010101; }
+.st1, .st2 { stroke: #010101;fill: rgb(255, 255, 255); }
+.st2, .st5 { stroke-miterlimit: 10; }
+.st5 { fill: #1d1d1b; stroke: #fff; stroke-width: 3px; }
+.st3 { fill: #ff0; }
+
+/* WCAG-Icon Körper – Farbe kommt aus --wcag-farbe im jeweiligen Level */
+.wcag-body {
+  fill: var(--wcag-farbe, #ff0);
+  stroke: #000;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+
+/* ── Hover-Pfade (folgen der Icon-Form) ── */
+#wcag-hover,
+#hilfe-hover {
+  fill: transparent;
+  pointer-events: all;
+}
+
+/* Überschreibt die allgemeine a:hover>path Regel (höhere Spezifität) */
+#wcag-btn:hover > #wcag-hover,
+#wcag-btn:focus-visible > #wcag-hover,
+#hilfe-btn:hover > #hilfe-hover,
+#hilfe-btn:focus-visible > #hilfe-hover {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+
+/* Focus */
+#wcag-btn:focus,
+#hilfe-btn:focus,
+#menu-btn:focus { outline: none; }
+
+/* Menu-Icon (Rect als Klickfläche) */
+#menu-btn .st6 { fill: #ffffff; pointer-events: none; }
+#menu-btn:hover rect,
+#menu-btn:focus-visible rect { fill: rgba(65, 65, 65, 0.15); }
+#menu-btn:focus-visible rect {
+  stroke: black;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 6px rgb(0,0,0));
+}

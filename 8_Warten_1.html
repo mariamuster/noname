@@ -10,8 +10,7 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    /* ── WCAG-Icon Farbe hier ändern ──────────────────────── */
-    :root { --wcag-farbe: rgba(35, 35, 255); }
+   
     * {
       box-sizing: border-box;
       margin: 0;
@@ -847,6 +846,22 @@
 
     window.addEventListener('load', () => setTimeout(() => spawnBubble(0), 3000));
   </script>
+  <!-- ════════════════════════════════════════════════════════════
+       LEVEL-KONFIGURATION FÜR ICONS
+  ════════════════════════════════════════════════════════════ -->
+  <style>
+    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
+    :root { --wcag-farbe: #ff0; }
+  </style>
+  <script>
+    window.LEVEL_CONFIG = {
+      hilfeUrl: '8_Warten_1H.html',      // Hilfeseite dieses Levels
+      menuUrl:  'leves.html',            // Levelübersicht
+      wcagUrl:  '8_Warten_1W.html'       // ← gelber Button → zurück zu Keller 4
+    };
+  </script>
+  <script src="icons.js"></script>
+
 </body>
 
 </html>

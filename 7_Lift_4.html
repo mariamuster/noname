@@ -6,8 +6,7 @@
    <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    /* ── WCAG-Icon Farbe hier ändern ──────────────────────── */
-    :root { --wcag-farbe: rgba(35, 35, 255); }
+  
     
       svg {
         border: none;
@@ -48,12 +47,22 @@ a:focus-visible>rect {
           <path
             id="Tür"
             class="cls-1"
-            d="M947,731.1c4.3-101.8,0-201.8-1.5-303.6,1.6-77.3,5.2-154.1,4-231.3l-303.6-2.7c1.1,178-3,356,2.7,534.1l298.4,3.5Z"
-          />
-          <text class="room-label" x="940" y="380">Weiter</text>
+ d="M800.5,768.7s39.7,35.7,50,44.2c-9.3,0-17.5.6-26.9,0-.6,14.3,0,27.3,0,27.3h-46s-1.4-12.8,0-27.3c-8.7.2-18.4.3-27.2,0l50-44.2h.1Z"/>
+         
         </a>
-
       </svg>
     </div>
+        <!-- ════════════════════════════════════════════════════════════
+       LEVEL-KONFIGURATION FÜR ICONS
+  ════════════════════════════════════════════════════════════ -->
+  <script>
+    window.LEVEL_CONFIG = {
+      hilfeUrl: '7_Lift_4H.html',    // ← Dateinamen der Hilfeseite anpassen
+      menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
+    };
+  </script>
+  <script src="icons.js"></script>
+
+
   </body>
 </html>

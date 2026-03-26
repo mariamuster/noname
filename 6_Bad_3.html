@@ -7,8 +7,7 @@
    <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    /* ── WCAG-Icon Farbe hier ändern ──────────────────────── */
-    :root { --wcag-farbe: rgba(35, 35, 255); }
+   
     
     @font-face {
       font-family: 'Lex';
@@ -336,8 +335,20 @@ a:focus-visible>rect {
         else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
       }
     });
-
+    
   </script>
+
+
+    <!-- ════════════════════════════════════════════════════════════
+       LEVEL-KONFIGURATION FÜR ICONS
+  ════════════════════════════════════════════════════════════ -->
+  <script>
+    window.LEVEL_CONFIG = {
+      hilfeUrl: '6_Bad_3H.html',    // ← Dateinamen der Hilfeseite anpassen
+      menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
+    };
+  </script>
+  <script src="icons.js"></script>
 </body>
 
 </html>

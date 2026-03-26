@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    /* ── WCAG-Icon Farbe hier ändern ──────────────────────── */
-    :root { --wcag-farbe: rgba(35, 35, 255); }
+
     
     @font-face { font-family: 'AguafinaScript'; src: url('fonts/AguafinaScript-Regular.ttf'); }
     @font-face { font-family: 'Arimo';         src: url('fonts/Arimo-VariableFont_wght.ttf'); }
@@ -369,5 +368,25 @@
       });
     });
   </script>
+
+    <!-- ════════════════════════════════════════════════════════════
+       LEVEL-KONFIGURATION FÜR ICONS
+  ════════════════════════════════════════════════════════════ -->
+  <style>
+    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
+    :root { --wcag-farbe: #ff0; }
+  </style>
+  <script>
+    window.LEVEL_CONFIG = {
+      hilfeUrl: '3_Bibi_3H.html',      // Hilfeseite dieses Levels
+      menuUrl:  'leves.html',            // Levelübersicht
+      wcagUrl:  '3_Bibi_3W.html'       // ← gelber Button → zurück zu Keller 4
+    };
+  </script>
+  <script src="icons.js"></script>
+
+</body>
+
+</html>
 </body>
 </html>

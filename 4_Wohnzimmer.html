@@ -7,8 +7,7 @@
    <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    /* ── WCAG-Icon Farbe hier ändern ──────────────────────── */
-    :root { --wcag-farbe: rgba(35, 35, 255); }
+
     
     @font-face {
       font-family: 'Lex';
@@ -26,7 +25,7 @@
     body {
       font-family: 'Lex', sans-serif;
       background: rgb(255, 255, 255);
-      min-height: 100vh;
+      min-height: 10vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -41,7 +40,7 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 12px 24px;
+      padding: 20px 24px;
       background: rgba(0, 0, 0, 0.8);
       position: sticky;
       top: 0;
@@ -990,6 +989,23 @@
     stR.value = 255; stG.value = 255; stB.value = 255;
     update();
   </script>
+
+  <!-- ════════════════════════════════════════════════════════════
+       LEVEL-KONFIGURATION FÜR ICONS
+  ════════════════════════════════════════════════════════════ -->
+  <style>
+    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
+    :root { --wcag-farbe: #ff0; }
+  </style>
+  <script>
+    window.LEVEL_CONFIG = {
+      hilfeUrl: '4_Wohnzimmer_H.html',      // Hilfeseite dieses Levels
+      menuUrl:  'leves.html',            // Levelübersicht
+      wcagUrl:  '4_Wohnzimmer_W.html'       // ← gelber Button → zurück zu Keller 4
+    };
+  </script>
+  <script src="icons.js"></script>
+
 </body>
 
 </html>

@@ -4,51 +4,112 @@
 ════════════════════════════════════════════ */
 
 /* Pfad-Styles aus Icon.svg */
-.st0, .st1, .st2 { fill: none; }
-.st0, .st1, .st2, .st3 { stroke-linecap: round; stroke-width: 3px; }
-.st0, .st1, .st3 { stroke-linejoin: round; }
-.st0, .st3 { stroke: #000; }
-.st4 { fill: #010101; }
-.st1, .st2 { stroke: #010101;fill: rgb(255, 255, 255); }
-.st2, .st5 { stroke-miterlimit: 10; }
-.st5 { fill: #1d1d1b; stroke: #fff; stroke-width: 3px; }
-.st3 { fill: #ff0; }
+.str0, .str1, .str2 { fill: none; }
+.str0, .str1, .str2, .str3 { stroke-linecap: round; stroke-width: 3px; }
+.str0, .str1, .str3 { stroke-linejoin: round; }
+.str0, .str3 { stroke: #000; }
+.str4 { fill: #010101; stroke-width: 3px;}
+.str1, .str2 { stroke: #010101;fill: rgb(255, 255, 255); }
+.str2, .srt5 { stroke-miterlimit: 10; }
+.str5 { fill: #1d1d1b; stroke: #fff; stroke-width: 3px; }
+.str3 { fill: rgb(35, 35, 255); }
+.str6 { fill: rgb(0, 0, 0); }
 
-/* WCAG-Icon Körper – Farbe kommt aus --wcag-farbe im jeweiligen Level */
 .wcag-body {
-  fill: var(--wcag-farbe, #ff0);
+  fill: var(--wcag-farbe, rgb(35, 35, 255));
   stroke: #000;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3px;
 }
 
-/* ── Hover-Pfade (folgen der Icon-Form) ── */
-#wcag-hover,
-#hilfe-hover {
-  fill: transparent;
-  pointer-events: all;
-}
-
-/* Überschreibt die allgemeine a:hover>path Regel (höhere Spezifität) */
-#wcag-btn:hover > #wcag-hover,
-#wcag-btn:focus-visible > #wcag-hover,
-#hilfe-btn:hover > #hilfe-hover,
-#hilfe-btn:focus-visible > #hilfe-hover {
-  fill: rgba(65, 65, 65, 0.7) !important;
-}
+/* ── Hover ──────────────────────────────────────────────────────────
+   Icons 1 & 2: Hover wird per JavaScript gesteuert (mouseenter/leave)
+   Icon 3:      Hover per CSS – pointer-events auf dem Rect per inline
+                style in icons.js auf 'all' gesetzt
+   ─────────────────────────────────────────────────────────────────── */
 
 /* Focus */
 #wcag-btn:focus,
 #hilfe-btn:focus,
 #menu-btn:focus { outline: none; }
 
-/* Menu-Icon (Rect als Klickfläche) */
-#menu-btn .st6 { fill: #ffffff; pointer-events: none; }
+/* Menu-Icon Rect-Hintergrund */
+#menu-btn .str6 { fill: #ffffff; }
 #menu-btn:hover rect,
-#menu-btn:focus-visible rect { fill: rgba(65, 65, 65, 0.15); }
-#menu-btn:focus-visible rect {
-  stroke: black;
-  stroke-width: 3px;
-  filter: drop-shadow(0 0 6px rgb(0,0,0));
-}
+#menu-btn:focus-visible rect { fill: rgba(65, 65, 65, 0.7); }
+
+.instructions {
+    position: absolute;
+    top:25%;
+    left: 28%;
+    right: 25%;
+    margin: 0;
+    padding: 0 0 0 1.4em;
+    list-style: disc;
+    font-family: 'Lexend', sans-serif;
+    font-size: 18pt;
+    line-height: 2;
+    color: #000000;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+
+    /* ── scrollable info panel ── */
+    .info-content {
+      position: absolute;
+      top: 12%;
+      left: 25%;
+      right: 22%;
+      bottom: 3%;
+      overflow-y: auto;
+      z-index: 10;
+      padding-right: 0.5em;
+    }
+
+    /* ── shared text class ── */
+    .info-text {
+      font-family: 'Lexend', sans-serif;
+      color: #1a1a1a;
+      line-height: 1.4;
+    }
+
+    h1.info-text {
+      font-size: 25pt;
+      font-weight: 700;
+      margin: 0 0 0.6em 0;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      gap: 0.35em;
+      flex-wrap: wrap;
+    }
+
+    p.info-text {
+      font-size: 18pt;
+      margin: 0 0 0.6em 0;
+    }
+
+    /* ── "WCAG 1.4.10" clickable text + icon ── */
+    .wcag-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: 18pt;
+      gap: 0.3em;
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .wcag-link:hover,
+    .wcag-link:focus {
+      color: #333;
+      text-decoration-thickness: 3px;
+    }
+
+    .wcag-link:focus {
+      outline: 2px solid #333;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }

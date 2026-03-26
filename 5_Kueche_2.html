@@ -7,8 +7,6 @@
    <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    /* ── WCAG-Icon Farbe hier ändern ──────────────────────── */
-    :root { --wcag-farbe: rgba(35, 35, 255); }
     
     body {
       background-color: black;
@@ -147,6 +145,22 @@
     buttons[0].focus();
     speak("Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.");
   </script>
+  <!-- ════════════════════════════════════════════════════════════
+       LEVEL-KONFIGURATION FÜR ICONS
+  ════════════════════════════════════════════════════════════ -->
+  <style>
+    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
+    :root { --wcag-farbe: #ff0; }
+  </style>
+  <script>
+    window.LEVEL_CONFIG = {
+      hilfeUrl: '5_Kueche_2H.html',      // Hilfeseite dieses Levels
+      menuUrl:  'leves.html',            // Levelübersicht
+      wcagUrl:  '5_Kueche_2W.html'       // ← gelber Button → zurück zu Keller 4
+    };
+  </script>
+  <script src="icons.js"></script>
+
 </body>
 
 </html>

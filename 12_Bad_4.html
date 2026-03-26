@@ -1,81 +1,62 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Haus 3</title>
- <link rel="stylesheet" href="image.css">
+  <title>Bad 4</title>
    <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
- 
-    @font-face {
-      font-family: 'Lex';
-      src: url('fonts/Lex.ttf') format('truetype');
-    }
-
-    body {
-      font-family: 'Lex', sans-serif;
-    }
-
-    body {
-      background: #000;
-    }
-
+  
+    
     svg {
       border: 0cm solid rgba(0, 0, 0, 0.454);
     }
 
-       a>path,
-    a>rect {
-      fill: transparent;
-      pointer-events: all;
-    }
-
-      a:hover>path,
+                 a:hover>path,
 a:hover>rect {
   fill: rgba(65, 65, 65, 0.7) !important;
 }
 
-a:focus {       
-  outline: none;
-}a:focus>path, 
-a:focus>rect {
+a:focus { outline: none; }
+a:focus-visible>path,
+a:focus-visible>rect {
   stroke: black;
-  fill: rgba(255, 255, 255, 0.2);
+  fill: rgba(65, 65, 65, 0.2);      
   stroke-width: 3px;
   outline-offset: 4px;
-  filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
 }
   </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/1_Haus_5.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+    <img src="img/6_Bad_4.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
       class="responsive-img" tabindex="0" />
-
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      
-      <!-- Weiter -->
-      <a href="9_Keller_1.html" aria-label="Weiter nach links" role="button">
-        <path id="Door"
- d="M800,761s62,55.8,78,68.9c-14.6-.2-27.3.9-41.9,0-1,22.4,0,42.6,0,42.6h-71.8s-2.2-19.9,0-42.6c-13.6.3-28.7.4-42.4,0l78-68.9h.1Z"/>
-      <text class="room-label" x="47.5%" y="25%">Weiter</text>
-      </a>
- </svg> ← closes here
 
-</body>
+      <a href="12_Lift_1.html" aria-label="Weiter nach links" role="button">
+
+        <path class="cls-1"
+          d="M700.8,627.1c-2.2-22.3.5-63.7,1.2-86-.3-41,.8-81.9-1.6-122.9-1.6-50.3-.9-101.4,8.6-150.9,5.4-37,10.5-75.7,33-106.8,49.5-61.2,141.6-98.4,217.3-67.3,49.1,24.2,79.1,75.8,88.1,129.2,7.7,43.7,2,85.6,8.8,128.9,5.2,50.6,6.2,99.5,9.7,150.8,2.8,44.9,7,87.2-4.9,130.3-39.6-5.4-77.3-4.6-116.8-7.2-32.6-1-66.5,6.4-99.1,4.1-20.7.8-43.5-3.5-64.1-5.3-25.2-.3-55.5,4.2-80.3,3h0l.1.1Z" />
+        <text class="room-label" x="47.5%" y="25%">Weiter</text>
+      </a>
+
+    </svg>
+  </div>
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '9_Haus_3H.html',    // ← Dateinamen der Hilfeseite anpassen
+      hilfeUrl: '12_Bad_4H.html',    // ← Dateinamen der Hilfeseite anpassen
       menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
     };
   </script>
   <script src="icons.js"></script>
+
+</body>
 
 </html>

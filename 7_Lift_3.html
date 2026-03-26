@@ -59,6 +59,16 @@
         padding: 0; margin: 0;
         opacity: 0;
       }
+
+      /* ── Sichtbarer Fokus für Icons ────────────────────────────────────── */
+      #wcag-btn:focus-visible,
+      #hilfe-btn:focus-visible,
+      #menu-btn:focus-visible {
+        outline: 0px solid white !important;
+        outline-offset: 4px;
+        overflow: visible;
+        filter: drop-shadow(0 0 5px #000000) drop-shadow(0 0 8px #000000);
+      }
     </style>
   </head>
   <body>
@@ -259,18 +269,6 @@
     </script>
 
 
-    <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
-  ════════════════════════════════════════════════════════════ -->
-  <script>
-    window.LEVEL_CONFIG = {
-      hilfeUrl: '7_Lift_3H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
-    };
-  </script>
-  <script src="icons.js"></script>
-
-
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
@@ -286,6 +284,38 @@
     };
   </script>
   <script src="icons.js"></script>
+
+  <script>
+    // ── Icons keyboard-zugänglich machen ────────────────────────────────────
+    // icons.js rendert die Buttons; wir warten bis sie im DOM sind.
+    window.addEventListener('load', () => {
+      const cfg = window.LEVEL_CONFIG || {};
+      const iconMap = {
+        'wcag-btn':  cfg.wcagUrl,
+        'hilfe-btn': cfg.hilfeUrl,
+        'menu-btn':  cfg.menuUrl,
+      };
+
+      Object.entries(iconMap).forEach(([id, url]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        // In Tab-Reihenfolge aufnehmen
+        el.setAttribute('tabindex', '0');
+
+        // Enter / Leertaste lösen Navigation aus
+        // (click wird auf dieser Seite geblockt → keydown nötig)
+        if (url) {
+          el.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              window.location.href = url;
+            }
+          });
+        }
+      });
+    });
+  </script>
 
 </body>
 

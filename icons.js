@@ -209,3 +209,33 @@
   }
 
 })();
+
+ // ── Icons keyboard-zugänglich machen ────────────────────────────────────
+    // icons.js rendert die Buttons; wir warten bis sie im DOM sind.
+    window.addEventListener('load', () => {
+      const cfg = window.LEVEL_CONFIG || {};
+      const iconMap = {
+        'wcag-btn':  cfg.wcagUrl,
+        'hilfe-btn': cfg.hilfeUrl,
+        'menu-btn':  cfg.menuUrl,
+      };
+
+      Object.entries(iconMap).forEach(([id, url]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        // In Tab-Reihenfolge aufnehmen
+        el.setAttribute('tabindex', '0');
+
+        // Enter / Leertaste lösen Navigation aus
+        // (click wird auf dieser Seite geblockt → keydown nötig)
+        if (url) {
+          el.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              window.location.href = url;
+            }
+          });
+        }
+      });
+    });

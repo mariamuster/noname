@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Amt</title>
   <link rel="stylesheet" href="image.css">
-   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
 
@@ -32,50 +31,13 @@
       margin: 0 auto;
     }
 
-    .room-overlay {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Wesen link */
-    #wesen-link {
-      cursor: pointer;
-    }
-
-    #wesen-link > path {
-      fill: transparent;
-      pointer-events: all;
-    }
-
-    #wesen-link:hover > path,
-    #wesen-link:focus > path {
-      fill: rgba(65, 65, 65, 0.7) !important;
-    }
-
-    #wesen-link:focus { outline: none; }
-    #wesen-link:focus-visible > path {
-      fill: rgba(65, 65, 65, 0.7) !important;
-    }
-
-    /* Dialog overlay */
-    #dialog-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-    }
-
-    #dialog-overlay.open {
-      display: block;
-    }
-
+    /* Dialog SVG */
     #dialog-svg {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
+      pointer-events: none;
     }
 
     .d-feld {
@@ -91,10 +53,12 @@
       stroke: #000;
       stroke-width: 3px;
       stroke-miterlimit: 10;
+      pointer-events: all;
     }
 
     .d-zu-btn {
       cursor: pointer;
+      pointer-events: all;
     }
 
     .d-zu-btn:focus { outline: none; }
@@ -108,144 +72,39 @@
   </style>
 </head>
 <body>
-  <div class="room-wrapper">
-    <!-- Wesen background SVG -->
-    <svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
-      <defs>
-        <style>
-          .st8 {
-            fill: #00ff96;
-            stroke:#000;
-            stroke-width: 3px;
-           stroke-linecap: round;
 
+  <!-- Dialog (always visible) -->
+  <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
+    xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true">
 
-          }
-          .st0, .st1, .st2 {
-            stroke-linecap: round;
-            stroke-miterlimit: 10;
+    <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
-          }
-          .st0, .st2 {
-            stroke: #000;
-            stroke-width: 3px;
-          }
-          .st1 {
-            stroke: #fff;
-            stroke-width: 4px;
-            fill:#000;
-          }
-      
-        </style>
-      </defs>
-      <!-- Wesen body -->
-      <path class="st8" d="M1214.7,759c0,4.9,1.1,10.2,0,15.1-.6,2.5-3,4.5-5.7,3.6-8.9-3.8-4.2-128.4-5.5-136.4.6-9.3-2.3-18.2-5.7-26.9-4.2-10.6-6.8-21.8-10.6-32.5-4.4-12.2-11.7-26.5-1.3-37.6,8.3-8.9,20.2-14.2,29.7-21.6,11.7-9.1,24.8-19.1,41.2-14.2,17.6,3.8,29.5,18.2,43.5,27.8,14,8.1,20.3,19.8,15.1,35-6.4,18.6-13.2,37.1-19.5,55.8-2.5,12.5,0,130.5-1.1,143,0,5.9-7.6,11.9-11.7,4.9-3.2-12.5.4-132,0-144.7-2.5-.8-6.2-1.1-8.9,0,0,8.7-.3,123.5,0,132.2.2,6-.8,22.5-9.3,14.9-3.3-2.9-1.9-9.8-1.7-13.2,2.5-33.4-.4-124.6-1.1-134.1-2.1,0-6.6-.6-8.7,0,.6,7.9,1.5,121.6,1.1,129.4,0,5.7,1.9,12.9-1.9,17.8-3.6,3.8-9.3-.8-9.8-4.7-1.3-12.3,1.3-130.7-1.1-142.6-2.3-.6-5.5-.6-8.1,0,0,0,1.3,128.2,1.5,136.4,0,4.2,0,9.8-5.1,11.5-9.5,4-6.6-14.6-7.2-19.3,0-7.6,0-120.5-.4-127.9h-7l-.6,128.4h0Z"/>
-      <!-- Wesen eye detail -->
-      <path class="st2" d="M1263.3,610.9c-6.2,1.9-14,.8-20.2-1.7"/>
-      <!-- Eyes -->
-      <path class="st1" d="M1236,558.9c-3.6-5.4-15.3-12.5-24-10-14.9,5.1-21.9,26.7-10,38,9.3,9.5,28,9.8,34.6-3,4.5-7.4,2.8-19.8-.6-25Z"/>
-      <path class="st1" d="M1294.1,558.5c-18.9-24.4-53,4.9-34.6,29.1,7,8.3,21.4,7.6,29.7,1.7,7.6-7.9,12.7-20.4,4.9-30.8Z"/>
-    </svg>
+    <g id="dlg-1" transform="translate(0, -256)">
+      <!-- Dialog bubble -->
+      <path class="d-feld"
+        d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
 
-    <!-- Clickable overlay -->
-    <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-      fill="none" xmlns="http://www.w3.org/2000/svg">
-
-      <a href="#" id="wesen-link" aria-label="Mit dem Wesen sprechen" aria-haspopup="dialog" role="button">
-        <!-- Wesen body shape (exact match) -->
-        <path d="M1214.7,759c0,4.9,1.1,10.2,0,15.1-.6,2.5-3,4.5-5.7,3.6-8.9-3.8-4.2-128.4-5.5-136.4.6-9.3-2.3-18.2-5.7-26.9-4.2-10.6-6.8-21.8-10.6-32.5-4.4-12.2-11.7-26.5-1.3-37.6,8.3-8.9,20.2-14.2,29.7-21.6,11.7-9.1,24.8-19.1,41.2-14.2,17.6,3.8,29.5,18.2,43.5,27.8,14,8.1,20.3,19.8,15.1,35-6.4,18.6-13.2,37.1-19.5,55.8-2.5,12.5,0,130.5-1.1,143,0,5.9-7.6,11.9-11.7,4.9-3.2-12.5.4-132,0-144.7-2.5-.8-6.2-1.1-8.9,0,0,8.7-.3,123.5,0,132.2.2,6-.8,22.5-9.3,14.9-3.3-2.9-1.9-9.8-1.7-13.2,2.5-33.4-.4-124.6-1.1-134.1-2.1,0-6.6-.6-8.7,0,.6,7.9,1.5,121.6,1.1,129.4,0,5.7,1.9,12.9-1.9,17.8-3.6,3.8-9.3-.8-9.8-4.7-1.3-12.3,1.3-130.7-1.1-142.6-2.3-.6-5.5-.6-8.1,0,0,0,1.3,128.2,1.5,136.4,0,4.2,0,9.8-5.1,11.5-9.5,4-6.6-14.6-7.2-19.3,0-7.6,0-120.5-.4-127.9h-7l-.6,128.4h0Z"/>
-        <!-- Left eye shape -->
+      <!-- Close / Weiter button -->
+      <a class="d-zu-btn" href="1_Haus_1.html" id="dlg-zu" role="button" aria-label="Weiter">
+        <path class="d-zu-shape"
+          d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+        <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
       </a>
-    </svg>
-  </div>
 
-  <!-- Dialog overlay -->
-  <div id="dialog-overlay" aria-hidden="true">
-    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-      xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true" tabindex="-1">
+      <!-- Dialog text -->
+      <text font-family="Lexend,sans-serif" font-size="40" fill="#000"
+        text-anchor="middle" x="800" y="720">Du musst auf dem Amt in Büro 146 etwas holen.</text>
+    </g>
 
-      <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
-
-      <g id="dlg-1" visibility="hidden" transform="translate(0, -256)">
-        <!-- Dialog bubble (same style as Bad_1) -->
-        <path class="d-feld"
-          d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
-
-        <!-- Close button -->
-        <a class="d-zu-btn" href="#" id="dlg-zu" role="button" aria-label="Dialog schliessen">
-          <path class="d-zu-shape"
-            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-          <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
-        </a>
-
-        <!-- Dialog text -->
-        <text id="dlg-text" font-family="Lexend,sans-serif" font-size="40" fill="#000"
-          text-anchor="middle" x="800" y="720" visibility="hidden"></text>
-      </g>
-    
-    </svg>
-  </div>
-
-  <script>
-    const overlay   = document.getElementById('dialog-overlay');
-    const dlgSvg    = document.getElementById('dialog-svg');
-    const dlgGroup  = document.getElementById('dlg-1');
-    const dlgText   = document.getElementById('dlg-text');
-    const wesenLink = document.getElementById('wesen-link');
-    const dlgZu     = document.getElementById('dlg-zu');
-
-    const MESSAGE = 'Du musst auf dem Amt in Büro 146 etwas holen.';
-
-    function openDialog() {
-      dlgText.textContent = MESSAGE;
-      dlgText.setAttribute('visibility', 'visible');
-      dlgGroup.setAttribute('visibility', 'visible');
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      dlgSvg.focus();
-    }
-
-    function closeDialog() {
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-      dlgGroup.setAttribute('visibility', 'hidden');
-      // Navigate away after closing
-      window.location.href = '1_Haus_1.html';
-    }
-
-    wesenLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      openDialog();
-    });
-
-    dlgZu.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeDialog();
-    });
-
-    // Keyboard: Enter/Space on close button
-    dlgZu.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        closeDialog();
-      }
-    });
-
-    // Escape closes dialog
-    document.addEventListener('keydown', function(e) {
-      if (!overlay.classList.contains('open')) return;
-      if (e.key === 'Escape') closeDialog();
-    });
-    
-  </script>
+  </svg>
 
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '0_Amt_H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
+      hilfeUrl: '0_Amt_H.html',
+      menuUrl:  'leves.html'
     };
   </script>
   <script src="icons.js"></script>

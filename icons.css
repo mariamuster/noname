@@ -113,3 +113,49 @@
       outline-offset: 3px;
       border-radius: 2px;
     }
+
+
+   .start-content {
+      position: absolute;
+      top: 12%;
+      left: 27%;
+      right: 25%;
+      bottom: 3%;
+      overflow-y: auto;
+      z-index: 10;
+      padding-right: 0.8em;
+    }
+
+     .h-content {
+      position: absolute;
+      top: 12%;
+      left: 35%;
+      right: 27%;
+      bottom: 3%;
+      overflow-y: auto;
+      z-index: 10;
+      padding-right: 0.8em;
+    }
+
+    /* ── shared text class ── */
+    .start-text {
+      font-family: 'Lexend', sans-serif;
+      color: #1a1a1a;
+      line-height: 1.4;
+    }
+
+    h1.start-text {
+      font-size: 40pt;
+      font-weight: 700;
+      margin: 0 0 0.6em 0;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      gap: 0.6em;
+      flex-wrap: wrap;
+    }
+
+    p.start-text {
+      font-size: 18pt;
+      margin: 0 0 2.8em 0;
+    }

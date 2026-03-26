@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Haus 3</title>
- <link rel="stylesheet" href="image.css">
+  <title>Bibi 5</title>
    <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
  
+    
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lex.ttf') format('truetype');
@@ -18,21 +18,10 @@
       font-family: 'Lex', sans-serif;
     }
 
-    body {
-      background: #000;
-    }
-
     svg {
-      border: 0cm solid rgba(0, 0, 0, 0.454);
+      border: 0px solid rgba(0, 0, 0, 0.454);
     }
-
-       a>path,
-    a>rect {
-      fill: transparent;
-      pointer-events: all;
-    }
-
-      a:hover>path,
+         a:hover>path,
 a:hover>rect {
   fill: rgba(65, 65, 65, 0.7) !important;
 }
@@ -42,40 +31,46 @@ a:focus {
 }a:focus>path, 
 a:focus>rect {
   stroke: black;
-  fill: rgba(255, 255, 255, 0.2);
+  fill: rgba(65, 65, 65, 0.2);      
   stroke-width: 3px;
   outline-offset: 4px;
-  filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
 }
+
+    a.d-zu-btn>path {
+      pointer-events: all;
+    }
+
+    .d-zu-btn {
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/1_Haus_5.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+    <img src="img/3_Bibi_5.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
       class="responsive-img" tabindex="0" />
 
-    <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      
-      <!-- Weiter -->
-      <a href="9_Keller_1.html" aria-label="Weiter nach links" role="button">
-        <path id="Door"
- d="M800,761s62,55.8,78,68.9c-14.6-.2-27.3.9-41.9,0-1,22.4,0,42.6,0,42.6h-71.8s-2.2-19.9,0-42.6c-13.6.3-28.7.4-42.4,0l78-68.9h.1Z"/>
-      <text class="room-label" x="47.5%" y="25%">Weiter</text>
-      </a>
- </svg> ← closes here
+    <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <a href="10_Wohnzimmer.html" id="wesen-link" aria-label="Weiter" role="button">
+  <path id="STROKE_2723813b-dec1-47cb-992f-cff34e48f481" data-name="STROKE 2723813b-dec1-47cb-992f-cff34e48f481" class="cls-2" d="M801.2,620.4s40.7,34.7,51.2,42.9c-9.3.1-17.5,1-26.9.7-.3,14.4.7,27.3.7,27.3l-46,1.2s-1.7-12.7-.6-27.3c-8.7.4-18.4.7-27.2.7l48.9-45.5h-.1Z"/>
+     </a>
 
-</body>
+    </svg>
+  </div>
+
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '9_Haus_3H.html',    // ← Dateinamen der Hilfeseite anpassen
+      hilfeUrl: '10_Bibi_5H.html',    // ← Dateinamen der Hilfeseite anpassen
       menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
     };
   </script>
   <script src="icons.js"></script>
+
+</body>
 
 </html>

@@ -133,6 +133,23 @@
       hilfeUrl: '2_Keller_2H.html',    // ← Dateinamen der Hilfeseite anpassen
       menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
     };
+
+    var zuCircle = zuButton.querySelector('.zu-circle');
+zuCircle.style.fill = '#fff'; // Startzustand explizit setzen
+
+zuButton.addEventListener('mouseover', function() {
+  zuCircle.style.fill = 'rgba(65,65,65,0.7)';
+});
+zuButton.addEventListener('mouseout', function() {
+  zuCircle.style.fill = '#fff';
+});
+zuButton.addEventListener('focus', function() {
+  zuCircle.style.fill = 'rgba(65,65,65,0.2)';
+});
+zuButton.addEventListener('blur', function() {
+  zuCircle.style.fill = '#fff';
+});
+
   </script>
   <script src="icons.js"></script>
 

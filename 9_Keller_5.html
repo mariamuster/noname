@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Keller 5</title>
-   <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
 
@@ -17,11 +17,8 @@
       font-family: 'Lex', sans-serif;
     }
 
-    svg {
-      border: none;
-    }
+    svg { border: none; }
 
-    /* Allgemeine hover/focus-Stile für Links */
     a:hover > path,
     a:hover > rect {
       fill: rgba(65, 65, 65, 0.7) !important;
@@ -37,190 +34,127 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    /* Wesen-Hitbereich: transparent, aber anklickbar */
-    #wesen-link > path {
-      fill: transparent;
-      pointer-events: all;
+    #bild-small { cursor: pointer; }
+    #bild-small > path { fill: transparent; pointer-events: all; }
+    #bild-small:hover > path { fill: rgba(65, 65, 65, 0.7); }
+    #bild-small:focus { outline: none; }
+    #bild-small:focus-visible > path {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    }
+.d-zu-btn text {
+  pointer-events: none;
+}
+.d-zu-btn:hover > path,
+.d-zu-btn:focus-visible > path {
+  fill: rgba(65, 65, 65, 0.7) !important;
+}
+    #zu-button { cursor: pointer; }
+    #zu-button:hover .zu-circle { fill: rgba(65, 65, 65, 0.7); }
+    #zu-button:focus { outline: none; }
+    #zu-button:focus-visible .zu-circle {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #wesen-link:hover > path,
-    #wesen-link:focus-visible > path {
-      fill: rgba(65, 65, 65, 0.7) !important;
-    }
-
-    /* Dialog */
-    #dialog-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-    }
-
-    #dialog-overlay.open {
-      display: block;
-    }
-
-    #dialog-svg {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    .d-weiter-btn,
-    .d-zu-btn {
-      cursor: pointer;
-    }
-
-    a.d-zu-btn > path {
-      pointer-events: all;
-    }
-
-    a.d-weiter-btn > path {
-      fill: transparent;
-      pointer-events: all;
-    }
-
-    a.d-weiter-btn:hover > path,
-    a.d-weiter-btn:focus-visible > path {
-      fill: rgba(65, 65, 65, 0.15) !important;
-    }
   </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/2_Keller_H.svg"
-      alt="Grundriss eines Kellers mit einem Wesen und einem Pfeil nach oben."
-      class="responsive-img" tabindex="0" />
+    <img src="img/9_Keller_5.svg"
+         alt="Grundriss eines Kellers mit einem Wesen und einem Bild."
+         class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-      
+      <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
+        <path d="M1066.5,355.4c30.4.1,62.9.6,93-.7,1-39.9-1.8-81.4,0-121.3-22.5-.8-143.1-1.9-169.6-1.1,2.9,40.5,0,123.1,0,123.1h9.4s45.5,1.1,67.2,0h0Z"/>
+      </g>
 
-      <!-- Pfeil — erscheint nach Dialog, führt zu Keller 6 -->
-      <a href="9_Keller_6.html" id="pfeil-link" aria-label="Weiter nach oben" role="button"
-        style="visibility:visible;pointer-events:all;">
-        <path
-          style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-          d="M338.4,212.2s84.1,75.6,105.9,93.6c-19.7,0-37.1,1.3-57,0-1.3,30.3,0,57.8,0,57.8h-97.4s-3-27.1,0-57.8c-18.4.4-39,.6-57.6,0l105.9-93.6h.2Z"/>
+      <g id="bild-panel" aria-hidden="true">
+        <path style="fill:#2323ff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
+              d="M764.7,711.3c129.3.4,267.5,2.6,395.5-3,4.3-169.7-7.7-346.2,0-515.8-95.7-3.4-608.5-8.1-721.2-4.7,12.3,172.2,0,523.5,0,523.5h40s193.5,4.7,285.8,0h0Z"/>
+        <text x="800" y="450"
+              text-anchor="middle" dominant-baseline="middle"
+              style="fill:#fff; font-family:'Lex',Lexend,sans-serif; font-size:72px;
+                     pointer-events:none; user-select:none;">Ein Hinweis.</text>
+        <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
+          <path class="zu-circle"
+                d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
+                style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+          <path d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4"
+                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+          <path d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3"
+                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+        </g>
+      </g>
+
+      <a id="weiter-link" href="9_Keller_6.html" aria-label="Weiter nach oben" role="button" aria-hidden="true">
+        <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
+              d="M338.4,212.2s84.1,75.6,105.9,93.6c-19.7,0-37.1,1.3-57,0-1.3,30.3,0,57.8,0,57.8h-97.4s-3-27.1,0-57.8c-18.4.4-39,.6-57.6,0l105.9-93.6h.2Z"/>
+        <text class="room-label" x="20%" y="17%">Weiter</text>
       </a>
-  
+
     </svg>
   </div>
 
-  
-
-  <script>
-    const DIALOGS = [
-      {
-        group: 'dlg-1',
-        weiterId: 'dlg1-weiter',
-        lines: ['dlg1-line1'],
-        endX: { end: 1300, start: 300 },
-        conversation: [
-          { text: 'Weisst du wo Büro 146 ist?', align: 'end' },
-          { text: 'Probiers mal oben.', align: 'start' },
-          { text: 'Ok, danke.', align: 'end' },
-        ],
-      },
-    ];
-
-    let convStep = 0;
-    let openerLink = null;
-
-    const overlay = document.getElementById('dialog-overlay');
-    const dlgSvg = document.getElementById('dialog-svg');
-
-    function renderLines(def) {
-      const entry = def.conversation[convStep - 1];
-      const lineEl = document.getElementById(def.lines[0]);
-      lineEl.textContent = entry.text;
-      lineEl.setAttribute('text-anchor', entry.align === 'end' ? 'end' : 'start');
-      lineEl.setAttribute('x', entry.align === 'end' ? def.endX.end : def.endX.start);
-      lineEl.setAttribute('visibility', 'visible');
-
-      const w = document.getElementById(def.weiterId);
-      if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
-    }
-
-    function openDialog(opener) {
-      openerLink = opener;
-      convStep = 1;
-      const def = DIALOGS[0];
-      document.getElementById(def.group).setAttribute('visibility', 'visible');
-      renderLines(def);
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      dlgSvg.focus();
-    }
-
-    function closeDialog() {
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
-      convStep = 0;
-      if (openerLink) openerLink.focus();
-      // Pfeil einblenden
-      const pfeil = document.getElementById('pfeil-link');
-      pfeil.style.visibility = 'visible';
-      pfeil.style.pointerEvents = 'auto';
-    }
-
-    function advanceConversation() {
-      const def = DIALOGS[0];
-      if (convStep < def.conversation.length) {
-        convStep++;
-        renderLines(def);
-      } else {
-        closeDialog();
-      }
-    }
-
-    document.getElementById('wesen-link').addEventListener('click', function (e) {
-      e.preventDefault();
-      openDialog(this);
-    });
-
-    dlgSvg.addEventListener('click', function (e) {
-      if (e.target.closest('.d-weiter-btn')) { e.preventDefault(); advanceConversation(); return; }
-      if (e.target.closest('.d-zu-btn')) { e.preventDefault(); closeDialog(); return; }
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (!overlay.classList.contains('open')) return;
-      if (e.key === 'Escape') { closeDialog(); return; }
-      if (e.key === 'Tab') {
-        const focusable = Array.from(dlgSvg.querySelectorAll('a[role="button"]')).filter(el => {
-          let p = el.parentElement;
-          while (p && p !== dlgSvg) {
-            if (p.getAttribute('visibility') === 'hidden') return false;
-            p = p.parentElement;
-          }
-          return true;
-        });
-        if (!focusable.length) { e.preventDefault(); return; }
-        const first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
-      }
-    });
-  </script>
-  <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
-  ════════════════════════════════════════════════════════════ -->
   <style>
-    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
     :root { --wcag-farbe: rgb(35, 35, 255); }
   </style>
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '9_Keller_5H.html',      // Hilfeseite dieses Levels
-      menuUrl:  'leves.html',            // Levelübersicht
+      hilfeUrl: '9_Keller_5H.html',
+      menuUrl:  'leves.html'
     };
   </script>
   <script src="icons.js"></script>
 
-</body>
+  <script>
+    (function () {
+      var bildSmall  = document.getElementById('bild-small');
+      var bildPanel  = document.getElementById('bild-panel');
+      var zuButton   = document.getElementById('zu-button');
+      var weiterLink = document.getElementById('weiter-link');
 
+      bildPanel.style.display  = 'none';
+      weiterLink.style.display = 'none';
+      weiterLink.setAttribute('tabindex', '-1');
+      weiterLink.setAttribute('aria-hidden', 'true');
+
+      function openBild() {
+        bildSmall.style.display = 'none';
+        bildPanel.style.display = '';
+        bildPanel.setAttribute('aria-hidden', 'false');
+        zuButton.focus();
+      }
+
+      function closeBild() {
+        bildPanel.style.display  = 'none';
+        bildPanel.setAttribute('aria-hidden', 'true');
+        bildSmall.style.display  = '';
+        weiterLink.style.display = '';
+        weiterLink.setAttribute('tabindex', '0');
+        weiterLink.setAttribute('aria-hidden', 'false');
+        weiterLink.focus();
+      }
+
+      bildSmall.addEventListener('click', openBild);
+      bildSmall.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBild(); }
+      });
+      zuButton.addEventListener('click', closeBild);
+      zuButton.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeBild(); }
+      });
+
+      
+    }());
+  </script>
+
+</body>
 </html>

@@ -90,23 +90,16 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/8_Warten_3.svg"
+    <img src="img/8_Warten_3.2.svg"
       alt="Grundriss eines Raums mit einem Wesen und einem Pfeil."
       class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-      <!-- Wesen — öffnet Dialog -->
-      <a href="#" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
-        <!-- Wesen-Körper -->
 
-  <path class="cls-1" d="M965.4,449.6c-1.27,6.28-1.56,32.94-1.52,64.29-5.28.03-10.56.06-15.85.08.5-29.55.99-54.12.77-60.17-3.3-1.1-8-1.4-11.6,0,0,4.42.12,30,.23,60.2-5.24.01-10.49.01-15.73-.01,0-30.09.01-55.55-.3-60.39-2.8,0-8.6-.8-11.3,0,.32,4.06.68,29.97.98,60.35-4.94-.04-9.89-.09-14.83-.16.05-29.71-.2-54.45-1.35-60.19-3-.8-7.2-.8-10.5,0v7.5c.79,3.89,1.23,25.7,1.48,52.51-5.24-.11-10.48-.24-15.72-.4-.08-29.77-.22-55.02-.46-58.81h-9.1s-.1,26.51-.27,58.46c-5.02-.18-10.03-.41-15.04-.67.22-23.11.44-40.85-.09-44.09.8-12.2-3-23.8-7.5-35.1-5.5-13.8-10.5-27.9-13.8-42.3-7.5-15.2-15.2-34.6-1.7-48.9,10.8-11.6,26.3-18.5,38.7-28.2,15.2-11.9,32.4-24.9,53.6-18.5,23,5,38.4,23.8,56.7,36.2,3.46,1.98,6.61,4.16,9.4,6.53-3.13,16.15.1,33.35.1,50.07.4,6.42.6,12.78.64,19.1-5.21,14.22-11.05,28.27-15.94,42.6Z"/>
-    
-      </a>
-
-      <!-- Pfeil — erscheint nach Dialog, führt zu Bibi 5 -->
+      <!-- Pfeil —  -->
       <a href="13_Haus_1.html" id="pfeil-link" aria-label="Weiter" role="button"
-        style="visibility:hidden;pointer-events:none;">
+        style="visibility:visible;pointer-events:all;">
         <path
           style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z"/>
@@ -115,173 +108,23 @@
     </svg>
   </div>
 
-  <!-- Dialog-Overlay -->
-  <div id="dialog-overlay" aria-hidden="true">
-    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-      xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true" tabindex="-1">
-      <defs>
-        <style>
-          .d-feld {
-            fill: #fff;
-            stroke: #1d1e1c;
-            stroke-width: 3px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-          }
-
-          .d-zu-shape {
-            fill: #fff;
-            stroke: #000;
-            stroke-width: 3px;
-            stroke-miterlimit: 10;
-          }
-
-          .d-btn-shape {
-            fill: #fff;
-            stroke: #1d1e1c;
-            stroke-width: 3px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-          }
-        </style>
-      </defs>
-
-      <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
-
-      <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
-        <!-- Dialogblase -->
-        <path class="d-feld"
-          d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
-
-        <!-- Schliessen-Button -->
-        <a class="d-zu-btn" href="#" id="dlg1-zu" role="button" aria-label="Dialog schliessen">
-          <path class="d-zu-shape"
-            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-          <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
-        </a>
-
-        <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter"
-          visibility="hidden">
-          <path class="d-btn-shape"
-            d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle"
-            x="1300" y="820">Weiter</text>
-        </a>
-
-        <!-- Dialogtext -->
-        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000"
-          visibility="hidden" x="300" y="720"></text>
-      </g>
-    </svg>
-  </div>
-
-  <script>
-    const DIALOGS = [
-      {
-        group: 'dlg-1',
-        weiterId: 'dlg1-weiter',
-        lines: ['dlg1-line1'],
-        endX: { end: 1300, start: 300 },
-        conversation: [
-          { text: 'Ich habe die Hinweise jetzt gesammelt.', align: 'end' },
-          { text: 'Welche Hinweise?', align: 'start' },
-           { text: 'Die Hinweise für Büro 146?', align: 'end' },
-          { text: 'Achso, das hat jetzt geschlossen.', align: 'start' },
-        ],
-      },
-    ];
-
-    let convStep = 0;
-    let openerLink = null;
-
-    const overlay = document.getElementById('dialog-overlay');
-    const dlgSvg = document.getElementById('dialog-svg');
-
-    function renderLines(def) {
-      const entry = def.conversation[convStep - 1];
-      const lineEl = document.getElementById(def.lines[0]);
-      lineEl.textContent = entry.text;
-      lineEl.setAttribute('text-anchor', entry.align === 'end' ? 'end' : 'start');
-      lineEl.setAttribute('x', entry.align === 'end' ? def.endX.end : def.endX.start);
-      lineEl.setAttribute('visibility', 'visible');
-
-      const w = document.getElementById(def.weiterId);
-      if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
-    }
-
-    function openDialog(opener) {
-      openerLink = opener;
-      convStep = 1;
-      const def = DIALOGS[0];
-      document.getElementById(def.group).setAttribute('visibility', 'visible');
-      renderLines(def);
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      dlgSvg.focus();
-    }
-
-    function closeDialog() {
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
-      convStep = 0;
-      if (openerLink) openerLink.focus();
-      // Pfeil einblenden
-      const pfeil = document.getElementById('pfeil-link');
-      pfeil.style.visibility = 'visible';
-      pfeil.style.pointerEvents = 'auto';
-    }
-
-    function advanceConversation() {
-      const def = DIALOGS[0];
-      if (convStep < def.conversation.length) {
-        convStep++;
-        renderLines(def);
-      } else {
-        closeDialog();
-      }
-    }
-
-    document.getElementById('wesen-link').addEventListener('click', function (e) {
-      e.preventDefault();
-      openDialog(this);
-    });
-
-    dlgSvg.addEventListener('click', function (e) {
-      if (e.target.closest('.d-weiter-btn')) { e.preventDefault(); advanceConversation(); return; }
-      if (e.target.closest('.d-zu-btn')) { e.preventDefault(); closeDialog(); return; }
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (!overlay.classList.contains('open')) return;
-      if (e.key === 'Escape') { closeDialog(); return; }
-      if (e.key === 'Tab') {
-        const focusable = Array.from(dlgSvg.querySelectorAll('a[role="button"]')).filter(el => {
-          let p = el.parentElement;
-          while (p && p !== dlgSvg) {
-            if (p.getAttribute('visibility') === 'hidden') return false;
-            p = p.parentElement;
-          }
-          return true;
-        });
-        if (!focusable.length) { e.preventDefault(); return; }
-        const first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
-      }
-    });
-  </script>
 
 
 
         <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
+   <style>
+    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
+    :root { --wcag-farbe: #ff0; }
+  </style>
+  
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '12_Warten_2H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
+      menuUrl:  'leves.html',  // ← Dateinamen der Levelübersicht anpassen
+      wcagUrl:  '12_Warten_2W.html'       // ← gelber Button → zurück zu Keller 4
+
     };
   </script>
   <script src="icons.js"></script>

@@ -25,7 +25,7 @@
 
   var cfg      = window.LEVEL_CONFIG || {};
   var hilfeUrl = cfg.hilfeUrl || null;
-  var menuUrl  = cfg.menuUrl  || 'leveluebersicht.html';
+  var menuUrl  = cfg.menuUrl  || 'levels.html';
   var wcagUrl  = cfg.wcagUrl  || null;   // optional: wenn gesetzt → Icon 1 aktiv
 
   /* ═══════════════════════════════════════════════════════════════════

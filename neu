@@ -8,7 +8,7 @@
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '2_Keller_5H.html',      // Hilfeseite dieses Levels
-      menuUrl:  'leves.html',            // Levelübersicht
+      menuUrl:  'levels.html',            // Levelübersicht
       wcagUrl:  '2_Keller_5W.html'       // ← gelber Button → zurück zu Keller 4
     };
   </script>

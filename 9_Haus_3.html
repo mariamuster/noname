@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Lex', sans-serif;
-      background: #000;
+      background: #ffffff;
       margin: 0;
       padding: 0;
     }
@@ -45,8 +45,8 @@
     }
 
     #bild-small:hover path {
-      opacity: 0.8;
-      filter: drop-shadow(0 0 10px rgba(100, 140, 255, 0.9));
+     fill: rgba(64, 64, 64, 0.7);
+     
     }
 
     #bild-small:focus {
@@ -54,7 +54,7 @@
     }
 
     #bild-small:focus path {
-      filter: drop-shadow(0 0 8px white) drop-shadow(0 0 8px white);
+      filter: drop-shadow(0 0 8px rgb(0, 0, 0)) drop-shadow(0 0 8px rgb(0, 0, 0));
       stroke-width: 5px;
     }
 
@@ -68,7 +68,7 @@
     }
 
     #zu-button:hover .zu-circle {
-      fill: #ddd;
+      fill: rgba(64, 64, 64, 0.7);
     }
 
     #zu-button:focus {
@@ -76,7 +76,7 @@
     }
 
     #zu-button:focus .zu-circle {
-      filter: drop-shadow(0 0 6px white) drop-shadow(0 0 6px white);
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
     /* ── Weiter (arrow) link interactive states ──────────────────── */
@@ -85,15 +85,14 @@
     }
 
     #weiter-link:hover .pfeil-shape {
-      filter: brightness(1.4) 
-    }
+fill: rgba(64, 64, 64, 0.7);    }
 
     #weiter-link:focus {
       outline: none;
     }
 
     #weiter-link:focus .pfeil-shape {
-      filter: drop-shadow(0 0 8px white) drop-shadow(0 0 8px white);
+      filter: drop-shadow(0 0 8px rgb(0, 0, 0)) drop-shadow(0 0 8px rgb(0, 0, 0));
     }
 
   </style>
@@ -117,28 +116,28 @@
       <defs>
         <style>
           /* Copied from 9_Haus_3.svg – room structure classes */
-          .rp   { fill: #000; stroke: #fff;
+          .rp   { fill: #ffffff; stroke: #000000;
                   stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px; }
           .rsk  { fill: none; stroke: #000;
                   stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px; }
-          .rwl  { fill: none; stroke: #fff;
+          .rwl  { fill: none; stroke: #000000;
                   stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px; }
           .door { fill: none; }
 
           /* Bild / Pfeil shared fills */
           .bild-fill {
-            fill: #2323ff; stroke: #fff;
+            fill: #2323ff; stroke: #000000;
             stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;
           }
           .pfeil-fill {
-            fill: aqua; stroke: #fff;
+            fill: aqua; stroke: #000000;
             stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;
           }
         </style>
       </defs>
 
       <!-- Black background ─────────────────────────────────────── -->
-      <rect width="1600" height="900" fill="#000"/>
+      <rect width="1600" height="900" fill="white"/>
 
       <!-- ══════════ ROOM STRUCTURE (from 9_Haus_3.svg) ══════════ -->
       <g id="room-structure" aria-hidden="true">
@@ -227,7 +226,7 @@
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '9_Haus_3H.html',
-      menuUrl:  'leves.html'
+      menuUrl:  'levels.html'
     };
   </script>
   <script src="icons.js"></script>

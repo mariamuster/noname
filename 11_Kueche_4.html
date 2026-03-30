@@ -3,65 +3,213 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Küche 4</title>
-    <link rel="stylesheet" href="image.css">
+  <title>Keller 8</title>
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
-
 </head>
 <style>
-
-
   svg {
     border: none;
   }
 
   a:hover>path,
   a:hover>rect {
-    fill: rgba(65, 65, 65, 0.7) !important;
+    fill: rgba(65, 65, 65, 0.8) !important;
   }
 
   a:focus {
     outline: none;
   }
 
-  a:focus-visible>path,
-  a:focus-visible>rect {
+  a:focus>path,
+  a:focus>rect {
     stroke: black;
     fill: rgba(65, 65, 65, 0.2);
     stroke-width: 3px;
     outline-offset: 4px;
-    filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    filter: drop-shadow(0 0 0px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+  }
+
+  /* Panel-Overlays */
+  .panel-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  .panel-overlay.aktiv {
+    display: block;
+  }
+
+  .panel-overlay svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Pfeil zunächst versteckt */
+  #pfeil-link {
+    display: none;
+  }
+
+  #pfeil-link.sichtbar {
+    display: inline;
+  }
+
+  .text-box {
+    font-family: 'Lex', sans-serif;
+    font-size: 60px;
+    padding: 0px;
+    width: fit-content;
+    background: transparent;
+    color: #fff;
   }
 </style>
-</head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/5_Kueche_G.svg" alt="Gang mit leuchender Lampe, blauem Bild links und einen türkisen Pfeil, der nach vorne Zeigt."
+    <img src="img/11_Kueche_G.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
       class="responsive-img" tabindex="0" />
+
+    <!-- Raum-Overlay: klickbare Bild-Bereiche und Pfeil -->
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="12_Bad_3.html" aria-label="Weiter vor" role="button">
-        <path id="STROKE_2723813b-dec1-47cb-992f-cff34e48f481" data-name="STROKE 2723813b-dec1-47cb-992f-cff34e48f481"
-          class="cls-2"
-          d="M801.1,770.81s50.22,45.15,63.14,55.77c-11.83-.12-22.09.72-33.92,0-.85,18.11,0,34.53,0,34.53h-58.07s-1.81-16.06,0-34.53c-10.99.24-23.18.36-34.29,0l63.14-55.77h0Z" />
-        <text class="room-label" x="47.5%" y="33%">Weiter</text>
+
+      <!-- Bild 1 (rechts) -->
+      <a id="bild1-btn" href="javascript:void(0)" aria-label="Bild 1 öffnen" role="button">
+        <path pointer-events="all"
+ d="M1113.5,365.5c-1,38.2,4.6,67.9,4.1,105.8.3,32.1-2,53.1-3.9,84.1-1.6,36.3-2.1,78.3-1.3,113.7,26.1,15.1,60.3,28.5,85.9,45.3,11.2,6.9,27.5,14.6,39,20.3,9,4.9,22.9,15.9,30.3,20.8,4-98.9,2.6-199.8,2.8-298.9-.3-26.2-3.3-55.2-3.3-81.8.4-33.8-.8-72.3,3.1-105.4-20.9,6.9-53.4,23-74.6,31.9-26.5,10-56.8,21.2-81.8,34.2,0,0-.3,19.9-.4,30.1h.1v-.1Z"/>
+     </a>
+
+      <!-- Bild 2 (links) -->
+      <a id="bild2-btn" href="javascript:void(0)" aria-label="Bild 2 öffnen" role="button">
+        <path pointer-events="all"
+ d="M488.5,664.7c-12.4,8.6-26.9,13.7-40.8,20.6-12.9,6-33.3,17.3-45.2,24.7-11.2,6.9-27.5,14.6-39,20.3-9.4,5.5-22.2,14.8-29.8,21.1-5.3-98.9-2.7-200-3.3-299.1.3-26.2,3.3-55.2,3.3-81.8-.4-33.8.8-72.3-3.1-105.4,22.8,6.4,51.9,22.9,74.6,31.9,26.6,10.1,56.7,21.2,81.8,34.2,0,7.3.8,44.8.2,55.8-1.1,28.2-4.4,51.2-3.9,80-.3,32.1,2,53.1,3.9,84.1,1.6,36.3,2.1,78.3,1.3,113.7h0v-.1Z"/>
+     </a>
+
+      <!-- Pfeil: erscheint erst nach beiden Panels -->
+      <a id="pfeil-link" href="12_Bad_3.html" aria-label="Weiter" role="button">
+        <path style="fill: aqua;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+ d="M801.6,771.3s50.2,45.2,63.1,55.8c-11.8,0-22.1.7-33.9,0-.8,18.1,0,34.5,0,34.5h-58.1s-1.8-16.1,0-34.5c-11,.2-23.2.4-34.3,0l63.1-55.8h.1Z"/>
+  />
       </a>
 
-
-
     </svg>
+
+    <!-- Panel 1 (für Bild 1) -->
+    <div id="panel1" class="panel-overlay">
+      <svg viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+
+        <!-- Bild_1-Form aus 9_Keller_8H.svg -->
+        <path fill="#2323ff" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+ d="M551.26,180.45c-3.23,76.18,14.74,135.5,13.13,211.11.97,64.01-6.46,105.99-12.48,167.8-5.17,72.45-6.78,156.2-4.2,226.92h498.79c12.81-197.31,8.39-226.25,9.04-424.05-.97-52.32.22-105.8.22-158.89,2.26-31.34-.86-82.7-.86-82.7,0,0-180.79,6.52-239.76,0-64.68-7.19-181.11-2.68-262.9,0,0,0-.97,39.67-1.29,60.09h.32v-.19h0v-.1Z"/>
+  
+
+        <!-- Zu-Button (X im Oval) -->
+        <a id="zu1" href="javascript:void(0)" aria-label="Schliessen" role="button">
+          <path style="fill: white;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z" />
+          <path style="fill: none;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4" />
+          <path style="fill: none;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3" />
+
+          <foreignObject x="610" y="200" width="400" height="560">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
+              Sieben Buchstaben, die ein Wort bilden. </div>
+          </foreignObject>
+        </a>
+      </svg>
+    </div>
+
+    <!-- Panel 2 (für Bild 2) -->
+    <div id="panel2" class="panel-overlay">
+      <svg viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Bild_2-Form aus 9_Keller_8H.svg -->
+        <path fill="#2323ff" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+ d="M1056.5,785.4s-98.9,2-131.4,0-109.2,0-145.6,0-94.5,1.8-125.6,0c-23.8-1.4-96,0-96,0-17.1-135.5-8.7-273.9-10.6-409.6,1-35.9-.4-73.5-.4-109.9-1.3-46.3,1-146.5,1-146.5h240.3s220.3-5.9,263.5,0c0,10,2.6,151.9.6,167-3.5,38.6-6.1,182.3,0,224.8,5.2,49.7,4.2,274.3,4.2,274.3h0v-.1Z"/>
+      
+       
+          <!-- Zu-Button (X im Oval) -->
+        <a id="zu2" href="javascript:void(0)" aria-label="Schliessen" role="button">
+          <path style="fill: white;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z" />
+          <path style="fill: none;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4" />
+          <path style="fill: none;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3" />
+
+
+          <foreignObject x="610" y="200" width="400" height="560">
+            <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
+             Sieben Buchstaben, die ein Wort bilden. </div>
+          </foreignObject>
+
+
+        </a>
+      </svg>
+    </div>
+
   </div>
+
+  <script>
+    var gesehen = { panel1: false, panel2: false };
+
+    function oeffnePanel(panelId, zuId) {
+      document.getElementById(panelId).classList.add('aktiv');
+    }
+
+    function schliessePanel(panelId) {
+      document.getElementById(panelId).classList.remove('aktiv');
+      gesehen[panelId] = true;
+      if (gesehen.panel1 && gesehen.panel2) {
+        document.getElementById('pfeil-link').classList.add('sichtbar');
+      }
+    }
+
+    // Bild 1
+    var bild1Btn = document.getElementById('bild1-btn');
+    bild1Btn.addEventListener('click', function () { oeffnePanel('panel1', 'zu1'); });
+    bild1Btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); oeffnePanel('panel1', 'zu1'); }
+    });
+
+    // Bild 2
+    var bild2Btn = document.getElementById('bild2-btn');
+    bild2Btn.addEventListener('click', function () { oeffnePanel('panel2', 'zu2'); });
+    bild2Btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); oeffnePanel('panel2', 'zu2'); }
+    });
+
+    // Zu 1
+    var zu1 = document.getElementById('zu1');
+    zu1.addEventListener('click', function () { schliessePanel('panel1'); });
+    zu1.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); schliessePanel('panel1'); }
+    });
+
+    // Zu 2
+    var zu2 = document.getElementById('zu2');
+    zu2.addEventListener('click', function () { schliessePanel('panel2'); });
+    zu2.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); schliessePanel('panel2'); }
+    });
+  </script>
+
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '11_Kueche_4H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'leves.html'  // ← Dateinamen der Levelübersicht anpassen
+      hilfeUrl: '2_Keller_8H.html',
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>
-
 
 </body>
 

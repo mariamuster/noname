@@ -113,7 +113,7 @@ Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend.
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '10_Bibi_5H.html',
-      menuUrl:  'leves.html'
+      menuUrl:  'levels.html'
     };
   </script>
   <script src="icons.js"></script>

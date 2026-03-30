@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>levels</title>
+  <style>
+    @font-face {
+      font-family: "Lexend";
+      src: url("Fonts/Lexend-Regular.woff2") format("woff2"),
+           url("Fonts/Lexend-Regular.woff") format("woff"),
+           url("Fonts/Lexend-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+       body {
+      margin: 0;
+      min-height: 100vh;
+      background: #ffffff;
+      color: #000000;
+      font-family: "Lexend", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 20px;
+      box-sizing: border-box;
+    }
+
+   .levels-heading {
+      margin: 0 0 40px 0;
+      font-size: 40pt;
+      font-weight: 600;
+      text-transform: lowercase;
+      text-align: center;
+    }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px 6px;           /* minimaler Abstand zwischen Bildern */
+      justify-content: center;
+      max-width: 900px;       /* verhindert „zu breit“, lässt Leerraum links/rechts */
+      width: 100%;
+    }
+
+    .level-card {
+      margin: 0;
+    }
+
+    .level-link {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-width: 280px;
+      max-height: 170px;
+      overflow: hidden;
+      position: relative;
+      outline: 3px solid black;        /* 3px schwarze Outline um jedes Bild */
+      outline-offset: -3px;             /* wirkt direkt am Rand des Bildes */
+      transition: transform 0.2s ease, outline-color 0.2s ease;
+    }
+
+    .level-link img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .level-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(65, 65, 65, 0); /* unsichtbar in ruhigem Zustand */
+      transition: background 0.2s ease;
+      pointer-events: none;
+      border-radius: 10px;
+    }
+
+    .level-link:hover::before {
+      background: rgba(65, 65, 65, 0.7); /* 70% dunkel über dem Bild */
+    }
+
+    .level-link:focus,
+    .level-link:focus-visible {
+      outline: 3px solid black;
+      outline-offset: 4px;
+      background: rgba(65, 65, 65, 0.2);
+      filter: drop-shadow(0 0 6px rgb(0,0,0)) drop-shadow(0 0 6px rgb(0,0,0));
+    }
+
+    .level-name {
+      text-align: center;
+      font-size: 18pt;
+      margin: 4px 0 0 0;
+      line-height: 1.1;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="levels-heading">levels</h1>
+
+  <section class="levels-grid">
+    <figure class="level-card">
+      <a class="level-link" href="1_Haus_1.html" aria-label="Haus">
+        <img src="img/1_Haus_1.svg" alt="Haus" />
+      </a>
+      <figcaption class="level-name">Haus</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="2_Keller_1.html" aria-label="Keller">
+        <img src="img/2_Treppe_down.svg" alt="Keller" />
+      </a>
+      <figcaption class="level-name">Keller</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="3_Bibi_1.html" aria-label="Bibliothek">
+        <img src="img/3_Bibi_1.svg" alt="Bibliothek" />
+      </a>
+      <figcaption class="level-name">Bibliothek</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="4_Wohnzimmer.html" aria-label="Wohnzimmer">
+        <img src="img/10_Wohnzimmer.svg" alt="Wohnzimmer" />
+      </a>
+      <figcaption class="level-name">Wohnzimmer</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="5_Kueche_1.html" aria-label="Küche">
+        <img src="img/5_Kueche_1.svg" alt="Küche" />
+      </a>
+      <figcaption class="level-name">Küche</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="6_Bad_1.html" aria-label="Bad">
+        <img src="img/6_Bad_1.svg" alt="Bad" />
+      </a>
+      <figcaption class="level-name">Bad</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="7_Lift_1.html" aria-label="Lift">
+        <img src="img/7_Lift_1.svg" alt="Lift" />
+      </a>
+      <figcaption class="level-name">Lift</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="8_Warten_1.html" aria-label="Wartezimmer">
+        <img src="img/8_Warten_1.svg" alt="Wartezimmer" />
+      </a>
+      <figcaption class="level-name">Wartezimmer</figcaption>
+    </figure>
+
+    <figure class="level-card">
+      <a class="level-link" href="9_Haus_3.html" aria-label="Hinweise">
+        <img src="img/9_Haus_3.svg" alt="Hinweise" />
+      </a>
+      <figcaption class="level-name">Hinweise</figcaption>
+    </figure>
+  </section>
+</body>
+</html>

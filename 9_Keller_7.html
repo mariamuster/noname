@@ -3,11 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Keller 7</title>
+  <title>Hinweise Keller</title>
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lex.ttf') format('truetype');
@@ -17,16 +16,21 @@
       font-family: 'Lex', sans-serif;
     }
 
-    svg { border: none; }
+    svg {
+      border: none;
+    }
 
-    a:hover > path,
-    a:hover > rect {
+    a:hover>path,
+    a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus { outline: none; }
-    a:focus-visible > path,
-    a:focus-visible > rect {
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
@@ -34,20 +38,42 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #bild-small { cursor: pointer; }
-    #bild-small > path { fill: transparent; pointer-events: all; }
-    #bild-small:hover > path { fill: rgba(65, 65, 65, 0.7); }
-    #bild-small:focus { outline: none; }
-    #bild-small:focus-visible > path {
+    #bild-small {
+      cursor: pointer;
+    }
+
+    #bild-small>path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    #bild-small:hover>path {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    #bild-small:focus {
+      outline: none;
+    }
+
+    #bild-small:focus-visible>path {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #zu-button { cursor: pointer; }
-    #zu-button:hover .zu-circle { fill: rgba(65, 65, 65, 0.7); }
-    #zu-button:focus { outline: none; }
+    #zu-button {
+      cursor: pointer;
+    }
+
+    #zu-button:hover .zu-circle {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    #zu-button:focus {
+      outline: none;
+    }
+
     #zu-button:focus-visible .zu-circle {
       stroke: rgb(0, 0, 0);
       fill: rgba(65, 65, 65, 0.7);
@@ -55,55 +81,54 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-        .text-box {
-  font-family: 'Lex', sans-serif;
-  font-size: 72px;
-  padding: 0px;
-  width: fit-content;
-  background: transparent;
-  color: #fff;
-}
-
+    .text-box {
+      font-family: 'Lex', sans-serif;
+      font-size: 72px;
+      padding: 0px;
+      width: fit-content;
+      background: transparent;
+      color: #fff;
+    }
   </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/9_Keller_7.svg"
-         alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
-         class="responsive-img" tabindex="0" />
+    <img src="img/9_Keller_7.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+      class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
       <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
-        <path d="M1079.8,363.1c-.4,57.2-1.7,118.5,1.8,175.3,103,1.9,210.2-3.4,313.2,0,2-42.4,5-269.6,3-319.6-104.6,5.4-318,0-318,0v17.6s-3,85.8,0,126.6h0Z"/>
+        <path
+          d="M1079.8,363.1c-.4,57.2-1.7,118.5,1.8,175.3,103,1.9,210.2-3.4,313.2,0,2-42.4,5-269.6,3-319.6-104.6,5.4-318,0-318,0v17.6s-3,85.8,0,126.6h0Z" />
       </g>
 
       <g id="bild-panel" aria-hidden="true">
         <path style="fill:#2323ff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
-              d="M459,416.2c-.9,122.9-3.7,254.7,3.9,376.7,221.4,4.1,451.7-7.3,673.1,0,4.3-91.1,10.7-579.4,6.4-686.8-224.8,11.6-683.4,0-683.4,0v37.8s-6.4,184.4,0,272.1v.2Z"/>
-      
-             <foreignObject x="520" y="160" width="550" height="560">
-  <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
-    Eine quadratische Fläche, mit einem Wort in der Mitte.
+          d="M459,416.2c-.9,122.9-3.7,254.7,3.9,376.7,221.4,4.1,451.7-7.3,673.1,0,4.3-91.1,10.7-579.4,6.4-686.8-224.8,11.6-683.4,0-683.4,0v37.8s-6.4,184.4,0,272.1v.2Z" />
 
-  </div>
-</foreignObject>
+        <foreignObject x="520" y="160" width="550" height="560">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
+            Eine quadratische Fläche, mit einem Wort in der Mitte.
 
-                     <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
+          </div>
+        </foreignObject>
+
+        <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
           <path class="zu-circle"
-                d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
-                style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
+            style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
           <path d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4"
-                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
           <path d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3"
-                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
         </g>
       </g>
 
       <a id="weiter-link" href="9_Keller_8.html" aria-label="Weiter nach links" role="button" aria-hidden="true">
         <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
-              d="M26.9,449.9s77.2-85.9,95.6-108.1c-.2,20.1,1.3,37.8,0,58.2,30.9,1.3,59,0,59,0v99.5s-27.7,3-59,0c.4,18.8.6,39.8,0,58.8l-95.6-108.1h0v-.2h0Z"/>
+          d="M26.9,449.9s77.2-85.9,95.6-108.1c-.2,20.1,1.3,37.8,0,58.2,30.9,1.3,59,0,59,0v99.5s-27.7,3-59,0c.4,18.8.6,39.8,0,58.8l-95.6-108.1h0v-.2h0Z" />
         <text class="room-label" x="9%" y="50%">Weiter</text>
       </a>
 
@@ -113,19 +138,19 @@
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '9_Keller_7H.html',
-      menuUrl:  'levels.html'
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>
 
   <script>
     (function () {
-      var bildSmall  = document.getElementById('bild-small');
-      var bildPanel  = document.getElementById('bild-panel');
-      var zuButton   = document.getElementById('zu-button');
+      var bildSmall = document.getElementById('bild-small');
+      var bildPanel = document.getElementById('bild-panel');
+      var zuButton = document.getElementById('zu-button');
       var weiterLink = document.getElementById('weiter-link');
 
-      bildPanel.style.display  = 'none';
+      bildPanel.style.display = 'none';
       weiterLink.style.display = 'none';
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
@@ -138,9 +163,9 @@
       }
 
       function closeBild() {
-        bildPanel.style.display  = 'none';
+        bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
-        bildSmall.style.display  = '';
+        bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');
         weiterLink.setAttribute('aria-hidden', 'false');
@@ -159,4 +184,5 @@
   </script>
 
 </body>
+
 </html>

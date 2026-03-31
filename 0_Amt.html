@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <title>Amt</title>
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-
     @font-face {
       font-family: 'Lexend';
       src: url('fonts/Lexend-Regular.ttf') format('truetype');
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -61,21 +63,26 @@
       pointer-events: all;
     }
 
-    .d-zu-btn:focus { outline: none; }
+    .d-zu-btn:focus {
+      outline: none;
+    }
+
     .d-zu-btn:focus-visible .d-zu-shape {
       stroke: #000;
       filter: drop-shadow(0 0 6px #000);
     }
+
     .d-zu-btn:hover .d-zu-shape {
       fill: rgba(65, 65, 65, 0.12);
     }
   </style>
 </head>
+
 <body>
 
   <!-- Dialog (always visible) -->
-  <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-    xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true">
+  <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+    role="dialog" aria-modal="true">
 
     <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
@@ -92,8 +99,8 @@
       </a>
 
       <!-- Dialog text -->
-      <text font-family="Lexend,sans-serif" font-size="40" fill="#000"
-        text-anchor="middle" x="800" y="720">Du musst auf dem Amt in Büro 146 etwas holen.</text>
+      <text font-family="Lexend,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="800" y="720">Du musst auf
+        dem Amt in Büro 146 etwas holen.</text>
     </g>
 
   </svg>
@@ -104,10 +111,11 @@
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '0_Amt_H.html',
-      menuUrl:  'levels.html'
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>
 
 </body>
+
 </html>

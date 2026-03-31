@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Bad 3</title>
-   <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-    
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lexend_Regular.ttf') format('truetype');
@@ -22,20 +20,23 @@
       border: 0cm solid rgba(0, 0, 0, 0.454);
     }
 
-                 a:hover>path,
-a:hover>rect {
-  fill: rgba(65, 65, 65, 0.7) !important;
-}
+    a:hover>path,
+    a:hover>rect {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
 
-a:focus { outline: none; }
-a:focus-visible>path,
-a:focus-visible>rect {
-  stroke: black;
-  fill: rgba(65, 65, 65, 0.2);      
-  stroke-width: 3px;
-  outline-offset: 4px;
-  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
-}
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      outline-offset: 4px;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    }
 
     a.d-zu-btn>path {
       pointer-events: all;
@@ -61,7 +62,7 @@ a:focus-visible>rect {
       animation-name: blink-w1;
     }
 
-  
+
     /* Wesen clickable overlay */
     #wesen-link {
       cursor: pointer;
@@ -80,7 +81,7 @@ a:focus-visible>rect {
       animation-iteration-count: infinite;
     }
 
-   
+
 
     #wesen-link:hover>.hover-w1,
     #wesen-link:focus>.hover-w1 {
@@ -160,14 +161,18 @@ a:focus-visible>rect {
 
       <a href="#" id="wesen-link" aria-label="Sag dem Wesen hallo" aria-haspopup="dialog" role="button">
         <!-- Hover shape for W1 (big wesen, lower) — visible when W1 is shown -->
-    <path class="hover-w1" d="M666,575.6c.2,14.1-8.1,26.5-9,40.4-.4,5.9-.3,11.9,1,17.6.6,4.8,2.9,10.5.5,15.1-4.1,3.7-7.2-6.4-7.3-9.5-.9-4.8-.9-9.7-2.1-14.5-3.7-8.8-7.7-17.6-7.1-27.5-1.3-17.7,4.7-45-15.9-53.1-5.9,1.6-11.8,3.3-17.7,5,9,4.9,10,15.9,13.5,24.5,6.1,15.5,4.2,26.4-2.5,41.2-3,8.9-4,18.5-3.1,27.8,0,6.2,2.6,13.4-.2,19.2-7.3,1.5-7.9-6.4-10.7-11-4.1-8.8-6.6-18.5-4.4-28.1,5.1-16.7,1.8-56.5-11.1-69-1.8.4-3.6.8-5.4,1.2,19,21.6-2.4,56.3-1.2,81.8-.2,10.6,4.4,21.5,5.3,32,.2,12.4-9.2,9.2-12.4.3-3.4-22.5.8-46.1.7-68.8,0-13.5,1.7-32.9-13.1-39.3-4.4,1.5-8.8,2.9-13.2,4.4,7.6,8.7,11.1,21.5,10.1,33.2-.5,8.8-4.3,16.6-5.8,25.1-2.2,12.5,4.4,24.7,6.3,36.6.4,5.6,4.3,29.1-7.2,23.1-10.9-12.3,1.8-33.3-8.6-46.3-3.4-5-9.2-7.3-10.8-13.3-4.2-16.4,11.5-39.3-5.5-51.6-11.2,2.7-22.6,6.2-33.8,9.5,8.9,4.8,13.9,15.7,13.2,25.8-.5,8.8-5.7,17.2-7.2,25.8-1.5,7.8.3,16,6,21.8,3.6,4.6,10.5,8.7,13,14,3.1,10.9-4.8,26.4-15.9,29.2-3-7.2,6.6-14.2,7.3-21.4,5-17.7-20.2-16.1-28.5-25.1-8.2-9.3,1.3-22.8,5.6-31.9,8-13,10.2-26.9-6.6-33.4-8.9-.8-17.9,4.5-26.4,7.4-17.8,5.1-35,11.1-53,15.6-22.2,6.6-43.5,19.7-56.7-6.8h0c-5.5-6.2-14-11.5-21.6-15.6-1.9-10.1-18.1-12.7-25-19.7-13.4-15.7-8.5-45.6,4.4-60.6,18.8-23.6,48.5-29.9,77.2-32.7,47.2-6.2,97.9-13.1,132.7-6.9,34.8,6.2,63.4,6,76.9,20.6s12.9,32.5,31.5,35.5c12.6,2.3,23.9,5.8,35.5,10.6-3.5,1.1-7.2,1.9-10.6,3.2,9.3,11.7,19.9,22.7,18.9,38.8v-.2h0Z"/>
-          </a>
+        <path class="hover-w1"
+          d="M666,575.6c.2,14.1-8.1,26.5-9,40.4-.4,5.9-.3,11.9,1,17.6.6,4.8,2.9,10.5.5,15.1-4.1,3.7-7.2-6.4-7.3-9.5-.9-4.8-.9-9.7-2.1-14.5-3.7-8.8-7.7-17.6-7.1-27.5-1.3-17.7,4.7-45-15.9-53.1-5.9,1.6-11.8,3.3-17.7,5,9,4.9,10,15.9,13.5,24.5,6.1,15.5,4.2,26.4-2.5,41.2-3,8.9-4,18.5-3.1,27.8,0,6.2,2.6,13.4-.2,19.2-7.3,1.5-7.9-6.4-10.7-11-4.1-8.8-6.6-18.5-4.4-28.1,5.1-16.7,1.8-56.5-11.1-69-1.8.4-3.6.8-5.4,1.2,19,21.6-2.4,56.3-1.2,81.8-.2,10.6,4.4,21.5,5.3,32,.2,12.4-9.2,9.2-12.4.3-3.4-22.5.8-46.1.7-68.8,0-13.5,1.7-32.9-13.1-39.3-4.4,1.5-8.8,2.9-13.2,4.4,7.6,8.7,11.1,21.5,10.1,33.2-.5,8.8-4.3,16.6-5.8,25.1-2.2,12.5,4.4,24.7,6.3,36.6.4,5.6,4.3,29.1-7.2,23.1-10.9-12.3,1.8-33.3-8.6-46.3-3.4-5-9.2-7.3-10.8-13.3-4.2-16.4,11.5-39.3-5.5-51.6-11.2,2.7-22.6,6.2-33.8,9.5,8.9,4.8,13.9,15.7,13.2,25.8-.5,8.8-5.7,17.2-7.2,25.8-1.5,7.8.3,16,6,21.8,3.6,4.6,10.5,8.7,13,14,3.1,10.9-4.8,26.4-15.9,29.2-3-7.2,6.6-14.2,7.3-21.4,5-17.7-20.2-16.1-28.5-25.1-8.2-9.3,1.3-22.8,5.6-31.9,8-13,10.2-26.9-6.6-33.4-8.9-.8-17.9,4.5-26.4,7.4-17.8,5.1-35,11.1-53,15.6-22.2,6.6-43.5,19.7-56.7-6.8h0c-5.5-6.2-14-11.5-21.6-15.6-1.9-10.1-18.1-12.7-25-19.7-13.4-15.7-8.5-45.6,4.4-60.6,18.8-23.6,48.5-29.9,77.2-32.7,47.2-6.2,97.9-13.1,132.7-6.9,34.8,6.2,63.4,6,76.9,20.6s12.9,32.5,31.5,35.5c12.6,2.3,23.9,5.8,35.5,10.6-3.5,1.1-7.2,1.9-10.6,3.2,9.3,11.7,19.9,22.7,18.9,38.8v-.2h0Z" />
+      </a>
 
       <!-- ═══════════════════════════════════════════
            WANNE 
       ════════════════════════════════════════════ -->
       <a href="6_Bad_4.html" id="wanne-btn" aria-label="Zum Spiegel" role="button">
-  <path id="STROKE_9462847c-5c20-42f4-86fe-bf5c9cd73c59" data-name="STROKE 9462847c-5c20-42f4-86fe-bf5c9cd73c59" class="cls-1" d="M1073,426.6c-1-10.3.2-20.6.6-30.9,0-18.9.4-37.8-.7-56.7-.7-23.2-.4-46.7,4-69.6,2.5-17,4.9-34.9,15.2-49.2,22.8-28.2,65.3-45.3,100.2-31,22.6,11.2,36.5,35,40.6,59.6,3.6,20.1.9,39.4,4.1,59.4,2.4,23.3,2.8,45.8,4.5,69.5,1.3,20.7,3.2,40.2-2.2,60.1-18.3-2.5-35.6-4.7-53.9-5.9-15-.5-30.7-.2-45.7-1.2-9.6.4-20.1-2.1-29.6-2.9-11.6-.1-25.6-.6-37-1.2h-.1Z"/>      </a>
+        <path id="STROKE_9462847c-5c20-42f4-86fe-bf5c9cd73c59" data-name="STROKE 9462847c-5c20-42f4-86fe-bf5c9cd73c59"
+          class="cls-1"
+          d="M1073,426.6c-1-10.3.2-20.6.6-30.9,0-18.9.4-37.8-.7-56.7-.7-23.2-.4-46.7,4-69.6,2.5-17,4.9-34.9,15.2-49.2,22.8-28.2,65.3-45.3,100.2-31,22.6,11.2,36.5,35,40.6,59.6,3.6,20.1.9,39.4,4.1,59.4,2.4,23.3,2.8,45.8,4.5,69.5,1.3,20.7,3.2,40.2-2.2,60.1-18.3-2.5-35.6-4.7-53.9-5.9-15-.5-30.7-.2-45.7-1.2-9.6.4-20.1-2.1-29.6-2.9-11.6-.1-25.6-.6-37-1.2h-.1Z" />
+      </a>
     </svg>
   </div>
 
@@ -217,17 +222,16 @@ a:focus-visible>rect {
         </a>
 
         <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter"
-          visibility="hidden">
+        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter" visibility="hidden">
           <path class="d-btn-shape"
             d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle"
-            x="1300" y="820">Weiter</text>
+          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
+            y="820">Weiter</text>
         </a>
 
         <!-- Dialogtext -->
-        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000"
-          visibility="hidden" x="300" y="720"></text>
+        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
+          y="720"></text>
       </g>
     </svg>
   </div>
@@ -240,7 +244,7 @@ a:focus-visible>rect {
         lines: ['dlg1-line1'],
         endX: { end: 1300, start: 300 },
         conversation: [
-           { text: 'Sagt du mir jetzt wo Büro 146 ist?', align: 'end' },
+          { text: 'Sagt du mir jetzt wo Büro 146 ist?', align: 'end' },
           { text: 'Schau mal in den Spiegel!', align: 'start' },
         ],
       },
@@ -254,7 +258,7 @@ a:focus-visible>rect {
     const dlgSvg = document.getElementById('dialog-svg');
     const wanneBtn = document.getElementById('wanne-btn');
 
-  
+
 
     /* ── dialog helpers ────────────────────────── */
     function renderLines(def) {
@@ -335,17 +339,17 @@ a:focus-visible>rect {
         else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
       }
     });
-    
+
   </script>
 
 
-    <!-- ════════════════════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '6_Bad_3H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'levels.html'  // ← Dateinamen der Levelübersicht anpassen
+      menuUrl: 'levels.html'  // ← Dateinamen der Levelübersicht anpassen
     };
   </script>
   <script src="icons.js"></script>

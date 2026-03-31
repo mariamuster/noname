@@ -1,272 +1,345 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Lift 3</title>
-      <link rel="stylesheet" href="image.css">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Lift 3</title>
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-    
-      @font-face {
-        font-family: 'Lexend';
-        src: url('fonts/Lexend-Regular.ttf') format('truetype');
-      }
+    @font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Regular.ttf') format('truetype');
+    }
 
-      *, *::before, *::after { box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-      html, body {
-        margin: 0; padding: 0;
-        width: 100vw; height: 100vh;
-        overflow: hidden;
-        background: transparent;
-        cursor: none;
-      }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: transparent;
+      cursor: none;
+    }
 
-      .room-wrapper {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-      }
+    .room-wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
 
-      #main-svg {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-      }
+    #main-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-      /* Shrug – rechts außen, gleicher viewBox-Ausschnitt */
-      #shrug-svg {
-        position: absolute;
-        top: 0; right: 0; left: auto;
-        width: 30%; height: 100%;
-        pointer-events: none;
-        z-index: 10;
-        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        transform: translateX(100%);
-      }
-      #shrug-svg.slide-in {
-        transform: translateX(0%);
-      }
+    /* Shrug – rechts außen, gleicher viewBox-Ausschnitt */
+    #shrug-svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: auto;
+      width: 30%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateX(100%);
+    }
 
-   
-      .overlay-btn {
-        position: absolute;
-        background: transparent;
-        border: none;
-        outline: none;
-        cursor: none;
-        padding: 0; margin: 0;
-        opacity: 0;
-      }
+    #shrug-svg.slide-in {
+      transform: translateX(0%);
+    }
 
-      /* ── Sichtbarer Fokus für Icons ────────────────────────────────────── */
-      #wcag-btn:focus-visible,
-      #hilfe-btn:focus-visible,
-      #menu-btn:focus-visible {
-        outline: 0px solid white !important;
-        outline-offset: 4px;
-        overflow: visible;
-        filter: drop-shadow(0 0 5px #000000) drop-shadow(0 0 8px #000000);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="room-wrapper">
 
-      <!-- ══ HAUPTBILD ════════════════════════════════════════════════════ -->
-      <svg id="main-svg" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <style>
-            .bg0 { fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px; }
-            .bg1 { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.9px; stroke: #fff; }
-            .bg2 { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px; stroke: #fff; }
+    .overlay-btn {
+      position: absolute;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: none;
+      padding: 0;
+      margin: 0;
+      opacity: 0;
+    }
 
-            /* Fokus-Rahmen: exakte Label-Pfade aus BB.svg, rot, standardmäßig unsichtbar */
-            .focus-ring {
-              fill: none;
-              stroke: red;
-              fill: rgba(0, 0, 0, 0.349);
-              stroke-width: 4px;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              display: none;
-            }
-            .btn-fill {
-              fill: red;
-              stroke: #000;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              stroke-width: 3px;
-              display: none;
-            }
-          </style>
-        </defs>
+    /* ── Sichtbarer Fokus für Icons ────────────────────────────────────── */
+    #wcag-btn:focus-visible,
+    #hilfe-btn:focus-visible,
+    #menu-btn:focus-visible {
+      outline: 0px solid white !important;
+      outline-offset: 4px;
+      overflow: visible;
+      filter: drop-shadow(0 0 5px #000000) drop-shadow(0 0 8px #000000);
+    }
+  </style>
+</head>
 
-        <!-- Hintergrund -->
-        <path class="bg0" d="M1038.6,900c-5.3-303.4-3.7-597.9-5.1-900"/>
-        <path class="bg0" d="M576.6,0c-5.2,210.9-12.3,421.8-16.6,633.4,1.4,89.1,3.2,177.9,5.1,266.6"/>
-        <path class="bg0" d="M966.1,828.7c16.4-252.3-.7-507.5,0-760.2-65.9-7.8-324.3,0-324.3,0,0,0-16.5,524.7,0,760l324.3.2Z"/>
-        <path class="bg0" d="M783.4,155.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path id="bf-1" class="btn-fill" d="M783.4,155.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path class="bg0" d="M864.5,193.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path class="bg0" d="M783.4,263.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path id="bf-2" class="btn-fill" d="M783.4,263.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path class="bg0" d="M864.5,301.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path class="bg0" d="M783.4,380.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path id="bf-3" class="btn-fill" d="M783.4,380.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path class="bg0" d="M864.5,418.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path class="bg0" d="M783.4,506.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path id="bf-4" class="btn-fill" d="M783.4,506.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path class="bg0" d="M864.5,544.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path class="bg0" d="M783.4,610.6c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path id="bf-5" class="btn-fill" d="M783.4,610.6c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path class="bg0" d="M864.5,648.5c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path class="bg0" d="M783.4,723.1c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path id="bf-6" class="btn-fill" d="M783.4,723.1c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z"/>
-        <path class="bg0" d="M864.5,760.9c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <g>
-          <path class="bg0" d="M286.9,343.1c-20.1.6-40.3,0-60.4,1.2"/>
-          <path class="bg0" d="M256.3,313.5c-.4,19.8.6,40.7,1,60.4"/>
-        </g>
-        <g>
-          <path d="M137.9,544.6c1.7,23.4-.4,47.3.4,70.7,1.7,11.4-8.1,39.9,7.7,42,68.8,1.4,137.8-.8,206.5,2.1,26,2.9,26-10.7,24.6-32.5-4.1-67-1-135-3.5-201.7-8.7-11-53.3-1.9-68.4-3.7-16.9,2.7-51.7-5.2-63.4,3.1-8.9,141.8,35.8,104.6-97.1,111.2-6.6.6-8.9.6-7,8.7h.2Z"/>
-          <path class="bg2" d="M321,607.2c-5-3.7-11.8-6.8-16.7-10.7,4.8-4.1,10.7-7.4,16.5-11.2"/>
-          <path class="bg2" d="M354.7,526c-.4,22.9.6,46.9.8,69.7-16.7.2-33.5,0-50.4.8"/>
-        </g>
-        <g>
-          <path d="M137.7,147.4c2.1,39.7-6,79.8,1,119.2,4.6,17.4,43.2,8.1,57.3,9.5,42.2-1.2,84.1,2.1,126.1-.8,32.5-3.1,61.4,11.8,53.9-35.6-6-117,29.6-118.8-63.7-116.4-50.6-1.4-100.6,1.4-150.9,1-22.7-2.9-24.8,1-23.6,23.2h0Z"/>
-          <path class="bg1" d="M157.8,225.5c18-.4,36.2,0,54.2.4"/>
-          <path class="bg1" d="M192.3,212.2c7.2,4.5,14.9,9.5,20.9,14.1-6.4,5-14.5,8.5-20.9,13.6"/>
-          <path class="bg1" d="M220,203.8c1,14.1-.4,29.3,0,43.4"/>
-        </g>
+<body>
+  <div class="room-wrapper">
 
-        <!-- Statische Labels -->
-        <text font-family="Lexend, sans-serif" font-size="44" fill="#fff"
-              x="270" y="228" text-anchor="middle" dominant-baseline="middle">TAB</text>
-        <text font-family="Lexend, sans-serif" font-size="44" fill="#fff"
-              x="224" y="598" text-anchor="middle" dominant-baseline="middle">ENTER</text>
+    <!-- ══ HAUPTBILD ════════════════════════════════════════════════════ -->
+    <svg id="main-svg" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          .bg0 {
+            fill: none;
+            stroke: #000;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3px;
+          }
 
-        <!-- Button-Texte -->
-        <text font-family="Lexend, sans-serif" font-size="30" fill="#000"
-              x="835" y="161" text-anchor="middle" dominant-baseline="middle">Weiter</text>
-        <text font-family="Lexend, sans-serif" font-size="30" fill="#000"
-              x="835" y="269" text-anchor="middle" dominant-baseline="middle">Weiter</text>
-        <text font-family="Lexend, sans-serif" font-size="30" fill="#000"
-              x="835" y="386" text-anchor="middle" dominant-baseline="middle">Weiter</text>
-        <text font-family="Lexend, sans-serif" font-size="30" fill="#000"
-              x="835" y="512" text-anchor="middle" dominant-baseline="middle">Weiter</text>
-        <text font-family="Lexend, sans-serif" font-size="30" fill="#000"
-              x="835" y="620" text-anchor="middle" dominant-baseline="middle">Weiter</text>
-        <text font-family="Lexend, sans-serif" font-size="30" fill="#000"
-              x="835" y="730" text-anchor="middle" dominant-baseline="middle">Weiter</text>
+          .bg1 {
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.9px;
+            stroke: #fff;
+          }
 
-        
-        <!--
+          .bg2 {
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3px;
+            stroke: #fff;
+          }
+
+          /* Fokus-Rahmen: exakte Label-Pfade aus BB.svg, rot, standardmäßig unsichtbar */
+          .focus-ring {
+            fill: none;
+            stroke: red;
+            fill: rgba(0, 0, 0, 0.349);
+            stroke-width: 4px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: none;
+          }
+
+          .btn-fill {
+            fill: red;
+            stroke: #000;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3px;
+            display: none;
+          }
+        </style>
+      </defs>
+
+      <!-- Hintergrund -->
+      <path class="bg0" d="M1038.6,900c-5.3-303.4-3.7-597.9-5.1-900" />
+      <path class="bg0" d="M576.6,0c-5.2,210.9-12.3,421.8-16.6,633.4,1.4,89.1,3.2,177.9,5.1,266.6" />
+      <path class="bg0"
+        d="M966.1,828.7c16.4-252.3-.7-507.5,0-760.2-65.9-7.8-324.3,0-324.3,0,0,0-16.5,524.7,0,760l324.3.2Z" />
+      <path class="bg0" d="M783.4,155.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path id="bf-1" class="btn-fill" d="M783.4,155.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path class="bg0"
+        d="M864.5,193.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path class="bg0" d="M783.4,263.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path id="bf-2" class="btn-fill" d="M783.4,263.4c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path class="bg0"
+        d="M864.5,301.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path class="bg0" d="M783.4,380.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path id="bf-3" class="btn-fill" d="M783.4,380.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path class="bg0"
+        d="M864.5,418.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path class="bg0" d="M783.4,506.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path id="bf-4" class="btn-fill" d="M783.4,506.3c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path class="bg0"
+        d="M864.5,544.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path class="bg0" d="M783.4,610.6c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path id="bf-5" class="btn-fill" d="M783.4,610.6c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path class="bg0"
+        d="M864.5,648.5c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path class="bg0" d="M783.4,723.1c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path id="bf-6" class="btn-fill" d="M783.4,723.1c0-32.2-56.7-35.8-56.7,6.2s56.7,33.6,56.7-6.2Z" />
+      <path class="bg0"
+        d="M864.5,760.9c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <g>
+        <path class="bg0" d="M286.9,343.1c-20.1.6-40.3,0-60.4,1.2" />
+        <path class="bg0" d="M256.3,313.5c-.4,19.8.6,40.7,1,60.4" />
+      </g>
+      <g>
+        <path
+          d="M137.9,544.6c1.7,23.4-.4,47.3.4,70.7,1.7,11.4-8.1,39.9,7.7,42,68.8,1.4,137.8-.8,206.5,2.1,26,2.9,26-10.7,24.6-32.5-4.1-67-1-135-3.5-201.7-8.7-11-53.3-1.9-68.4-3.7-16.9,2.7-51.7-5.2-63.4,3.1-8.9,141.8,35.8,104.6-97.1,111.2-6.6.6-8.9.6-7,8.7h.2Z" />
+        <path class="bg2" d="M321,607.2c-5-3.7-11.8-6.8-16.7-10.7,4.8-4.1,10.7-7.4,16.5-11.2" />
+        <path class="bg2" d="M354.7,526c-.4,22.9.6,46.9.8,69.7-16.7.2-33.5,0-50.4.8" />
+      </g>
+      <g>
+        <path
+          d="M137.7,147.4c2.1,39.7-6,79.8,1,119.2,4.6,17.4,43.2,8.1,57.3,9.5,42.2-1.2,84.1,2.1,126.1-.8,32.5-3.1,61.4,11.8,53.9-35.6-6-117,29.6-118.8-63.7-116.4-50.6-1.4-100.6,1.4-150.9,1-22.7-2.9-24.8,1-23.6,23.2h0Z" />
+        <path class="bg1" d="M157.8,225.5c18-.4,36.2,0,54.2.4" />
+        <path class="bg1" d="M192.3,212.2c7.2,4.5,14.9,9.5,20.9,14.1-6.4,5-14.5,8.5-20.9,13.6" />
+        <path class="bg1" d="M220,203.8c1,14.1-.4,29.3,0,43.4" />
+      </g>
+
+      <!-- Statische Labels -->
+      <text font-family="Lexend, sans-serif" font-size="44" fill="#fff" x="270" y="228" text-anchor="middle"
+        dominant-baseline="middle">TAB</text>
+      <text font-family="Lexend, sans-serif" font-size="44" fill="#fff" x="224" y="598" text-anchor="middle"
+        dominant-baseline="middle">ENTER</text>
+
+      <!-- Button-Texte -->
+      <text font-family="Lexend, sans-serif" font-size="30" fill="#000" x="835" y="161" text-anchor="middle"
+        dominant-baseline="middle">Weiter</text>
+      <text font-family="Lexend, sans-serif" font-size="30" fill="#000" x="835" y="269" text-anchor="middle"
+        dominant-baseline="middle">Weiter</text>
+      <text font-family="Lexend, sans-serif" font-size="30" fill="#000" x="835" y="386" text-anchor="middle"
+        dominant-baseline="middle">Weiter</text>
+      <text font-family="Lexend, sans-serif" font-size="30" fill="#000" x="835" y="512" text-anchor="middle"
+        dominant-baseline="middle">Weiter</text>
+      <text font-family="Lexend, sans-serif" font-size="30" fill="#000" x="835" y="620" text-anchor="middle"
+        dominant-baseline="middle">Weiter</text>
+      <text font-family="Lexend, sans-serif" font-size="30" fill="#000" x="835" y="730" text-anchor="middle"
+        dominant-baseline="middle">Weiter</text>
+
+
+      <!--
           FOKUS-RINGE: 
         -->
-        <path id="fr-1" class="focus-ring" d="M864.5,193.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path id="fr-2" class="focus-ring" d="M864.5,301.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path id="fr-3" class="focus-ring" d="M864.5,418.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path id="fr-4" class="focus-ring" d="M864.5,544.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path id="fr-5" class="focus-ring" d="M864.5,648.5c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <path id="fr-6" class="focus-ring" d="M864.5,760.9c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z"/>
-        <rect id="fr-back" class="focus-ring" x="2" y="812" width="1596" height="86"/>
-      </svg>
+      <path id="fr-1" class="focus-ring"
+        d="M864.5,193.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path id="fr-2" class="focus-ring"
+        d="M864.5,301.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path id="fr-3" class="focus-ring"
+        d="M864.5,418.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path id="fr-4" class="focus-ring"
+        d="M864.5,544.1c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path id="fr-5" class="focus-ring"
+        d="M864.5,648.5c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <path id="fr-6" class="focus-ring"
+        d="M864.5,760.9c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
+      <rect id="fr-back" class="focus-ring" x="2" y="812" width="1596" height="86" />
+    </svg>
 
-      <!-- ══ SHRUG ══════════════════════════════════════════════════════════ -->
-      <svg id="shrug-svg" viewBox="1370 200 230 700" preserveAspectRatio="xMaxYMid meet" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <style>
-            .sh0 { fill: #ff6f00; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px; }
-            .sh1 { fill: #000; stroke: #fff; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 4px; }
-            .sh2 { fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 4px; }
-          </style>
-        </defs>
-        <path class="sh0" d="M1600,532c-15.7.7-21.2-5.4-35.4-11.6-18.4-7.5-72.3-36-41.5,7.9,8.8,13.4,13.2,30.5,19.4,45.1,13.3,33.5-20.2,39.2-44.6,45.5-25.2,7-49.3,16.2-73.8,25.7-17.9,8.3-46.3,13.1-49.9,35.7-2.5,32.1,29.3,52.8,40.1,80.3,6.4,21.7-6.9,35.4-24.7,14.9-6.1-6.1-11.5-16.3-16.9-22.8-8.5-9.6-18.9-20.7-24.1-32.8-13.9-29.8-3.6-71.1,28.7-84,18.6-9.6,41.9-15.8,62.1-20.5,14.6-3.7,33.2-9.8,47.1-15.2,8.2-2.4,19.6-9.3,24.5-16.3,1.9-4.1-.9-9.6-3.1-13.2-13.3-15.6-23.6-37.6-22.2-59-.5-2.3.3-2.7-2.2-2.2-6.3,1.2-13.3,1.4-19.6,3.3-17.9,4.9-37.1,10.3-55.7,10.8-16-.2-25.4-16.1-28.7-30.3-3.1-15.9-2.8-32.5-3.5-48.9-6.1-47.1,34.9-43.4,68.4-39.2,38.3,5.4,24.4-9.3,47.6-26.7,17.3-9.4,28-24.2,26-44.5-5.7-21.3-26-35.1-46.3-42.2-12.6-4.9-25.1-6.2-38.4-9.9-18.3-5.6-30.7-10.8-48.1-18.9-24.4-13-59.5-26-57.2-58.6,2.5-17.7,17.7-29,27.8-42.6,9.8-13.2,17.3-27.4,27.4-40.6,3.8-4.9,7.6-7.9,13.4-6.8,9.6,1.9,6.5,18.7,2.6,26.1-9.4,17.9-17.9,30.5-27.6,48.3-7.7,12.4-13.5,25.7-5.3,38.5,8.6,12.3,38.7,12.5,55.9,16.9,32.5,5.1,58.7,12.4,85.7,29.8,19.7,11.4,31.1,33.1,32,55.4-.5,20.6-10.5,39.8-20,57.7-23.4,39.8,61,25.1,80.5,20"/>
-        <path class="sh1" d="M1428.8,484.8c-6.1-3.5-15.3-.9-19.1,4.8-4.2,6.6-2.1,17.5,5,21.4,19.4,8.4,32.3-14.8,14.1-26.2Z"/>
-        <path class="sh1" d="M1414.2,415.2c-21.4-7.6-27.7,20.4-11.1,27.6,18.3,5.4,27.1-18.3,11.1-27.6Z"/>
-        <path class="sh2" d="M1453.3,439.2c-6.6,7.8-4.2,18.1-6.1,27.5-1,5-.3,10.3,2,14.8"/>
-      </svg>
+    <!-- ══ SHRUG ══════════════════════════════════════════════════════════ -->
+    <svg id="shrug-svg" viewBox="1370 200 230 700" preserveAspectRatio="xMaxYMid meet"
+      xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          .sh0 {
+            fill: #ff6f00;
+            stroke: #000;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3px;
+          }
 
-      <!-- ══ UNSICHTBARE HTML-BUTTONS (nur für Fokus-Empfang) ══════════════ -->
-      <button id="ob-1"    class="overlay-btn" tabindex="1" aria-label="Weiter"></button>
-      <button id="ob-2"    class="overlay-btn" tabindex="2" aria-label="Weiter"></button>
-      <button id="ob-3"    class="overlay-btn" tabindex="3" aria-label="Weiter"></button>
-      <button id="ob-4"    class="overlay-btn" tabindex="4" aria-label="Weiter"></button>
-      <button id="ob-5"    class="overlay-btn" tabindex="5" aria-label="Weiter"></button>
-      <button id="ob-6"    class="overlay-btn" tabindex="6" aria-label="Weiter"></button>
+          .sh1 {
+            fill: #000;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-miterlimit: 10;
+            stroke-width: 4px;
+          }
 
-    </div>
+          .sh2 {
+            fill: none;
+            stroke: #000;
+            stroke-linecap: round;
+            stroke-miterlimit: 10;
+            stroke-width: 4px;
+          }
+        </style>
+      </defs>
+      <path class="sh0"
+        d="M1600,532c-15.7.7-21.2-5.4-35.4-11.6-18.4-7.5-72.3-36-41.5,7.9,8.8,13.4,13.2,30.5,19.4,45.1,13.3,33.5-20.2,39.2-44.6,45.5-25.2,7-49.3,16.2-73.8,25.7-17.9,8.3-46.3,13.1-49.9,35.7-2.5,32.1,29.3,52.8,40.1,80.3,6.4,21.7-6.9,35.4-24.7,14.9-6.1-6.1-11.5-16.3-16.9-22.8-8.5-9.6-18.9-20.7-24.1-32.8-13.9-29.8-3.6-71.1,28.7-84,18.6-9.6,41.9-15.8,62.1-20.5,14.6-3.7,33.2-9.8,47.1-15.2,8.2-2.4,19.6-9.3,24.5-16.3,1.9-4.1-.9-9.6-3.1-13.2-13.3-15.6-23.6-37.6-22.2-59-.5-2.3.3-2.7-2.2-2.2-6.3,1.2-13.3,1.4-19.6,3.3-17.9,4.9-37.1,10.3-55.7,10.8-16-.2-25.4-16.1-28.7-30.3-3.1-15.9-2.8-32.5-3.5-48.9-6.1-47.1,34.9-43.4,68.4-39.2,38.3,5.4,24.4-9.3,47.6-26.7,17.3-9.4,28-24.2,26-44.5-5.7-21.3-26-35.1-46.3-42.2-12.6-4.9-25.1-6.2-38.4-9.9-18.3-5.6-30.7-10.8-48.1-18.9-24.4-13-59.5-26-57.2-58.6,2.5-17.7,17.7-29,27.8-42.6,9.8-13.2,17.3-27.4,27.4-40.6,3.8-4.9,7.6-7.9,13.4-6.8,9.6,1.9,6.5,18.7,2.6,26.1-9.4,17.9-17.9,30.5-27.6,48.3-7.7,12.4-13.5,25.7-5.3,38.5,8.6,12.3,38.7,12.5,55.9,16.9,32.5,5.1,58.7,12.4,85.7,29.8,19.7,11.4,31.1,33.1,32,55.4-.5,20.6-10.5,39.8-20,57.7-23.4,39.8,61,25.1,80.5,20" />
+      <path class="sh1"
+        d="M1428.8,484.8c-6.1-3.5-15.3-.9-19.1,4.8-4.2,6.6-2.1,17.5,5,21.4,19.4,8.4,32.3-14.8,14.1-26.2Z" />
+      <path class="sh1" d="M1414.2,415.2c-21.4-7.6-27.7,20.4-11.1,27.6,18.3,5.4,27.1-18.3,11.1-27.6Z" />
+      <path class="sh2" d="M1453.3,439.2c-6.6,7.8-4.2,18.1-6.1,27.5-1,5-.3,10.3,2,14.8" />
+    </svg>
 
-    <script>
-      // ── Alle Maus-Events blockieren ─────────────────────────────────────
-      ['click','mousedown','mouseup','mousemove',
-       'mouseover','mouseenter','mouseleave','dblclick','contextmenu'
-      ].forEach(type => {
-        document.addEventListener(type, e => {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-        }, true);
+    <!-- ══ UNSICHTBARE HTML-BUTTONS (nur für Fokus-Empfang) ══════════════ -->
+    <button id="ob-1" class="overlay-btn" tabindex="1" aria-label="Weiter"></button>
+    <button id="ob-2" class="overlay-btn" tabindex="2" aria-label="Weiter"></button>
+    <button id="ob-3" class="overlay-btn" tabindex="3" aria-label="Weiter"></button>
+    <button id="ob-4" class="overlay-btn" tabindex="4" aria-label="Weiter"></button>
+    <button id="ob-5" class="overlay-btn" tabindex="5" aria-label="Weiter"></button>
+    <button id="ob-6" class="overlay-btn" tabindex="6" aria-label="Weiter"></button>
+
+  </div>
+
+  <script>
+    // ── Alle Maus-Events blockieren ─────────────────────────────────────
+    ['click', 'mousedown', 'mouseup', 'mousemove',
+      'mouseover', 'mouseenter', 'mouseleave', 'dblclick', 'contextmenu'
+    ].forEach(type => {
+      document.addEventListener(type, e => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }, true);
+    });
+
+    // ── Fokus-Ringe im SVG schalten ──────────────────────────────────────
+    const FOCUS_MAP = {
+      'ob-1': 'fr-1', 'ob-2': 'fr-2', 'ob-3': 'fr-3',
+      'ob-4': 'fr-4', 'ob-5': 'fr-5', 'ob-6': 'fr-6',
+      'ob-back': 'fr-back'
+    };
+    const FILL_MAP = {
+      'ob-1': 'bf-1', 'ob-2': 'bf-2', 'ob-3': 'bf-3',
+      'ob-4': 'bf-4', 'ob-5': 'bf-5', 'ob-6': 'bf-6'
+    };
+
+    function clearFocus() {
+      document.querySelectorAll('.focus-ring').forEach(el => el.style.display = 'none');
+    }
+
+    Object.keys(FOCUS_MAP).forEach(btnId => {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.addEventListener('focus', () => {
+        clearFocus();
+        const ring = document.getElementById(FOCUS_MAP[btnId]);
+        if (ring) ring.style.display = 'block';
       });
+      btn.addEventListener('blur', () => clearFocus());
+    });
 
-      // ── Fokus-Ringe im SVG schalten ──────────────────────────────────────
-      const FOCUS_MAP = {
-        'ob-1': 'fr-1', 'ob-2': 'fr-2', 'ob-3': 'fr-3',
-        'ob-4': 'fr-4', 'ob-5': 'fr-5', 'ob-6': 'fr-6',
-        'ob-back': 'fr-back'
-      };
-      const FILL_MAP = {
-        'ob-1': 'bf-1', 'ob-2': 'bf-2', 'ob-3': 'bf-3',
-        'ob-4': 'bf-4', 'ob-5': 'bf-5', 'ob-6': 'bf-6'
-      };
+    // ── Shrug Animation ──────────────────────────────────────────────────
+    const shrugSvg = document.getElementById('shrug-svg');
+    let shrugTimer = null;
 
-      function clearFocus() {
-        document.querySelectorAll('.focus-ring').forEach(el => el.style.display = 'none');
+    function showShrug() {
+      clearTimeout(shrugTimer);
+      shrugSvg.classList.add('slide-in');
+      shrugTimer = setTimeout(() => shrugSvg.classList.remove('slide-in'), 1000);
+    }
+
+    // ── Enter-Taste ──────────────────────────────────────────────────────
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      const id = document.activeElement && document.activeElement.id;
+      if (!id) return;
+
+      if (['ob-1', 'ob-2', 'ob-3', 'ob-4', 'ob-5'].includes(id)) {
+        e.preventDefault();
+        const fill = document.getElementById(FILL_MAP[id]);
+        if (fill) fill.style.display = 'block';
+        showShrug();
+      } else if (id === 'ob-6') {
+        e.preventDefault();
+        window.location.href = '7_Lift_4.html';
+      } else if (id === 'ob-back') {
+        e.preventDefault();
+        window.location.href = '7_Lift_2.html';
       }
+    });
 
-      Object.keys(FOCUS_MAP).forEach(btnId => {
-        const btn = document.getElementById(btnId);
-        if (!btn) return;
-        btn.addEventListener('focus', () => {
-          clearFocus();
-          const ring = document.getElementById(FOCUS_MAP[btnId]);
-          if (ring) ring.style.display = 'block';
-        });
-        btn.addEventListener('blur', () => clearFocus());
-      });
-
-      // ── Shrug Animation ──────────────────────────────────────────────────
-      const shrugSvg = document.getElementById('shrug-svg');
-      let shrugTimer = null;
-
-      function showShrug() {
-        clearTimeout(shrugTimer);
-        shrugSvg.classList.add('slide-in');
-        shrugTimer = setTimeout(() => shrugSvg.classList.remove('slide-in'), 1000);
-      }
-
-      // ── Enter-Taste ──────────────────────────────────────────────────────
-      document.addEventListener('keydown', e => {
-        if (e.key !== 'Enter') return;
-        const id = document.activeElement && document.activeElement.id;
-        if (!id) return;
-
-        if (['ob-1','ob-2','ob-3','ob-4','ob-5'].includes(id)) {
-          e.preventDefault();
-          const fill = document.getElementById(FILL_MAP[id]);
-          if (fill) fill.style.display = 'block';
-          showShrug();
-        } else if (id === 'ob-6') {
-          e.preventDefault();
-          window.location.href = '7_Lift_4.html';
-        } else if (id === 'ob-back') {
-          e.preventDefault();
-          window.location.href = '7_Lift_2.html';
-        }
-      });
-
-    </script>
+  </script>
 
 
   <!-- ════════════════════════════════════════════════════════════
@@ -274,13 +347,15 @@
   ════════════════════════════════════════════════════════════ -->
   <style>
     /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root { --wcag-farbe: #ff0; }
+    :root {
+      --wcag-farbe: #ff0;
+    }
   </style>
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '7_Lift_3H.html',      // Hilfeseite dieses Levels
-      menuUrl:  'levels.html',            // Levelübersicht
-      wcagUrl:  '7_Lift_3W.html'       // ← gelber Button → zurück zu Keller 4
+      menuUrl: 'levels.html',            // Levelübersicht
+      wcagUrl: '7_Lift_3W.html'       // ← gelber Button → zurück zu Keller 4
     };
   </script>
   <script src="icons.js"></script>
@@ -291,9 +366,9 @@
     window.addEventListener('load', () => {
       const cfg = window.LEVEL_CONFIG || {};
       const iconMap = {
-        'wcag-btn':  cfg.wcagUrl,
+        'wcag-btn': cfg.wcagUrl,
         'hilfe-btn': cfg.hilfeUrl,
-        'menu-btn':  cfg.menuUrl,
+        'menu-btn': cfg.menuUrl,
       };
 
       Object.entries(iconMap).forEach(([id, url]) => {

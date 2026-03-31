@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lexend_Regular.ttf') format('truetype');
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -156,7 +157,9 @@
       line-height: 1;
     }
 
-    #contrast-ratio.pass { color: #00ffcc; }
+    #contrast-ratio.pass {
+      color: #00ffcc;
+    }
 
     #contrast-label {
       font-size: 16px;
@@ -205,27 +208,34 @@
     }
 
     /* Pfeil hover */
-    #pfeil-link > path {
+    #pfeil-link>path {
       pointer-events: all;
       transition: filter 0.2s, opacity 0.2s;
     }
-    #pfeil-link:hover > path,
-    #pfeil-link:focus-visible > path {
+
+    #pfeil-link:hover>path,
+    #pfeil-link:focus-visible>path {
       filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
       opacity: 0.5;
     }
-    #pfeil-link:focus { outline: none; }
 
-   
+    #pfeil-link:focus {
+      outline: none;
+    }
 
-       a:hover > path,
-    a:hover > rect {
+
+
+    a:hover>path,
+    a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus { outline: none; }
-    a:focus-visible > path,
-    a:focus-visible > rect {
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
@@ -233,20 +243,42 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #bild-small { cursor: pointer; }
-    #bild-small > path { fill: transparent; pointer-events: all; }
-    #bild-small:hover > path { fill: rgba(65, 65, 65, 0.7); }
-    #bild-small:focus { outline: none; }
-    #bild-small:focus-visible > path {
+    #bild-small {
+      cursor: pointer;
+    }
+
+    #bild-small>path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    #bild-small:hover>path {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    #bild-small:focus {
+      outline: none;
+    }
+
+    #bild-small:focus-visible>path {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #zu-button { cursor: pointer; }
-    #zu-button:hover .zu-circle { fill: rgba(65, 65, 65, 0.7); }
-    #zu-button:focus { outline: none; }
+    #zu-button {
+      cursor: pointer;
+    }
+
+    #zu-button:hover .zu-circle {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    #zu-button:focus {
+      outline: none;
+    }
+
     #zu-button:focus-visible .zu-circle {
       stroke: rgb(255, 11, 11);
       fill: rgba(65, 65, 65, 0.7);
@@ -254,15 +286,14 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-        .text-box {
-  font-family: 'Lex', sans-serif;
-  font-size: 27px;
-  padding: 0px;
-  width: fit-content;
-  background: transparent;
-  color: #fff;
-}
-
+    .text-box {
+      font-family: 'Lex', sans-serif;
+      font-size: 27px;
+      padding: 0px;
+      width: fit-content;
+      background: transparent;
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -331,41 +362,46 @@
   </div>
 
   <div class="room-wrapper">
-    <img src="img/10_Wohnzimmer.svg"
-         alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
-         class="responsive-img" tabindex="0" />
+    <img src="img/10_Wohnzimmer.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+      class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
       <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
-  <path 
-   d="M811.7,175.1c-42.5-.1-88-.5-130.2.6-1.4,32,2.5,65.3,0,97.3,31.5.6,200.2,1.5,237.3.9-4-32.5,0-98.8,0-98.8h-13.1s-63.7-.9-94,0Z" />
-     </g>
+        <path
+          d="M811.7,175.1c-42.5-.1-88-.5-130.2.6-1.4,32,2.5,65.3,0,97.3,31.5.6,200.2,1.5,237.3.9-4-32.5,0-98.8,0-98.8h-13.1s-63.7-.9-94,0Z" />
+      </g>
 
       <g id="bild-panel" aria-hidden="true">
-        <path style="fill:#2323ff; stroke:rgb(0, 255, 0); stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
- d="M843.8,267.9c-157.4-.4-325.8-1.9-482,2.3-5.2,118.5,9.3,241.8,0,360.2,116.6,2.3,741.1,5.6,878.5,3.3-14.8-120.3,0-365.7,0-365.7h-48.5s-235.8-3.3-348,0h0v-.1Z"/>
-      
-             <foreignObject x="390" y="280" width="850" height="340">
-  <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
-Ein Wort mit 7 Buchstaben. Der erste sind zwei senkrechte Striche, welche durch einen waagrechten verbunden sind. Der zweite ist ein senkrechter Strich, mit einem Punkt oberhalb. Der dritte ist ein senkrechter Strich, mit einem Bogen nach unten. Der vierte ist ein zick-zack mit Anfang und Ende oben und einer Spitze in der Mitte. Der fünfte ist ein fast geschlossener Kreis, mit einem horizontalen Strich im oberen Bereich, der es schließt. Der sechste Buchstabe ist der gleiche wie der zweite Buchstabe. Der siebte ist eine Abfolge von oben nach unten mit zwei Kurven.   </div>
-</foreignObject>
+        <path
+          style="fill:#2323ff; stroke:rgb(0, 255, 0); stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
+          d="M843.8,267.9c-157.4-.4-325.8-1.9-482,2.3-5.2,118.5,9.3,241.8,0,360.2,116.6,2.3,741.1,5.6,878.5,3.3-14.8-120.3,0-365.7,0-365.7h-48.5s-235.8-3.3-348,0h0v-.1Z" />
 
-                     <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
+        <foreignObject x="390" y="280" width="850" height="340">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
+            Ein Wort mit 7 Buchstaben. Der erste sind zwei senkrechte Striche, welche durch einen waagrechten verbunden
+            sind. Der zweite ist ein senkrechter Strich, mit einem Punkt oberhalb. Der dritte ist ein senkrechter
+            Strich, mit einem Bogen nach unten. Der vierte ist ein zick-zack mit Anfang und Ende oben und einer Spitze
+            in der Mitte. Der fünfte ist ein fast geschlossener Kreis, mit einem horizontalen Strich im oberen Bereich,
+            der es schließt. Der sechste Buchstabe ist der gleiche wie der zweite Buchstabe. Der siebte ist eine Abfolge
+            von oben nach unten mit zwei Kurven. </div>
+        </foreignObject>
+
+        <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
           <path class="zu-circle"
-                d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
-                style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
+            style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
           <path d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4"
-                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
           <path d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3"
-                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
         </g>
       </g>
 
       <a id="weiter-link" href="11_Kueche_3.html" aria-label="Weiter nach links" role="button" aria-hidden="true">
         <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
-        d="M61.9,372.5s56.5-66.3,69.9-83.4c.2,15.1,1.6,28.5,1.1,43.8,23.5.5,44.5-1.1,44.5-1.1l2,74.9s-20.7,2.8-44.5,1c.7,14.2,1.1,30,1.1,44.3l-74.1-79.7h0v.2Z" />
-       <text class="room-label" x="9%" y="50%">Weiter</text>
+          d="M61.9,372.5s56.5-66.3,69.9-83.4c.2,15.1,1.6,28.5,1.1,43.8,23.5.5,44.5-1.1,44.5-1.1l2,74.9s-20.7,2.8-44.5,1c.7,14.2,1.1,30,1.1,44.3l-74.1-79.7h0v.2Z" />
+        <text class="room-label" x="9%" y="50%">Weiter</text>
       </a>
 
     </svg>
@@ -399,24 +435,26 @@ Ein Wort mit 7 Buchstaben. Der erste sind zwei senkrechte Striche, welche durch 
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <style>
-    :root { --wcag-farbe: rgb(35, 35, 255); }
+    :root {
+      --wcag-farbe: rgb(35, 35, 255);
+    }
   </style>
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '10_Wohnzimmer_H.html',
-      menuUrl:  'levels.html',
+      menuUrl: 'levels.html',
     };
   </script>
   <script src="icons.js"></script>
 
-   <script>
+  <script>
     (function () {
-      var bildSmall  = document.getElementById('bild-small');
-      var bildPanel  = document.getElementById('bild-panel');
-      var zuButton   = document.getElementById('zu-button');
+      var bildSmall = document.getElementById('bild-small');
+      var bildPanel = document.getElementById('bild-panel');
+      var zuButton = document.getElementById('zu-button');
       var weiterLink = document.getElementById('weiter-link');
 
-      bildPanel.style.display  = 'none';
+      bildPanel.style.display = 'none';
       weiterLink.style.display = 'none';
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
@@ -429,9 +467,9 @@ Ein Wort mit 7 Buchstaben. Der erste sind zwei senkrechte Striche, welche durch 
       }
 
       function closeBild() {
-        bildPanel.style.display  = 'none';
+        bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
-        bildSmall.style.display  = '';
+        bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');
         weiterLink.setAttribute('aria-hidden', 'false');

@@ -3,11 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Keller 7</title>
+  <title>Hinweise Bibliothek</title>
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lex.ttf') format('truetype');
@@ -17,16 +16,21 @@
       font-family: 'Lex', sans-serif;
     }
 
-    svg { border: none; }
+    svg {
+      border: none;
+    }
 
-    a:hover > path,
-    a:hover > rect {
+    a:hover>path,
+    a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus { outline: none; }
-    a:focus-visible > path,
-    a:focus-visible > rect {
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
@@ -34,20 +38,42 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #bild-small { cursor: pointer; }
-    #bild-small > path { fill: transparent; pointer-events: all; }
-    #bild-small:hover > path { fill: rgba(65, 65, 65, 0.7); }
-    #bild-small:focus { outline: none; }
-    #bild-small:focus-visible > path {
+    #bild-small {
+      cursor: pointer;
+    }
+
+    #bild-small>path {
+      fill: transparent;
+      pointer-events: all;
+    }
+
+    #bild-small:hover>path {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    #bild-small:focus {
+      outline: none;
+    }
+
+    #bild-small:focus-visible>path {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    #zu-button { cursor: pointer; }
-    #zu-button:hover .zu-circle { fill: rgba(65, 65, 65, 0.7); }
-    #zu-button:focus { outline: none; }
+    #zu-button {
+      cursor: pointer;
+    }
+
+    #zu-button:hover .zu-circle {
+      fill: rgba(65, 65, 65, 0.7);
+    }
+
+    #zu-button:focus {
+      outline: none;
+    }
+
     #zu-button:focus-visible .zu-circle {
       stroke: rgb(255, 11, 11);
       fill: rgba(65, 65, 65, 0.7);
@@ -55,55 +81,55 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-        .text-box {
-  font-family: 'Lex', sans-serif;
-  font-size: 50px;
-  padding: 0px;
-  width: fit-content;
-  background: transparent;
-  color: #fff;
-}
-
+    .text-box {
+      font-family: 'Lex', sans-serif;
+      font-size: 50px;
+      padding: 0px;
+      width: fit-content;
+      background: transparent;
+      color: #fff;
+    }
   </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/10_Bibi_5.svg"
-         alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
-         class="responsive-img" tabindex="0" />
+    <img src="img/10_Bibi_5.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+      class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
       <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
-  <path id="STROKE_dbc6816b-a160-4d5c-9b5a-6550b22fb29b" data-name="STROKE dbc6816b-a160-4d5c-9b5a-6550b22fb29b" class="cls-1" d="M405.2,603.6c39.4-13.9,56.9-20.7,100-37.2-4.7-94.3.6-195.9-1.2-290.5-1.3-52-8-105.7-4-157.2-37.1-33.7-72.2-74.9-99.3-117.2-.2,40.6,1.5,81.1,2.3,121-.4,71.2-.4,149.8.4,220.6-.8,85.7-4.1,173-2,259.2,0,0,1.3,2,3.6,1.1v-.2h0l.3.4h-.1,0Z"/>
-     </g>
+        <path id="STROKE_dbc6816b-a160-4d5c-9b5a-6550b22fb29b" data-name="STROKE dbc6816b-a160-4d5c-9b5a-6550b22fb29b"
+          class="cls-1"
+          d="M405.2,603.6c39.4-13.9,56.9-20.7,100-37.2-4.7-94.3.6-195.9-1.2-290.5-1.3-52-8-105.7-4-157.2-37.1-33.7-72.2-74.9-99.3-117.2-.2,40.6,1.5,81.1,2.3,121-.4,71.2-.4,149.8.4,220.6-.8,85.7-4.1,173-2,259.2,0,0,1.3,2,3.6,1.1v-.2h0l.3.4h-.1,0Z" />
+      </g>
 
       <g id="bild-panel" aria-hidden="true">
         <path style="fill:#2323ff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
- d="M1021.6,798.3c-19.8-115.5-2.3-266.9-5.1-355.8-2.6-84.1-14.7-253.4-16.8-336.1-99.5-10.8-286.3,6.7-418.2,0-.8,49.7,6.3,99.3,9.7,148.2-1.7,87.2-1.7,183.5,1.7,270.2-3.4,105-17.3,167.9-8.4,273.5,0,0,252.7,4.2,437.1,0Z"/>
-     
-             <foreignObject x="620" y="160" width="350" height="560">
-  <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
-Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend. 
-  </div>
-</foreignObject>
+          d="M1021.6,798.3c-19.8-115.5-2.3-266.9-5.1-355.8-2.6-84.1-14.7-253.4-16.8-336.1-99.5-10.8-286.3,6.7-418.2,0-.8,49.7,6.3,99.3,9.7,148.2-1.7,87.2-1.7,183.5,1.7,270.2-3.4,105-17.3,167.9-8.4,273.5,0,0,252.7,4.2,437.1,0Z" />
 
-                     <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
+        <foreignObject x="620" y="160" width="350" height="560">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="text-box">
+            Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend.
+          </div>
+        </foreignObject>
+
+        <g id="zu-button" role="button" tabindex="0" aria-label="Schließen">
           <path class="zu-circle"
-                d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
-                style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
+            style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
           <path d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4"
-                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
           <path d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3"
-                style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"/>
+            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
         </g>
       </g>
 
       <a id="weiter-link" href="10_Wohnzimmer.html" aria-label="Weiter nach links" role="button" aria-hidden="true">
         <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
- d="M801.2,620.4s40.7,34.7,51.2,42.9c-9.3,0-17.5,1-26.9.7-.3,14.4.7,27.3.7,27.3l-46,1.2s-1.7-12.7-.6-27.3c-8.7.4-18.4.7-27.2.7l48.9-45.5h-.1Z"/>
-       <text class="room-label" x="9%" y="50%">Weiter</text>
+          d="M801.2,620.4s40.7,34.7,51.2,42.9c-9.3,0-17.5,1-26.9.7-.3,14.4.7,27.3.7,27.3l-46,1.2s-1.7-12.7-.6-27.3c-8.7.4-18.4.7-27.2.7l48.9-45.5h-.1Z" />
+        <text class="room-label" x="9%" y="50%">Weiter</text>
       </a>
 
     </svg>
@@ -112,19 +138,19 @@ Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend.
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '10_Bibi_5H.html',
-      menuUrl:  'levels.html'
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>
 
   <script>
     (function () {
-      var bildSmall  = document.getElementById('bild-small');
-      var bildPanel  = document.getElementById('bild-panel');
-      var zuButton   = document.getElementById('zu-button');
+      var bildSmall = document.getElementById('bild-small');
+      var bildPanel = document.getElementById('bild-panel');
+      var zuButton = document.getElementById('zu-button');
       var weiterLink = document.getElementById('weiter-link');
 
-      bildPanel.style.display  = 'none';
+      bildPanel.style.display = 'none';
       weiterLink.style.display = 'none';
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
@@ -137,9 +163,9 @@ Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend.
       }
 
       function closeBild() {
-        bildPanel.style.display  = 'none';
+        bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
-        bildSmall.style.display  = '';
+        bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');
         weiterLink.setAttribute('aria-hidden', 'false');
@@ -158,4 +184,5 @@ Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend.
   </script>
 
 </body>
+
 </html>

@@ -3,11 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Bibi 4</title>
-   <link rel="stylesheet" href="image.css">
+  <title>Hinweise Wartezimmer</title>
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lexend_Regular.ttf') format('truetype');
@@ -22,14 +21,17 @@
     }
 
     /* Allgemeine hover/focus-Stile */
-    a:hover > path,
-    a:hover > rect {
+    a:hover>path,
+    a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus { outline: none; }
-    a:focus-visible > path,
-    a:focus-visible > rect {
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
@@ -38,13 +40,13 @@
     }
 
     /* Wesen-Hitbereich: transparent, aber anklickbar */
-    #wesen-link > path {
+    #wesen-link>path {
       fill: transparent;
       pointer-events: all;
     }
 
-    #wesen-link:hover > path,
-    #wesen-link:focus-visible > path {
+    #wesen-link:hover>path,
+    #wesen-link:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
@@ -72,17 +74,17 @@
       cursor: pointer;
     }
 
-    a.d-zu-btn > path {
+    a.d-zu-btn>path {
       pointer-events: all;
     }
 
-    a.d-weiter-btn > path {
+    a.d-weiter-btn>path {
       fill: transparent;
       pointer-events: all;
     }
 
-    a.d-weiter-btn:hover > path,
-    a.d-weiter-btn:focus-visible > path {
+    a.d-weiter-btn:hover>path,
+    a.d-weiter-btn:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
   </style>
@@ -90,9 +92,8 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/8_Warten_3.2.svg"
-      alt="Grundriss eines Raums mit einem Wesen und einem Pfeil."
-      class="responsive-img" tabindex="0" />
+    <img src="img/8_Warten_3.2.svg" alt="Grundriss eines Raums mit einem Wesen und einem Pfeil." class="responsive-img"
+      tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -100,9 +101,8 @@
       <!-- Pfeil —  -->
       <a href="13_Haus_1.html" id="pfeil-link" aria-label="Weiter" role="button"
         style="visibility:visible;pointer-events:all;">
-        <path
-          style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-          d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z"/>
+        <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z" />
       </a>
 
     </svg>
@@ -111,19 +111,21 @@
 
 
 
-        <!-- ════════════════════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
-   <style>
+  <style>
     /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root { --wcag-farbe: #ff0; }
+    :root {
+      --wcag-farbe: #ff0;
+    }
   </style>
-  
+
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '12_Warten_2H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'levels.html',  // ← Dateinamen der Levelübersicht anpassen
-      wcagUrl:  '12_Warten_2W.html'       // ← gelber Button → zurück zu Keller 4
+      menuUrl: 'levels.html',  // ← Dateinamen der Levelübersicht anpassen
+      wcagUrl: '12_Warten_2W.html'       // ← gelber Button → zurück zu Keller 4
 
     };
   </script>

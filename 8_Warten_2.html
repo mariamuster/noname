@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Bibi 4</title>
-   <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lexend_Regular.ttf') format('truetype');
@@ -22,14 +21,17 @@
     }
 
     /* Allgemeine hover/focus-Stile */
-    a:hover > path,
-    a:hover > rect {
+    a:hover>path,
+    a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus { outline: none; }
-    a:focus-visible > path,
-    a:focus-visible > rect {
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
@@ -38,13 +40,13 @@
     }
 
     /* Wesen-Hitbereich: transparent, aber anklickbar */
-    #wesen-link > path {
+    #wesen-link>path {
       fill: transparent;
       pointer-events: all;
     }
 
-    #wesen-link:hover > path,
-    #wesen-link:focus-visible > path {
+    #wesen-link:hover>path,
+    #wesen-link:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
@@ -72,17 +74,17 @@
       cursor: pointer;
     }
 
-    a.d-zu-btn > path {
+    a.d-zu-btn>path {
       pointer-events: all;
     }
 
-    a.d-weiter-btn > path {
+    a.d-weiter-btn>path {
       fill: transparent;
       pointer-events: all;
     }
 
-    a.d-weiter-btn:hover > path,
-    a.d-weiter-btn:focus-visible > path {
+    a.d-weiter-btn:hover>path,
+    a.d-weiter-btn:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
   </style>
@@ -90,9 +92,8 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/8_Warten_3.svg"
-      alt="Grundriss eines Raums mit einem Wesen und einem Pfeil."
-      class="responsive-img" tabindex="0" />
+    <img src="img/8_Warten_3.svg" alt="Grundriss eines Raums mit einem Wesen und einem Pfeil." class="responsive-img"
+      tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -100,15 +101,15 @@
       <a href="#" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
         <!-- Wesen-Körper -->
 
-  <path class="cls-1"  d="M860.6,475.7c9,.6,30.8-1.1,38.1.6.6,7.8,1.4,28.84,1.7,37.54l22.1.16c.3-18.2.8-20.89,0-38.79,10.9-1.7,48.1-8.4,48.7-23.8.6-12.6.8-26.3.8-38.9.8-19-.3-38.3-1.4-57.4-.6-15.4-3.6-22.1-14.6-26.3-13.2-2.2-27.1-.8-40.3,0-16.8,0-33.9-.3-50.4,1.4-21.3,0-42.9.4-64.1-1.1s-21.1,17.5-19.6,34.4c1.1,12.3,0,25.2-.8,37.5-.3,20.4-.6,42,3.9,61.8,2.2,7.8,42.5,9,47.6,11.5-.6,7-.6,16.5-.6,24.1,0,12.9-1.24,12.94-1.24,12.94l25.34.79s1.1-26.62,1.4-36.42h3.4,0Z"/>
+        <path class="cls-1"
+          d="M860.6,475.7c9,.6,30.8-1.1,38.1.6.6,7.8,1.4,28.84,1.7,37.54l22.1.16c.3-18.2.8-20.89,0-38.79,10.9-1.7,48.1-8.4,48.7-23.8.6-12.6.8-26.3.8-38.9.8-19-.3-38.3-1.4-57.4-.6-15.4-3.6-22.1-14.6-26.3-13.2-2.2-27.1-.8-40.3,0-16.8,0-33.9-.3-50.4,1.4-21.3,0-42.9.4-64.1-1.1s-21.1,17.5-19.6,34.4c1.1,12.3,0,25.2-.8,37.5-.3,20.4-.6,42,3.9,61.8,2.2,7.8,42.5,9,47.6,11.5-.6,7-.6,16.5-.6,24.1,0,12.9-1.24,12.94-1.24,12.94l25.34.79s1.1-26.62,1.4-36.42h3.4,0Z" />
       </a>
 
       <!-- Pfeil — erscheint nach Dialog, führt zu Bibi 5 -->
       <a href="9_Haus_1.html" id="pfeil-link" aria-label="Weiter" role="button"
         style="visibility:hidden;pointer-events:none;">
-        <path
-          style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-          d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z"/>
+        <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z" />
       </a>
 
     </svg>
@@ -116,8 +117,8 @@
 
   <!-- Dialog-Overlay -->
   <div id="dialog-overlay" aria-hidden="true">
-    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-      xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true" tabindex="-1">
+    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+      role="dialog" aria-modal="true" tabindex="-1">
       <defs>
         <style>
           .d-feld {
@@ -160,17 +161,16 @@
         </a>
 
         <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter"
-          visibility="hidden">
+        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter" visibility="hidden">
           <path class="d-btn-shape"
             d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle"
-            x="1300" y="820">Weiter</text>
+          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
+            y="820">Weiter</text>
         </a>
 
         <!-- Dialogtext -->
-        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000"
-          visibility="hidden" x="300" y="720"></text>
+        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
+          y="720"></text>
       </g>
     </svg>
   </div>
@@ -185,7 +185,7 @@
         conversation: [
           { text: 'Bin ich hier richtig beim Büro 146?', align: 'end' },
           { text: 'Ja, aber haben sie die blauen Hinweise nicht gesehen?', align: 'start' },
-           { text: 'Welche Hinweise?', align: 'end' },
+          { text: 'Welche Hinweise?', align: 'end' },
           { text: 'Tut mir leid, sie brauchen die Hinweise.', align: 'start' },
         ],
       },
@@ -274,13 +274,13 @@
 
 
 
-        <!-- ════════════════════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '8_Warten_2H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'levels.html'  // ← Dateinamen der Levelübersicht anpassen
+      menuUrl: 'levels.html'  // ← Dateinamen der Levelübersicht anpassen
     };
   </script>
   <script src="icons.js"></script>

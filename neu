@@ -1,15 +1,10 @@
-  <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
-  ════════════════════════════════════════════════════════════ -->
-  <style>
-    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root { --wcag-farbe: #ff0; }
-  </style>
-  <script>
-    window.LEVEL_CONFIG = {
-      hilfeUrl: '2_Keller_5H.html',      // Hilfeseite dieses Levels
-      menuUrl:  'levels.html',            // Levelübersicht
-      wcagUrl:  '2_Keller_5W.html'       // ← gelber Button → zurück zu Keller 4
-    };
-  </script>
-  <script src="icons.js"></script>
+ <li>Klick auf die blaue Fläche in der Mitte.</li>
+      <li>Schliesse die Fläche mit Klick auf den runden Button mit einem x in der Mitte oben links</li>  
+      <li>Klicke auf den türkisfarbenen Pfeil rechts oben. </li>
+   
+
+    <li>Klick auf die blaue Fläche rechts.</li>
+      <li>Schliesse die Fläche mit Klick auf den runden Button mit einem x in der Mitte oben links</li>  
+     <li>Klick auf die blaue Fläche links.</li>
+      <li>Schliesse die Fläche mit Klick auf den runden Button mit einem x in der Mitte oben links</li>  
+     <li>Klicke auf den türkisfarbenen Pfeil in der Mitte. </li>

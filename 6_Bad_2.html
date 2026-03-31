@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Bad 2</title>
-   <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lexend_Regular.ttf') format('truetype');
@@ -22,20 +21,23 @@
       border: 0cm solid rgba(0, 0, 0, 0.454);
     }
 
-                 a:hover>path,
-a:hover>rect {
-  fill: rgba(65, 65, 65, 0.7) !important;
-}
+    a:hover>path,
+    a:hover>rect {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
 
-a:focus { outline: none; }
-a:focus-visible>path,
-a:focus-visible>rect {
-  stroke: black;
-  fill: rgba(65, 65, 65, 0.2);      
-  stroke-width: 3px;
-  outline-offset: 4px;
-  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
-}
+    a:focus {
+      outline: none;
+    }
+
+    a:focus-visible>path,
+    a:focus-visible>rect {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      outline-offset: 4px;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    }
 
     a:focus,
     g:focus {
@@ -75,10 +77,11 @@ a:focus-visible>rect {
     /* Fokus-Highlight-Rect  */
     .focus-highlight {
       stroke: black;
-  fill: rgba(65, 65, 65, 0.2);      
-  stroke-width: 3px;
-  outline-offset: 4px;
-}
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      outline-offset: 4px;
+    }
+
     /* Abfluss */
     @keyframes drain {
       0% {
@@ -259,14 +262,15 @@ a:focus-visible>rect {
       <!-- Zurück  (tabindex 11) -->
       <a id="zurueck-btn" href="6_Bad_3.html" aria-label="Zurück" role="button" tabindex="11"
         style="cursor:pointer; display:none">
-  <path id="pfeil" class="cls-1" d="M799.38,899.08s-80.55-72.44-101.39-89.55c18.91.26,35.51-1.16,54.43,0,1.29-29.08,0-55.33,0-55.33h93.29s2.83,25.86-.13,55.33c17.63-.39,37.31-.51,55.07,0l-101.39,89.55h.13Z"/>
- 
+        <path id="pfeil" class="cls-1"
+          d="M799.38,899.08s-80.55-72.44-101.39-89.55c18.91.26,35.51-1.16,54.43,0,1.29-29.08,0-55.33,0-55.33h93.29s2.83,25.86-.13,55.33c17.63-.39,37.31-.51,55.07,0l-101.39,89.55h.13Z" />
+
         <text class="room-label" x="800" y="865" text-anchor="middle">Zurück</text>
       </a>
 
       <rect id="wesen-focus-highlight" class="focus-highlight" rx="8" />
 
-      
+
     </svg>
   </div>
 
@@ -564,13 +568,15 @@ a:focus-visible>rect {
   ════════════════════════════════════════════════════════════ -->
   <style>
     /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root { --wcag-farbe: #ff0; }
+    :root {
+      --wcag-farbe: #ff0;
+    }
   </style>
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '6_Bad_2H.html',      // Hilfeseite dieses Levels
-      menuUrl:  'levels.html',            // Levelübersicht
-      wcagUrl:  '6_Bad_2W.html'       // ← gelber Button → zurück zu Keller 4
+      menuUrl: 'levels.html',            // Levelübersicht
+      wcagUrl: '6_Bad_2W.html'       // ← gelber Button → zurück zu Keller 4
     };
   </script>
   <script src="icons.js"></script>

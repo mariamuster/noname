@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Wohnzimmer</title>
-   <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-
-    
     @font-face {
       font-family: 'Lex';
       src: url('fonts/Lexend_Regular.ttf') format('truetype');
@@ -97,6 +95,7 @@
       cursor: pointer;
       outline: none;
     }
+
     input[type=range]:focus-visible {
       outline: 3px solid aqua;
       outline-offset: 4px;
@@ -289,7 +288,10 @@
     #door-link:focus~#Door {
       stroke-width: 6px;
     }
-    #door-link:focus { outline: none; }
+
+    #door-link:focus {
+      outline: none;
+    }
 
     a.nav-btn>path,
     a.nav-btn>rect {
@@ -312,28 +314,41 @@
     }
 
     @keyframes creaturePulse {
-      0%, 100% { filter: drop-shadow(0 0 6px var(--hl-color-glow)); }
-      50%       { filter: drop-shadow(0 0 18px var(--hl-color-glow)); }
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 6px var(--hl-color-glow));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 18px var(--hl-color-glow));
+      }
     }
 
     /* Creature click area */
     #creature-link {
       display: none;
     }
+
     #creature-link.active {
       display: inline;
       cursor: pointer;
     }
-    #creature-link > path {
+
+    #creature-link>path {
       fill: transparent;
       stroke: none;
       pointer-events: all;
     }
-    #creature-link:hover > path,
-    #creature-link:focus-visible > path {
+
+    #creature-link:hover>path,
+    #creature-link:focus-visible>path {
       fill: rgba(255, 255, 255, 0.9);
     }
-    #creature-link:focus { outline: none; }
+
+    #creature-link:focus {
+      outline: none;
+    }
 
     /* ── DIALOG ── */
     #dialog-overlay {
@@ -342,41 +357,51 @@
       inset: 0;
       z-index: 100;
     }
+
     #dialog-overlay.open {
       display: block;
     }
+
     #dialog-svg {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
     }
+
     .d-weiter-btn,
     .d-zu-btn {
       cursor: pointer;
     }
-    a.d-zu-btn > path {
+
+    a.d-zu-btn>path {
       pointer-events: all;
     }
-    a.d-weiter-btn > path {
+
+    a.d-weiter-btn>path {
       fill: transparent;
       pointer-events: all;
     }
-    a.d-weiter-btn:hover > path,
-    a.d-weiter-btn:focus-visible > path {
+
+    a.d-weiter-btn:hover>path,
+    a.d-weiter-btn:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
     /* Pfeil hover */
-    #pfeil-link > path {
+    #pfeil-link>path {
       transition: filter 0.2s, opacity 0.2s;
     }
-    #pfeil-link:hover > path,
-    #pfeil-link:focus-visible > path {
+
+    #pfeil-link:hover>path,
+    #pfeil-link:focus-visible>path {
       filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
       opacity: 0.5;
     }
-    #pfeil-link:focus { outline: none; }
+
+    #pfeil-link:focus {
+      outline: none;
+    }
   </style>
 </head>
 
@@ -679,13 +704,12 @@
       </g>
 
       <!-- SVG-B: Bild an der Wand — reagiert auf Linienfarbe -->
-      <path id="svgb-rect"
-        style="stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-        d="M811.7,175.1c-42.5-.1-88-.5-130.2.6-1.4,32,2.5,65.3,0,97.3,31.5.6,200.2,1.5,237.3.9-4-32.5,0-98.8,0-98.8h-13.1s-63.7-.9-94,0Z"/>
+      <path id="svgb-rect" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+        d="M811.7,175.1c-42.5-.1-88-.5-130.2.6-1.4,32,2.5,65.3,0,97.3,31.5.6,200.2,1.5,237.3.9-4-32.5,0-98.8,0-98.8h-13.1s-63.7-.9-94,0Z" />
 
       <!-- Clickable door area — enabled only at 7:1 -->
-      <rect id="door-focus-ring" x="38" y="135" width="142" height="500" rx="8"
-        fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="6" stroke-dasharray="12,6" visibility="hidden" pointer-events="none"/>
+      <rect id="door-focus-ring" x="38" y="135" width="142" height="500" rx="8" fill="rgba(255,255,255,0.15)"
+        stroke="white" stroke-width="6" stroke-dasharray="12,6" visibility="hidden" pointer-events="none" />
       <a id="door-link" href="5_Kueche_1.html" aria-label="Tür" role="button" tabindex="-1">
         <path
           d="M174.7,549.8v1.7c-6.3,3.7-12.6,7.5-19,11.3-20.2,10.3-38.6,24-57.7,35.9-41.9,24.1-43.3,25-56.1,34.1,0,0-.6-329.3,1.6-493.8,0,0,84.1,11,125.3,15.4,2.4,27-1,54,0,81.2-.4,30,1.5,60,1,90,.6,33.3,3.3,66.1,3.7,99.4,0,41.4.6,83.6,1.2,124.8" />
@@ -693,14 +717,15 @@
 
       <!-- Wesen-Klickbereich — aktiv bei 7:1 -->
       <a id="creature-link" href="#" aria-label="Wesen ansprechen" role="button" tabindex="-1" aria-haspopup="dialog">
-        <path d="M875.6,337.1c-3.6-7.4-11.2-12.5-20-12.5s-6.2.7-8.9,1.9c-1.4-2.6-3.4-4.8-5.7-6.7-3.8-3-8.6-4.8-13.8-4.8s-3.9.3-5.7.8c-3.3-8.1-11-13.8-20.5-13.8s-17.7,6-20.8,14.4c-2.8-1.2-2.4-1.9-9-1.9s-10.7,2.1-14.6,5.6c-.6.5-1,1-1.5,1.5h-4.9c-12.3,0-22.2,10-22.2,22.2s3.8,14.3,9.6,18.3v2.8c0,10.5,7.1,19.2,16.7,21.6.7,2.7,1.9,5.1,3.4,7.3,4,5.6,10.6,9.2,18.1,9.2s6.2-.7,8.9-1.9c1,1.7,2.3,3.2,3.7,4.6-.4.9-.7-.5-.7,2.9s2.5,6.3,5.8,6.7c.8,2.3,2.8,4,5.1,4.5.8,1,1.8,1.7,2.9,2.1.2,0,.5.2.8.2.3.6.7,1,1,1.5-.2.5-.2.7-.2,1.6s.2,1.8.5,2.6c-.3.8-.5,1.4-.5,2.5s.3,2,.7,2.9c-.4.9-.6-1.1-.6,2.7s0,1,.2,1.5c2.7-.6,5.4-1.2,8-1.8,2.1-.5,3.7-.9,5.3-1.2,0-.5-.3-.9-.5-1.3.4-.9.6-1.7.6-2.7s0-1.8-.5-2.6c.3-.8.5-.8.5-2.5s-.4-2.4-1-3.4c-.2-.4-.5-.8-.8-1.1.2-.5.2,1.5.2-1.6s-2.2-5.8-5-6.6c-.3-.6-.7-1.1-1.1-1.6,4.7-1.2,8.8-4,11.8-7.7,2.9,1.9,6.4,3.2,10.1,3.6,0,3.3,2.5,6.1,5.7,6.7.4,2.9,2.7,5.3,5.6,5.8.6,1,1.3,1.7,2.3,2.3h0c.9.6,1.8.9,2.9,1,0,.2.2.3.2.4-.2.5-.2.3-.2,1.5s.3,2.5.9,3.4c-.5,1-.8,2.2-.8,3.1s.2,1.8.6,2.7c-.4.8-.6,1.9-.6,2.7s0,1.5.4,2.3c-.3.8-.4-1.4-.4,2.1,2.5.6,4.8,1,7.3,1.3,0,.6.2,1,.3,1.6,1.6,0,3.4.3,5.3.4.5-1,.8-2,.8-3.1s0-1.5-.4-2.3c.3-.8.4-1.3.4-2.3s0-1.8-.5-2.7c.4-.8.6-1.5.6-2.7s-.3-2.4-.9-3.3c.5-1,.8-1.9.8-3.1s-.2-2.1-.7-3v-1.8c0-3.5-2.7-6.5-6.1-6.8-1-2-2.9-3.4-5-3.8-1-1.8-2.8-3-4.8-3.3,0-.6-.3-1.1-.5-1.6,4-2.3,7.2-5.7,9.1-10,.5-1,.9-1.9,1.1-2.9,7.8-3.4,13.2-11.3,13.2-20.3s-.2-3.3-.6-4.9l.5-.3c2.1-1.2,3.9-2.4,5.4-3.8,3.2-2.9,5.1-6.8,5.1-15.2s-.8-6.8-2.3-9.8h0ZM737.5,362.2h0ZM860.3,421.4v.2-.2h0c0-.2,0,0,0,0h0ZM754.7,321.8l-.2.2c-.3,0-.2,0,.2-.2Z"/>
+        <path
+          d="M875.6,337.1c-3.6-7.4-11.2-12.5-20-12.5s-6.2.7-8.9,1.9c-1.4-2.6-3.4-4.8-5.7-6.7-3.8-3-8.6-4.8-13.8-4.8s-3.9.3-5.7.8c-3.3-8.1-11-13.8-20.5-13.8s-17.7,6-20.8,14.4c-2.8-1.2-2.4-1.9-9-1.9s-10.7,2.1-14.6,5.6c-.6.5-1,1-1.5,1.5h-4.9c-12.3,0-22.2,10-22.2,22.2s3.8,14.3,9.6,18.3v2.8c0,10.5,7.1,19.2,16.7,21.6.7,2.7,1.9,5.1,3.4,7.3,4,5.6,10.6,9.2,18.1,9.2s6.2-.7,8.9-1.9c1,1.7,2.3,3.2,3.7,4.6-.4.9-.7-.5-.7,2.9s2.5,6.3,5.8,6.7c.8,2.3,2.8,4,5.1,4.5.8,1,1.8,1.7,2.9,2.1.2,0,.5.2.8.2.3.6.7,1,1,1.5-.2.5-.2.7-.2,1.6s.2,1.8.5,2.6c-.3.8-.5,1.4-.5,2.5s.3,2,.7,2.9c-.4.9-.6-1.1-.6,2.7s0,1,.2,1.5c2.7-.6,5.4-1.2,8-1.8,2.1-.5,3.7-.9,5.3-1.2,0-.5-.3-.9-.5-1.3.4-.9.6-1.7.6-2.7s0-1.8-.5-2.6c.3-.8.5-.8.5-2.5s-.4-2.4-1-3.4c-.2-.4-.5-.8-.8-1.1.2-.5.2,1.5.2-1.6s-2.2-5.8-5-6.6c-.3-.6-.7-1.1-1.1-1.6,4.7-1.2,8.8-4,11.8-7.7,2.9,1.9,6.4,3.2,10.1,3.6,0,3.3,2.5,6.1,5.7,6.7.4,2.9,2.7,5.3,5.6,5.8.6,1,1.3,1.7,2.3,2.3h0c.9.6,1.8.9,2.9,1,0,.2.2.3.2.4-.2.5-.2.3-.2,1.5s.3,2.5.9,3.4c-.5,1-.8,2.2-.8,3.1s.2,1.8.6,2.7c-.4.8-.6,1.9-.6,2.7s0,1.5.4,2.3c-.3.8-.4-1.4-.4,2.1,2.5.6,4.8,1,7.3,1.3,0,.6.2,1,.3,1.6,1.6,0,3.4.3,5.3.4.5-1,.8-2,.8-3.1s0-1.5-.4-2.3c.3-.8.4-1.3.4-2.3s0-1.8-.5-2.7c.4-.8.6-1.5.6-2.7s-.3-2.4-.9-3.3c.5-1,.8-1.9.8-3.1s-.2-2.1-.7-3v-1.8c0-3.5-2.7-6.5-6.1-6.8-1-2-2.9-3.4-5-3.8-1-1.8-2.8-3-4.8-3.3,0-.6-.3-1.1-.5-1.6,4-2.3,7.2-5.7,9.1-10,.5-1,.9-1.9,1.1-2.9,7.8-3.4,13.2-11.3,13.2-20.3s-.2-3.3-.6-4.9l.5-.3c2.1-1.2,3.9-2.4,5.4-3.8,3.2-2.9,5.1-6.8,5.1-15.2s-.8-6.8-2.3-9.8h0ZM737.5,362.2h0ZM860.3,421.4v.2-.2h0c0-.2,0,0,0,0h0ZM754.7,321.8l-.2.2c-.3,0-.2,0,.2-.2Z" />
       </a>
 
       <!-- Pfeil — erscheint nach Dialog, führt zu 5_Küche_1 -->
       <a id="pfeil-link" href="5_Kueche_1.html" aria-label="Weiter" role="button"
         style="visibility:hidden;pointer-events:none;">
         <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-          d="M61.9,372.5s56.5-66.3,69.9-83.4c.2,15.1,1.6,28.5,1.1,43.8,23.5.5,44.5-1.1,44.5-1.1l2,74.9s-20.7,2.8-44.5,1c.7,14.2,1.1,30,1.1,44.3l-74.1-79.7h0v.2Z"/>
+          d="M61.9,372.5s56.5-66.3,69.9-83.4c.2,15.1,1.6,28.5,1.1,43.8,23.5.5,44.5-1.1,44.5-1.1l2,74.9s-20.7,2.8-44.5,1c.7,14.2,1.1,30,1.1,44.3l-74.1-79.7h0v.2Z" />
       </a>
 
     </svg>
@@ -709,13 +734,32 @@
 
   <!-- Dialog-Overlay -->
   <div id="dialog-overlay" aria-hidden="true">
-    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
-      xmlns="http://www.w3.org/2000/svg" role="dialog" aria-modal="true" tabindex="-1">
+    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+      role="dialog" aria-modal="true" tabindex="-1">
       <defs>
         <style>
-          .d-feld { fill: #fff; stroke: #1d1e1c; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; }
-          .d-zu-shape { fill: #fff; stroke: #000; stroke-width: 3px; stroke-miterlimit: 10; }
-          .d-btn-shape { fill: #fff; stroke: #1d1e1c; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; }
+          .d-feld {
+            fill: #fff;
+            stroke: #1d1e1c;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
+
+          .d-zu-shape {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 3px;
+            stroke-miterlimit: 10;
+          }
+
+          .d-btn-shape {
+            fill: #fff;
+            stroke: #1d1e1c;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+          }
         </style>
       </defs>
 
@@ -734,17 +778,16 @@
         </a>
 
         <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter"
-          visibility="hidden">
+        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter" visibility="hidden">
           <path class="d-btn-shape"
             d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle"
-            x="1300" y="820">Weiter</text>
+          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
+            y="820">Weiter</text>
         </a>
 
         <!-- Dialogtext -->
-        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000"
-          visibility="hidden" x="300" y="720"></text>
+        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
+          y="720"></text>
       </g>
     </svg>
   </div>
@@ -840,15 +883,15 @@
     [bgR, bgG, bgB, stR, stG, stB].forEach(el => el.addEventListener('input', update));
 
     // Keyboard slider control: single press = ±1, held = accelerates to ±5
-    const REPEAT_DELAY    = 350;  // ms before repeat kicks in
+    const REPEAT_DELAY = 350;  // ms before repeat kicks in
     const REPEAT_INTERVAL = 40;   // ms between repeat steps
     const STEP_SLOW = 1;
     const STEP_FAST = 5;
 
     document.querySelectorAll('input[type=range]').forEach(slider => {
-      let repeatTimer    = null;
+      let repeatTimer = null;
       let repeatInterval = null;
-      let activeDir      = 0;
+      let activeDir = 0;
 
       function applyStep(step) {
         slider.value = Math.min(255, Math.max(0, +slider.value + step));
@@ -858,14 +901,14 @@
       function stopRepeat() {
         clearTimeout(repeatTimer);
         clearInterval(repeatInterval);
-        repeatTimer    = null;
+        repeatTimer = null;
         repeatInterval = null;
-        activeDir      = 0;
+        activeDir = 0;
       }
 
-      slider.addEventListener('keydown', function(e) {
+      slider.addEventListener('keydown', function (e) {
         if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' &&
-            e.key !== 'ArrowUp'   && e.key !== 'ArrowDown') return;
+          e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
 
         // Prevent the browser from also moving the slider natively
         e.preventDefault();
@@ -888,7 +931,7 @@
       });
 
       slider.addEventListener('keyup', stopRepeat);
-      slider.addEventListener('blur',  stopRepeat);
+      slider.addEventListener('blur', stopRepeat);
     });
 
     // ── Dialog ────────────────────────────────────────────────────────────────
@@ -909,10 +952,10 @@
     let convStep = 0;
     let openerLink = null;
     const overlay = document.getElementById('dialog-overlay');
-    const dlgSvg  = document.getElementById('dialog-svg');
+    const dlgSvg = document.getElementById('dialog-svg');
 
     function renderLines(def) {
-      const entry  = def.conversation[convStep - 1];
+      const entry = def.conversation[convStep - 1];
       const lineEl = document.getElementById(def.lines[0]);
       lineEl.textContent = entry.text;
       lineEl.setAttribute('text-anchor', entry.align === 'end' ? 'end' : 'start');
@@ -924,8 +967,8 @@
 
     function openDialog(opener) {
       openerLink = opener;
-      convStep   = 1;
-      const def  = DIALOGS[0];
+      convStep = 1;
+      const def = DIALOGS[0];
       document.getElementById(def.group).setAttribute('visibility', 'visible');
       renderLines(def);
       overlay.classList.add('open');
@@ -962,7 +1005,7 @@
 
     dlgSvg.addEventListener('click', function (e) {
       if (e.target.closest('.d-weiter-btn')) { e.preventDefault(); advanceConversation(); return; }
-      if (e.target.closest('.d-zu-btn'))     { e.preventDefault(); closeDialog();          return; }
+      if (e.target.closest('.d-zu-btn')) { e.preventDefault(); closeDialog(); return; }
     });
 
     document.addEventListener('keydown', function (e) {
@@ -980,7 +1023,7 @@
         if (!focusable.length) { e.preventDefault(); return; }
         const first = focusable[0], last = focusable[focusable.length - 1];
         if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-        else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
       }
     });
 
@@ -995,13 +1038,15 @@
   ════════════════════════════════════════════════════════════ -->
   <style>
     /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root { --wcag-farbe: #ff0; }
+    :root {
+      --wcag-farbe: #ff0;
+    }
   </style>
   <script>
     window.LEVEL_CONFIG = {
       hilfeUrl: '4_Wohnzimmer_H.html',      // Hilfeseite dieses Levels
-      menuUrl:  'levels.html',            // Levelübersicht
-      wcagUrl:  '4_Wohnzimmer_W.html'       // ← gelber Button → zurück zu Keller 4
+      menuUrl: 'levels.html',            // Levelübersicht
+      wcagUrl: '4_Wohnzimmer_W.html'       // ← gelber Button → zurück zu Keller 4
     };
   </script>
   <script src="icons.js"></script>

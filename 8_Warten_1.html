@@ -86,11 +86,15 @@
 
     #wesen-link>path {
       fill: transparent;
+      pointer-events: none;
+    }
+
+    #wesen-link.active>path {
       pointer-events: all;
     }
 
-    #wesen-link:hover>path,
-    #wesen-link:focus>path {
+    #wesen-link.active:hover>path,
+    #wesen-link.active:focus>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
@@ -98,7 +102,7 @@
       outline: none;
     }
 
-    #wesen-link:focus-visible>path {
+    #wesen-link.active:focus-visible>path {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;
@@ -604,9 +608,9 @@
       style="z-index:2;opacity:0;pointer-events:none;">
 
     <svg class="layer" id="wesen-overlay" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
-      <a id="wesen-link" href="8_Warten_2.html" role="button" aria-label="Wesen – weiter zu Warten 2" tabindex="-1">
+      <a id="wesen-link" href="8_Warten_1W.html" role="button" aria-label="Gelbes Wesen" tabindex="-1">
         <path
-          d="M822.2,502.8c3.2.2,11-.4,13.6.2.11,1.58.38,12.04.38,12.04l8.24-.2s.06-8.26-.12-12.24c3.9-.6,17.2-3,17.4-8.5.42-11.44.64-22.97-.2-34.4.64-12.58-11.51-9.73-19.6-9.4-13.68-.12-27.26,1.19-40.9.1-4.84-.35-7.54,6.27-7,12.3.49,11.73-1.63,23.93,1.1,35.5.8,2.8,15.2,3.2,17,4.1-.2,2.5-.2,5.9-.2,8.6,0,.87-.24,2.99-.24,2.99l9.08.35s.2-9.42.25-11.44c.06,0,1.06,0,1.2,0Z" />
+d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,85.87,111.03-8.22,23.95-37.74,37.25-35.32,64.59v19.59c.73,16.93-2.66,33.62-2.66,50.56s2.42,20.32-1.94,29.51c-1.94,3.87-5.81,3.87-7.74,0-3.87-8.22-2.42-18.38-2.66-27.82v-31.69s-4.6-.73-5.56-.73h-4.6s1.21,30.48,0,45.96c0,6.77,0,19.59-7.5,17.66-9.92-4.6-2.66-53.22-4.35-65.31-2.42-.73-7.5,0-9.92,0,1.45,8.95-1.21,20.08-1.45,29.03,0,9.92,1.94,20.08,0,29.75-1.45,8.22-8.22,9.43-9.92.73-3.63-18.14,0-39.67-1.21-58.05-1.21-.73-6.77-.24-8.22,0-1.94,18.14-.73,37.25-1.45,55.39-1.21,8.95-10.16,9.43-11.85,0-1.45-18.87.35-38.52-1.21-57.33-1.16-14.07-7.52-39.49-15.95-49.34-26.01-30.4-30.99-34.61-38.33-62.74Z"/>
       </a>
     </svg>
 
@@ -853,17 +857,10 @@
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS
   ════════════════════════════════════════════════════════════ -->
-  <style>
-    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root {
-      --wcag-farbe: #ff0;
-    }
-  </style>
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '8_Warten_1H.html',      // Hilfeseite dieses Levels
-      menuUrl: 'levels.html',            // Levelübersicht
-      wcagUrl: '8_Warten_1W.html'       // ← gelber Button → zurück zu Keller 4
+      hilfeUrl: '8_Warten_1H.html',
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>

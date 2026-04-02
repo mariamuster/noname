@@ -15,22 +15,13 @@
 .str3 { fill: rgb(35, 35, 255); }
 .str6 { fill: rgb(0, 0, 0); }
 
-.wcag-body {
-  fill: var(--wcag-farbe, rgb(35, 35, 255));
-  stroke: #000;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 3px;
-}
-
 /* ── Hover ──────────────────────────────────────────────────────────
-   Icons 1 & 2: Hover wird per JavaScript gesteuert (mouseenter/leave)
-   Icon 3:      Hover per CSS – pointer-events auf dem Rect per inline
-                style in icons.js auf 'all' gesetzt
+   Icon 2: Hover wird per JavaScript gesteuert (mouseenter/leave)
+   Icon 3: Hover per CSS – pointer-events auf dem Rect per inline
+           style in icons.js auf 'all' gesetzt
    ─────────────────────────────────────────────────────────────────── */
 
 /* Focus */
-#wcag-btn:focus,
 #hilfe-btn:focus,
 #menu-btn:focus { outline: none; }
 
@@ -49,12 +40,15 @@
     list-style: disc;
     font-family: 'Lexend', sans-serif;
     font-size: 18pt;
-    line-height: 2;
+    line-height: 1.4;
     color: #000000;
     z-index: 10;
     pointer-events: none;
   }
 
+  .instructions li {
+    margin-bottom: 1.3em;  /* Abstand zwischen den Punkten */
+}
 
     /* ── scrollable info panel ── */
     .info-content {
@@ -82,21 +76,21 @@
       display: flex;
       text-align: center;
       align-items: center;
-      gap: 0.35em;
+      gap: 0.3em;
       flex-wrap: wrap;
     }
 
     p.info-text {
       font-size: 18pt;
-      margin: 0 0 0.6em 0;
+      margin: 0 0 0.5em 0;
     }
 
     /* ── "WCAG 1.4.10" clickable text + icon ── */
     .wcag-link {
       display: inline-flex;
-      align-items: center;
-      font-size: 18pt;
-      gap: 0.3em;
+      align-items: right;
+      font-size: 15pt;
+      gap: 0.4em;
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 3px;
@@ -157,6 +151,5 @@
 
     p.start-text {
       font-size: 18pt;
-      margin: 0 0 2.8em 0;
+      margin: 0 0 1.8em 0;
     }
-

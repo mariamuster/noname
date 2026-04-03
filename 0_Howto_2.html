@@ -45,7 +45,6 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-
     /* Weiter-Button SVG-Overlay */
     .weiter-svg {
       position: absolute;
@@ -79,6 +78,22 @@
       z-index: 5;
       pointer-events: none;
     }
+
+    /* SVG text styles — defined in CSS so pt units behave like Howto_1 */
+    .text-svg .svg-h1 {
+      font-family: 'Lexend', sans-serif;
+      font-size: 4.5vw;
+      font-weight: 700;
+      fill: #1a1a1a;
+    }
+
+    .text-svg .svg-p {
+      font-family: 'Lexend', sans-serif;
+      font-size: 2vw;
+      fill: #1a1a1a;
+       margin: 0 0 1.5em 0;
+
+    }
   </style>
 </head>
 
@@ -89,20 +104,20 @@
     <!-- ── text overlay in SVG coordinate space ── -->
     <svg class="text-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <!-- Header -->
-      <text font-family="Lexend, sans-serif" font-size="60" font-weight="700" fill="#1a1a1a" x="440" y="180">Instruktionen</text>
-      <!-- Para 1: near Info icon (~y 437) -->
-      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a" x="440" y="280">Du musst auf dem Amt in Büro 146 etwas holen.</text>
-      <!-- Para 2: below para 1 -->
-      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a">
-        <tspan x="565" y="400">Wenn das gelbe Wesen erscheint, musst du etwas</tspan>
-        <tspan x="565" dy="35">lernen, um weiterzukommen. Als Quelle sind die</tspan>
-        <tspan x="565" dy="35"> WCAG, die «Web Content Accessibility Guidelines» </tspan>
-        <tspan x="565" dy="35">verlinkt.</tspan>
+      <text class="svg-h1" x="430" y="184">Instruktionen</text>
+      <!-- Para 1 -->
+      <text class="svg-p" x="430" y="280">Du musst auf dem Amt in Büro 146 etwas holen.</text>
+      <!-- Para 2 -->
+      <text class="svg-p">
+        <tspan x="550" y="400">Wenn das gelbe Wesen erscheint, musst du </tspan>
+        <tspan x="550" dy="35">etwas lernen, um weiterzukommen. Als Quelle </tspan>
+        <tspan x="550" dy="35">sind die WCAG, die «Web Content Accessibility </tspan>
+        <tspan x="550" dy="35">Guidelines» verlinkt.</tspan>
       </text>
       <!-- Para 3: near Hilfe icon (~y 595) -->
-      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a" x="565" y="608">Hier gibt es Hilfe.</text>
+      <text class="svg-p" x="550" y="608">Hier gibt es Hilfe.</text>
       <!-- Para 4: near Levels icon (~y 687) -->
-      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a" x="565" y="697">Hier kannst du die einzelnen Levels sehen.</text>
+      <text class="svg-p" x="550" y="697">Hier kannst du die einzelnen Levels sehen.</text>
     </svg>
 
     <svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">

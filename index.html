@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Zumutungen</title>
+    <link rel="stylesheet" href="image.css">
+
   <style>
     @font-face {
       font-family: 'Lex';
@@ -17,14 +19,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #fff;
+      background: rgb(0, 50, 0);
     }
 
     a {
-      font-size: clamp(3rem, 12vw, 9rem);
+      font-size: clamp(3rem, 10vw, 9rem);
       font-weight: 400;
       text-decoration: none;
-      color: #000;
+      color: #ffffff;
       letter-spacing: -0.02em;
       transition: opacity 0.2s;
     }
@@ -33,9 +35,28 @@
       opacity: 0.4;
       outline: none;
     }
+
+    .room-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .room-wrapper a {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
+  <div class="room-wrapper">
+    <img src="img/intro2.svg"
+      alt="Bunte Zeichnung einer Häuserreihe mit fünf unterschiedlich farbigen Gebäuden; in der Mitte steht ein graues Gebäude mit einer weissen Tür und mit der Aufschrift „AMT“."
+      class="responsive-img" tabindex="0" />
   <a href="0_Howto_1.html">Zumutungen</a>
+
+   
 </body>
 </html>

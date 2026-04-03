@@ -69,6 +69,16 @@
     .d-weiter-btn:focus-visible .weiter-path {
       fill: rgba(65, 65, 65, 0.7);
     }
+
+    /* text SVG overlay */
+    .text-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -76,25 +86,24 @@
   <div class="room-wrapper">
     <img src="img/Info_3.svg" alt="Infofenster, mit vier Icons." class="responsive-img" tabindex="0" />
 
-    <!-- ── scrollable text panel ── -->
-    <div class="h-content">
-      <h1 class="start-text">
-        Instruktionen
-      </h1>
-
- <p class="start-text">
- Du musst auf dem Amt in Büro 146 etwas holen.
-      </p>
-      <p class="start-text">
-Wenn das gelbe Wesen erscheint, musst du etwas lernen, um weiterzukommen. Als Quelle sind die WCAG, die «Web Content Accessibility Guidelines» verlinkt.  
-      </p>
-   
-      <p class="start-text">
-        Hier gibt es Hilfe.</p>
-      <p class="start-text">
-        Hier kannst du die einzelnen Levels sehen. </p>
-
-    </div>
+    <!-- ── text overlay in SVG coordinate space ── -->
+    <svg class="text-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <!-- Header -->
+      <text font-family="Lexend, sans-serif" font-size="60" font-weight="700" fill="#1a1a1a" x="440" y="180">Instruktionen</text>
+      <!-- Para 1: near Info icon (~y 437) -->
+      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a" x="440" y="280">Du musst auf dem Amt in Büro 146 etwas holen.</text>
+      <!-- Para 2: below para 1 -->
+      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a">
+        <tspan x="565" y="400">Wenn das gelbe Wesen erscheint, musst du etwas</tspan>
+        <tspan x="565" dy="35">lernen, um weiterzukommen. Als Quelle sind die</tspan>
+        <tspan x="565" dy="35"> WCAG, die «Web Content Accessibility Guidelines» </tspan>
+        <tspan x="565" dy="35">verlinkt.</tspan>
+      </text>
+      <!-- Para 3: near Hilfe icon (~y 595) -->
+      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a" x="565" y="608">Hier gibt es Hilfe.</text>
+      <!-- Para 4: near Levels icon (~y 687) -->
+      <text font-family="Lexend, sans-serif" font-size="25" fill="#1a1a1a" x="565" y="697">Hier kannst du die einzelnen Levels sehen.</text>
+    </svg>
 
     <svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
       <a class="d-weiter-btn" href="1_Haus_1.html" id="dlg1-weiter" role="button" aria-label="Start">

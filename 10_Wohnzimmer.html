@@ -22,7 +22,7 @@
 
     body {
       font-family: 'Lex', sans-serif;
-      background: rgb(0, 0, 200);
+      background: rgb(0, 50, 0);
       height: auto;
       min-height: 100vh;
       overflow: visible;
@@ -312,16 +312,16 @@
           </div>
           <div class="slider-row">
             <span class="channel-tag">G</span>
-            <input type="range" id="bg-g" min="0" max="255" value="0" disabled>
-            <span class="val-num" id="bg-g-val">0</span>
+            <input type="range" id="bg-g" min="0" max="255" value="50" disabled>
+            <span class="val-num" id="bg-g-val">50</span>
           </div>
           <div class="slider-row">
             <span class="channel-tag">B</span>
-            <input type="range" id="bg-b" min="0" max="255" value="200" disabled>
-            <span class="val-num" id="bg-b-val">200</span>
+            <input type="range" id="bg-b" min="0" max="255" value="0" disabled>
+            <span class="val-num" id="bg-b-val">00</span>
           </div>
         </div>
-        <div class="color-preview" id="bg-preview" style="background:rgb(0,0,200)"></div>
+        <div class="color-preview" id="bg-preview" style="background:rgb(0,50,0)"></div>
       </div>
     </div>
 
@@ -421,7 +421,7 @@
       return (hi + 0.05) / (lo + 0.05);
     }
 
-    const lBg = luminance(0, 0, 200);
+    const lBg = luminance(0, 50, 0);
     const lSt = luminance(0, 255, 0);
     const cr = contrast(lBg, lSt);
 

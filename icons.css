@@ -131,6 +131,8 @@
       padding-right: 0.8em;
     }
 
+  
+
     /* ── shared text class ── */
     .start-text {
       font-family: 'Lexend', sans-serif;
@@ -152,4 +154,5 @@
     p.start-text {
       font-size: 18pt;
       margin: 0 0 1.8em 0;
+      
     }

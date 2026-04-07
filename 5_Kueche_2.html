@@ -19,6 +19,12 @@
       align-items: center;
     }
 
+       @font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Regular.ttf') format('truetype');
+    }
+
+
     .hidden-list {
       position: absolute;
       left: -9999px;
@@ -43,11 +49,79 @@
       width: 80%;
       margin-top: 2em;
     }
+
+    /* Start button – only shown before game begins */
+    #start-btn {
+      font-size: 1.4em;
+      font: Lexend;
+      padding: 0.6em 1.4em;
+      cursor: pointer;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 6px;
+      margin-top: 1em;
+    }
+
+    #start-btn:focus {
+      outline: 3px solid #ff0;
+    }
+
+    #start-btn.hidden {
+      display: none;
+    }
+
+    /* SVG overlay – sits on top of the black background, never blocks input */
+    #bg-svg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Keep interactive content above the SVG */
+    body > *:not(#bg-svg) {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Background SVG overlay -->
+  <svg id="bg-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <style>
+        .st0, .st1 { fill: none; }
+        .st1 { stroke-linecap: round; stroke-linejoin: round; }
+        .st1, .st2 { stroke: #fff; stroke-width: 3px; }
+        .st2 { stroke-miterlimit: 10; }
+      </style>
+    </defs>
+    <rect class="st0" width="1600" height="900"/>
+    <g>
+      <path id="STROKE_a6e7f16f-1d34-4b58-b368-3f2791157b64" class="st1" d="M286.9,343.1c-20.1.6-40.3,0-60.4,1.2"/>
+      <path id="STROKE_a6e7f16f-1d34-4b58-b368-3f2791157b641" class="st1" d="M256.3,313.5c-.4,19.8.6,40.7,1,60.4"/>
+    </g>
+    <g id="Enter">
+      <path id="STROKE_6e6cf8a7-6b26-4ef4-847f-82c3bfcb1c11" class="st2" d="M137.9,544.6c1.7,23.4-.4,47.3.4,70.7,1.7,11.4-8.1,39.9,7.7,42,68.8,1.4,137.8-.8,206.5,2.1,26,2.9,26-10.7,24.6-32.5-4.1-67-1-135-3.5-201.7-8.7-11-53.3-1.9-68.4-3.7-16.9,2.7-51.7-5.2-63.4,3.1-8.9,141.8,35.8,104.6-97.1,111.2-6.6.6-8.9.6-7,8.7h.2,0Z"/>
+      <path class="st1" d="M321,607.2c-5-3.7-11.8-6.8-16.7-10.7,4.8-4.1,10.7-7.4,16.5-11.2"/>
+      <path id="STROKE_a6e7f16f-1d34-4b58-b368-3f2791157b642" class="st1" d="M354.7,526c-.4,22.9.6,46.9.8,69.7-16.7.2-33.5,0-50.4.8"/>
+    </g>
+    <g id="Tab">
+      <path id="STROKE_28ab2aa8-7a8f-418b-8bd9-56777522f045" class="st2" d="M137.7,147.4c2.1,39.7-6,79.8,1,119.2,4.6,17.4,43.2,8.1,57.3,9.5,42.2-1.2,84.1,2.1,126.1-.8,32.5-3.1,61.4,11.8,53.9-35.6-6-117,29.6-118.8-63.7-116.4-50.6-1.4-100.6,1.4-150.9,1-22.7-2.9-24.8,1-23.6,23.2h0Z"/>
+      <path id="STROKE_e73e8f14-050e-49b9-a495-0944f9ddbd95" class="st1" d="M157.8,225.5c18-.4,36.2,0,54.2.4"/>
+      <path id="STROKE_cf34fad5-5b8b-466f-84c6-97501202f2bd" class="st1" d="M192.3,212.2c7.2,4.5,14.9,9.5,20.9,14.1-6.4,5-14.5,8.5-20.9,13.6"/>
+      <path id="STROKE_90ab8764-bb4e-40f9-959c-368563a000b2" class="st1" d="M220,203.8c1,14.1-.4,29.3,0,43.4"/>
+    </g>
+  </svg>
+
   <h1>Kühlschrank</h1>
+  <button id="start-btn">Spiel starten</button>
   <p id="screen-reader-output"></p>
 
   <div class="hidden-list" aria-hidden="false">
@@ -89,14 +163,28 @@
 
     const buttons = [...document.querySelectorAll('.item')];
     const output = document.getElementById('screen-reader-output');
+    const startBtn = document.getElementById('start-btn');
+
+    // Pick the best available German voice, fall back to any available voice
+    function getVoice() {
+      const voices = window.speechSynthesis.getVoices();
+      return (
+        voices.find(v => v.lang === 'de-DE') ||
+        voices.find(v => v.lang.startsWith('de')) ||
+        voices[0] ||
+        null
+      );
+    }
 
     function speak(text, delay = 0) {
       output.textContent = text;
       if ('speechSynthesis' in window) {
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'de-DE';
         setTimeout(() => {
           window.speechSynthesis.cancel();
+          const utter = new SpeechSynthesisUtterance(text);
+          utter.lang = 'de-DE';
+          const voice = getVoice();
+          if (voice) utter.voice = voice;
           window.speechSynthesis.speak(utter);
         }, delay);
       }
@@ -133,16 +221,23 @@
             speak("Alle Zutaten gesammelt. Zurück zur Küche.", 1500);
             setTimeout(() => window.location.href = "5_Kueche_3.html", 4000);
           } else {
-            // Restart 
             setTimeout(resetFocus, 1500);
           }
         }
       });
     });
 
-    // Start
-    buttons[0].focus();
-    speak("Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.");
+    // Wait for voices to load (needed in Chrome)
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = () => { /* voices now ready */ };
+    }
+
+    // Start button provides the required user gesture for speech autoplay
+    startBtn.addEventListener('click', () => {
+      startBtn.classList.add('hidden');
+      speak("Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.");
+      setTimeout(resetFocus, 500);
+    });
   </script>
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS

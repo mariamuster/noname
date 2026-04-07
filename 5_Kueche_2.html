@@ -121,7 +121,7 @@
   </svg>
 
   <h1>Kühlschrank</h1>
-  <button id="start-btn">Spiel starten</button>
+  <button id="start-btn">Start</button>
   <p id="screen-reader-output"></p>
 
   <div class="hidden-list" aria-hidden="false">
@@ -160,6 +160,7 @@
   <script>
     const targets = ["Butter", "Eier", "Milch", "Blattspinat"];
     let foundItems = [];
+    let gameStarted = false;
 
     const buttons = [...document.querySelectorAll('.item')];
     const output = document.getElementById('screen-reader-output');
@@ -234,10 +235,30 @@
 
     // Start button provides the required user gesture for speech autoplay
     startBtn.addEventListener('click', () => {
+      gameStarted = true;
       startBtn.classList.add('hidden');
       speak("Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.");
       setTimeout(resetFocus, 500);
     });
+
+    // ── Zustand speichern / wiederherstellen ──────────────────
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('kueche2_state', JSON.stringify({
+        foundItems: foundItems,
+        gameStarted: gameStarted
+      }));
+    });
+
+    (function restoreState() {
+      const saved = JSON.parse(sessionStorage.getItem('kueche2_state') || 'null');
+      if (!saved) return;
+      foundItems = saved.foundItems || [];
+      if (saved.gameStarted) {
+        gameStarted = true;
+        startBtn.classList.add('hidden');
+        setTimeout(resetFocus, 100);
+      }
+    })();
   </script>
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS

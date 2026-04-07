@@ -113,7 +113,15 @@
     const CIRCLE_R = 80;
     const BTN_CX = 716, BTN_CY = 590;
 
-    let cx = 0, cy = 0;
+    // Restore position after returning from help page
+    let cx = parseFloat(sessionStorage.getItem('keller3_cx')) || 0;
+    let cy = parseFloat(sessionStorage.getItem('keller3_cy')) || 0;
+
+    // Save position before leaving the page (e.g. opening help)
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('keller3_cx', cx);
+      sessionStorage.setItem('keller3_cy', cy);
+    });
 
     function dist(x1, y1, x2, y2) {
       return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);

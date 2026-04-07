@@ -852,7 +852,32 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
       wl.setAttribute('tabindex', '0');
     }
 
-    window.addEventListener('load', () => setTimeout(() => spawnBubble(0), 500));
+    // ── Zustand speichern / wiederherstellen ──────────────────
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('warten1_state', JSON.stringify({
+        closedCount: closedCount,
+        nextSpawn: nextSpawn,
+        closed: [...closed],
+        spawned: [...spawned],
+        doorActive: document.getElementById('wesen-link').classList.contains('active')
+      }));
+    });
+
+    window.addEventListener('load', () => setTimeout(() => {
+      const saved = JSON.parse(sessionStorage.getItem('warten1_state') || 'null');
+      if (!saved || saved.closedCount === 0) {
+        spawnBubble(0);
+        return;
+      }
+      // Zustand wiederherstellen
+      closedCount = saved.closedCount;
+      nextSpawn = saved.nextSpawn;
+      saved.closed.forEach(i => closed.add(i));
+      // Noch sichtbare Blasen spawnen (gespawnt aber noch nicht geschlossen)
+      const visible = saved.spawned.filter(i => !saved.closed.includes(i));
+      visible.forEach(i => spawnBubble(i));
+      if (saved.doorActive) activateDoor();
+    }, 500));
   </script>
   <!-- ════════════════════════════════════════════════════════════
        LEVEL-KONFIGURATION FÜR ICONS

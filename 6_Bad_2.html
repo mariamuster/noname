@@ -564,6 +564,38 @@
         document.getElementById('zurueck-btn').style.display = 'block';
       }
     }
+
+    // ── Zustand speichern / wiederherstellen ──────────────────
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('bad2_state', JSON.stringify({
+        btn24Clicked: btn24Clicked,
+        btn44Clicked: btn44Clicked,
+        targetScale: targetScale,
+        deadWesen: allWesen.filter(w => !w.alive).map(w => w.el.id)
+      }));
+    });
+
+    (function restoreState() {
+      const saved = JSON.parse(sessionStorage.getItem('bad2_state') || 'null');
+      if (!saved) return;
+      btn24Clicked = saved.btn24Clicked;
+      btn44Clicked = saved.btn44Clicked;
+      targetScale = saved.targetScale;
+      if (btn24Clicked || btn44Clicked) {
+        applyScaleToAll(targetScale);
+      }
+      if (btn24Clicked && btn44Clicked) {
+        interactionsActive = false;
+        enableAllClicks();
+      }
+      if (saved.deadWesen && saved.deadWesen.length > 0) {
+        saved.deadWesen.forEach(id => {
+          const w = allWesen.find(w => w.el.id === id);
+          if (w) { w.alive = false; w.el.style.display = 'none'; }
+        });
+        checkAllGone();
+      }
+    })();
   </script>
 
 

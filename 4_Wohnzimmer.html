@@ -1038,6 +1038,38 @@
     bgR.value = 255; bgG.value = 255; bgB.value = 255;
     stR.value = 255; stG.value = 255; stB.value = 255;
     update();
+
+    // ── Zustand speichern / wiederherstellen ──────────────────
+    window.addEventListener('beforeunload', function () {
+      sessionStorage.setItem('wohnzimmer_state', JSON.stringify({
+        bgR: bgR.value, bgG: bgG.value, bgB: bgB.value,
+        stR: stR.value, stG: stG.value, stB: stB.value,
+        convStep: convStep,
+        pfeilVisible: document.getElementById('pfeil-link').style.visibility === 'visible'
+      }));
+    });
+
+    (function restoreState() {
+      var saved = JSON.parse(sessionStorage.getItem('wohnzimmer_state') || 'null');
+      if (!saved) return;
+      bgR.value = saved.bgR; bgG.value = saved.bgG; bgB.value = saved.bgB;
+      stR.value = saved.stR; stG.value = saved.stG; stB.value = saved.stB;
+      update();
+      if (saved.pfeilVisible) {
+        var pfeil = document.getElementById('pfeil-link');
+        pfeil.style.visibility = 'visible';
+        pfeil.style.pointerEvents = 'auto';
+      }
+      if (saved.convStep > 0) {
+        openerLink = creatureLink;
+        convStep = saved.convStep;
+        var def = DIALOGS[0];
+        document.getElementById(def.group).setAttribute('visibility', 'visible');
+        renderLines(def);
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
+      }
+    })();
   </script>
 
   <!-- ════════════════════════════════════════════════════════════

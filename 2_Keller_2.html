@@ -115,7 +115,15 @@
     // Centre of the Stromkasten button (in viewBox coords)
     const BTN_CX = 820, BTN_CY = 483, BTN_R = 40;
 
-    let cx = 0, cy = 0;
+    // Restore position after returning from help page
+    let cx = parseFloat(sessionStorage.getItem('keller2_cx')) || 0;
+    let cy = parseFloat(sessionStorage.getItem('keller2_cy')) || 0;
+
+    // Save position before leaving the page (e.g. opening help)
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('keller2_cx', cx);
+      sessionStorage.setItem('keller2_cy', cy);
+    });
 
     function dist(x1, y1, x2, y2) {
       return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);

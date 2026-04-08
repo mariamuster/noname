@@ -30,15 +30,15 @@
       left: -9999px;
     }
 
-    button.item {
-      background: none;
-      border: none;
+    a.item {
+      display: inline-block;
       color: transparent;
       outline: none;
       width: 1px;
       height: 1px;
       position: absolute;
       left: -9999px;
+      text-decoration: none;
     }
 
     #screen-reader-output {
@@ -126,35 +126,35 @@
 
   <div class="hidden-list" aria-hidden="false">
 
-    <button class="item">Tiefkühler</button>
-    <button class="item">Erbsen</button>
-    <button class="item">Bohnen</button>
-    <button class="item">Tomatensauce</button>
-    <button class="item">Beerenmix</button>
-    <button class="item">Brot</button>
-    <button class="item">Pizza</button>
-    <button class="item">Kühlschrank</button>
-    <button class="item">Eier</button>
-    <button class="item">Orangensaft</button>
-    <button class="item">Konfitüre</button>
-    <button class="item">Nagellack</button>
-    <button class="item">Sahne</button>
-    <button class="item">Butter</button>
-    <button class="item">Joghurt</button>
-    <button class="item">Parmesan</button>
-    <button class="item">Käse</button>
-    <button class="item">Tofu</button>
-    <button class="item">Tahini</button>
-    <button class="item">Mayonnaise</button>
-    <button class="item">Senf</button>
-    <button class="item">Milch</button>
-    <button class="item">Kartoffeln</button>
-    <button class="item">Karotten</button>
-    <button class="item">Lauch</button>
-    <button class="item">Blattspinat</button>
-    <button class="item">Wirz</button>
-    <button class="item">Randen</button>
-    <button class="item">Pastinaken</button>
+    <a class="item" tabindex="0" role="button">Tiefkühler</a>
+    <a class="item" tabindex="0" role="button">Erbsen</a>
+    <a class="item" tabindex="0" role="button">Bohnen</a>
+    <a class="item" tabindex="0" role="button">Tomatensauce</a>
+    <a class="item" tabindex="0" role="button">Beerenmix</a>
+    <a class="item" tabindex="0" role="button">Brot</a>
+    <a class="item" tabindex="0" role="button">Pizza</a>
+    <a class="item" tabindex="0" role="button">Kühlschrank</a>
+    <a class="item" tabindex="0" role="button">Eier</a>
+    <a class="item" tabindex="0" role="button">Orangensaft</a>
+    <a class="item" tabindex="0" role="button">Konfitüre</a>
+    <a class="item" tabindex="0" role="button">Nagellack</a>
+    <a class="item" tabindex="0" role="button">Sahne</a>
+    <a class="item" tabindex="0" role="button">Butter</a>
+    <a class="item" tabindex="0" role="button">Joghurt</a>
+    <a class="item" tabindex="0" role="button">Parmesan</a>
+    <a class="item" tabindex="0" role="button">Käse</a>
+    <a class="item" tabindex="0" role="button">Tofu</a>
+    <a class="item" tabindex="0" role="button">Tahini</a>
+    <a class="item" tabindex="0" role="button">Mayonnaise</a>
+    <a class="item" tabindex="0" role="button">Senf</a>
+    <a class="item" tabindex="0" role="button">Milch</a>
+    <a class="item" tabindex="0" role="button">Kartoffeln</a>
+    <a class="item" tabindex="0" role="button">Karotten</a>
+    <a class="item" tabindex="0" role="button">Lauch</a>
+    <a class="item" tabindex="0" role="button">Blattspinat</a>
+    <a class="item" tabindex="0" role="button">Wirz</a>
+    <a class="item" tabindex="0" role="button">Randen</a>
+    <a class="item" tabindex="0" role="button">Pastinaken</a>
   </div>
 
   <script>
@@ -166,29 +166,42 @@
     const output = document.getElementById('screen-reader-output');
     const startBtn = document.getElementById('start-btn');
 
+    // Cache voices so they're available at speak-time in all browsers
+    let cachedVoices = [];
+    function loadVoices() {
+      const v = window.speechSynthesis.getVoices();
+      if (v.length) cachedVoices = v;
+    }
+    loadVoices(); // synchronous in Safari desktop
+    if ('onvoiceschanged' in window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = loadVoices; // async in Chrome
+    }
+
     // Pick the best available German voice, fall back to any available voice
     function getVoice() {
-      const voices = window.speechSynthesis.getVoices();
       return (
-        voices.find(v => v.lang === 'de-DE') ||
-        voices.find(v => v.lang.startsWith('de')) ||
-        voices[0] ||
+        cachedVoices.find(v => v.lang === 'de-DE') ||
+        cachedVoices.find(v => v.lang.startsWith('de')) ||
+        cachedVoices[0] ||
         null
       );
     }
 
     function speak(text, delay = 0) {
       output.textContent = text;
-      if ('speechSynthesis' in window) {
+      if (!('speechSynthesis' in window)) return;
+      setTimeout(() => {
+        window.speechSynthesis.cancel();
+        // Safari needs a short gap between cancel() and speak(),
+        // otherwise it silently drops the utterance
         setTimeout(() => {
-          window.speechSynthesis.cancel();
           const utter = new SpeechSynthesisUtterance(text);
           utter.lang = 'de-DE';
           const voice = getVoice();
           if (voice) utter.voice = voice;
           window.speechSynthesis.speak(utter);
-        }, delay);
-      }
+        }, 50);
+      }, delay);
     }
 
     function resetFocus() {
@@ -228,10 +241,7 @@
       });
     });
 
-    // Wait for voices to load (needed in Chrome)
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      window.speechSynthesis.onvoiceschanged = () => { /* voices now ready */ };
-    }
+    // (Voice loading is handled above via loadVoices / onvoiceschanged)
 
     // Start button provides the required user gesture for speech autoplay
     startBtn.addEventListener('click', () => {
@@ -242,22 +252,27 @@
     });
 
     // ── Zustand speichern / wiederherstellen ──────────────────
+    // Wrapped in try/catch for Safari private browsing mode
     window.addEventListener('beforeunload', () => {
-      sessionStorage.setItem('kueche2_state', JSON.stringify({
-        foundItems: foundItems,
-        gameStarted: gameStarted
-      }));
+      try {
+        sessionStorage.setItem('kueche2_state', JSON.stringify({
+          foundItems: foundItems,
+          gameStarted: gameStarted
+        }));
+      } catch (e) {}
     });
 
     (function restoreState() {
-      const saved = JSON.parse(sessionStorage.getItem('kueche2_state') || 'null');
-      if (!saved) return;
-      foundItems = saved.foundItems || [];
-      if (saved.gameStarted) {
-        gameStarted = true;
-        startBtn.classList.add('hidden');
-        setTimeout(resetFocus, 100);
-      }
+      try {
+        const saved = JSON.parse(sessionStorage.getItem('kueche2_state') || 'null');
+        if (!saved) return;
+        foundItems = saved.foundItems || [];
+        if (saved.gameStarted) {
+          gameStarted = true;
+          startBtn.classList.add('hidden');
+          setTimeout(resetFocus, 100);
+        }
+      } catch (e) {}
     })();
   </script>
   <!-- ════════════════════════════════════════════════════════════

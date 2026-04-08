@@ -21,7 +21,6 @@
       border: 0cm solid rgba(0, 0, 0, 0.6);
     }
 
-    /* SVG overlay close button */
     a>path,
     a>rect {
       fill: transparent;
@@ -45,7 +44,6 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    /* Weiter-Button SVG-Overlay */
     .weiter-svg {
       position: absolute;
       inset: 0;
@@ -55,7 +53,6 @@
       pointer-events: none;
     }
 
-    /* Weiter-Button Pfad */
     .weiter-path {
       fill: white;
       stroke: black;
@@ -69,7 +66,6 @@
       fill: rgba(65, 65, 65, 0.7);
     }
 
-    /* text SVG overlay */
     .text-svg {
       position: absolute;
       inset: 0;
@@ -79,7 +75,6 @@
       pointer-events: none;
     }
 
-    /* SVG text styles — defined in CSS so pt units behave like Howto_1 */
     .text-svg .svg-h1 {
       font-family: 'Lexend', sans-serif;
       font-size: 4.5vw;
@@ -101,26 +96,25 @@
   <div class="room-wrapper">
     <img src="img/Info_3.svg" alt="Infofenster, mit vier Icons." class="responsive-img" tabindex="0" />
 
-    <!-- ── text overlay in SVG coordinate space ── -->
     <svg class="text-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-      <!-- Header -->
+      <!-- H1 -->
       <text class="svg-h1" x="430" y="184">Instruktionen</text>
-      <!-- Para 1 -->
+      <!-- P1 -->
       <text class="svg-p" x="430" y="280">Du musst auf dem Amt in Büro 146 etwas holen.</text>
-      <!-- Para 2 -->
+      <!-- P2 -->
       <text class="svg-p">
         <tspan x="550" y="400">Wenn das gelbe Wesen erscheint, musst du </tspan>
         <tspan x="550" dy="35">etwas lernen, um weiterzukommen. Als Quelle </tspan>
         <tspan x="550" dy="35">sind die WCAG, die «Web Content Accessibility </tspan>
         <tspan x="550" dy="35">Guidelines» verlinkt.</tspan>
       </text>
-      <!-- Para 3: near Hilfe icon (~y 595) -->
+      <!-- P3 -->
       <text class="svg-p" x="550" y="608">Beim Fragenzeichen gibt es Hilfe.</text>
-      <!-- Para 4: near Levels icon (~y 687) -->
+      <!-- P4 -->
       <text class="svg-p" x="550" y="685">Bei den drei Linien kannst du</text>
       <text class="svg-p" x="550" y="720">die einzelnen Levels sehen.</text>
       <text class="svg-p" x="550" y="790">Benutze einen Desktop.</text>
-        <text class="svg-p" x="550" y="825">Dauer etwa 30 Minuten.</text>
+      <text class="svg-p" x="550" y="825">Dauer etwa 30 Minuten.</text>
 
 
     </svg>

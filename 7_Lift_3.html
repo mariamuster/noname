@@ -43,7 +43,6 @@
       height: 100%;
     }
 
-    /* Shrug – rechts außen, gleicher viewBox-Ausschnitt */
     #shrug-svg {
       position: absolute;
       top: 0;
@@ -73,7 +72,6 @@
       opacity: 0;
     }
 
-    /* ── Sichtbarer Fokus für Icons ────────────────────────────────────── */
     #wcag-btn:focus-visible,
     #hilfe-btn:focus-visible,
     #menu-btn:focus-visible {
@@ -89,7 +87,10 @@
   <div class="room-wrapper">
 
     <!-- ══ HAUPTBILD ════════════════════════════════════════════════════ -->
-    <svg id="main-svg" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <svg id="main-svg" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-labelledby="main-svg-title">
+      <title id="main-svg-title">Panel mit sechs Knöpfen, von oben nach unten. Alle sind mit „weiter" angeschrieben.
+      </title>
       <defs>
         <style>
           .bg0 {
@@ -138,7 +139,6 @@
         </style>
       </defs>
 
-      <!-- Hintergrund -->
       <path class="bg0" d="M1038.6,900c-5.3-303.4-3.7-597.9-5.1-900" />
       <path class="bg0" d="M576.6,0c-5.2,210.9-12.3,421.8-16.6,633.4,1.4,89.1,3.2,177.9,5.1,266.6" />
       <path class="bg0"
@@ -206,9 +206,7 @@
         dominant-baseline="middle">Weiter</text>
 
 
-      <!--
-          FOKUS-RINGE: 
-        -->
+
       <path id="fr-1" class="focus-ring"
         d="M864.5,193.2c14.8,0,33.1-16.7,32.8-34.2-.3-16.6-20.5-34.4-31-34.3h-108.6s-40.3-3.5-40.3,31.8,16.7,35.8,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
       <path id="fr-2" class="focus-ring"
@@ -262,7 +260,6 @@
       <path class="sh2" d="M1453.3,439.2c-6.6,7.8-4.2,18.1-6.1,27.5-1,5-.3,10.3,2,14.8" />
     </svg>
 
-    <!-- ══ UNSICHTBARE HTML-BUTTONS (nur für Fokus-Empfang) ══════════════ -->
     <button id="ob-1" class="overlay-btn" tabindex="1" aria-label="Weiter"></button>
     <button id="ob-2" class="overlay-btn" tabindex="2" aria-label="Weiter"></button>
     <button id="ob-3" class="overlay-btn" tabindex="3" aria-label="Weiter"></button>
@@ -273,7 +270,6 @@
   </div>
 
   <script>
-    // ── Alle Maus-Events blockieren ─────────────────────────────────────
     ['click', 'mousedown', 'mouseup', 'mousemove',
       'mouseover', 'mouseenter', 'mouseleave', 'dblclick', 'contextmenu'
     ].forEach(type => {
@@ -283,7 +279,6 @@
       }, true);
     });
 
-    // ── Fokus-Ringe im SVG schalten ──────────────────────────────────────
     const FOCUS_MAP = {
       'ob-1': 'fr-1', 'ob-2': 'fr-2', 'ob-3': 'fr-3',
       'ob-4': 'fr-4', 'ob-5': 'fr-5', 'ob-6': 'fr-6',
@@ -309,7 +304,6 @@
       btn.addEventListener('blur', () => clearFocus());
     });
 
-    // ── Shrug Animation ──────────────────────────────────────────────────
     const shrugSvg = document.getElementById('shrug-svg');
     let shrugTimer = null;
 
@@ -319,7 +313,6 @@
       shrugTimer = setTimeout(() => shrugSvg.classList.remove('slide-in'), 1000);
     }
 
-    // ── Enter-Taste ──────────────────────────────────────────────────────
     document.addEventListener('keydown', e => {
       if (e.key !== 'Enter') return;
       const id = document.activeElement && document.activeElement.id;
@@ -343,26 +336,20 @@
 
 
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <style>
-    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root {
-      --wcag-farbe: #ff0;
-    }
+
   </style>
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '7_Lift_3H.html',      // Hilfeseite dieses Levels
-      menuUrl: 'levels.html',            // Levelübersicht
-      wcagUrl: '7_Lift_3W.html'       // ← gelber Button → zurück zu Keller 4
+      hilfeUrl: '7_Lift_3H.html',
+      menuUrl: 'levels.html',
     };
   </script>
   <script src="icons.js"></script>
 
   <script>
-    // ── Icons keyboard-zugänglich machen ────────────────────────────────────
-    // icons.js rendert die Buttons; wir warten bis sie im DOM sind.
     window.addEventListener('load', () => {
       const cfg = window.LEVEL_CONFIG || {};
       const iconMap = {
@@ -375,11 +362,9 @@
         const el = document.getElementById(id);
         if (!el) return;
 
-        // In Tab-Reihenfolge aufnehmen
         el.setAttribute('tabindex', '0');
 
-        // Enter / Leertaste lösen Navigation aus
-        // (click wird auf dieser Seite geblockt → keydown nötig)
+
         if (url) {
           el.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') {

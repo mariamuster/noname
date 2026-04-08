@@ -117,7 +117,6 @@
       display: inline-block;
     }
 
-    /* ── Schriftgrössen-Regler oben mitte ──────────────── */
     #size-control {
       position: absolute;
       top: 2%;
@@ -182,7 +181,6 @@
       color: #2a1a0a;
     }
 
-    /* ── Font-Panel links ──────────────────────────────── */
     #font-panel {
       position: absolute;
       left: 1%;
@@ -197,7 +195,6 @@
       pointer-events: all;
     }
 
-    /* Pill-Button */
     .font-btn {
       position: relative;
       cursor: pointer;
@@ -250,7 +247,6 @@
       pointer-events: none;
     }
 
-    /* ── Weiter-Pfeil ───────────────────────────── */
     #zurueck-svg {
       position: absolute;
       inset: 0;
@@ -264,7 +260,9 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/3_Bibi_Buch.svg" alt="Aufgeschlagenes Buch." class="responsive-img" tabindex="0" />
+    <img src="img/3_Bibi_Buch.svg"
+      alt="Das pinke Buch liegt offen. Darin stehen Variationen des Satzes „Hier ist Büro 146 nicht“. Auf der linken Seite hüpfen die einzelnen Buchstaben auf und ab. Auf der rechten Seite verschieben sie sich innerhalb des Wortes. Oben in der Mitte hat es einen Regler, mit dem die Schriftgrösse verändert werden kann. Auf der linken Seite können verschiedene Schriftarten gewählt werden. Rechts in der Mitte das gelbe Wesen."
+      class="responsive-img" tabindex="0" />
 
     <!-- Buchtext -->
     <div class="buch-text">
@@ -289,14 +287,12 @@
       </div>
     </div>
 
-    <!-- Schriftgrösse oben mitte -->
     <div id="size-control">
       <label for="size-slider">Schriftgrösse</label>
       <input id="size-slider" type="range" min="9" max="50" value="16" step="1">
       <span id="size-value">16px</span>
     </div>
 
-    <!-- Font-Panel links -->
     <div id="font-panel">
 
       <button class="font-btn active" aria-label="Georgia" data-font="Georgia, serif">
@@ -355,7 +351,7 @@
         <span class="btn-label" style="font-family: LibreCaslonText, serif; font-style:italic;">Libre Caslon</span>
       </button>
 
-      <button class="font-btn" aria-label="Open Dyslexic"data-font="OpenDyslexic, sans-serif">
+      <button class="font-btn" aria-label="Open Dyslexic" data-font="OpenDyslexic, sans-serif">
         <svg viewBox="710 685 185 85">
           <path class="btn-bg"
             d="M864.5,760.9c14.8,0,26.8.6,26.8-34.2-.3-16.6,0-34.6-24.6-34.4-40.3.3-81.9.3-109,.1-31.3-.1-40.3-3.5-40.3,31.8s0,35.4,40.8,36.7c37.4,1.4,85.3,0,106.3,0Z" />
@@ -365,8 +361,7 @@
 
     </div>
 
-    <!-- Weiter-Pfeil -->
-   <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
       <a href="3_Bibi_3W.html" aria-label="Gelbes Wesen" role="button">
         <style>
           .cls-2 {
@@ -423,7 +418,7 @@
   <script>
     function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
-    // ── Linke Seite: Y-Wobble ──────────────────────────────────────
+    // ── Y-Wobble ──────────────────────────────────────
     function wrapLetters(el) {
       el.childNodes.forEach(node => {
         if (node.nodeType === 3) {
@@ -452,7 +447,7 @@
     }
     wiggle();
 
-    // ── Rechte Seite: Buchstabentausch ────────────────────────────
+    // ── Buchstabentausch ────────────────────────────
     function wrapWords(container) {
       container.querySelectorAll('p').forEach(p => {
         const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
@@ -503,7 +498,6 @@
     }
     swapLetters();
 
-    // ── Font switcher ─────────────────────────────────────────────
     document.querySelectorAll('.font-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
@@ -515,7 +509,6 @@
       });
     });
 
-    // ── Schriftgrösse ─────────────────────────────────────────────
     const slider = document.getElementById('size-slider');
     const sizeVal = document.getElementById('size-value');
     slider.addEventListener('input', () => {
@@ -528,7 +521,7 @@
   </script>
 
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {

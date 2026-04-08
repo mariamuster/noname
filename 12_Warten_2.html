@@ -20,7 +20,6 @@
       border: none;
     }
 
-    /* Allgemeine hover/focus-Stile */
     a:hover>path,
     a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
@@ -39,7 +38,6 @@
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
 
-    /* Wesen-Hitbereich: transparent, aber anklickbar */
     #wesen-link>path {
       fill: transparent;
       pointer-events: all;
@@ -92,8 +90,9 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/8_Warten_3.2.svg" alt="Grundriss eines Raums mit einem Wesen und einem Pfeil." class="responsive-img"
-      tabindex="0" />
+    <img src="img/8_Warten_3.2.svg"
+      alt="Niemand steht am Empfang. Auf dem Tisch eine Lampe und ein Computer. Daneben eine Tür auf der „Büro 146, geschlossen“ steht. Die Uhr zeigt 17 Uhr 2."
+      class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -112,17 +111,13 @@
 
 
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
-  <style>
-    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-   
-  </style>
 
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '12_Warten_2H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl: 'levels.html',  // ← Dateinamen der Levelübersicht anpassen
+      hilfeUrl: '12_Warten_2H.html',
+      menuUrl: 'levels.html',
 
     };
   </script>

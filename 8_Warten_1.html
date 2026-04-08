@@ -41,22 +41,18 @@
       height: 100%;
     }
 
-    /* room background svg */
     #room-bg {
       z-index: 1;
     }
 
-    /* wesen overlay */
     #wesen-overlay {
       z-index: 3;
       pointer-events: none;
     }
 
-    /* bubble svgs injected by JS */
     .bubble-svg {
       z-index: 10;
       pointer-events: none;
-      /* individual hit paths handle this */
       animation: popIn 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
@@ -72,7 +68,6 @@
       }
     }
 
-    /* wesen link */
     #wesen-link {
       visibility: hidden;
       pointer-events: none;
@@ -114,8 +109,12 @@
 <body>
   <div class="room-wrapper" id="wrapper">
 
-    <svg class="layer" id="room-bg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1600 900">
-      <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+    <svg class="layer" id="room-bg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1600 900" role="img"
+      aria-labelledby="room-bg-title">
+      <title id="room-bg-title">Ein Wartezimmer. Rechts und links an der Wand Bankreihen, auf denen alle Wesen mit
+        offenen Mündern sitzen, die wir bisher getroffen haben. Hinten im Raum ein Empfang mit einem türkisfarbenen
+        Wesen. Sprechblasen mit „Hallo" erscheinen. Wenn eine geschlossen wird, erscheinen 2 mehr. Wenn alle geschlossen
+        sind, ruft das Empfangswesen „Ruhe".</title>
       <defs>
         <style>
           .st0 {
@@ -604,13 +603,13 @@
     </svg>
 
     <!-- Room state 2 — shown after RUHE! is closed -->
-    <img id="room-bg-2" class="layer" src="img/8_Warten_2.svg" alt="Wartezimmer 2"
+    <img id="room-bg-2" class="layer" src="img/8_Warten_2.svg" alt="Alle Wesen haben die Münder geschlossen"
       style="z-index:2;opacity:0;pointer-events:none;">
 
     <svg class="layer" id="wesen-overlay" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
       <a id="wesen-link" href="8_Warten_1W.html" role="button" aria-label="Gelbes Wesen" tabindex="-1">
         <path
-d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,85.87,111.03-8.22,23.95-37.74,37.25-35.32,64.59v19.59c.73,16.93-2.66,33.62-2.66,50.56s2.42,20.32-1.94,29.51c-1.94,3.87-5.81,3.87-7.74,0-3.87-8.22-2.42-18.38-2.66-27.82v-31.69s-4.6-.73-5.56-.73h-4.6s1.21,30.48,0,45.96c0,6.77,0,19.59-7.5,17.66-9.92-4.6-2.66-53.22-4.35-65.31-2.42-.73-7.5,0-9.92,0,1.45,8.95-1.21,20.08-1.45,29.03,0,9.92,1.94,20.08,0,29.75-1.45,8.22-8.22,9.43-9.92.73-3.63-18.14,0-39.67-1.21-58.05-1.21-.73-6.77-.24-8.22,0-1.94,18.14-.73,37.25-1.45,55.39-1.21,8.95-10.16,9.43-11.85,0-1.45-18.87.35-38.52-1.21-57.33-1.16-14.07-7.52-39.49-15.95-49.34-26.01-30.4-30.99-34.61-38.33-62.74Z"/>
+          d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,85.87,111.03-8.22,23.95-37.74,37.25-35.32,64.59v19.59c.73,16.93-2.66,33.62-2.66,50.56s2.42,20.32-1.94,29.51c-1.94,3.87-5.81,3.87-7.74,0-3.87-8.22-2.42-18.38-2.66-27.82v-31.69s-4.6-.73-5.56-.73h-4.6s1.21,30.48,0,45.96c0,6.77,0,19.59-7.5,17.66-9.92-4.6-2.66-53.22-4.35-65.31-2.42-.73-7.5,0-9.92,0,1.45,8.95-1.21,20.08-1.45,29.03,0,9.92,1.94,20.08,0,29.75-1.45,8.22-8.22,9.43-9.92.73-3.63-18.14,0-39.67-1.21-58.05-1.21-.73-6.77-.24-8.22,0-1.94,18.14-.73,37.25-1.45,55.39-1.21,8.95-10.16,9.43-11.85,0-1.45-18.87.35-38.52-1.21-57.33-1.16-14.07-7.52-39.49-15.95-49.34-26.01-30.4-30.99-34.61-38.33-62.74Z" />
       </a>
     </svg>
 
@@ -620,15 +619,7 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
   </div>
 
   <script>
-    /*
-     * BUBBLES array — index 0 = Bub_1, index 11 = Bub_12, index 12 = Bub_13 (RUHE!)
-     * Each entry:
-     *   p   = exact path from Bubbles.svg
-     *   tx/ty  = text centre in 1600×900 coords  ← adjust to move text
-     *   fs     = font-size in 1600×900 units      ← adjust to resize text
-     *   xbx/xby = ✕ button centre
-     *   xr    = ✕ button radius
-     */
+
     const BUBBLES = [
       { // Bub_1
         p: "M898.9,717.8c-10.6,78.5-140.4,79.1-201.8,83-21.7-1.5-48.5-10.4-67.3-20,0,0-243.1,91.5-342.4,35.5,33.4,18.8,74.4,9.5,111.7,4.1,63-9,128.3-21.9,187.9-41.3.6-.2,1.1-.5,1.7-.7,10.5-4.4,15.7-8,17.6-11.5,0,0-47.4-31.8,3.2-124.2,35.5-60.6,142.7-62.2,203.7-46.5,46.5,12.8,85.8,74.9,85.8,121.5Z",
@@ -696,9 +687,7 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
       }
     ];
 
-    /*
-     * Spawn tree
-     */
+
     let nextSpawn = 1;
     function getNextTwo() {
       const result = [];
@@ -767,7 +756,6 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
 
 
 
-      // ✕ close button
       const xg = el('g', { style: 'cursor:pointer; pointer-events:all' });
       xg.appendChild(el('circle', {
         cx: b.xbx, cy: b.xby, r: b.xr,
@@ -820,7 +808,6 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dismiss(); }
       });
 
-      // Focus style matching a:focus-visible
       const bubblePath = svg.querySelector('path');
       const xCircle = xg.querySelector('circle');
       svg.addEventListener('focus', () => {
@@ -844,15 +831,12 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
     }
 
     function activateDoor() {
-      // Swap room background
       document.getElementById('room-bg-2').style.opacity = '1';
-      // Activate wesen link
       const wl = document.getElementById('wesen-link');
       wl.classList.add('active');
       wl.setAttribute('tabindex', '0');
     }
 
-    // ── Zustand speichern / wiederherstellen ──────────────────
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem('warten1_state', JSON.stringify({
         closedCount: closedCount,
@@ -869,18 +853,16 @@ d="M712.69,681.08c-13.61-52.16,23.78-97.93,85.96-100.79,60.52-2.78,108.13,57.33,
         spawnBubble(0);
         return;
       }
-      // Zustand wiederherstellen
       closedCount = saved.closedCount;
       nextSpawn = saved.nextSpawn;
       saved.closed.forEach(i => closed.add(i));
-      // Noch sichtbare Blasen spawnen (gespawnt aber noch nicht geschlossen)
       const visible = saved.spawned.filter(i => !saved.closed.includes(i));
       visible.forEach(i => spawnBubble(i));
       if (saved.doorActive) activateDoor();
     }, 500));
   </script>
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {

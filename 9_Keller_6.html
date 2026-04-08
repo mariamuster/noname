@@ -4,54 +4,59 @@
 <head>
   <meta charset="UTF-8">
   <title>Hinweise Keller</title>
-   <link rel="stylesheet" href="image.css">
+  <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
 
 </head>
 <style>
-
   svg {
     border: none;
   }
-      a:hover>path,
-a:hover>rect {
-  fill: rgba(65, 65, 65, 0.7) !important;
-}
 
-a:focus {       
-  outline: none;
-}a:focus>path, 
-a:focus>rect {
-  stroke: black;
-  fill: rgba(65, 65, 65, 0.2);
-  stroke-width: 3px;
-  outline-offset: 4px;
-  filter: drop-shadow(0 0 0px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
-}
+  a:hover>path,
+  a:hover>rect {
+    fill: rgba(65, 65, 65, 0.7) !important;
+  }
+
+  a:focus {
+    outline: none;
+  }
+
+  a:focus>path,
+  a:focus>rect {
+    stroke: black;
+    fill: rgba(65, 65, 65, 0.2);
+    stroke-width: 3px;
+    outline-offset: 4px;
+    filter: drop-shadow(0 0 0px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+  }
 </style>
 </head>
 
 <body>
   <div class="room-wrapper">
-    <img src="img/2_Treppe_up.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+    <img src="img/2_Treppe_up.svg"
+      alt="Eine Treppe nach oben zu einer geöffneten Tür. Durch die Tür sind eine leuchtende Lampe und eine Garderobe sichtbar. Links ein  Geländer. In der Mitte zeigt ein türkisfarbener Pfeil zur Tür."
       class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="9_Keller_7.html" aria-label="Weiter vor" role="button">
-  <path id="STROKE_2723813b-dec1-47cb-992f-cff34e48f481" data-name="STROKE 2723813b-dec1-47cb-992f-cff34e48f481" class="cls-2" d="M815.18,367.72s79.32,71.33,99.9,88.31c-18.58-.2-34.96,1.2-53.75,0-1.2,28.57,0,54.55,0,54.55h-91.91s-2.8-25.57,0-54.55c-17.38.4-36.76.6-54.35,0l99.9-88.31h.2Z"/>
-       <text class="room-label" x="47.5%" y="33%">Weiter</text>
+      <a href="9_Keller_7.html" aria-label="Treppe hoch" role="button">
+        <path id="STROKE_2723813b-dec1-47cb-992f-cff34e48f481" data-name="STROKE 2723813b-dec1-47cb-992f-cff34e48f481"
+          class="cls-2"
+          d="M815.18,367.72s79.32,71.33,99.9,88.31c-18.58-.2-34.96,1.2-53.75,0-1.2,28.57,0,54.55,0,54.55h-91.91s-2.8-25.57,0-54.55c-17.38.4-36.76.6-54.35,0l99.9-88.31h.2Z" />
+        <text class="room-label" x="47.5%" y="33%">Weiter</text>
       </a>
 
 
     </svg>
   </div>
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '9_Keller_6H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl:  'levels.html'  // ← Dateinamen der Levelübersicht anpassen
+      hilfeUrl: '9_Keller_6H.html',
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>

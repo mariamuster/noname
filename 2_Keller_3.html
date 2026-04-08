@@ -48,7 +48,8 @@
 <body>
   <div class="room-wrapper">
 
-    <img src="img/2__SK_1.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+    <img src="img/2__SK_1.svg"
+      alt="Auch hier Bildschirm ist schwarz. Durch den kleinen Kreis sieht man, dass dahinter ein Stromkasten ist. Auch dieses Level ist ohne Sicht nicht spielbar.  Navigiere mit Tab und Enter zur Sicherung."
       class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" style="z-index: 3;">
@@ -73,7 +74,7 @@
     </svg>
 
 
-    <!-- Arrow key instructions overlay -->
+    <!-- 4Pfeile -->
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
       style="z-index: 4; pointer-events: none;">
       <g>
@@ -113,11 +114,9 @@
     const CIRCLE_R = 80;
     const BTN_CX = 716, BTN_CY = 590;
 
-    // Restore position after returning from help page
     let cx = parseFloat(sessionStorage.getItem('keller3_cx')) || 0;
     let cy = parseFloat(sessionStorage.getItem('keller3_cy')) || 0;
 
-    // Save position before leaving the page (e.g. opening help)
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem('keller3_cx', cx);
       sessionStorage.setItem('keller3_cy', cy);
@@ -151,12 +150,12 @@
     });
   </script>
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '2_Keller_3H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl: 'levels.html'  // ← Dateinamen der Levelübersicht anpassen
+      hilfeUrl: '2_Keller_3H.html',
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>

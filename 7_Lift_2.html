@@ -33,33 +33,29 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/7_Lift_2.svg" alt="Grundriss eines Raums mit Türen zu den Bereichen Vor, Da, Hallo und Zurück."
+    <img src="img/7_Lift_2.svg"
+      alt="Lift von innen. Eine zweitürige geschlossene Schiebetür in der Mitte. Rechts neben der Tür ein Panel mit sechs Knöpfen."
       class="responsive-img" tabindex="0" />
 
-    <!-- SVG-Overlay mit FUNKTIONEN aus room_1.html -->
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="7_Lift_3.html" aria-label="Weiter" role="button">
+      <a href="7_Lift_3.html" aria-label="Zu den Knöpfen" role="button">
         <path id="Knöpfe" class="cls-1"
           d="M1020.2,463.4c3-46.4,0-93.4,0-139.8-12.1-1.4-25.4,1.1-37.6.2-6.9.5-22-.2-22-.2,0,0-3,96.5,0,139.8h59.6Z" />
-        <text class="room-label" x="940" y="380">Weiter</text>
       </a>
 
-      <a href="7_Lift_1.html" aria-label="Zurück" role="button">
-        <rect width="100%" height="100" y="90%" />
-        <text class="room-label" x="47%" y="95%">Zurück</text>
-      </a>
+
     </svg>
   </div>
 
 
 
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '7_Lift_2H.html',    // ← Dateinamen der Hilfeseite anpassen
-      menuUrl: 'levels.html'  // ← Dateinamen der Levelübersicht anpassen
+      hilfeUrl: '7_Lift_2H.html',
+      menuUrl: 'levels.html'
     };
   </script>
   <script src="icons.js"></script>

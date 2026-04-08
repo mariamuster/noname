@@ -95,7 +95,9 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/3_Bibi_2.svg" alt="Bibliothek mit Bücherregalen." class="responsive-img" tabindex="0" />
+    <img src="img/3_Bibi_2.svg"
+      alt="Die Bücher in den Regalen sind jetzt in ähnlichen blau und grün Tönen eingefärbt. Sie sind dem Farbspektrum von Farbenblindheit nachempfunden. Der Name der Farbe wird vom Reader vorgelesen. Sind das grüne und das pinke Buch. Durch enter bestätigt, erscheinen sie auf dem Fenstersims in der Mitte."
+      class="responsive-img" tabindex="0" />
 
     <svg id="farbe2-svg" class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="farbe2">
@@ -682,7 +684,6 @@
 
     });
 
-    // ── Zustand speichern / wiederherstellen ──────────────────
     window.addEventListener('beforeunload', function () {
       var active = [...document.querySelectorAll('a.buch-btn.active')].map(el => el.dataset.id);
       sessionStorage.setItem('bibi2_active', JSON.stringify(active));
@@ -697,19 +698,15 @@
     })();
   </script>
   <!-- ════════════════════════════════════════════════════════════
-       LEVEL-KONFIGURATION FÜR ICONS
+       ICONS
   ════════════════════════════════════════════════════════════ -->
   <style>
-    /* Gelbe Farbe für das WCAG-Icon auf diesem Level */
-    :root {
-      --wcag-farbe: #ff0;
-    }
+
   </style>
   <script>
     window.LEVEL_CONFIG = {
-      hilfeUrl: '3_Bibi_2H.html',      // Hilfeseite dieses Levels
-      menuUrl: 'levels.html',            // Levelübersicht
-      wcagUrl: '3_Bibi_2W.html'       // ← gelber Button → zurück zu Keller 4
+      hilfeUrl: '3_Bibi_2H.html',
+      menuUrl: 'levels.html',
     };
   </script>
   <script src="icons.js"></script>

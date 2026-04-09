@@ -66,28 +66,30 @@
       fill: rgba(65, 65, 65, 0.7);
     }
 
-    .text-svg {
+    /* Scrollable text panel — positioned to the right of the icons */
+    .text-panel {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      top: 15%;
+      left: 34%;
+      right: 25%;
+      bottom: 10%;
+      overflow-y: auto;
+      pointer-events: auto;
       z-index: 5;
-      pointer-events: none;
+      font-family: 'Lexend', sans-serif;
+      color: #1a1a1a;
     }
 
-    .text-svg .svg-h1 {
-      font-family: 'Lexend', sans-serif;
-      font-size: 4.5vw;
+    .text-panel h1 {
+      font-size: 2.2rem;
       font-weight: 700;
-      fill: #1a1a1a;
+      margin: 0 0 0.6em 0;
     }
 
-    .text-svg .svg-p {
-      font-family: 'Lexend', sans-serif;
-      font-size: 2vw;
-      fill: #1a1a1a;
-      margin: 0 0 1.5em 0;
-
+    .text-panel p {
+      font-size: 1.6rem;
+      margin: 0 0 0.4em 0;
+      line-height: 1.2;
     }
   </style>
 </head>
@@ -96,28 +98,17 @@
   <div class="room-wrapper">
     <img src="img/Info_3.svg" alt="Infofenster, mit vier Icons." class="responsive-img" tabindex="0" />
 
-    <svg class="text-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-      <!-- H1 -->
-      <text class="svg-h1" x="430" y="184">Instruktionen</text>
-      <!-- P1 -->
-      <text class="svg-p" x="430" y="280">Du musst auf dem Amt in Büro 146 etwas holen.</text>
-      <!-- P2 -->
-      <text class="svg-p">
-        <tspan x="550" y="400">Wenn das gelbe Wesen erscheint, musst du </tspan>
-        <tspan x="550" dy="35">etwas lernen, um weiterzukommen. Als Quelle </tspan>
-        <tspan x="550" dy="35">sind die WCAG, die «Web Content Accessibility </tspan>
-        <tspan x="550" dy="35">Guidelines» verlinkt.</tspan>
-      </text>
-      <!-- P3 -->
-      <text class="svg-p" x="550" y="608">Beim Fragenzeichen gibt es Hilfe.</text>
-      <!-- P4 -->
-      <text class="svg-p" x="550" y="685">Bei den drei Linien kannst du</text>
-      <text class="svg-p" x="550" y="720">die einzelnen Levels sehen.</text>
-      <text class="svg-p" x="550" y="790">Benutze einen Desktop.</text>
-      <text class="svg-p" x="550" y="825">Dauer etwa 30 Minuten.</text>
-
-
-    </svg>
+    <div class="text-panel">
+      <h1>Instruktionen</h1>
+      <p>Du musst auf dem Amt in Büro 146 etwas holen.</p>
+            <br><br>
+<p>Wenn das gelbe Wesen erscheint, musst du etwas lernen, um weiterzukommen. Als Quelle sind die WCAG, die «Web Content Accessibility Guidelines» verlinkt.</p>
+            <br><br>
+<p>Beim Fragenzeichen gibt es Hilfe.</p>
+           <br><br>
+ <p>Bei den drei Linien kannst du die einzelnen Levels sehen.</p>
+      <p>Benutze einen Desktop. <br> Dauer etwa 30 Minuten.</p>
+    </div>
 
     <svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
       <a class="d-weiter-btn" href="1_Haus_1.html" id="dlg1-weiter" role="button" aria-label="Start">
@@ -130,7 +121,6 @@
       </a>
     </svg>
   </div>
-
 
 </body>
 

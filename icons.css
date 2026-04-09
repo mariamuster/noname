@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════
    Icon-Styles
-   Wird in allen Levels eingebunden
 ════════════════════════════════════════════ */
 
 /* Pfad-Styles aus Icon.svg */
@@ -17,6 +16,7 @@
 
 /* ── Hover ──────────────────────────────────────────────────────────
    Icon 2: Hover wird per JavaScript gesteuert (mouseenter/leave)
+           Nur der Kreis-Hintergrund (str2) wird eingefärbt.
    Icon 3: Hover per CSS – pointer-events auf dem Rect per inline
            style in icons.js auf 'all' gesetzt
    ─────────────────────────────────────────────────────────────────── */
@@ -24,6 +24,12 @@
 /* Focus */
 #hilfe-btn:focus,
 #menu-btn:focus { outline: none; }
+
+/* Level-pages use  a:hover > path { fill: … !important }  which hits every
+   path inside #hilfe-btn. Lock the ? stroke and dot to their correct fills
+   so only the circle background changes on hover. */
+#hilfe-btn path.str0 { fill: none !important; }        /* Fragezeichen – kein Fill */
+#hilfe-btn path.str6 { fill: #010101 !important; }     /* Punkt – schwarz */
 
 /* Menu-Icon Rect-Hintergrund */
 #menu-btn .str6 { fill: #ffffff; }

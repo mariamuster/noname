@@ -58,21 +58,17 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     Hover-Verhalten per JS – kein CSS-Cascade-Konflikt möglich
-     Färbt alle Kind-Pfade auf mouseenter ein, stellt sie auf mouseleave
-     wieder her (inline style wird einfach gelöscht → CSS-Wert kommt zurück)
+     Hover-Verhalten per JS – nur der Kreis-Hintergrund (str2) wird
+     eingefärbt, nicht die Linien (Fragezeichen, Punkt).
   ═══════════════════════════════════════════════════════════════════ */
   function addHover(btn) {
-    var paths = Array.prototype.slice.call(btn.querySelectorAll("path"));
+    var circle = btn.querySelector("path.str2"); // nur der Kreis-Hintergrund
+    if (!circle) return;
     btn.addEventListener("mouseenter", function () {
-      paths.forEach(function (p) {
-        p.style.fill = "rgba(65,65,65,0.7)";
-      });
+      circle.style.fill = "rgba(65,65,65,0.7)";
     });
     btn.addEventListener("mouseleave", function () {
-      paths.forEach(function (p) {
-        p.style.fill = "";
-      });
+      circle.style.fill = "";
     });
   }
 

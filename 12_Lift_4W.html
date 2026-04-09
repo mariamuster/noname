@@ -11,10 +11,31 @@
       font-family: 'Lexend';
       src: url('fonts/Lexend-Regular.ttf') format('truetype');
     }
+  html {
+      overflow-x: hidden;
+    }
 
     body {
       background-color: rgb(255, 247, 6);
       font-family: 'Lexend', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .info-content {
+      overflow-x: hidden !important;
+      overflow-wrap: break-word !important;
+      word-wrap: break-word !important;
+      padding-left: 0.2em !important;
+    }
+
+    .info-text {
+      overflow-wrap: break-word !important;
+      word-wrap: break-word !important;
+    }
+
+    h1.info-text {
+      overflow-wrap: break-word !important;
+      word-break: break-word !important;
     }
 
     svg {
@@ -45,6 +66,7 @@
     }
   </style>
 </head>
+
 
 <body>
   <div class="room-wrapper">

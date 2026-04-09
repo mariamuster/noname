@@ -13,23 +13,23 @@
       src: url('fonts/Lexend-Regular.ttf') format('truetype');
     }
 
+   html, body {
+      overflow: hidden;
+      height: 100%;
+    }
+
     body {
       background-color: rgb(0, 200, 0);
       font-family: 'Lexend', sans-serif;
     }
 
     .instructions {
-      position: absolute;
-      top:25%;
-      left: 28%;
-      margin: 0;
-      padding: 0 0 0 1.4em;
-      list-style: disc;
-      font-family: 'Lexend', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      color: #1a1a1a;
-      z-index: 10;
-      pointer-events: none;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overflow-wrap: break-word !important;
+      white-space: normal !important;
+      bottom: 13% !important;
+      pointer-events: auto !important;
     }
 
     svg {
@@ -43,23 +43,23 @@
       pointer-events: all;
     }
 
-      a:hover>path,
-a:hover>rect {
-  fill: rgba(65, 65, 65, 0.7) !important;
-}
+    a:hover>path,
+    a:hover>rect {
+      fill: rgba(65, 65, 65, 0.7) !important;
+    }
 
-a:focus {       
-  outline: none;
-}a:focus>path, 
-a:focus>rect {
-  stroke: black;
-  fill: rgba(65, 65, 65, 0.2);
-  stroke-width: 3px;
-  outline-offset: 4px;
-  filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
-}
+    a:focus {
+      outline: none;
+    }
 
-    
+    a:focus>path,
+    a:focus>rect {
+      stroke: black;
+      fill: rgba(65, 65, 65, 0.2);
+      stroke-width: 3px;
+      outline-offset: 4px;
+      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    }
   </style>
 </head>
 

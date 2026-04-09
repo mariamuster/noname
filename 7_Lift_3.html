@@ -274,6 +274,7 @@
       'mouseover', 'mouseenter', 'mouseleave', 'dblclick', 'contextmenu'
     ].forEach(type => {
       document.addEventListener(type, e => {
+        if (e.target.closest('#wcag-btn, #hilfe-btn, #menu-btn')) return;
         e.preventDefault();
         e.stopImmediatePropagation();
       }, true);
@@ -359,7 +360,11 @@
        ICONS
   ════════════════════════════════════════════════════════════ -->
   <style>
-
+    #wcag-btn,
+    #hilfe-btn,
+    #menu-btn {
+      cursor: pointer;
+    }
   </style>
   <script>
     window.LEVEL_CONFIG = {

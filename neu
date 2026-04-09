@@ -1,10 +1,10 @@
- <li>Klick auf die blaue Fläche in der Mitte.</li>
-      <li>Schliesse die Fläche mit Klick auf den runden Button mit einem x in der Mitte oben links</li>  
-      <li>Klicke auf den türkisfarbenen Pfeil rechts oben. </li>
-   
+<strong>
+  
+  
+  
+  jumps</strong>
 
-    <li>Klick auf die blaue Fläche rechts.</li>
-      <li>Schliesse die Fläche mit Klick auf den runden Button mit einem x in der Mitte oben links</li>  
-     <li>Klick auf die blaue Fläche links.</li>
-      <li>Schliesse die Fläche mit Klick auf den runden Button mit einem x in der Mitte oben links</li>  
-     <li>Klicke auf den türkisfarbenen Pfeil in der Mitte. </li>
+      <ul class="instructions">
+      <li>Bis du das <strong>gelbe Dreieck</strong> Dreieck siehst.</li>
+      <li>Das <strong>Dreieck</strong> ist in der <strong>unteren  Hälfte in der Mitte</strong>. </li>
+    </ul>

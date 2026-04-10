@@ -183,13 +183,7 @@
           d="M563,437c-.6,117.2-2.5,242.6,2.8,359,153.8,3.9,314-6.9,467.9,0,3-86.8,7.4-552,4.4-654.2-156.3,11-475,0-475,0v36.1s-4.4,175.6,0,259.2h0Z" />
 
 
-        <text x="800" y="456" text-anchor="middle" dominant-baseline="middle" style="fill: #ffffff;
-                     font-family: 'Lex', Lexend, sans-serif;
-                     font-size: 72px;
-                     pointer-events: none;
-                     user-select: none;">
-          Hinweis
-        </text>
+        <!-- "Hinweis" label moved to HTML so it scales with browser zoom -->
 
         <g id="zu-button" role="button" tabindex="0" aria-label="Schließen" transform="translate(160, 0)">
           <path class="zu-circle"
@@ -239,16 +233,51 @@
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
 
+      // "Hinweis" label as HTML element in <body> so it scales with browser zoom
+      var hinweisEl = document.createElement('p');
+      hinweisEl.textContent = 'Hinweis';
+      hinweisEl.setAttribute('aria-hidden', 'true');
+      hinweisEl.style.cssText = [
+        'display:none', 'position:fixed', 'margin:0',
+        "font-family:'Lex',sans-serif", 'font-size:3.5rem',
+        'color:#ffffff', 'line-height:1.2', 'text-align:center',
+        'z-index:100', 'overflow-y:auto', 'box-sizing:border-box',
+        'padding:4px 8px', 'word-break:break-word'
+      ].join(';');
+      document.body.appendChild(hinweisEl);
+
+      function positionHinweis() {
+        var svg = document.getElementById('main-svg');
+        if (!svg) return;
+        var r = svg.getBoundingClientRect();
+        var sx = r.width  / 1600;
+        var sy = r.height / 900;
+        // Full panel width: SVG x 563–1038, text area around y=420–490
+        hinweisEl.style.width     = (475 * sx) + 'px';
+        hinweisEl.style.left      = (r.left + 563 * sx) + 'px';
+        hinweisEl.style.top       = (r.top  + 220 * sy) + 'px';
+        hinweisEl.style.maxHeight = Math.max(90, 120 * sy) + 'px';
+      }
+
+      window.addEventListener('resize', function () {
+        if (hinweisEl.style.display !== 'none') positionHinweis();
+      });
+      window.addEventListener('scroll', function () {
+        if (hinweisEl.style.display !== 'none') positionHinweis();
+      });
+
       function openBild() {
         bildSmall.style.display = 'none';
         bildPanel.style.display = '';
         bildPanel.setAttribute('aria-hidden', 'false');
-
+        positionHinweis();
+        hinweisEl.style.display = 'block';
       }
 
       function closeBild() {
         bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
+        hinweisEl.style.display = 'none';
         bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');

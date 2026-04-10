@@ -108,8 +108,6 @@
       <g id="bild-panel" aria-hidden="true">
         <path style="fill:#2323ff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
           d="M764.7,711.3c129.3.4,267.5,2.6,395.5-3,4.3-169.7-7.7-346.2,0-515.8-95.7-3.4-608.5-8.1-721.2-4.7,12.3,172.2,0,523.5,0,523.5h40s193.5,4.7,285.8,0h0Z" />
-        <text x="800" y="450" text-anchor="middle" dominant-baseline="middle" style="fill:#fff; font-family:'Lex',Lexend,sans-serif; font-size:72px;
-                     pointer-events:none; user-select:none;">Ein Hinweis.</text>
        
        
                      <g id="zu-button" role="button" tabindex="0" aria-label="Schließen" transform="translate(50, 50)">
@@ -157,16 +155,52 @@
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
 
+      // Hinweis text as HTML element in <body> so it scales with browser zoom
+      var hinweisEl = document.createElement('p');
+      hinweisEl.textContent = 'Ein Hinweis.';
+      hinweisEl.setAttribute('aria-hidden', 'true');
+      hinweisEl.style.cssText = [
+        'display:none', 'position:fixed', 'margin:0',
+        "font-family:'Lex',sans-serif", 'font-size:4.5rem',
+        'color:#ffffff', 'line-height:1.2', 'text-align:center',
+        'z-index:100', 'overflow-y:auto', 'box-sizing:border-box',
+        'padding:4px 8px', 'word-break:break-word'
+      ].join(';');
+      document.body.appendChild(hinweisEl);
+
+      function positionHinweis() {
+        var svg = document.querySelector('.room-overlay');
+        if (!svg) return;
+        var r = svg.getBoundingClientRect();
+        var sx = r.width  / 1600;
+        var sy = r.height / 900;
+        // Panel bounds approx: x=439–1160, y=188–711
+        hinweisEl.style.width     = (721 * sx) + 'px';
+        hinweisEl.style.left      = (r.left + 439 * sx) + 'px';
+        hinweisEl.style.top       = (r.top  + 230 * sy) + 'px';
+        hinweisEl.style.maxHeight = Math.max(80, 440 * sy) + 'px';
+      }
+
+      window.addEventListener('resize', function () {
+        if (hinweisEl.style.display !== 'none') positionHinweis();
+      });
+      window.addEventListener('scroll', function () {
+        if (hinweisEl.style.display !== 'none') positionHinweis();
+      });
+
       function openBild() {
         bildSmall.style.display = 'none';
         bildPanel.style.display = '';
         bildPanel.setAttribute('aria-hidden', 'false');
+        positionHinweis();
+        hinweisEl.style.display = 'block';
         zuButton.focus();
       }
 
       function closeBild() {
         bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
+        hinweisEl.style.display = 'none';
         bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');
@@ -182,7 +216,6 @@
       zuButton.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeBild(); }
       });
-
 
     }());
   </script>

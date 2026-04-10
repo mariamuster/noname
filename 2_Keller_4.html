@@ -28,6 +28,7 @@
       outline-offset: 4px;
       filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
     }
+
   </style>
 </head>
 
@@ -38,7 +39,7 @@
 Rechts in der Mitte ein gelbes Wesen." class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a aria-label="Gelbes Wesen" tabindex="0" role="button">
+      <g aria-hidden="true">
         <style>
           .cls-2 {
             fill: none;
@@ -85,7 +86,11 @@ Rechts in der Mitte ein gelbes Wesen." class="responsive-img" tabindex="0" />
             </g>
           </g>
         </g>
+      </g>
 
+      <a aria-label="Gelbes Wesen" tabindex="0" role="button">
+        <path style="fill: transparent; pointer-events: all;"
+          d="M1375.08,417.32c-11.53-44.17,20.14-82.93,72.8-85.35,51.25-2.36,91.57,48.55,72.72,94.02-6.96,20.28-31.96,31.55-29.91,54.69v16.59c.61,14.34-2.25,28.47-2.25,42.81s2.05,17.21-1.64,24.99c-1.64,3.28-4.92,3.28-6.56,0-3.28-6.96-2.05-15.57-2.25-23.56v-26.83s-3.89-.61-4.71-.61h-3.89s1.02,25.81,0,38.92c0,5.74,0,16.59-6.35,14.95-8.4-3.89-2.25-45.07-3.69-55.31-2.05-.61-6.35,0-8.4,0,1.23,7.58-1.02,17-1.23,24.58,0,8.4,1.64,17,0,25.2-1.23,6.96-6.96,7.99-8.4.61-3.07-15.36,0-33.59-1.02-49.16-1.02-.61-5.74-.2-6.96,0-1.64,15.36-.61,31.55-1.23,46.91-1.02,7.58-8.6,7.99-10.04,0-1.23-15.98.29-32.62-1.02-48.55-.99-11.91-6.37-33.44-13.5-41.78-22.03-25.74-26.24-29.31-32.46-53.13Z" />
       </a>
     </svg>
   </div>

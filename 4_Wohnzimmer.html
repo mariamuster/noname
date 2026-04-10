@@ -1056,7 +1056,7 @@
       // SVG viewport coords (after group translate 0,-370):
       //   bubble top y=233, text area x=240-1150, y=255-405
       dlgTextEl.style.left      = (r.left + 240 * sx) + 'px';
-      dlgTextEl.style.top       = (r.top  + 255 * sy) + 'px';
+      dlgTextEl.style.top       = (r.top  + 295 * sy) + 'px';
       dlgTextEl.style.width     = (910  * sx) + 'px';
       dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
     }
@@ -1163,6 +1163,34 @@
       if (htmlDlgWeiter && weiterPath) {
         htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
         htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
+      }
+      if (htmlDlgClose && zuPath) {
+        htmlDlgClose.addEventListener('focus', function() {
+          zuPath.style.fill = 'rgba(0,95,204,0.08)';
+          zuPath.style.stroke = '#005fcc';
+          zuPath.style.strokeWidth = '3px';
+          zuPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
+        });
+        htmlDlgClose.addEventListener('blur', function() {
+          zuPath.style.fill = '';
+          zuPath.style.stroke = '';
+          zuPath.style.strokeWidth = '';
+          zuPath.style.filter = '';
+        });
+      }
+      if (htmlDlgWeiter && weiterPath) {
+        htmlDlgWeiter.addEventListener('focus', function() {
+          weiterPath.style.fill = 'rgba(0,95,204,0.08)';
+          weiterPath.style.stroke = '#005fcc';
+          weiterPath.style.strokeWidth = '3px';
+          weiterPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
+        });
+        htmlDlgWeiter.addEventListener('blur', function() {
+          weiterPath.style.fill = '';
+          weiterPath.style.stroke = '';
+          weiterPath.style.strokeWidth = '';
+          weiterPath.style.filter = '';
+        });
       }
     })();
 

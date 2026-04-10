@@ -64,5 +64,5 @@
 
     a.d-weiter-btn:hover>path,
     a.d-weiter-btn:focus-visible>path {
-      fill: rgba(65, 65, 65, 0.15) !important;
+      fill: rgba(65, 65, 65, 0.7) !important;
     }

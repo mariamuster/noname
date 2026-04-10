@@ -49,22 +49,29 @@
     }
 
     /* Dialog */
-    #dialog-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 100;
+
+
+    .d-feld {
+      fill: #fff;
+      stroke: #1d1e1c;
+      stroke-width: 3px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    #dialog-overlay.open {
-      display: block;
+    .d-zu-shape {
+      fill: #fff;
+      stroke: #000;
+      stroke-width: 3px;
+      stroke-miterlimit: 10;
     }
 
-    #dialog-svg {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
+    .d-btn-shape {
+      fill: #fff;
+      stroke: #1d1e1c;
+      stroke-width: 3px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .d-weiter-btn,
@@ -85,6 +92,9 @@
     a.d-weiter-btn:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
+      .room-wrapper {
+      position: relative;
+    }
   </style>
 </head>
 
@@ -94,7 +104,7 @@
       alt="Der Empfang mit dem türkisfarbenen Wesen. Auf dem Tisch eine Lampe und ein Computer. Daneben eine Tür auf der „Büro 146, geöffnet“ steht. Die Uhr zeigt 16 Uhr 37."
       class="responsive-img" tabindex="0" />
 
-    <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="room-overlay" id="room-svg" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
       <a href="#" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="Wesen ansprechen" role="button">
 
@@ -108,43 +118,12 @@
           d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z" />
       </a>
 
-    </svg>
-  </div>
+    
+      <!-- Dialog overlay merged into room SVG -->
+      <g id="dialog-overlay-group" display="none" role="dialog" aria-modal="true">
+        <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
-  <!-- Dialog-Overlay -->
-  <div id="dialog-overlay" aria-hidden="true">
-    <svg id="dialog-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
-      role="dialog" aria-modal="true" tabindex="-1">
-      <defs>
-        <style>
-          .d-feld {
-            fill: #fff;
-            stroke: #1d1e1c;
-            stroke-width: 3px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-          }
-
-          .d-zu-shape {
-            fill: #fff;
-            stroke: #000;
-            stroke-width: 3px;
-            stroke-miterlimit: 10;
-          }
-
-          .d-btn-shape {
-            fill: #fff;
-            stroke: #1d1e1c;
-            stroke-width: 3px;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-          }
-        </style>
-      </defs>
-
-      <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
-
-      <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
+        <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
         <!-- Dialogblase -->
         <path class="d-feld"
           d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
@@ -168,8 +147,11 @@
         <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
           y="720"></text>
       </g>
+      </g>
     </svg>
-  </div>
+  
+
+</div>
 
   <script>
     const DIALOGS = [
@@ -190,17 +172,58 @@
     let convStep = 0;
     let openerLink = null;
 
-    const overlay = document.getElementById('dialog-overlay');
-    const dlgSvg = document.getElementById('dialog-svg');
+    const overlayGroup = document.getElementById('dialog-overlay-group');
+    const roomSvg = document.getElementById('room-svg');
+    // Dialog text: created in <body> directly so position:fixed is always
+    // relative to the viewport, unaffected by any parent CSS filter/transform.
+    var dlgTextEl = (function () {
+      var el = document.getElementById('dlg1-text-html');
+      if (!el) {
+        el = document.createElement('p');
+        el.id = 'dlg1-text-html';
+        el.setAttribute('aria-live', 'polite');
+        el.style.cssText = [
+          'display:none', 'position:fixed', 'margin:0',
+          "font-family:'Lex',sans-serif", 'font-size:1.8rem',
+          'color:#000', 'line-height:1.3', 'overflow-y:auto',
+          'z-index:10000', 'box-sizing:border-box', 'padding:4px 10px'
+        ].join(';');
+        document.body.appendChild(el);
+      }
+      return el;
+    })();
+
+    function positionDialogText() {
+      var svg = document.getElementById('room-svg');
+      if (!svg || !dlgTextEl) return;
+      var r = svg.getBoundingClientRect();
+      var sx = r.width  / 1600;
+      var sy = r.height / 900;
+      // SVG viewport coords (after group translate 0,-370):
+      //   bubble top y=233, text area x=240-1150, y=255-405
+      dlgTextEl.style.left      = (r.left + 240 * sx) + 'px';
+      dlgTextEl.style.top       = (r.top  + 255 * sy) + 'px';
+      dlgTextEl.style.width     = (910  * sx) + 'px';
+      dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
+    }
+    window.addEventListener('resize', function () {
+      if (isDialogOpen()) positionDialogText();
+    });
+    window.addEventListener('scroll', function () {
+      if (isDialogOpen()) positionDialogText();
+    });
+
+
+
+    function isDialogOpen() {
+      return overlayGroup.getAttribute('display') !== 'none';
+    }
 
     function renderLines(def) {
       const entry = def.conversation[convStep - 1];
-      const lineEl = document.getElementById(def.lines[0]);
-      lineEl.textContent = entry.text;
-      lineEl.setAttribute('text-anchor', entry.align === 'end' ? 'end' : 'start');
-      lineEl.setAttribute('x', entry.align === 'end' ? def.endX.end : def.endX.start);
-      lineEl.setAttribute('visibility', 'visible');
-
+      dlgTextEl.textContent = entry.text;
+      dlgTextEl.style.textAlign = entry.align === 'end' ? 'right' : 'left';
+      dlgTextEl.style.display = 'block';
       const w = document.getElementById(def.weiterId);
       if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
     }
@@ -211,14 +234,16 @@
       const def = DIALOGS[0];
       document.getElementById(def.group).setAttribute('visibility', 'visible');
       renderLines(def);
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      dlgSvg.focus();
+      positionDialogText();
+      overlayGroup.setAttribute('display', 'inline');
+      overlayGroup.setAttribute('aria-hidden', 'false');
     }
 
     function closeDialog() {
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
+      overlayGroup.setAttribute('display', 'none');
+      overlayGroup.setAttribute('aria-hidden', 'true');
+      dlgTextEl.style.display = 'none';
+      dlgTextEl.textContent = '';
       document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
       convStep = 0;
       if (openerLink) openerLink.focus();
@@ -242,18 +267,19 @@
       openDialog(this);
     });
 
-    dlgSvg.addEventListener('click', function (e) {
+    roomSvg.addEventListener('click', function (e) {
+      if (!isDialogOpen()) return;
       if (e.target.closest('.d-weiter-btn')) { e.preventDefault(); advanceConversation(); return; }
       if (e.target.closest('.d-zu-btn')) { e.preventDefault(); closeDialog(); return; }
     });
 
     document.addEventListener('keydown', function (e) {
-      if (!overlay.classList.contains('open')) return;
+      if (!isDialogOpen()) return;
       if (e.key === 'Escape') { closeDialog(); return; }
       if (e.key === 'Tab') {
-        const focusable = Array.from(dlgSvg.querySelectorAll('a[role="button"]')).filter(el => {
+        const focusable = Array.from(overlayGroup.querySelectorAll('a[role="button"]')).filter(el => {
           let p = el.parentElement;
-          while (p && p !== dlgSvg) {
+          while (p && p !== overlayGroup) {
             if (p.getAttribute('visibility') === 'hidden') return false;
             p = p.parentElement;
           }

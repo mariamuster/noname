@@ -25,7 +25,7 @@
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus {
+    a:focus-visible {
       outline: none;
     }
 
@@ -219,7 +219,7 @@
           "font-family:'Lex',sans-serif", 'font-size:1.8rem',
           'color:#000', 'line-height:1.3', 'overflow-y:auto', 'overflow-x:hidden',
           'z-index:10001', 'box-sizing:border-box', 'padding:4px 10px',
-          'pointer-events:none'
+          'pointer-events:auto'
         ].join(';');
         htmlDialog.insertBefore(el, htmlDlgClose);
       }
@@ -299,7 +299,7 @@
       overlayGroup.setAttribute('display', 'inline');
       htmlDialog.style.display = 'block';
       setTimeout(function () {
-        dlgTextEl.focus();
+        dlgTextEl.focus({ preventScroll: true });
       }, 50);
     }
 
@@ -323,7 +323,7 @@
         convStep++;
         renderLines(def);
         setTimeout(function () {
-          dlgTextEl.focus();
+          dlgTextEl.focus({ preventScroll: true });
         }, 50);
       } else {
         closeDialog();
@@ -333,6 +333,20 @@
     // HTML-Button-Handler
     htmlDlgClose.addEventListener('click', closeDialog);
     htmlDlgWeiter.addEventListener('click', advanceConversation);
+    // Mirror hover on invisible HTML buttons → SVG paths underneath
+    (function() {
+      var zuPath    = document.querySelector('.d-zu-shape');
+      var weiterPath = document.querySelector('.d-btn-shape');
+      var HOVER_FILL = 'rgba(65,65,65,0.7)';
+      if (htmlDlgClose && zuPath) {
+        htmlDlgClose.addEventListener('mouseenter', function() { zuPath.style.fill = HOVER_FILL; });
+        htmlDlgClose.addEventListener('mouseleave', function() { zuPath.style.fill = ''; });
+      }
+      if (htmlDlgWeiter && weiterPath) {
+        htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
+        htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
+      }
+    })();
 
     document.getElementById('wesen-link').addEventListener('click', function (e) {
       e.preventDefault();

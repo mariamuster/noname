@@ -63,7 +63,7 @@
       left: 25%;
       right: 22%;
       bottom: 3%;
-      overflow-y: auto;
+      overflow: hidden auto;
       z-index: 10;
       padding-right: 0.5em;
     }
@@ -121,7 +121,7 @@
       left: 27%;
       right: 25%;
       bottom: 3%;
-      overflow-y: auto;
+      overflow: hidden auto;
       z-index: 10;
       padding-right: 0.8em;
     }
@@ -132,7 +132,7 @@
       left: 35%;
       right: 27%;
       bottom: 3%;
-      overflow-y: auto;
+      overflow: hidden auto;
       z-index: 10;
       padding-right: 0.8em;
     }

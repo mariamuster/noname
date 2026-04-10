@@ -19,7 +19,7 @@
     body {
       background-color: rgb(255, 247, 6);
       font-family: 'Lexend', sans-serif;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     .info-content {
@@ -49,12 +49,12 @@
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    a:focus {
+    a:focus-visible {
       outline: none;
     }
 
-    a:focus>path,
-    a:focus>rect {
+    a:focus-visible>path,
+    a:focus-visible>rect {
       stroke: black;
       fill: rgba(65, 65, 65, 0.2);
       stroke-width: 3px;

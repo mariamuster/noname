@@ -104,7 +104,7 @@
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-      <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
+      <g id="bild-small" role="button" tabindex="0" aria-label="Blaues Rechteck">
         <path
           d="M1419,125.7c-16,1.8-31.9,2.2-48.1,2.9-23.1,2.2-45.6,2.2-68.7,3.6-18.3,1.6-36.6,5.5-54.9,5.5-11,.7-34.8.7-34.8.7-.3,12.4-3.1,19.6-3.4,32.5-.7,20.3,1.6,38.9,1.8,59.5,2,45.7,3.4,92.1,1.5,137.7-.3,22.8,0,48.8,1.1,71.7.3,22-2.3,67.1-2.3,67.1,56.8,2.7,114.9,10.1,171.9,10.8,31.6.8,59.6,7.2,91.5,6.2,0,0-2.6-105.7-2.8-157.7.4-87.3,4.9-151.4.8-244.3,0,0-25.9.8-53.7,4v-.2h.1Z" />
       </g>
@@ -124,7 +124,7 @@
         </g>
       </g>
 
-      <a id="weiter-link" href="12_Lift_4.html" aria-label="Zum Lift" role="button" aria-hidden="true">
+      <a id="weiter-link" tabindex="0" aria-label="Zum Lift" role="button" aria-hidden="true">
         <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
           d="M1060.4,394.5s14.7,13.2,18.5,16.3c-3.5,0-6.5.2-9.9,0-.2,5.3,0,10.1,0,10.1h-17s-.5-4.7,0-10.1h-10.1l18.5-16.3h0Z" />
         <text class="room-label" x="9%" y="50%">Weiter</text>
@@ -138,6 +138,13 @@
       hilfeUrl: '12_Lift_1H.html',
       menuUrl: 'levels.html'
     };
+
+    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
+    var weiterLink = document.getElementById('weiter-link');
+    weiterLink.addEventListener('click', function() { window.location.href = '12_Lift_4.html'; });
+    weiterLink.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '12_Lift_4.html'; }
+    });
   </script>
   <script src="icons.js"></script>
 
@@ -155,10 +162,16 @@
 
       // Hint text as body-level HTML so it scales with browser zoom
       var hinweisEl = document.createElement('p');
-      hinweisEl.textContent = 'Eine Reihe von Zeichen, die sich in der Höhe und Form unterscheiden. Manche sind eckig, manche rund. Der Einzige, der aus zwei Teilen, die nicht verbunden sind ist, ist zweimal zu sehen. Einer ist nach oben geöffnet, einer nach unten, einer nach links und nach rechts und einer nach oben und nach unten.';
-      hinweisEl.setAttribute('aria-hidden', 'true');
+      var hinweisText = 'Eine Reihe von Zeichen, die sich in der Höhe und Form unterscheiden. Manche sind eckig, manche rund. Der Einzige, der aus zwei Teilen, die nicht verbunden sind ist, ist zweimal zu sehen. Einer ist nach oben geöffnet, einer nach unten, einer nach links und nach rechts und einer nach oben und nach unten.';
+      hinweisEl.setAttribute('aria-live', 'assertive');
+      hinweisEl.setAttribute('aria-atomic', 'true');
+      hinweisEl.setAttribute('tabindex', '0');
       hinweisEl.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:2rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-      document.body.appendChild(hinweisEl);
+      (function(){
+        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
+        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      })();
+      var tabTrapFn = null;
 
       function positionHinweis() {
         var svg = document.querySelector('.room-overlay');
@@ -185,13 +198,26 @@
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        zuButton.focus();
+        setTimeout(function() {
+          hinweisEl.textContent = hinweisText;
+          hinweisEl.focus();
+          if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
+          tabTrapFn = function(e) {
+            if (e.key !== 'Tab') return;
+            e.preventDefault();
+            if (document.activeElement === zuButton) { hinweisEl.focus(); }
+            else { zuButton.focus(); }
+          };
+          document.addEventListener('keydown', tabTrapFn);
+        }, 50);
       }
 
       function closeBild() {
+        if (tabTrapFn) { document.removeEventListener('keydown', tabTrapFn); tabTrapFn = null; }
         bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
         hinweisEl.style.display = 'none';
+        hinweisEl.textContent = '';
         bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');

@@ -50,7 +50,7 @@
     <img src="img/2_Treppe_down.svg" alt="Eine Treppe im dunklen, die nach unten zu einer geschlossenen Tür führt. Rechts ein  Geländer. In der Mitte zeigt ein türkisfarbener Pfeil zur Tür."
       class="responsive-img" tabindex="0" />
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="2_Keller_2.html" aria-label="Treppe runter" role="button">
+      <a aria-label="Treppe runter" tabindex="0" role="button">
         <path id="Door" class="cls-1"
           d="M798.5,536.2s33.9,30.5,42.7,37.7c-8-.1-14.9.5-22.9,0-.5,12.3,0,23.3,0,23.3h-39.3s-1.2-10.9,0-23.3c-7.4.2-15.7.2-23.2,0l42.7-37.7h0Z" />
 
@@ -70,6 +70,20 @@
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_2_Keller_2_html = document.querySelector('[aria-label="Treppe runter"][role="button"]');
+  if (btn_2_Keller_2_html) {
+    btn_2_Keller_2_html.addEventListener("click", function() { window.location.href = "2_Keller_2.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_2_Keller_2_html && document.activeElement === btn_2_Keller_2_html) {
+      e.preventDefault(); window.location.href = "2_Keller_2.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

@@ -100,13 +100,27 @@
 
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <a href="6_Bad_3.html" aria-label="Schliessen" role="button">
+      <a aria-label="Schliessen" tabindex="0" role="button">
         <path
           d="M403.9,25.9c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2Z" />
       </a>
     </svg>
 
   </div>
+<script>
+(function() {
+  var btn_6_Bad_3_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
+  if (btn_6_Bad_3_html) {
+    btn_6_Bad_3_html.addEventListener("click", function() { window.location.href = "6_Bad_3.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_6_Bad_3_html && document.activeElement === btn_6_Bad_3_html) {
+      e.preventDefault(); window.location.href = "6_Bad_3.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

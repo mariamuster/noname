@@ -98,7 +98,7 @@
 
 
       <!-- Pfeil —  -->
-      <a href="13_Ende.html" id="pfeil-link" aria-label="Weiter" role="button"
+      <a id="pfeil-link" aria-label="Weiter" tabindex="0" role="button"
         style="visibility:visible;pointer-events:all;">
         <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z" />
@@ -123,6 +123,20 @@
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_13_Ende_html = document.getElementById("pfeil-link");
+  if (btn_13_Ende_html) {
+    btn_13_Ende_html.addEventListener("click", function() { window.location.href = "13_Ende.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_13_Ende_html && document.activeElement === btn_13_Ende_html) {
+      e.preventDefault(); window.location.href = "13_Ende.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

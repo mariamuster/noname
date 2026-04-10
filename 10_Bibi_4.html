@@ -52,7 +52,7 @@
 
 
       <!-- Pfeil -->
-      <a href="10_Bibi_5.html" id="pfeil-link" aria-label="Bibliothek verlassen" role="button"
+      <a id="pfeil-link" aria-label="Bibliothek verlassen" tabindex="0" role="button"
         style="visibility:visible;pointer-events:all;">
         <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M54.5,586.9s50-55.6,61.8-70c-.2,13.1.8,24.5,0,37.6,20.1.9,38.2,0,38.2,0v64.4s-17.9,2-38.2,0c.3,12.2.4,25.8,0,38l-61.8-70h0Z" />
@@ -73,6 +73,20 @@
     };
   </script>
   <script src="icons.js"></script>
+<script>
+(function() {
+  var btn_10_Bibi_5_html = document.getElementById("pfeil-link");
+  if (btn_10_Bibi_5_html) {
+    btn_10_Bibi_5_html.addEventListener("click", function() { window.location.href = "10_Bibi_5.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_10_Bibi_5_html && document.activeElement === btn_10_Bibi_5_html) {
+      e.preventDefault(); window.location.href = "10_Bibi_5.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

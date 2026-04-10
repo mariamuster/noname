@@ -39,7 +39,7 @@
       alt="Ein Gang mit einer Tür am Ende. Rechts und links je eine blaue Fläche an der Wand. Eine runde Lampe leuchtet. Unten in der Mitte zeigt ein türkisfarbener Pfeil Richtung Tür."
       class="responsive-img" tabindex="0" />
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="6_Bad_1.html" aria-label="Zur Tür" role="button">
+      <a aria-label="Zur Tür" tabindex="0" role="button">
         <path id="STROKE_2723813b-dec1-47cb-992f-cff34e48f481" data-name="STROKE 2723813b-dec1-47cb-992f-cff34e48f481"
           class="cls-2"
           d="M801.1,770.81s50.22,45.15,63.14,55.77c-11.83-.12-22.09.72-33.92,0-.85,18.11,0,34.53,0,34.53h-58.07s-1.81-16.06,0-34.53c-10.99.24-23.18.36-34.29,0l63.14-55.77h0Z" />
@@ -61,6 +61,20 @@
   <script src="icons.js"></script>
 
 
+<script>
+(function() {
+  var btn_6_Bad_1_html = document.querySelector('[aria-label="Zur Tür"][role="button"]');
+  if (btn_6_Bad_1_html) {
+    btn_6_Bad_1_html.addEventListener("click", function() { window.location.href = "6_Bad_1.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_6_Bad_1_html && document.activeElement === btn_6_Bad_1_html) {
+      e.preventDefault(); window.location.href = "6_Bad_1.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

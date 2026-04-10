@@ -139,9 +139,9 @@
 
   <h1>Kühlschrank</h1>
   <button id="start-btn">Start</button>
-  <p id="screen-reader-output"></p>
+  <p id="screen-reader-output" aria-live="assertive" aria-atomic="true">Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.</p>
 
-  <div class="hidden-list" aria-hidden="false">
+  <div class="hidden-list" id="item-list" aria-hidden="true">
 
     <a class="item" tabindex="0" role="button">Tiefkühler</a>
     <a class="item" tabindex="0" role="button">Erbsen</a>
@@ -228,7 +228,7 @@
 
     buttons.forEach(btn => {
       btn.addEventListener('focus', () => {
-        speak(btn.textContent.trim());
+        speak(btn.textContent.trim() + ', Schaltfläche');
       });
 
       btn.addEventListener('keydown', e => {
@@ -258,9 +258,9 @@
 
     startBtn.addEventListener('click', () => {
       gameStarted = true;
-      startBtn.classList.add('hidden');
       speak("Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.");
-      setTimeout(resetFocus, 500);
+      setTimeout(() => startBtn.classList.add('hidden'), 200);
+      setTimeout(resetFocus, 5000);
     });
 
 

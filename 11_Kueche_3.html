@@ -95,7 +95,7 @@
 
 
       <!-- Pfeil -->
-      <a id="pfeil-link" href="11_Kueche_4.html" aria-label="Küche verlassen" role="button"
+      <a id="pfeil-link" aria-label="Küche verlassen" tabindex="0" role="button"
         style="visibility:visible;pointer-events:all;">
         <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M1538.7,449.9s-49.9,55.6-61.8,70c0-13-.7-24.5,0-37.5-20.1-.9-38.2,0-38.2,0v-64.3s17.9-2,38.2,0c-.4-12.1-.4-25.8,0-38l61.8,70h0v-.2Z" />
@@ -116,6 +116,20 @@
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_11_Kueche_4_html = document.getElementById("pfeil-link");
+  if (btn_11_Kueche_4_html) {
+    btn_11_Kueche_4_html.addEventListener("click", function() { window.location.href = "11_Kueche_4.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_11_Kueche_4_html && document.activeElement === btn_11_Kueche_4_html) {
+      e.preventDefault(); window.location.href = "11_Kueche_4.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

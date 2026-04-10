@@ -199,6 +199,27 @@
       .room-wrapper {
       position: relative;
     }
+
+    /* HTML-Dialog-Overlay: nur für Accessibility, visuell unsichtbar */
+    #html-dialog {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      pointer-events: none;
+    }
+
+    #html-dlg-close,
+    #html-dlg-weiter {
+      position: fixed;
+      pointer-events: auto;
+      opacity: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -241,7 +262,7 @@
           d="M663.2,608c17.2-48.3-46.1-62.4-62.2-25-12.1,41.3,41.1,61.1,62.2,25Z" />
       </g>
 
-      <a href="#" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
+      <a tabindex="0" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
         <path class="hover-w1"
           d="M404.4,776.1c-2.7,5.1-9.8,5.9-15,6.3-18.5.9-33.3,3.6-43.7,20.6-7.3,12.6-12.4,18.8-28.1,19.5-24.2-3.5-38.2-11.9-63.2,1.7-7.6,4.5-16.6,7.7-21.7,14.2-3.6,4.3-1.7,11.6,4.9,9.3,82.9-38.6,45,32.6,137.2-49.2,10.8-13.4,50.7-12.8,29.8,7-8.2,4.8-18.3,7.6-25,14.5-19,17.1-10.7,36.4-32.9,47.7-6.8,4.3-14.8,7.2-19.8,13.8-7.2,7.8-1.7,16.7,8.2,10.8,11-6.2,18.3-17.9,27.4-26.4,3.5-3.5,9.7-6.4,12.4-10.5,4-20.3,15.5-27.6,30.5-40.1,15.2-9.5,47.7-20.2,30,10.5-6.8,12.9-25.6,20.2-24.3,36.9.8,8.3,3.6,15.7,8,22.7,2.7,4.8,5.7,8.7,5.5,14.2.1,10.5-10.7,10.8-18.4,14.4-6.6,3-19.2,11.1-15.6,18.2,10.9-1.8,22.5-9.1,32.1-14.7,7.9-7.6,14.9-19.6,12.9-31-5.8-14.3-12.3-15.4-3.7-32.3,4.4-5.8,12.3-9.1,15.9-15.9,6.6-10.3,30.3-55.8,37.6-24-1.8,14.7-15.1,29.2-10,44.3,5.6,14.6,15,32.1,6.3,47.5-5.4,7.5-14.5,12.5-19.6,20.5-2.2,3.1-3.6,5.7-.3,6.9,18.3-2.1,30.2-23.1,32.7-39.9,1.2-16.5-7.3-32.9-1.3-49.3,4.5-11.6,9.4-24.9,18.2-33.9,16.1-13.1,33.4,6.3,34,22.7-3.5,24.5-18.2,39.1-1.9,64.1,11,16.1.3,35.8-2.5,52.8-1.4,6.9,6.8,17,12.2,8.2,4.8-7.4,4.7-16.9,5.3-25.3,2.6-15.8,1.5-32.4-5-47.2-12.3-23.8-4.9-29,2.2-51.4,1.9-8.2,2.1-17.7,8.2-24.3,4.6-5.2,16.1-9.5,20.4-2,8.3,18.6-11.3,37.3-5.4,56.8,2.3,15.4,22,21.2,22.7,37.5-1.6,15-10.7,33.3-.8,47,6.1,5.6,15,1.6,19.9-3.7,6.8-10.1-6.4-19.8-6.3-30.3-1.4-16,.3-35.5-14.2-45.9-9.5-8.7-1.8-21.9-1.1-32.6.4-14.1-6.6-20.3,2.9-34.7,4.5-9.6,8.9-7.9,13.4,0,4.8,8,2.8,16.3,3.9,25.5.3,26.2,15.5,37.5,38.3,45.4,9.7,4.8,12.6,16.8,20,23.9,8.6,7.5,21.4,11,32.4,8.3,16.6-10.2-26.1-33.1-31.7-40.4-6-6.4-3.9-16-7.3-23.4-5.8-14.4-24.7-12.3-33.7-23.5-9.4-9.6-2.3-25.7,10.6-26.6,17.4,1,31.1,11.1,38.8,26.9,18.5,47.6,59.8,21.3,78.9,60.1,3.3,12.3,1.2,33.1,19.4,32.8,8.6-.8,19.5-3.5,26.8,2.8,6.7,7.3,12.5,16.4,22.7,19.3,13.4,6.5,31,2.4,20-15.6-6.3-9.5-17.8-15.4-28-19.6-12.9-4.2-28.4.3-40.5-6.4-14.4-12.8-4.2-35.5-28.9-43.7-19.8-8.1-27.9-4.2-39.1-25.1-5.1-6.4-15.8-9.2-19.9-16.3-7.4-13.7,5.3-21.2,17.2-14.3,25.7,11.5,35,41.9,60.2,54,7.1,4.5,16.2,3.8,23.9,5.3,14,2.2,22.5,8.8,32.1,18.7,12.7,8.5,25.3-3.7,39-4.5,17.6-4,33.4,9.3,50.7,2.1,9.7-3.3,18.6-9.5,26.3-15.6,1.7-9.3-10.7-9.6-17.1-7.9-24.6,10.5-16.2,15.4-46.6,8-19.8-3.8-42.4,7.7-59.9-6.2-7.4-4.4-15.6-9.7-23.3-13.4-7.9-2.5-16.5-3.1-23.7-7.8-13.1-6.2-21.6-34.3-.3-32.5,27.4,5.5,41.4,29.7,72.5,22.7,9.1-1.5,17.8.6,26.6.3,11-2.1,21.8-8.4,33.3-9,11.2-2.1,36.8,11.9,29.5-10.4-24.9-26.5-35.1.2-59.1-1.5-16.1-4-32.9-13.8-49.8-6.6-6.3,2.3-12,5.1-18.6,3-11.7-5.6-24.9-10.4-37.5-13.3-6.1-2.6-6.3-11-.7-14.2,9.4-4.6,21.1-2.9,31.3-3.3,10.7,1.8,21.2,6.4,32.4,5.2,13.9.5,22.8-12.2,36.1-13.2,7.8-.9,16.7,1.2,24.3-.2,7-2,18.4-7.4,16.7-16.3-4-7.4-14.4-7.1-21.9-7-24.9,2.2-41.1,27.4-67.5,25.1-21.1.8-60.4-9.5-68.6-31.1-6.1-11.5-10.1-24-18.9-33.7-19-18.9-36.1-52.3-58.2-66.8-53.8-38.3-130.3-30.3-161-21.8-37,10.3-101.2,27.2-117.2,91.6-2.6,10.6,2.5,30.2,4.5,43.5,1.5,13.3,1.6,27.1-.5,40.2v.4Z" />
         <path class="hover-w2"
@@ -249,7 +270,7 @@
       </a>
 
 
-      <a id="wanne-btn" href="6_Bad_1W.html" role="button" aria-label="Gelbes Wesen">
+      <a id="wanne-btn" tabindex="0" role="button" aria-label="Gelbes Wesen">
         <path style="fill: #fff706;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M1093.14,276.63c-10.07-38.6,17.6-72.48,63.62-74.6,44.79-2.06,80.03,42.43,63.56,82.18-6.09,17.72-27.93,27.57-26.14,47.8v14.5c.54,12.53-1.97,24.89-1.97,37.42s1.79,15.04-1.43,21.84c-1.43,2.86-4.3,2.86-5.73,0-2.86-6.09-1.79-13.61-1.97-20.59v-23.45s-3.4-.54-4.12-.54h-3.4s.9,22.56,0,34.02c0,5.01,0,14.5-5.55,13.07-7.34-3.4-1.97-39.39-3.22-48.34-1.79-.54-5.55,0-7.34,0,1.07,6.62-.9,14.86-1.07,21.48,0,7.34,1.43,14.86,0,22.02-1.07,6.09-6.09,6.98-7.34.54-2.69-13.43,0-29.36-.9-42.97-.9-.54-5.01-.18-6.09,0-1.43,13.43-.54,27.57-1.07,41-.9,6.62-7.52,6.98-8.77,0-1.07-13.96.26-28.51-.9-42.43-.86-10.41-5.56-29.23-11.8-36.52-19.25-22.5-22.94-25.62-28.37-46.43Z" />
         <path style="fill: none; stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
@@ -263,20 +284,20 @@
     
 
       <!-- Dialog overlay merged into room SVG -->
-      <g id="dialog-overlay-group" display="none" role="dialog" aria-modal="true">
+      <g id="dialog-overlay-group" display="none" aria-hidden="true">
         <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
         <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
         <path class="d-feld"
           d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
-        <a class="d-zu-btn" href="#" id="dlg1-zu" role="button" aria-label="Dialog schliessen">
+        <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
           <path class="d-zu-shape"
             d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
           <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
         </a>
 
         <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter" visibility="hidden">
+        <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
           <path class="d-btn-shape"
             d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
           <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
@@ -291,6 +312,14 @@
 
     </svg>
   </div>
+
+  <!-- HTML-Dialog für Screenreader-Zugänglichkeit -->
+  <div id="html-dialog" role="dialog" aria-modal="true" aria-label="Gespräch">
+    <!-- dlgTextEl wird per JS hier eingefügt -->
+    <button id="html-dlg-close" aria-label="Dialog schliessen">&#x2715;</button>
+    <button id="html-dlg-weiter" aria-label="Weiter" hidden>Weiter</button>
+  </div>
+
   <script>
     // ── DIALOGS ───────────────────────────────────────────────
     const DIALOGS = [
@@ -313,6 +342,9 @@
 
     const overlayGroup = document.getElementById('dialog-overlay-group');
     const roomSvg = document.getElementById('room-svg');
+    const htmlDialog = document.getElementById('html-dialog');
+    const htmlDlgClose = document.getElementById('html-dlg-close');
+    const htmlDlgWeiter = document.getElementById('html-dlg-weiter');
     // Dialog text: created in <body> directly so position:fixed is always
     // relative to the viewport, unaffected by any parent CSS filter/transform.
     var dlgTextEl = (function () {
@@ -320,14 +352,16 @@
       if (!el) {
         el = document.createElement('p');
         el.id = 'dlg1-text-html';
+        el.setAttribute('tabindex', '0');
         el.setAttribute('aria-live', 'polite');
         el.style.cssText = [
-          'display:none', 'position:fixed', 'margin:0',
+          'visibility:hidden', 'position:fixed', 'margin:0',
           "font-family:'Lex',sans-serif", 'font-size:1.8rem',
-          'color:#000', 'line-height:1.3', 'overflow-y:auto',
-          'z-index:10000', 'box-sizing:border-box', 'padding:4px 10px'
+          'color:#000', 'line-height:1.3', 'overflow-y:auto', 'overflow-x:hidden',
+          'z-index:10001', 'box-sizing:border-box', 'padding:4px 10px',
+          'pointer-events:none'
         ].join(';');
-        document.body.appendChild(el);
+        htmlDialog.insertBefore(el, htmlDlgClose);
       }
       return el;
     })();
@@ -345,11 +379,29 @@
       dlgTextEl.style.width     = (910  * sx) + 'px';
       dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
     }
+    function positionDialogButtons() {
+      var svg = document.getElementById('room-svg');
+      if (!svg) return;
+      var r = svg.getBoundingClientRect();
+      var sx = r.width  / 1600;
+      var sy = r.height / 900;
+      // Schliessen: SVG translate(0,-370), Kreis-Mitte (153,580) -> Viewport (153,210)
+      htmlDlgClose.style.left   = (r.left + (153 - 38) * sx) + 'px';
+      htmlDlgClose.style.top    = (r.top  + (210 - 38) * sy) + 'px';
+      htmlDlgClose.style.width  = (76 * sx) + 'px';
+      htmlDlgClose.style.height = (76 * sy) + 'px';
+      // Weiter: translate(0,-370), x=1192-1404, y=785-842 -> Viewport y=415-472
+      htmlDlgWeiter.style.left   = (r.left + 1192 * sx) + 'px';
+      htmlDlgWeiter.style.top    = (r.top  + 415  * sy) + 'px';
+      htmlDlgWeiter.style.width  = (212 * sx) + 'px';
+      htmlDlgWeiter.style.height = (57  * sy) + 'px';
+    }
+
     window.addEventListener('resize', function () {
-      if (isDialogOpen()) positionDialogText();
+      if (isDialogOpen()) { positionDialogText(); positionDialogButtons(); }
     });
     window.addEventListener('scroll', function () {
-      if (isDialogOpen()) positionDialogText();
+      if (isDialogOpen()) { positionDialogText(); positionDialogButtons(); }
     });
 
 
@@ -385,9 +437,18 @@
       const entry = def.conversation[convStep - 1];
       dlgTextEl.textContent = entry.text;
       dlgTextEl.style.textAlign = entry.align === 'end' ? 'right' : 'left';
-      dlgTextEl.style.display = 'block';
+      dlgTextEl.style.visibility = 'visible';
+      // SVG-Weiter (visuell)
       const w = document.getElementById(def.weiterId);
       if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
+      // HTML-Weiter (zugaenglich)
+      if (convStep < def.conversation.length) {
+        htmlDlgWeiter.removeAttribute('hidden');
+      } else {
+        htmlDlgWeiter.setAttribute('hidden', '');
+      }
+      // Zu-Button erst bei letztem Schritt erreichbar
+      htmlDlgClose.tabIndex = (convStep >= def.conversation.length) ? 0 : -1;
     }
 
     function openDialog(opener) {
@@ -398,16 +459,21 @@
       document.getElementById(def.group).setAttribute('visibility', 'visible');
       renderLines(def);
       positionDialogText();
+      positionDialogButtons();
       overlayGroup.setAttribute('display', 'inline');
-      overlayGroup.setAttribute('aria-hidden', 'false');
+      htmlDialog.style.display = 'block';
+      setTimeout(function () {
+        dlgTextEl.focus();
+      }, 50);
     }
 
     function closeDialog() {
       overlayGroup.setAttribute('display', 'none');
-      overlayGroup.setAttribute('aria-hidden', 'true');
-      dlgTextEl.style.display = 'none';
-      dlgTextEl.textContent = '';
       document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
+      dlgTextEl.style.visibility = 'hidden';
+      htmlDialog.style.display = 'none';
+      htmlDlgWeiter.setAttribute('hidden', '');
+      dlgTextEl.textContent = '';
       convStep = 0;
 
       if (!dialogEverClosed) {
@@ -426,14 +492,27 @@
       if (convStep < def.conversation.length) {
         convStep++;
         renderLines(def);
+        setTimeout(function () {
+          dlgTextEl.focus();
+        }, 50);
       } else {
         closeDialog();
       }
     }
 
+    // HTML-Button-Handler
+    htmlDlgClose.addEventListener('click', closeDialog);
+    htmlDlgWeiter.addEventListener('click', advanceConversation);
+
     document.getElementById('wesen-link').addEventListener('click', function (e) {
       e.preventDefault();
       openDialog(this);
+    });
+    document.getElementById('wesen-link').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openDialog(this);
+      }
     });
 
     roomSvg.addEventListener('click', function (e) {
@@ -446,18 +525,15 @@
       if (!isDialogOpen()) return;
       if (e.key === 'Escape') { closeDialog(); return; }
       if (e.key === 'Tab') {
-        const focusable = Array.from(overlayGroup.querySelectorAll('a[role="button"]')).filter(el => {
-          let p = el.parentElement;
-          while (p && p !== overlayGroup) {
-            if (p.getAttribute('visibility') === 'hidden') return false;
-            p = p.parentElement;
-          }
-          return true;
-        });
-        if (!focusable.length) { e.preventDefault(); return; }
-        const first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+        var tabbable = htmlDlgWeiter.hasAttribute('hidden')
+                  ? [dlgTextEl, htmlDlgClose]
+                  : [dlgTextEl, htmlDlgWeiter];
+        var first = tabbable[0], last = tabbable[tabbable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
       }
     });
 
@@ -480,6 +556,20 @@
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_6_Bad_1W_html = document.getElementById("wanne-btn");
+  if (btn_6_Bad_1W_html) {
+    btn_6_Bad_1W_html.addEventListener("click", function() { window.location.href = "6_Bad_1W.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_6_Bad_1W_html && document.activeElement === btn_6_Bad_1W_html) {
+      e.preventDefault(); window.location.href = "6_Bad_1W.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

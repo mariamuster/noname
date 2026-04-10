@@ -40,7 +40,7 @@
       class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="2_Keller_7.html" aria-label="Treppe hoch" role="button">
+      <a aria-label="Treppe hoch" tabindex="0" role="button">
         <path id="STROKE_2723813b-dec1-47cb-992f-cff34e48f481" data-name="STROKE 2723813b-dec1-47cb-992f-cff34e48f481"
           class="cls-2"
           d="M815.18,367.72s79.32,71.33,99.9,88.31c-18.58-.2-34.96,1.2-53.75,0-1.2,28.57,0,54.55,0,54.55h-91.91s-2.8-25.57,0-54.55c-17.38.4-36.76.6-54.35,0l99.9-88.31h.2Z" />
@@ -60,6 +60,20 @@
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_2_Keller_7_html = document.querySelector('[aria-label="Treppe hoch"][role="button"]');
+  if (btn_2_Keller_7_html) {
+    btn_2_Keller_7_html.addEventListener("click", function() { window.location.href = "2_Keller_7.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_2_Keller_7_html && document.activeElement === btn_2_Keller_7_html) {
+      e.preventDefault(); window.location.href = "2_Keller_7.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

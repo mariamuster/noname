@@ -41,7 +41,7 @@
       class="responsive-img" tabindex="0" />
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <a href="1_Haus_3.html" aria-label="Gehe ins Amt hinein" role="button">
+      <a aria-label="Gehe ins Amt hinein" tabindex="0" role="button">
         <path class="cls-1"
           d="M979.4,852.87c-4.26-.09-8.49-.18-12.7-.29-44.98-1.14-86.71-3.48-118.8-6.58-5.71-.55-11.83-1.02-18.3-1.42-21.09-1.31-45.94-1.85-72.9-1.89-48.52-.06-103.85,1.52-156.4,3.24-2.7-156.56-1.1-330.89.5-487.43-1.1-124.7-13.2-264.3,131.9-311.5,64.8-20.3,146.7-16.5,197.8,33,55.5,64.3,46.1,145.6,48.9,224.7,5.98,171.86.04,376.56,0,548.17Z" />
       </a>
@@ -60,6 +60,20 @@
     };
   </script>
   <script src="icons.js"></script>
+<script>
+(function() {
+  var btn_1_Haus_3_html = document.querySelector('[aria-label="Gehe ins Amt hinein"][role="button"]');
+  if (btn_1_Haus_3_html) {
+    btn_1_Haus_3_html.addEventListener("click", function() { window.location.href = "1_Haus_3.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_1_Haus_3_html && document.activeElement === btn_1_Haus_3_html) {
+      e.preventDefault(); window.location.href = "1_Haus_3.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

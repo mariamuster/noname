@@ -38,7 +38,7 @@
       class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="7_Lift_3.html" aria-label="Zu den Knöpfen" role="button">
+      <a aria-label="Zu den Knöpfen" tabindex="0" role="button">
         <path id="Knöpfe" class="cls-1"
           d="M1020.2,463.4c3-46.4,0-93.4,0-139.8-12.1-1.4-25.4,1.1-37.6.2-6.9.5-22-.2-22-.2,0,0-3,96.5,0,139.8h59.6Z" />
       </a>
@@ -59,6 +59,20 @@
     };
   </script>
   <script src="icons.js"></script>
+<script>
+(function() {
+  var btn_7_Lift_3_html = document.querySelector('[aria-label="Zu den Knöpfen"][role="button"]');
+  if (btn_7_Lift_3_html) {
+    btn_7_Lift_3_html.addEventListener("click", function() { window.location.href = "7_Lift_3.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_7_Lift_3_html && document.activeElement === btn_7_Lift_3_html) {
+      e.preventDefault(); window.location.href = "7_Lift_3.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

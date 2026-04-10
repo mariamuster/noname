@@ -362,7 +362,7 @@
     </div>
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="3_Bibi_3W.html" aria-label="Gelbes Wesen" role="button">
+      <a aria-label="Gelbes Wesen" tabindex="0" role="button">
         <style>
           .cls-2 {
             fill: none;
@@ -531,6 +531,20 @@
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_3_Bibi_3W_html = document.querySelector('[aria-label="Gelbes Wesen"][role="button"]');
+  if (btn_3_Bibi_3W_html) {
+    btn_3_Bibi_3W_html.addEventListener("click", function() { window.location.href = "3_Bibi_3W.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_3_Bibi_3W_html && document.activeElement === btn_3_Bibi_3W_html) {
+      e.preventDefault(); window.location.href = "3_Bibi_3W.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

@@ -105,7 +105,7 @@ Ein pinker Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ei
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-      <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
+      <g id="bild-small" role="button" tabindex="0" aria-label="Blaues Rechteck">
         <path
           d="M1079.8,363.1c-.4,57.2-1.7,118.5,1.8,175.3,103,1.9,210.2-3.4,313.2,0,2-42.4,5-269.6,3-319.6-104.6,5.4-318,0-318,0v17.6s-3,85.8,0,126.6h0Z" />
       </g>
@@ -125,7 +125,7 @@ Ein pinker Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ei
         </g>
       </g>
 
-      <a id="weiter-link" href="9_Keller_8.html" aria-label="Nach links" role="button" aria-hidden="true">
+      <a id="weiter-link" tabindex="0" aria-label="Weiter" role="button" aria-hidden="true">
         <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
           d="M26.9,449.9s77.2-85.9,95.6-108.1c-.2,20.1,1.3,37.8,0,58.2,30.9,1.3,59,0,59,0v99.5s-27.7,3-59,0c.4,18.8.6,39.8,0,58.8l-95.6-108.1h0v-.2h0Z" />
         <text class="room-label" x="9%" y="50%">Weiter</text>
@@ -139,6 +139,13 @@ Ein pinker Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ei
       hilfeUrl: '9_Keller_7H.html',
       menuUrl: 'levels.html'
     };
+
+    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
+    var weiterLink = document.getElementById('weiter-link');
+    weiterLink.addEventListener('click', function() { window.location.href = '9_Keller_8.html'; });
+    weiterLink.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '9_Keller_8.html'; }
+    });
   </script>
   <script src="icons.js"></script>
 
@@ -156,10 +163,16 @@ Ein pinker Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ei
 
       // Hint text as body-level HTML so it scales with browser zoom
       var hinweisEl = document.createElement('p');
-      hinweisEl.textContent = 'Eine quadratische Fläche, mit einem Wort in der Mitte.';
-      hinweisEl.setAttribute('aria-hidden', 'true');
+      var hinweisText = 'Eine quadratische Fläche, mit einem Wort in der Mitte.';
+      hinweisEl.setAttribute('aria-live', 'assertive');
+      hinweisEl.setAttribute('aria-atomic', 'true');
+      hinweisEl.setAttribute('tabindex', '0');
       hinweisEl.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:4.5rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-      document.body.appendChild(hinweisEl);
+      (function(){
+        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
+        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      })();
+      var tabTrapFn = null;
 
       function positionHinweis() {
         var svg = document.querySelector('.room-overlay');
@@ -186,13 +199,26 @@ Ein pinker Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ei
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        zuButton.focus();
+        setTimeout(function() {
+          hinweisEl.textContent = hinweisText;
+          hinweisEl.focus();
+          if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
+          tabTrapFn = function(e) {
+            if (e.key !== 'Tab') return;
+            e.preventDefault();
+            if (document.activeElement === zuButton) { hinweisEl.focus(); }
+            else { zuButton.focus(); }
+          };
+          document.addEventListener('keydown', tabTrapFn);
+        }, 50);
       }
 
       function closeBild() {
+        if (tabTrapFn) { document.removeEventListener('keydown', tabTrapFn); tabTrapFn = null; }
         bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
         hinweisEl.style.display = 'none';
+        hinweisEl.textContent = '';
         bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');

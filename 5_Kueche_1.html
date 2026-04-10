@@ -80,6 +80,27 @@
       .room-wrapper {
       position: relative;
     }
+  
+    /* HTML-Dialog-Overlay: nur für Accessibility, visuell unsichtbar */
+    #html-dialog {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      pointer-events: none;
+    }
+
+    #html-dlg-close,
+    #html-dlg-weiter {
+      position: fixed;
+      pointer-events: auto;
+      opacity: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -90,34 +111,34 @@
       class="responsive-img" tabindex="0" />
     <svg class="room-overlay" id="room-svg" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Wesen -->
-      <a href="#" id="wesen-link" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
+      <a id="wesen-link" tabindex="0" aria-label="Wesen ansprechen" aria-haspopup="dialog" role="button">
         <path
           d="M1009.1,413.4c24.2,22.4,3.4,62-28.4,56.2-20.2,23-2.1,62.3-16.5,57.3-4.6-5.8-1.6-19.5-1.9-26.9-1.9-11.2,2.7-20.5,8.9-29.7-6.1,4.2-15.9,7-22.9,3.8-11.5,13.8-7.4,32.5-7.9,49.1,0,4.2-6.5,6.3-7.8,1.7-2-11.1-.7-22.9-1-34.2,0-7.2,5.3-12.8,7.9-19.2-13.5-5.7-20.9-22.5-17.5-36.6-23.1-22.3,3.4-61.3,32.9-53.1,19.2-21.9,62,4.2,52,30.8,0,0,1.6.7,2.1,1h0l.1-.2Z" />
         <text class="room-label" x="920" y="360">Hallo</text>
       </a>
 
       <!-- Kühlschrank -->
-      <a href="5_Kueche_2.html" aria-label="Kühlschrank öffnen" role="button">
+      <a aria-label="Kühlschrank öffnen" tabindex="0" role="button">
         <path
           d="M348.2,225.2c-9.7-.3-19.3-.5-28.6,0-6.5,0-26.2-1-26.3,1.6s-.2,5.4-.4,8.3c-1.6,34.8-5,72.1-3.9,107.2,1.4,40.8,4.6,94.5,4.5,135.4,0,56.1,2.9,114.4,2.6,170.5.2,45,2,91.6,5.3,136.3,1.5,23.5,1,44.2,6.2,67.8,15.2,4.8,29.7,2.4,45.8,3.4,25,.7,47.2,3.2,72.3,1.8,41.1-3.5,39.9,4.7,70.3-25.6,16.4-16.2,32.8-32.5,46.8-50.8,7.3-33.6,10.1-69.6,10.6-104.3-.3-38.1-2.1-76.6-2.5-114.6,0-31.3,2.2-63.2,0-94.6-4.6-68.7-2.1-137.9-9.8-206.4-11-6.6-22.6-16.4-34.5-22.1-17.1-7.6-35.6-14.4-54.4-14.4,0,0-69.3,2.1-103.7.3l-.3.2Z" />
         <text class="room-label" x="19%" y="45%">Kühlschrank</text>
       </a>
 
       <!-- Dialog overlay merged into room SVG -->
-      <g id="dialog-overlay-group" display="none" role="dialog" aria-modal="true">
+      <g id="dialog-overlay-group" display="none" aria-hidden="true">
         <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
         <g id="dlg-1" transform="translate(0,-370)">
           <path class="d-feld"
             d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
 
-                    <a class="d-zu-btn" href="#" id="dlg1-zu" role="button" aria-label="Dialog schliessen">
+                    <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
             <path class="d-zu-shape"
               d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
             <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
           </a>
 
-          <a class="d-weiter-btn" href="#" id="dlg1-weiter" role="button" aria-label="Weiter">
+          <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true">
             <path class="d-btn-shape"
               d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
             <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
@@ -127,6 +148,13 @@
       </g>
 
     </svg>
+  </div>
+
+  <!-- HTML-Dialog für Screenreader-Zugänglichkeit -->
+  <div id="html-dialog" role="dialog" aria-modal="true" aria-label="Gespräch">
+    <!-- dlgTextEl wird per JS hier eingefügt -->
+    <button id="html-dlg-close" aria-label="Dialog schliessen">&#x2715;</button>
+    <button id="html-dlg-weiter" aria-label="Weiter" hidden>Weiter</button>
   </div>
 
   <script>
@@ -152,19 +180,25 @@
     const roomSvg = document.getElementById('room-svg');
     // Dialog text: created in <body> directly so position:fixed is always
     // relative to the viewport, unaffected by any parent CSS filter/transform.
+    const htmlDialog = document.getElementById('html-dialog');
+    const htmlDlgClose = document.getElementById('html-dlg-close');
+    const htmlDlgWeiter = document.getElementById('html-dlg-weiter');
+
     var dlgTextEl = (function () {
       var el = document.getElementById('dlg1-text-html');
       if (!el) {
         el = document.createElement('p');
         el.id = 'dlg1-text-html';
+        el.setAttribute('tabindex', '0');
         el.setAttribute('aria-live', 'polite');
         el.style.cssText = [
-          'display:none', 'position:fixed', 'margin:0',
+          'visibility:hidden', 'position:fixed', 'margin:0',
           "font-family:'Lex',sans-serif", 'font-size:1.8rem',
-          'color:#000', 'line-height:1.3', 'overflow-y:auto',
-          'z-index:10000', 'box-sizing:border-box', 'padding:4px 10px'
+          'color:#000', 'line-height:1.3', 'overflow-y:auto', 'overflow-x:hidden',
+          'z-index:10001', 'box-sizing:border-box', 'padding:4px 10px',
+          'pointer-events:none'
         ].join(';');
-        document.body.appendChild(el);
+        htmlDialog.insertBefore(el, htmlDlgClose);
       }
       return el;
     })();
@@ -182,11 +216,29 @@
       dlgTextEl.style.width     = (910  * sx) + 'px';
       dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
     }
+    function positionDialogButtons() {
+      var svg = document.getElementById('room-svg');
+      if (!svg) return;
+      var r = svg.getBoundingClientRect();
+      var sx = r.width  / 1600;
+      var sy = r.height / 900;
+      // Schliessen: SVG translate(0,-370), Kreis-Mitte ≈ (153,580) → Viewport (153,210)
+      htmlDlgClose.style.left   = (r.left + (153 - 38) * sx) + 'px';
+      htmlDlgClose.style.top    = (r.top  + (210 - 38) * sy) + 'px';
+      htmlDlgClose.style.width  = (76 * sx) + 'px';
+      htmlDlgClose.style.height = (76 * sy) + 'px';
+      // Weiter: translate(0,-370), x=1192-1404, y=785-842 → Viewport y=415-472
+      htmlDlgWeiter.style.left   = (r.left + 1192 * sx) + 'px';
+      htmlDlgWeiter.style.top    = (r.top  + 415  * sy) + 'px';
+      htmlDlgWeiter.style.width  = (212 * sx) + 'px';
+      htmlDlgWeiter.style.height = (57  * sy) + 'px';
+    }
+
     window.addEventListener('resize', function () {
-      if (isDialogOpen()) positionDialogText();
+      if (isDialogOpen()) { positionDialogText(); positionDialogButtons(); }
     });
     window.addEventListener('scroll', function () {
-      if (isDialogOpen()) positionDialogText();
+      if (isDialogOpen()) { positionDialogText(); positionDialogButtons(); }
     });
 
 
@@ -199,9 +251,18 @@
       const entry = def.conversation[convStep - 1];
       dlgTextEl.textContent = entry.text;
       dlgTextEl.style.textAlign = entry.align === 'end' ? 'right' : 'left';
-      dlgTextEl.style.display = 'block';
+      dlgTextEl.style.visibility = 'visible';
+      // SVG-Weiter (visuell)
       const w = document.getElementById(def.weiterId);
       if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
+      // HTML-Weiter (zugänglich)
+      if (convStep < def.conversation.length) {
+        htmlDlgWeiter.removeAttribute('hidden');
+      } else {
+        htmlDlgWeiter.setAttribute('hidden', '');
+      }
+      // Zu-Button erst bei letztem Schritt erreichbar
+      htmlDlgClose.tabIndex = (convStep >= def.conversation.length) ? 0 : -1;
     }
 
     function openDialog(opener) {
@@ -211,15 +272,21 @@
       document.getElementById(def.group).setAttribute('visibility', 'visible');
       renderLines(def);
       positionDialogText();
+      positionDialogButtons();
       overlayGroup.setAttribute('display', 'inline');
-      overlayGroup.setAttribute('aria-hidden', 'false');
+      htmlDialog.style.display = 'block';
+      setTimeout(function () {
+        dlgTextEl.focus();
+      }, 50);
     }
 
     function closeDialog() {
       overlayGroup.setAttribute('display', 'none');
       overlayGroup.setAttribute('aria-hidden', 'true');
       document.getElementById(DIALOGS[0].group).setAttribute('visibility', 'hidden');
-      dlgTextEl.style.display = 'none';
+      dlgTextEl.style.visibility = 'hidden';
+      htmlDialog.style.display = 'none';
+      htmlDlgWeiter.setAttribute('hidden', '');
       dlgTextEl.textContent = '';
       convStep = 0;
       if (openerLink) openerLink.focus();
@@ -230,14 +297,24 @@
       if (convStep < def.conversation.length) {
         convStep++;
         renderLines(def);
+        setTimeout(function () {
+          dlgTextEl.focus();
+        }, 50);
       } else {
         closeDialog();
       }
     }
 
+    // HTML-Button-Handler
+    htmlDlgClose.addEventListener('click', closeDialog);
+    htmlDlgWeiter.addEventListener('click', advanceConversation);
+
     document.getElementById('wesen-link').addEventListener('click', function (e) {
       e.preventDefault();
       openDialog(this);
+    });
+    document.getElementById('wesen-link').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDialog(this); }
     });
 
     roomSvg.addEventListener('click', function (e) {
@@ -250,18 +327,15 @@
       if (!isDialogOpen()) return;
       if (e.key === 'Escape') { closeDialog(); return; }
       if (e.key === 'Tab') {
-        const focusable = Array.from(overlayGroup.querySelectorAll('a[role="button"]')).filter(el => {
-          let p = el.parentElement;
-          while (p && p !== overlayGroup) {
-            if (p.getAttribute('visibility') === 'hidden') return false;
-            p = p.parentElement;
-          }
-          return true;
-        });
-        if (!focusable.length) { e.preventDefault(); return; }
-        const first = focusable[0], last = focusable[focusable.length - 1];
-        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-        else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+        var tabbable = htmlDlgWeiter.hasAttribute('hidden')
+                  ? [dlgTextEl, htmlDlgClose]
+                  : [dlgTextEl, htmlDlgWeiter];
+        var first = tabbable[0], last = tabbable[tabbable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
       }
     });
   </script>
@@ -275,6 +349,20 @@
     };
   </script>
   <script src="icons.js"></script>
+<script>
+(function() {
+  var btn_5_Kueche_2_html = document.querySelector('[aria-label="Kühlschrank öffnen"][role="button"]');
+  if (btn_5_Kueche_2_html) {
+    btn_5_Kueche_2_html.addEventListener("click", function() { window.location.href = "5_Kueche_2.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_5_Kueche_2_html && document.activeElement === btn_5_Kueche_2_html) {
+      e.preventDefault(); window.location.href = "5_Kueche_2.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

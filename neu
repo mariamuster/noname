@@ -1,10 +1,9 @@
-<strong>
-  
-  
-  
-  jumps</strong>
-
-      <ul class="instructions">
-      <li>Bis du das <strong>gelbe Dreieck</strong> Dreieck siehst.</li>
-      <li>Das <strong>Dreieck</strong> ist in der <strong>unteren  Hälfte in der Mitte</strong>. </li>
-    </ul>
+<svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
+  <g class="room-overlay" id="dlg1-weiter" role="button" tabindex="0" aria-label="Gehe zum Amt"
+    onclick="location.href='1_Haus_2.html'"
+    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='1_Haus_2.html'}">
+    <g transform="translate(-200, 0)">
+      <path id="Door1" class="cls-1"
+        d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,36,6,10.1,11.7,8.4,26.5,8.9,40.9,1.1,31.4,0,68.1,0,99.4l-68.9-1.4Z" />
+    </g>
+  </g>

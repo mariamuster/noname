@@ -84,7 +84,7 @@
       xmlns="http://www.w3.org/2000/svg">
 
      class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <a href="12_Bad_4.html" aria-label="Weiter" role="button">
+        <a aria-label="Weiter" tabindex="0" role="button">
 
           <path id="STROKE_9462847c-5c20-42f4-86fe-bf5c9cd73c59" data-name="STROKE 9462847c-5c20-42f4-86fe-bf5c9cd73c59"
             class="cls-1" d="M1481.67,451.59s-81.6,90.63-100.74,113.92c0-21.3-1.26-39.9,0-61.2-32.68-1.44-62.29,0-62.29,0v-104.89s29.07-3.25,62.29,0c-.36-19.86-.72-41.89,0-61.93l100.74,113.92v.18h0Z"/>
@@ -109,6 +109,20 @@
       };
     </script>
     <script src="icons.js"></script>
+<script>
+(function() {
+  var btn_12_Bad_4_html = document.querySelector('[aria-label="Weiter"][role="button"]');
+  if (btn_12_Bad_4_html) {
+    btn_12_Bad_4_html.addEventListener("click", function() { window.location.href = "12_Bad_4.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_12_Bad_4_html && document.activeElement === btn_12_Bad_4_html) {
+      e.preventDefault(); window.location.href = "12_Bad_4.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

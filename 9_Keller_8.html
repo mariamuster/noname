@@ -80,19 +80,19 @@
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
       <!-- Bild 1-->
-      <a id="bild1-btn" href="javascript:void(0)" aria-label="Hinweis rechts anzeigen" role="button">
+      <a id="bild1-btn" tabindex="0" aria-label="Blaues Rechteck rechts anzeigen" role="button">
         <path pointer-events="all"
           d="M1114.8,152.4c29.3-22.7,63.1-49.2,91.3-72.7-4.6,54.3,0,125.4.5,180.7.9,94.9,6.7,208.4,4.6,301.8,0,0-44.7-14.8-71.3-24.7-17.6-6.5-37.5-11.8-37.5-13.8.4-65.2.5-55.7,0-97.9-1.3-84.1.4-181.8,0-266.3,0,0,8.8-4.6,12.1-7.2h.3Z" />
       </a>
 
       <!-- Bild 2 -->
-      <a id="bild2-btn" href="javascript:void(0)" aria-label="Hinweis links anzeigen" role="button">
+      <a id="bild2-btn" tabindex="0" aria-label="Blaues Rechteck links anzeigen" role="button">
         <path pointer-events="all"
           d="M337.5,0c49.1,36.2,95.3,78,139.7,119.7,41.7,37.5,92.5,79.8,125.3,124.4,1.1,66.7,1.8,149.6,6.5,216.6-31.5,3.9-62.2,8.2-95.7,12.4-30.5,3.9-55,5.9-82.7,12.1-32.1,7.1-64.4,20.5-95.2,32.1.4-51.9,7.3-122.7,7.2-177.2.2-109.1-5-231.8-4.8-340.3h-.2V0h0Z" />
       </a>
 
       <!-- Pfeil-->
-      <a id="pfeil-link" href="10_Bibi_4.html" aria-label="Durch die Tür gehen" role="button">
+      <a id="pfeil-link" tabindex="0" aria-label="Durch die Tür gehen" role="button">
         <path style="fill: aqua;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
           d="M801,578.6s73.9,66.5,93.1,82.3c-17.3-.2-32.6,1.1-50.1,0-1.1,26.6,0,50.8,0,50.8h-85.6s-2.6-23.8,0-50.8c-16.2.4-34.3.6-50.6,0l93.1-82.3h.2-.1Z"
           fill="aqua" />
@@ -110,7 +110,7 @@
 
 
         <!-- Zu-Button -->
-        <a id="zu1" href="javascript:void(0)" aria-label="Schliessen" role="button" transform="translate(120, -50)">
+        <a id="zu1" tabindex="0" aria-label="Schliessen" role="button" transform="translate(120, -50)">
           <path style="fill: white;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
             d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z" />
           <path style="fill: none;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
@@ -126,7 +126,7 @@
       <svg viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill="#2323ff" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
           d="M816.3,135.7s230.1,6.7,408.5,0c3.6,80.4,5.9,544.7,21.2,625.4-102.7,4.7-181.7-5.1-290.9,0-99.4,4.7-189-7.5-279.3,0-104.7,8.6-321.8-1.7-321.8-1.7,1.3-62.6,23.8-147.9,23.5-213.7.7-131.5-16.3-410.3-16.3-410.3l455.1.2h0Z" />
-        <a id="zu2" href="javascript:void(0)" aria-label="Schliessen" role="button">
+        <a id="zu2" tabindex="0" aria-label="Schliessen" role="button">
           <path style="fill: white;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
             d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z" />
           <path style="fill: none;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
@@ -146,16 +146,27 @@
 
     // Hint text as body-level HTML so it scales with browser zoom
     var hinweisEl1 = document.createElement('p');
-    hinweisEl1.textContent = 'Ein Bild im Hochformat auf dem ein Hinweis steht.';
-    hinweisEl1.setAttribute('aria-hidden', 'true');
+    var hinweisText1 = 'Ein Bild im Hochformat auf dem ein Hinweis steht.';
+    hinweisEl1.setAttribute('aria-live', 'assertive');
+    hinweisEl1.setAttribute('aria-atomic', 'true');
+    hinweisEl1.setAttribute('tabindex', '0');
     hinweisEl1.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:4.5rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-    document.body.appendChild(hinweisEl1);
+    (function(){
+      var s=document.querySelector('.room-overlay')||document.querySelector('svg');
+      s?s.parentNode.insertBefore(hinweisEl1,s):document.body.appendChild(hinweisEl1);
+    })();
 
     var hinweisEl2 = document.createElement('p');
-    hinweisEl2.textContent = 'Ein Bild im Querformat auf dem ein Hinweis steht.';
-    hinweisEl2.setAttribute('aria-hidden', 'true');
+    var hinweisText2 = 'Ein Bild im Querformat auf dem ein Hinweis steht.';
+    hinweisEl2.setAttribute('aria-live', 'assertive');
+    hinweisEl2.setAttribute('aria-atomic', 'true');
+    hinweisEl2.setAttribute('tabindex', '0');
     hinweisEl2.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:4.5rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-    document.body.appendChild(hinweisEl2);
+    (function(){
+      var s=document.querySelector('.room-overlay')||document.querySelector('svg');
+      s?s.parentNode.insertBefore(hinweisEl2,s):document.body.appendChild(hinweisEl2);
+    })();
+    var tabTrapFn = null;
 
     function positionEl(el, foX, foY, foW, foH) {
       var svg = document.querySelector('.room-overlay');
@@ -182,23 +193,46 @@
       document.getElementById(panelId).classList.add('aktiv');
       hinweisEl1.style.display = 'none';
       hinweisEl2.style.display = 'none';
+      var hinweisElToShow;
       if (panelId === 'panel1') {
         positionEl(hinweisEl1, 550, 200, 550, 560);
         hinweisEl1.style.display = 'block';
+        hinweisElToShow = hinweisEl1;
       } else {
         positionEl(hinweisEl2, 420, 200, 700, 560);
         hinweisEl2.style.display = 'block';
+        hinweisElToShow = hinweisEl2;
       }
-      if (zuId) {
-        var zuEl = document.getElementById(zuId);
-        if (zuEl) zuEl.focus();
-      }
+      var textToShow = (panelId === 'panel1') ? hinweisText1 : hinweisText2;
+      var activeZuId = zuId;
+      document.getElementById('bild1-btn').setAttribute('tabindex','-1');
+      document.getElementById('bild2-btn').setAttribute('tabindex','-1');
+      setTimeout(function() {
+        if (hinweisElToShow) {
+          hinweisElToShow.textContent = textToShow;
+          hinweisElToShow.focus();
+          if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
+          var activeZu = document.getElementById(activeZuId);
+          tabTrapFn = function(e) {
+            if (e.key !== 'Tab') return;
+            e.preventDefault();
+            if (document.activeElement === activeZu) { hinweisElToShow.focus(); }
+            else { activeZu.focus(); }
+          };
+          document.addEventListener('keydown', tabTrapFn);
+        }
+      }, 50);
     }
 
     function schliessePanel(panelId) {
+      if (tabTrapFn) { document.removeEventListener('keydown', tabTrapFn); tabTrapFn = null; }
+      document.getElementById('bild1-btn').setAttribute('tabindex','0');
+      document.getElementById('bild2-btn').setAttribute('tabindex','0');
       document.getElementById(panelId).classList.remove('aktiv');
       hinweisEl1.style.display = 'none';
+      hinweisEl1.textContent = '';
       hinweisEl2.style.display = 'none';
+      hinweisEl2.textContent = '';
       gesehen[panelId] = true;
       if (gesehen.panel1 && gesehen.panel2) {
         document.getElementById('pfeil-link').classList.add('sichtbar');
@@ -232,6 +266,15 @@
     zu2.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); schliessePanel('panel2'); }
     });
+
+    // Navigation für pfeil-link
+    var pfeilLink = document.getElementById('pfeil-link');
+    if (pfeilLink) {
+      pfeilLink.addEventListener('click', function() { window.location.href = '10_Bibi_4.html'; });
+      pfeilLink.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '10_Bibi_4.html'; }
+      });
+    }
   </script>
 
   <!-- ════════════════════════════════════════════════════════════

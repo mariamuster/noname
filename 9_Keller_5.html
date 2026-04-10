@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>HinweiseKeller</title>
+  <title>Hinweise Keller</title>
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
@@ -100,7 +100,7 @@
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-      <g id="bild-small" role="button" tabindex="0" aria-label="Hinweis anzeigen">
+      <g id="bild-small" role="button" tabindex="0" aria-label="Blaues Rechteck ">
         <path
           d="M1066.5,355.4c30.4.1,62.9.6,93-.7,1-39.9-1.8-81.4,0-121.3-22.5-.8-143.1-1.9-169.6-1.1,2.9,40.5,0,123.1,0,123.1h9.4s45.5,1.1,67.2,0h0Z" />
       </g>
@@ -121,7 +121,7 @@
         </g>
       </g>
 
-      <a id="weiter-link" href="9_Keller_6.html" aria-label="Zurück zur Treppe" role="button" aria-hidden="true">
+      <a id="weiter-link" tabindex="0" aria-label="Zurück zur Treppe" role="button" aria-hidden="true">
         <path style="fill:aqua; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
           d="M338.4,212.2s84.1,75.6,105.9,93.6c-19.7,0-37.1,1.3-57,0-1.3,30.3,0,57.8,0,57.8h-97.4s-3-27.1,0-57.8c-18.4.4-39,.6-57.6,0l105.9-93.6h.2Z" />
         <text class="room-label" x="20%" y="17%">Weiter</text>
@@ -140,6 +140,13 @@
       hilfeUrl: '9_Keller_5H.html',
       menuUrl: 'levels.html'
     };
+
+    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
+    var weiterLink = document.getElementById('weiter-link');
+    weiterLink.addEventListener('click', function() { window.location.href = '9_Keller_6.html'; });
+    weiterLink.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '9_Keller_6.html'; }
+    });
   </script>
   <script src="icons.js"></script>
 
@@ -157,8 +164,10 @@
 
       // Hinweis text as HTML element in <body> so it scales with browser zoom
       var hinweisEl = document.createElement('p');
-      hinweisEl.textContent = 'Ein Hinweis.';
-      hinweisEl.setAttribute('aria-hidden', 'true');
+      var hinweisText = 'Ein Hinweis.';
+      hinweisEl.setAttribute('aria-live', 'assertive');
+      hinweisEl.setAttribute('aria-atomic', 'true');
+      hinweisEl.setAttribute('tabindex', '0');
       hinweisEl.style.cssText = [
         'display:none', 'position:fixed', 'margin:0',
         "font-family:'Lex',sans-serif", 'font-size:4.5rem',
@@ -166,7 +175,11 @@
         'z-index:100', 'overflow-y:auto', 'box-sizing:border-box',
         'padding:4px 8px', 'word-break:break-word'
       ].join(';');
-      document.body.appendChild(hinweisEl);
+      (function(){
+        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
+        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      })();
+      var tabTrapFn = null;
 
       function positionHinweis() {
         var svg = document.querySelector('.room-overlay');
@@ -194,13 +207,26 @@
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        zuButton.focus();
+        setTimeout(function() {
+          hinweisEl.textContent = hinweisText;
+          hinweisEl.focus();
+          if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
+          tabTrapFn = function(e) {
+            if (e.key !== 'Tab') return;
+            e.preventDefault();
+            if (document.activeElement === zuButton) { hinweisEl.focus(); }
+            else { zuButton.focus(); }
+          };
+          document.addEventListener('keydown', tabTrapFn);
+        }, 50);
       }
 
       function closeBild() {
+        if (tabTrapFn) { document.removeEventListener('keydown', tabTrapFn); tabTrapFn = null; }
         bildPanel.style.display = 'none';
         bildPanel.setAttribute('aria-hidden', 'true');
         hinweisEl.style.display = 'none';
+        hinweisEl.textContent = '';
         bildSmall.style.display = '';
         weiterLink.style.display = '';
         weiterLink.setAttribute('tabindex', '0');

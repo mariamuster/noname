@@ -38,7 +38,7 @@
 Rechts in der Mitte ein gelbes Wesen." class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <a href="2_Keller_5W.html" aria-label="Gelbes Wesen" role="button">
+      <a aria-label="Gelbes Wesen" tabindex="0" role="button">
         <style>
           .cls-2 {
             fill: none;
@@ -101,6 +101,20 @@ Rechts in der Mitte ein gelbes Wesen." class="responsive-img" tabindex="0" />
   </script>
   <script src="icons.js"></script>
 
+<script>
+(function() {
+  var btn_2_Keller_5W_html = document.querySelector('[aria-label="Gelbes Wesen"][role="button"]');
+  if (btn_2_Keller_5W_html) {
+    btn_2_Keller_5W_html.addEventListener("click", function() { window.location.href = "2_Keller_5W.html"; });
+  }
+  document.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (btn_2_Keller_5W_html && document.activeElement === btn_2_Keller_5W_html) {
+      e.preventDefault(); window.location.href = "2_Keller_5W.html"; return;
+    }
+  });
+})();
+</script>
 </body>
 
 </html>

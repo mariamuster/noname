@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Info Zoom</title>
+  <title>Instruktionen</title>
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
@@ -66,14 +66,14 @@
       fill: rgba(65, 65, 65, 0.7);
     }
 
-    /* Scrollable text panel — positioned to the right of the icons */
+    /* Text panel — positioned to the right of the icons */
     .text-panel {
       position: absolute;
       top: 15%;
       left: 34%;
       right: 25%;
       bottom: 10%;
-      overflow-y: auto;
+      overflow: visible;
       pointer-events: auto;
       z-index: 5;
       font-family: 'Lexend', sans-serif;
@@ -88,7 +88,7 @@
 
     .text-panel p {
       font-size: 1.6rem;
-      margin: 0 0 0.4em 0;
+      margin: 0 0 1.2em 0;
       line-height: 1.2;
     }
   </style>
@@ -96,32 +96,41 @@
 
 <body>
   <div class="room-wrapper">
-    <img src="img/Info_3.svg" alt="Infofenster, mit vier Icons." class="responsive-img" tabindex="0" />
-
     <div class="text-panel">
       <h1>Instruktionen</h1>
       <p>Du musst auf dem Amt in Büro 146 etwas holen.</p>
-            <br><br>
-<p>Wenn das gelbe Wesen erscheint, musst du etwas lernen, um weiterzukommen. Als Quelle sind die WCAG, die «Web Content Accessibility Guidelines» verlinkt.</p>
-            <br><br>
-<p>Beim Fragezeichen gibt es Hilfe.</p>
-           <br><br>
- <p>Bei den drei Linien kannst du die einzelnen Levels sehen.</p>
-      <p>Benutze einen Desktop. <br> Dauer etwa 30 Minuten.</p>
+      <p>Wenn das gelbe Wesen erscheint, musst du etwas lernen, um weiterzukommen. Als Quelle sind die WCAG, die «Web Content Accessibility Guidelines» verlinkt.</p>
+      <p>Beim Fragezeichen gibt es Hilfe.</p>
+      <p>Bei den drei Linien kannst du die einzelnen Levels sehen.</p>
+      <p>Benutze einen Desktop.<br>Dauer etwa 30 Minuten.</p>
     </div>
 
+    <img src="img/Info_3.svg" alt="" class="responsive-img" aria-hidden="true" />
+
     <svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
-      <a class="d-weiter-btn" href="1_Haus_1.html" id="dlg1-weiter" role="button" aria-label="Start">
+      <g class="d-weiter-btn" id="dlg1-weiter" role="button" tabindex="0" aria-label="Start"
+         onclick="location.href='1_Haus_1.html'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='1_Haus_1.html'}">
         <g transform="translate(-200, 0)">
           <path class="weiter-path"
             d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
           <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
-            y="820">Start</text>
+            y="820" aria-hidden="true">Start</text>
         </g>
-      </a>
+      </g>
     </svg>
   </div>
 
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Enter' || e.key === ' ') &&
+          document.activeElement && document.activeElement.id === 'dlg1-weiter') {
+        e.preventDefault();
+        location.href = '1_Haus_1.html';
+      }
+    });
+  </script>
 </body>
 
 </html>

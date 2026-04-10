@@ -78,7 +78,6 @@
   function buildHilfe(href) {
     var a = svgEl("a", {
       id: "hilfe-btn",
-      href: href,
       role: "button",
       "aria-label": "Hilfe",
     });
@@ -94,7 +93,6 @@
   function buildMenu(href) {
     var a = svgEl("a", {
       id: "menu-btn",
-      href: href,
       role: "button",
       "aria-label": "Levelübersicht",
     });
@@ -190,9 +188,12 @@ window.addEventListener("load", () => {
     // In Tab-Reihenfolge aufnehmen
     el.setAttribute("tabindex", "0");
 
-    // Enter / Leertaste lösen Navigation aus
-    // (click wird auf dieser Seite geblockt → keydown nötig)
     if (url) {
+      // Mausklick
+      el.addEventListener("click", () => {
+        window.location.href = url;
+      });
+      // Enter / Leertaste
       el.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();

@@ -56,9 +56,11 @@
       outline: none;
     }
 
-    #bild-small:focus path {
-      filter: drop-shadow(0 0 8px rgb(0, 0, 0)) drop-shadow(0 0 8px rgb(0, 0, 0));
-      stroke-width: 5px;
+    #bild-small:focus-visible path {
+      stroke: #005fcc;
+      fill: rgba(0,95,204,0.08);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
     #zu-button {
@@ -77,8 +79,11 @@
       outline: none;
     }
 
-    #zu-button:focus .zu-circle {
-      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 6px rgb(0, 0, 0));
+    #zu-button:focus-visible .zu-circle {
+      stroke: #005fcc;
+      fill: rgba(0,95,204,0.08);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
     #weiter-link .pfeil-shape {
@@ -93,8 +98,11 @@
       outline: none;
     }
 
-    #weiter-link:focus .pfeil-shape {
-      filter: drop-shadow(0 0 8px rgb(0, 0, 0)) drop-shadow(0 0 8px rgb(0, 0, 0));
+    #weiter-link:focus-visible .pfeil-shape {
+      stroke: #005fcc;
+      fill: rgba(0,95,204,0.08);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
   </style>
 </head>

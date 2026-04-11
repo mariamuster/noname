@@ -64,10 +64,10 @@
     }
 
     #zurueck-svg a:focus-visible .pfeil-path {
-      stroke: black;
-      stroke-width: 8px;
-      paint-order: stroke fill;
-      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 3px rgb(0, 0, 0));
+      stroke: #005fcc;
+      fill: rgba(0,95,204,0.08);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
     a:focus-visible {
@@ -76,10 +76,10 @@
 
     a:focus-visible path,
     a:focus-visible rect {
-      stroke: black;
-      stroke-width: 8px;
-      paint-order: stroke fill;
-      filter: drop-shadow(0 0 6px rgb(0, 0, 0)) drop-shadow(0 0 3px rgb(0, 0, 0));
+      stroke: #005fcc;
+      fill: rgba(0,95,204,0.08);
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
     /* ── Buchtext ──────────────────────────────────────── */
@@ -149,10 +149,9 @@
     }
 
     #size-slider:focus-visible {
-      outline: 3px solid #2a1a0a;
+      outline: 3px solid #005fcc;
       outline-offset: 6px;
-      filter: drop-shadow(0 0 6px black) drop-shadow(0 0 6px black);
-
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
     #size-slider::-webkit-slider-thumb {
@@ -228,7 +227,9 @@
     }
 
     .font-btn:focus-visible {
-      filter: drop-shadow(0 0 1px rgb(0, 0, 0)) drop-shadow(0 0 1px rgb(0, 0, 0));
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
     .font-btn.active .btn-bg {

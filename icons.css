@@ -21,6 +21,9 @@
            style in icons.js auf 'all' gesetzt
    ─────────────────────────────────────────────────────────────────── */
 
+/* Pointer cursor for all SVG anchor buttons */
+svg a { cursor: pointer; }
+
 /* Focus */
 #hilfe-btn:focus,
 #menu-btn:focus { outline: none; }
@@ -35,6 +38,15 @@
 #menu-btn .str6 { fill: #ffffff; }
 #menu-btn:hover rect,
 #menu-btn:focus-visible rect { fill: rgba(65, 65, 65, 0.7); }
+
+/* Dialog action buttons (weiter / zu): show grey on focus like hover, not blue nav style */
+a.d-weiter-btn:focus-visible > path,
+.d-zu-btn:focus-visible > path {
+  stroke: none !important;
+  fill: rgba(65, 65, 65, 0.7) !important;
+  stroke-width: 0 !important;
+  filter: none !important;
+}
 
 .instructions {
     position: absolute;

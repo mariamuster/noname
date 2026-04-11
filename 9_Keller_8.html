@@ -14,7 +14,7 @@
 
   a:hover>path,
   a:hover>rect {
-    fill: rgba(65, 65, 65, 0.8) !important;
+    fill: rgba(65, 65, 65, 0.7) !important;
   }
 
   a:focus-visible {
@@ -92,9 +92,12 @@
 
       <!-- Pfeil-->
       <a id="pfeil-link" tabindex="0" aria-label="Durch die Tür gehen" role="button">
-        <path style="fill: aqua;" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-          d="M801,578.6s73.9,66.5,93.1,82.3c-17.3-.2-32.6,1.1-50.1,0-1.1,26.6,0,50.8,0,50.8h-85.6s-2.6-23.8,0-50.8c-16.2.4-34.3.6-50.6,0l93.1-82.3h.2-.1Z"
-          fill="aqua" />
+        <g aria-hidden="true">
+          <path style="fill:aqua;stroke:#000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;"
+            d="M801,578.6s73.9,66.5,93.1,82.3c-17.3-.2-32.6,1.1-50.1,0-1.1,26.6,0,50.8,0,50.8h-85.6s-2.6-23.8,0-50.8c-16.2.4-34.3.6-50.6,0l93.1-82.3h.2-.1Z" />
+        </g>
+        <path style="fill:transparent;pointer-events:all;"
+          d="M801,578.6s73.9,66.5,93.1,82.3c-17.3-.2-32.6,1.1-50.1,0-1.1,26.6,0,50.8,0,50.8h-85.6s-2.6-23.8,0-50.8c-16.2.4-34.3.6-50.6,0l93.1-82.3h.2-.1Z" />
       </a>
 
     </svg>

@@ -86,12 +86,13 @@
       filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
 
-    #weiter-link .pfeil-shape {
-      transition: filter 0.15s ease;
+    a:hover>path,
+    a:hover>rect {
+      fill: rgba(65, 65, 65, 0.7) !important;
     }
 
-    #weiter-link:hover .pfeil-shape {
-      fill: rgba(64, 64, 64, 0.7);
+    #weiter-link .pfeil-shape {
+      transition: filter 0.15s ease;
     }
 
     #weiter-link:focus {
@@ -219,7 +220,11 @@
 
       <!-- ══════════ Pfeil ═════════════════  -->
       <a id="weiter-link" tabindex="0" aria-label="Weiter" role="button" aria-hidden="true">
-        <path class="pfeil-shape pfeil-fill"
+        <g aria-hidden="true">
+          <path class="pfeil-shape pfeil-fill"
+            d="M800,761s62,55.8,78,68.9c-14.6-.2-27.3.9-41.9,0-1,22.4,0,42.6,0,42.6h-71.8s-2.2-19.9,0-42.6c-13.6.3-28.7.4-42.4,0l78-68.9h.1Z" />
+        </g>
+        <path style="fill:transparent;pointer-events:all;"
           d="M800,761s62,55.8,78,68.9c-14.6-.2-27.3.9-41.9,0-1,22.4,0,42.6,0,42.6h-71.8s-2.2-19.9,0-42.6c-13.6.3-28.7.4-42.4,0l78-68.9h.1Z" />
       </a>
 

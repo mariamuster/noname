@@ -101,15 +101,6 @@
       display: block;
     }
 
-    #wanne-btn>path {
-      fill: aqua;
-      pointer-events: all;
-      stroke: #000;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 3px;
-    }
-
     #wanne-btn:hover>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
@@ -189,10 +180,13 @@
 
 
       <a id="wanne-btn" aria-label="Umdrehen" tabindex="0" role="button">
-
-      
-  <path id="Pfeil" class="cls-1" d="M1481.67,451.59s-81.6,90.63-100.74,113.92c0-21.3-1.26-39.9,0-61.2-32.68-1.44-62.29,0-62.29,0v-104.89s29.07-3.25,62.29,0c-.36-19.86-.72-41.89,0-61.93l100.74,113.92v.18h0Z"/>
-  </a>
+        <g aria-hidden="true">
+          <path id="Pfeil" class="cls-1" style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+            d="M1481.67,451.59s-81.6,90.63-100.74,113.92c0-21.3-1.26-39.9,0-61.2-32.68-1.44-62.29,0-62.29,0v-104.89s29.07-3.25,62.29,0c-.36-19.86-.72-41.89,0-61.93l100.74,113.92v.18h0Z" />
+        </g>
+        <path style="fill:transparent;pointer-events:all;"
+          d="M1481.67,451.59s-81.6,90.63-100.74,113.92c0-21.3-1.26-39.9,0-61.2-32.68-1.44-62.29,0-62.29,0v-104.89s29.07-3.25,62.29,0c-.36-19.86-.72-41.89,0-61.93l100.74,113.92v.18h0Z" />
+      </a>
     
       <!-- Dialog overlay merged into room SVG -->
       <g id="dialog-overlay-group" display="none" aria-hidden="true">

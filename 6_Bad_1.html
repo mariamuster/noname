@@ -215,6 +215,10 @@
       padding: 0;
       margin: 0;
     }
+
+    #html-dlg-close {
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -511,16 +515,13 @@
       var zuPath    = document.querySelector('.d-zu-shape');
       var weiterPath = document.querySelector('.d-btn-shape');
       var HOVER_FILL = 'rgba(65,65,65,0.7)';
-      if (htmlDlgClose && zuPath) {
-        htmlDlgClose.addEventListener('mouseenter', function() { zuPath.style.fill = HOVER_FILL; });
-        htmlDlgClose.addEventListener('mouseleave', function() { zuPath.style.fill = ''; });
-      }
       if (htmlDlgWeiter && weiterPath) {
         htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
         htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
       }
       if (htmlDlgWeiter && weiterPath) {
         htmlDlgWeiter.addEventListener('focus', function() {
+          if (!this.matches(':focus-visible')) return;
           weiterPath.style.fill = 'rgba(0,95,204,0.08)';
           weiterPath.style.stroke = '#005fcc';
           weiterPath.style.strokeWidth = '3px';
@@ -531,6 +532,22 @@
           weiterPath.style.stroke = '';
           weiterPath.style.strokeWidth = '';
           weiterPath.style.filter = '';
+        });
+      }
+
+      if (htmlDlgClose && zuPath) {
+        htmlDlgClose.addEventListener('focus', function() {
+          if (!this.matches(':focus-visible')) return;
+          zuPath.style.fill = 'rgba(0,95,204,0.08)';
+          zuPath.style.stroke = '#005fcc';
+          zuPath.style.strokeWidth = '3px';
+          zuPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
+        });
+        htmlDlgClose.addEventListener('blur', function() {
+          zuPath.style.fill = '';
+          zuPath.style.stroke = '';
+          zuPath.style.strokeWidth = '';
+          zuPath.style.filter = '';
         });
       }
     })();

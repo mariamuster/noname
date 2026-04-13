@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="icons.css">
   <style>
     body {
-      background: #3B3B3B;
+      background: #000000;
     }
 
     @font-face {
@@ -67,10 +67,10 @@
       <defs>
         <mask id="cursor-mask">
           <rect width="1600" height="900" fill="white" />
-          <circle id="mask-circle" cx="-200" cy="-200" r="80" fill="black" />
+          <circle id="mask-circle" cx="-200" cy="-200" r="180" fill="black" />
         </mask>
       </defs>
-      <rect width="1600" height="900" fill="#3B3B3B" mask="url(#cursor-mask)" />
+      <rect width="1600" height="900" fill=" #000000" mask="url(#cursor-mask)" />
     </svg>
 
 
@@ -79,27 +79,27 @@
       style="z-index: 4; pointer-events: none;">
       <g>
         <g>
-          <path style="fill:aqua;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          <path style="fill:rgb(0, 0, 0);stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
             d="M118.7,362.8s-21.1-18.9-26.5-23.4c4.9,0,9.3-.3,14.2,0,.3-7.6,0-14.5,0-14.5h24.4s.7,6.8,0,14.5c4.6-.1,9.8-.1,14.4,0l-26.5,23.4h0Z" />
-          <path style="fill:aqua;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          <path style="fill:rgb(0, 0, 0);stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
             d="M118.7,245s21.1,18.9,26.5,23.4c-4.9,0-9.3.3-14.2,0-.3,7.6,0,14.5,0,14.5h-24.4s-.7-6.8,0-14.5c-4.6.1-9.8.1-14.4,0l26.5-23.4h0Z" />
         </g>
         <g>
-          <path style="fill:aqua;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          <path style="fill:rgb(0, 0, 0);stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
             d="M177.6,303.9s-18.9,21.1-23.4,26.5c0-4.9-.3-9.3,0-14.2-7.6-.3-14.5,0-14.5,0v-24.4s6.8-.7,14.5,0c-.1-4.6-.1-9.8,0-14.4l23.4,26.5h0Z" />
-          <path style="fill:aqua;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          <path style="fill:rgb(0, 0, 0);stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
             d="M59.8,303.9s18.9-21.1,23.4-26.5c0,4.9.3,9.3,0,14.2,7.6.3,14.5,0,14.5,0v24.4s-6.8.7-14.5,0c.1,4.6.1,9.8,0,14.4l-23.4-26.5h0Z" />
         </g>
       </g>
       <g>
-        <path style="fill:aqua;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+        <path style="fill:rgb(0, 0, 0);stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M78.5,438c.5,7.3-.1,14.7.1,22,.5,3.6-2.5,12.4,2.4,13.1,21.4.4,43-.2,64.4.7,8.1.9,8.1-3.3,7.7-10.1-1.3-20.9-.3-42.1-1.1-62.9-2.7-3.4-16.6-.6-21.3-1.2-5.3.8-16.1-1.6-19.8,1-2.8,44.2,11.2,32.6-30.3,34.7-2.1.2-2.8.2-2.2,2.7h0,0Z" />
-        <path style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+        <path style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M135.6,457.5c-1.6-1.2-3.7-2.1-5.2-3.3,1.5-1.3,3.3-2.3,5.1-3.5" />
-        <path style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+        <path style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M146.1,432.2c-.1,7.1.2,14.6.2,21.7-5.2,0-10.4,0-15.7.2" />
       </g>
-      <text style="font-family:Lex;font-size:13px;font-weight:600;" transform="translate(82.6 457.2)">
+      <text style="font-family:Lex;font-size:13px;font-weight:600;fill:#ffffff;"  transform="translate(82.6 457.2)">
         <tspan x="0" y="0">ENTER</tspan>
       </text>
 
@@ -111,11 +111,11 @@
     const maskCircle = document.getElementById("mask-circle");
     const btnPath = document.querySelector(".weiter-btn path");
     const STEP = 20;
-    const CIRCLE_R = 80;
+    const CIRCLE_R = 180;
     const BTN_CX = 716, BTN_CY = 590;
 
-    let cx = parseFloat(sessionStorage.getItem('keller3_cx')) || 0;
-    let cy = parseFloat(sessionStorage.getItem('keller3_cy')) || 0;
+    let cx = parseFloat(sessionStorage.getItem('keller3_cx')) || 600;
+    let cy = parseFloat(sessionStorage.getItem('keller3_cy')) || 300;
 
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem('keller3_cx', cx);

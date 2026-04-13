@@ -65,7 +65,7 @@
       cursor: pointer;
     }
 
-    #zu-button:hover .zu-circle {
+    #zu-button:hover .zu-hit-area {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
@@ -73,9 +73,9 @@
       outline: none;
     }
 
-    #zu-button:focus-visible .zu-circle {
-      stroke: rgb(0, 0, 0);
-      fill: rgba(65, 65, 65, 0.7);
+    #zu-button:focus-visible .zu-hit-area {
+      stroke: #005fcc;
+      fill: rgba(0,95,204,0.08);
       stroke-width: 3px;
       filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
     }
@@ -114,13 +114,17 @@ Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türk
           d="M459,416.2c-.9,122.9-3.7,254.7,3.9,376.7,221.4,4.1,451.7-7.3,673.1,0,4.3-91.1,10.7-579.4,6.4-686.8-224.8,11.6-683.4,0-683.4,0v37.8s-6.4,184.4,0,272.1v.2Z" />
 
         <g id="zu-button" role="button" tabindex="0" aria-label="Schließen" transform="translate(70, -30)">
-          <path class="zu-circle"
-            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
-            style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
-          <path d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4"
-            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
-          <path d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3"
-            style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
+          <g aria-hidden="true">
+            <path class="zu-circle"
+              d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z"
+              style="fill:#fff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
+            <path d="M396,121.1c-13.8,13.8-26.8,28.7-41.6,41.4"
+              style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
+            <path d="M354.6,121.1c12.5,14.9,27.2,28.1,41.3,41.3"
+              style="fill:none; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;" />
+          </g>
+          <path class="zu-hit-area" style="fill:transparent;pointer-events:all;"
+            d="M403.9,116.1c-9.4-8.2-22.5-12.2-34.9-10.5-3.6.8-7.3,2.3-11,3.3-3.2,1.1-6.5,1.8-9,4.2-14.4,16.2-16,43.7,2.2,57.8,9.9,8.4,31.1,10.1,42.4,3.7,5.1-3.4,10.6-7.2,14-12.4,7.6-14.2,7.7-33.8-3.3-46.3l-.4.2h0Z" />
         </g>
       </g>
 

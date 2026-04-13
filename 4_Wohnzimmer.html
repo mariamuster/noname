@@ -221,12 +221,30 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    #wcag-badges {
-      display: flex;
-      gap: 10px;
-      margin-top: 3px;
+    /* ── CONTRAST BAR ── */
+    #contrast-bar-wrap {
+      width: 210px;
+      margin-top: 6px;
     }
 
+    #contrast-bar-track {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+    }
+
+    #contrast-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.25s ease, background-color 0.25s ease;
+      background: rgb(244, 44, 44);
+    }
+
+    /* kept for any other .badge usage, but hidden */
+    #wcag-badges { display: none; }
     .badge {
       font-size: 16px;
       font-weight: 600;
@@ -819,7 +837,12 @@
     <div id="contrast-panel">
       <div id="contrast-ratio">—</div>
       <div id="contrast-label">Kontrastverhältnis</div>
-      <div id="wcag-badges">
+      <div id="contrast-bar-wrap">
+        <div id="contrast-bar-track">
+          <div id="contrast-bar-fill"></div>
+        </div>
+      </div>
+      <div id="wcag-badges" aria-hidden="true">
         <span class="badge" id="badge-aa">AA 4.5</span>
         <span class="badge" id="badge-aaa">AAA 7</span>
       </div>
@@ -877,6 +900,7 @@
     const crEl = els('contrast-ratio');
     const badgeAA = els('badge-aa');
     const badgeAAA = els('badge-aaa');
+    const barFill = els('contrast-bar-fill');
     const doorEl = els('Door');
     const creature = els('Creature');
     const creatureLink = els('creature-link');
@@ -921,6 +945,11 @@
       badgeAA.classList.toggle('active', passAA);
       badgeAAA.classList.toggle('active', passAAA);
       crEl.classList.toggle('pass', passAAA);
+
+      // contrast bar: map ratio 1–7 → 0–100%, capped at full once AAA is reached
+      const fillPct = Math.min(100, Math.max(0, (cr - 1) / 6 * 100));
+      barFill.style.width = fillPct + '%';
+      barFill.style.background = passAAA ? '#44cc44' : passAA ? '#ff8800' : 'rgb(255,44,44)';
 
       if (passAAA) {
         const hr = 255 - br, hg = 255 - bg_, hb = 255 - bb;

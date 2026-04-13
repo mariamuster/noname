@@ -174,26 +174,25 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    #wcag-badges {
-      display: flex;
-      gap: 10px;
-      margin-top: 3px;
+    /* ── CONTRAST BAR ── */
+    #contrast-bar-wrap {
+      width: 210px;
+      margin-top: 6px;
     }
 
-    .badge {
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 5px 7px;
-      border-radius: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      color: rgba(255, 255, 255, 0.9);
+    #contrast-bar-track {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
     }
 
-    .badge.active {
-      background: #00ffcc;
-      border-color: #00ffcc;
-      color: #000;
+    #contrast-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      width: 0%;
+      background: #e63232;
     }
 
     /* ── ROOM ── */
@@ -337,9 +336,10 @@
     <div id="contrast-panel">
       <div id="contrast-ratio" class="pass">—</div>
       <div id="contrast-label">Kontrastverhältnis</div>
-      <div id="wcag-badges">
-        <span class="badge" id="badge-aa">AA 4.5</span>
-        <span class="badge" id="badge-aaa">AAA 7</span>
+      <div id="contrast-bar-wrap">
+        <div id="contrast-bar-track">
+          <div id="contrast-bar-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -429,8 +429,13 @@
 
     document.getElementById('contrast-ratio').textContent = cr.toFixed(2) + ':1';
     document.getElementById('contrast-ratio').classList.toggle('pass', cr >= 7.0);
-    document.getElementById('badge-aa').classList.toggle('active', cr >= 4.5);
-    document.getElementById('badge-aaa').classList.toggle('active', cr >= 7.0);
+
+    const passAA  = cr >= 4.5;
+    const passAAA = cr >= 7.0;
+    const fillPct = Math.min(100, Math.max(0, (cr - 1) / 6 * 100));
+    const barFill = document.getElementById('contrast-bar-fill');
+    barFill.style.width      = fillPct + '%';
+    barFill.style.background = passAAA ? '#44cc44' : passAA ? '#ff8800' : '#e63232';
 
     // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
     var weiterLink = document.getElementById('weiter-link');

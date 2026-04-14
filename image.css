@@ -19,7 +19,7 @@ body {
 
 @font-face {
   font-family: "Lex";
-  src: url("fonts/Lexend-Regular.ttf");
+  src: url("fonts/Lexend-Regular.woff2");
 }
 
 .room-wrapper {

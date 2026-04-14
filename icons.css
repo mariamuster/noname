@@ -39,14 +39,6 @@ svg a { cursor: pointer; }
 #menu-btn:hover rect,
 #menu-btn:focus-visible rect { fill: rgba(65, 65, 65, 0.7); }
 
-/* Dialog action buttons (weiter / zu): show grey on focus like hover, not blue nav style */
-a.d-weiter-btn:focus-visible > path,
-.d-zu-btn:focus-visible > path {
-  stroke: none !important;
-  fill: rgba(65, 65, 65, 0.7) !important;
-  stroke-width: 0 !important;
-  filter: none !important;
-}
 
 .instructions {
     position: absolute;
@@ -182,4 +174,15 @@ a.d-weiter-btn:focus-visible > path,
     }
 
 
-    
+    @font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Regular.woff2') format('woff');
+      font-style: normal;
+      font-weight: normal;
+    }
+@font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Bold.woff2') format('woff2');
+      font-style: normal;
+      font-weight: bold;
+    }

@@ -1,9 +1,44 @@
-<svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
-  <g class="room-overlay" id="dlg1-weiter" role="button" tabindex="0" aria-label="Gehe zum Amt"
-    onclick="location.href='1_Haus_2.html'"
-    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='1_Haus_2.html'}">
-    <g transform="translate(-200, 0)">
-      <path id="Door1" class="cls-1"
-        d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,36,6,10.1,11.7,8.4,26.5,8.9,40.9,1.1,31.4,0,68.1,0,99.4l-68.9-1.4Z" />
-    </g>
-  </g>
+ #size-control {
+      position: absolute;
+      top: 2%;
+      left: 35%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      pointer-events: all;
+    }
+
+    #size-control label {
+      font-family: Lexend, serif;
+      font-size: 20px;
+      color: #2a1a0a;
+      letter-spacing: 0.08em;
+    }
+
+      #size-slider::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #000000;
+      border: 3px solid rgb(255, 0, 238);
+      cursor: pointer;
+    }
+
+    #size-slider::-moz-range-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #000000;
+      border: 3px solid rgba(255, 19, 240);
+      cursor: pointer;
+    }
+#size-value {
+      font-family: Lex, serif;
+      font-size: 20px;
+      color: #2a1a0a;
+    }

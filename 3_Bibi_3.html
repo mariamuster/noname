@@ -29,7 +29,7 @@
 
     @font-face {
       font-family: 'Lexend';
-      src: url('fonts/Lexend-Regular.ttf');
+      src: url('fonts/Lexend-Regular.woff2');
     }
 
     @font-face {
@@ -65,9 +65,9 @@
 
     #zurueck-svg a:focus-visible .pfeil-path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     a:focus-visible {
@@ -77,18 +77,18 @@
     a:focus-visible path,
     a:focus-visible rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     /* ── Buchtext ──────────────────────────────────────── */
     .buch-text {
       position: absolute;
-      top: calc(170 / 900 * 100%);
+      top: calc(215 / 900 * 100%);
       left: calc(350 / 1600 * 100%);
       width: calc(870 / 1600 * 100%);
-      height: calc(500 / 900 * 100%);
+      height: calc(470 / 900 * 100%);
       display: flex;
       gap: 0;
       pointer-events: none;
@@ -120,7 +120,7 @@
     #size-control {
       position: absolute;
       top: 2%;
-      left: 50%;
+      left: 35%;
       transform: translateX(-50%);
       z-index: 100;
       display: flex;
@@ -137,6 +137,27 @@
       letter-spacing: 0.08em;
     }
 
+    .stop-btn {
+      position: fixed;
+      left: 35%;
+     top: 2%;
+      z-index: 99999;
+      padding: 12px 20px;
+      border: 3px;
+      border-radius: 10px;
+      background: #000000;
+      stroke: #a40000;
+      stroke-width: 3PX;
+      color: #000000;
+      font-family: Lexend, sans-serif;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .stop-btn:hover {
+      background: #444;
+    }
+
     #size-slider {
       appearance: none;
       -webkit-appearance: none;
@@ -151,7 +172,7 @@
     #size-slider:focus-visible {
       outline: 3px solid #005fcc;
       outline-offset: 6px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #size-slider::-webkit-slider-thumb {
@@ -173,6 +194,8 @@
       border: 3px solid rgba(255, 19, 240);
       cursor: pointer;
     }
+
+
 
     #size-value {
       font-family: Lex, serif;
@@ -229,7 +252,7 @@
     .font-btn:focus-visible {
       outline: 3px solid #005fcc;
       outline-offset: 2px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .font-btn.active .btn-bg {
@@ -256,25 +279,6 @@
       z-index: 50;
       pointer-events: none;
     }
-.stop-btn {
-  position: fixed;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  z-index: 99999;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  background: #222;
-  color: #000000;
-  font-family: Lexend, sans-serif;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.stop-btn:hover {
-  background: #444;
-}
   </style>
 </head>
 
@@ -282,10 +286,13 @@
 
 <body>
   <div class="room-wrapper">
-<div style="position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 99999; display: flex; align-items: center; gap: 10px;">
-  <button id="stop-animation" class="stop-btn" type="button" style="width: 50px; height: 50px; border-radius: 50%; border: none; background: #222; color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">⏸</button>
-  <span style="color: #a40000; font-family: Lexend, sans-serif; font-size: 18px; font-weight: bold;">Animation stoppen</span>
-</div>
+    <div
+      style="position: fixed; left: 55%; top: 20%;  z-index: 99999; display: flex; align-items: center; gap: 10px;">
+      <button id="stop-animation" class="stop-btn" type="button"
+        style="width: 50px; height: 50px; border-radius: 50%; border: none; background: #222; color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">⏸</button>
+      <span style="color: #a40000; font-family: Lexend, sans-serif; font-size: 18px; font-weight: bold;">Animation
+        stoppen</span>
+    </div>
 
     <img src="img/3_Bibi_Buch.svg"
       alt="Das pinke Buch liegt offen. Darin stehen Variationen des Satzes „Hier ist Büro 146 nicht“. Auf der linken Seite hüpfen die einzelnen Buchstaben auf und ab. Auf der rechten Seite verschieben sie sich innerhalb des Wortes. Oben in der Mitte hat es einen Regler, mit dem die Schriftgrösse verändert werden kann. Auf der linken Seite können verschiedene Schriftarten gewählt werden. Rechts in der Mitte das gelbe Wesen."
@@ -439,168 +446,169 @@
       </g>
 
       <a aria-label="Gelbes Wesen" tabindex="0" role="button">
-        <path d="M1375.08,417.32c-11.53-44.17,20.14-82.93,72.8-85.35,51.25-2.36,91.57,48.55,72.72,94.02-6.96,20.28-31.96,31.55-29.91,54.69v16.59c.61,14.34-2.25,28.47-2.25,42.81s2.05,17.21-1.64,24.99c-1.64,3.28-4.92,3.28-6.56,0-3.28-6.96-2.05-15.57-2.25-23.56v-26.83s-3.89-.61-4.71-.61h-3.89s1.02,25.81,0,38.92c0,5.74,0,16.59-6.35,14.95-8.4-3.89-2.25-45.07-3.69-55.31-2.05-.61-6.35,0-8.4,0,1.23,7.58-1.02,17-1.23,24.58,0,8.4,1.64,17,0,25.2-1.23,6.96-6.96,7.99-8.4.61-3.07-15.36,0-33.59-1.02-49.16-1.02-.61-5.74-.2-6.96,0-1.64,15.36-.61,31.55-1.23,46.91-1.02,7.58-8.6,7.99-10.04,0-1.23-15.98.29-32.62-1.02-48.55-.99-11.91-6.37-33.44-13.5-41.78-22.03-25.74-26.24-29.31-32.46-53.13Z" />
+        <path
+          d="M1375.08,417.32c-11.53-44.17,20.14-82.93,72.8-85.35,51.25-2.36,91.57,48.55,72.72,94.02-6.96,20.28-31.96,31.55-29.91,54.69v16.59c.61,14.34-2.25,28.47-2.25,42.81s2.05,17.21-1.64,24.99c-1.64,3.28-4.92,3.28-6.56,0-3.28-6.96-2.05-15.57-2.25-23.56v-26.83s-3.89-.61-4.71-.61h-3.89s1.02,25.81,0,38.92c0,5.74,0,16.59-6.35,14.95-8.4-3.89-2.25-45.07-3.69-55.31-2.05-.61-6.35,0-8.4,0,1.23,7.58-1.02,17-1.23,24.58,0,8.4,1.64,17,0,25.2-1.23,6.96-6.96,7.99-8.4.61-3.07-15.36,0-33.59-1.02-49.16-1.02-.61-5.74-.2-6.96,0-1.64,15.36-.61,31.55-1.23,46.91-1.02,7.58-8.6,7.99-10.04,0-1.23-15.98.29-32.62-1.02-48.55-.99-11.91-6.37-33.44-13.5-41.78-22.03-25.74-26.24-29.31-32.46-53.13Z" />
       </a>
     </svg>
 
   </div>
-<script>
-  function rand(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  <script>
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-  let running = true;
-  let originalRightText = ''; // Store original right page text
+    let running = true;
+    let originalRightText = ''; // Store original right page text
 
-  function resetLetters() {
-    // Reset left page wiggles
-    document.querySelectorAll('#seite-links .dysletter').forEach(span => {
-      span.style.transform = '';
-      span.style.transition = '';
-    });
-    
-    // Reset right page swaps - rebuild from original text
+    function resetLetters() {
+      // Reset left page wiggles
+      document.querySelectorAll('#seite-links .dysletter').forEach(span => {
+        span.style.transform = '';
+        span.style.transition = '';
+      });
+
+      // Reset right page swaps - rebuild from original text
+      const rightPage = document.getElementById('seite-rechts');
+      rightPage.innerHTML = originalRightText;
+      wrapWords(rightPage); // Re-apply wrapping
+    }
+
+    function wrapLetters(el) {
+      el.childNodes.forEach(node => {
+        if (node.nodeType === 3) {
+          const tmp = document.createElement('span');
+          tmp.innerHTML = node.textContent.split('').map(ch =>
+            ch.trim() === '' ? ch : '<span class="dysletter">' + ch + '</span>'
+          ).join('');
+          node.replaceWith(tmp);
+        }
+      });
+    }
+
+    document.querySelectorAll('#seite-links p').forEach(wrapLetters);
+
+    function wiggle() {
+      if (!running) return;
+      const spans = Array.from(document.querySelectorAll('#seite-links .dysletter'));
+      for (let i = 0; i < 20; i++) {
+        const idx = rand(0, spans.length - 2);
+        const a = spans[idx], b = spans[idx + 1];
+        const shift = 2, dur = rand(60, 150);
+        a.style.transition = b.style.transition = 'transform ' + dur + 'ms ease';
+        a.style.transform = 'translateY(' + shift + 'px)';
+        b.style.transform = 'translateY(-' + shift + 'px)';
+        setTimeout(() => {
+          if (!running) return;
+          a.style.transform = b.style.transform = '';
+        }, dur + rand(50, 200));
+      }
+      setTimeout(wiggle, rand(30, 80));
+    }
+
+    wiggle();
+
+    function wrapWords(container) {
+      container.querySelectorAll('p').forEach(p => {
+        const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) textNodes.push(node);
+        textNodes.forEach(tn => {
+          const frag = document.createDocumentFragment();
+          tn.textContent.split(/(\s+)/).forEach(part => {
+            if (/^\s+$/.test(part) || part === '') {
+              frag.appendChild(document.createTextNode(part));
+            } else {
+              const wordSpan = document.createElement('span');
+              wordSpan.style.display = 'inline-block';
+              wordSpan.style.position = 'relative';
+              part.split('').forEach(ch => {
+                const s = document.createElement('span');
+                s.className = 'dysletter swap-letter';
+                s.textContent = ch;
+                s.style.position = 'relative';
+                wordSpan.appendChild(s);
+              });
+              frag.appendChild(wordSpan);
+            }
+          });
+          tn.replaceWith(frag);
+        });
+      });
+    }
+
+    // Store original right page HTML before wrapping
     const rightPage = document.getElementById('seite-rechts');
-    rightPage.innerHTML = originalRightText;
-    wrapWords(rightPage); // Re-apply wrapping
-  }
+    originalRightText = rightPage.innerHTML;
+    wrapWords(rightPage);
 
-  function wrapLetters(el) {
-    el.childNodes.forEach(node => {
-      if (node.nodeType === 3) {
-        const tmp = document.createElement('span');
-        tmp.innerHTML = node.textContent.split('').map(ch =>
-          ch.trim() === '' ? ch : '<span class="dysletter">' + ch + '</span>'
-        ).join('');
-        node.replaceWith(tmp);
+    function swapLetters() {
+      if (!running) return;
+      for (let s = 0; s < 3; s++) {
+        const words = Array.from(document.querySelectorAll('#seite-rechts p > span[style]'));
+        if (!words.length) continue;
+        const word = words[rand(0, words.length - 1)];
+        const letters = Array.from(word.querySelectorAll('.swap-letter'));
+        if (letters.length < 2) continue;
+        const i = rand(0, letters.length - 2);
+        const a = letters[i], b = letters[i + 1];
+        const wa = a.getBoundingClientRect().width;
+        const wb = b.getBoundingClientRect().width;
+        const tmp = a.textContent;
+        a.textContent = b.textContent;
+        b.textContent = tmp;
+        a.style.display = 'inline-block';
+        b.style.display = 'inline-block';
+        a.style.minWidth = wb + 'px';
+        b.style.minWidth = wa + 'px';
+        setTimeout(() => {
+          if (!running) return;
+          a.style.minWidth = '';
+          b.style.minWidth = '';
+        }, rand(200, 600));
+      }
+      setTimeout(swapLetters, rand(30, 100));
+    }
+
+    swapLetters();
+
+    document.querySelectorAll('.font-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const font = btn.getAttribute('data-font');
+        document.querySelectorAll('#seite-links, #seite-rechts').forEach(el => {
+          el.style.fontFamily = font;
+        });
+      });
+    });
+
+    const slider = document.getElementById('size-slider');
+    const sizeVal = document.getElementById('size-value');
+    slider.addEventListener('input', () => {
+      const sz = slider.value + 'px';
+      sizeVal.textContent = sz;
+      document.querySelectorAll('#seite-links, #seite-rechts').forEach(el => {
+        el.style.fontSize = sz;
+      });
+    });
+
+    const stopBtn = document.getElementById('stop-animation');
+    stopBtn.addEventListener('click', () => {
+      if (running) {
+        // Stop + Reset immediately
+        running = false;
+        resetLetters();
+        stopBtn.innerHTML = '▶';
+      } else {
+        // Start
+        running = true;
+        wiggle();
+        swapLetters();
+        stopBtn.innerHTML = '⏸';
       }
     });
-  }
-
-  document.querySelectorAll('#seite-links p').forEach(wrapLetters);
-
-  function wiggle() {
-    if (!running) return;
-    const spans = Array.from(document.querySelectorAll('#seite-links .dysletter'));
-    for (let i = 0; i < 20; i++) {
-      const idx = rand(0, spans.length - 2);
-      const a = spans[idx], b = spans[idx + 1];
-      const shift = 2, dur = rand(60, 150);
-      a.style.transition = b.style.transition = 'transform ' + dur + 'ms ease';
-      a.style.transform = 'translateY(' + shift + 'px)';
-      b.style.transform = 'translateY(-' + shift + 'px)';
-      setTimeout(() => {
-        if (!running) return;
-        a.style.transform = b.style.transform = '';
-      }, dur + rand(50, 200));
-    }
-    setTimeout(wiggle, rand(30, 80));
-  }
-
-  wiggle();
-
-  function wrapWords(container) {
-    container.querySelectorAll('p').forEach(p => {
-      const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
-      const textNodes = [];
-      let node;
-      while (node = walker.nextNode()) textNodes.push(node);
-      textNodes.forEach(tn => {
-        const frag = document.createDocumentFragment();
-        tn.textContent.split(/(\s+)/).forEach(part => {
-          if (/^\s+$/.test(part) || part === '') {
-            frag.appendChild(document.createTextNode(part));
-          } else {
-            const wordSpan = document.createElement('span');
-            wordSpan.style.display = 'inline-block';
-            wordSpan.style.position = 'relative';
-            part.split('').forEach(ch => {
-              const s = document.createElement('span');
-              s.className = 'dysletter swap-letter';
-              s.textContent = ch;
-              s.style.position = 'relative';
-              wordSpan.appendChild(s);
-            });
-            frag.appendChild(wordSpan);
-          }
-        });
-        tn.replaceWith(frag);
-      });
-    });
-  }
-
-  // Store original right page HTML before wrapping
-  const rightPage = document.getElementById('seite-rechts');
-  originalRightText = rightPage.innerHTML;
-  wrapWords(rightPage);
-
-  function swapLetters() {
-    if (!running) return;
-    for (let s = 0; s < 3; s++) {
-      const words = Array.from(document.querySelectorAll('#seite-rechts p > span[style]'));
-      if (!words.length) continue;
-      const word = words[rand(0, words.length - 1)];
-      const letters = Array.from(word.querySelectorAll('.swap-letter'));
-      if (letters.length < 2) continue;
-      const i = rand(0, letters.length - 2);
-      const a = letters[i], b = letters[i + 1];
-      const wa = a.getBoundingClientRect().width;
-      const wb = b.getBoundingClientRect().width;
-      const tmp = a.textContent;
-      a.textContent = b.textContent;
-      b.textContent = tmp;
-      a.style.display = 'inline-block';
-      b.style.display = 'inline-block';
-      a.style.minWidth = wb + 'px';
-      b.style.minWidth = wa + 'px';
-      setTimeout(() => {
-        if (!running) return;
-        a.style.minWidth = '';
-        b.style.minWidth = '';
-      }, rand(200, 600));
-    }
-    setTimeout(swapLetters, rand(30, 100));
-  }
-
-  swapLetters();
-
-  document.querySelectorAll('.font-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const font = btn.getAttribute('data-font');
-      document.querySelectorAll('#seite-links, #seite-rechts').forEach(el => {
-        el.style.fontFamily = font;
-      });
-    });
-  });
-
-  const slider = document.getElementById('size-slider');
-  const sizeVal = document.getElementById('size-value');
-  slider.addEventListener('input', () => {
-    const sz = slider.value + 'px';
-    sizeVal.textContent = sz;
-    document.querySelectorAll('#seite-links, #seite-rechts').forEach(el => {
-      el.style.fontSize = sz;
-    });
-  });
-
-  const stopBtn = document.getElementById('stop-animation');
-  stopBtn.addEventListener('click', () => {
-    if (running) {
-      // Stop + Reset immediately
-      running = false;
-      resetLetters();
-      stopBtn.innerHTML = '▶';
-    } else {
-      // Start
-      running = true;
-      wiggle();
-      swapLetters();
-      stopBtn.innerHTML = '⏸';
-    }
-  });
-</script>
+  </script>
 
   <!-- ════════════════════════════════════════════════════════════
        ICONS
@@ -613,20 +621,20 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_3_Bibi_3W_html = document.querySelector('[aria-label="Gelbes Wesen"][role="button"]');
-  if (btn_3_Bibi_3W_html) {
-    btn_3_Bibi_3W_html.addEventListener("click", function() { window.location.href = "3_Bibi_3W.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_3_Bibi_3W_html && document.activeElement === btn_3_Bibi_3W_html) {
-      e.preventDefault(); window.location.href = "3_Bibi_3W.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_3_Bibi_3W_html = document.querySelector('[aria-label="Gelbes Wesen"][role="button"]');
+      if (btn_3_Bibi_3W_html) {
+        btn_3_Bibi_3W_html.addEventListener("click", function () { window.location.href = "3_Bibi_3W.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_3_Bibi_3W_html && document.activeElement === btn_3_Bibi_3W_html) {
+          e.preventDefault(); window.location.href = "3_Bibi_3W.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

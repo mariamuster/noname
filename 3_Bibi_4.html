@@ -79,8 +79,8 @@
       cursor: pointer;
     }
 
-     .d-zu-hit-area-btn:hover>path,
-    .d-zu-hit-area-btn:focus-visible>path {
+    a.d-zu-btn:hover>path,
+    a.d-zu-btn:focus-visible>path {
       fill: rgba(65, 65, 65, 0.7) !important;
     }
 
@@ -191,13 +191,13 @@
             d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
 
           <!-- Schliessen-Button -->
-          <a class="pfeil-link" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
+          <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
              <g aria-hidden="true">
-               <path class="d-zu-shape" style="fill:rgba(255, 255, 255); stroke: #000;"
+               <path class="d-zu-shape"
               d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
                <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
              </g>
-             <path class="pfeil-link"style="fill:transparent;pointer-events:all;"
+             <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
                d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
            </a>
 
@@ -378,16 +378,13 @@
       var zuPath    = document.querySelector('.d-zu-shape');
       var weiterPath = document.querySelector('.d-btn-shape');
       var HOVER_FILL = 'rgba(65,65,65,0.7)';
-      if (htmlDlgClose && zuPath) {
-        htmlDlgClose.addEventListener('mouseenter', function() { zuPath.style.fill = HOVER_FILL; });
-        htmlDlgClose.addEventListener('mouseleave', function() { zuPath.style.fill = ''; });
-      }
       if (htmlDlgWeiter && weiterPath) {
         htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
         htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
       }
       if (htmlDlgClose && zuPath) {
         htmlDlgClose.addEventListener('focus', function() {
+          if (!this.matches(':focus-visible')) return;
           zuPath.style.fill = 'rgba(0,95,204,0.08)';
           zuPath.style.stroke = '#005fcc';
           zuPath.style.strokeWidth = '3px';
@@ -402,6 +399,7 @@
       }
       if (htmlDlgWeiter && weiterPath) {
         htmlDlgWeiter.addEventListener('focus', function() {
+          if (!this.matches(':focus-visible')) return;
           weiterPath.style.fill = 'rgba(0,95,204,0.08)';
           weiterPath.style.stroke = '#005fcc';
           weiterPath.style.strokeWidth = '3px';

@@ -1,7 +1,21 @@
 /* ═══════════════════════════════════════════
    Icon-Styles
 ════════════════════════════════════════════ */
+   @font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Regular.woff2') format('woff');
+      font-style: normal;
+      font-weight: normal;
+    }
+@font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Bold.woff2') format('woff2');
+      font-style: normal;
+      font-weight: bold;
+    }
 
+
+    
 /* Pfad-Styles aus Icon.svg */
 .str0, .str1, .str2 { fill: none; }
 .str0, .str1, .str2, .str3 { stroke-linecap: round; stroke-width: 3px; }
@@ -171,18 +185,4 @@ svg a { cursor: pointer; }
       font-size: 1.7vw;
       margin: 0 0 1.5em 0;
       
-    }
-
-
-    @font-face {
-      font-family: 'Lexend';
-      src: url('fonts/Lexend-Regular.woff2') format('woff');
-      font-style: normal;
-      font-weight: normal;
-    }
-@font-face {
-      font-family: 'Lexend';
-      src: url('fonts/Lexend-Bold.woff2') format('woff2');
-      font-style: normal;
-      font-weight: bold;
     }

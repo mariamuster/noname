@@ -259,6 +259,7 @@
       if (!svg || !dlgTextEl) return;
       var r = svg.getBoundingClientRect();
       var sx = r.width / 1600;
+      var sy = r.height / 900;
       dlgTextEl.style.left = (r.left + 240 * sx) + 'px';
       dlgTextEl.style.top = (r.top + 295 * sy) + 'px';
       dlgTextEl.style.width = (910 * sx) + 'px';

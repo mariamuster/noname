@@ -33,9 +33,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     a:focus-visible,
@@ -57,7 +57,6 @@
       transform-origin: center;
     }
 
-    /* ── Button Labels ── */
     .btn-label {
       font-family: 'Lex', sans-serif;
       font-size: 28px;
@@ -67,20 +66,17 @@
       transition: opacity 0.15s;
     }
 
-    /* Pfeil */
     .pfeil-shape {
       pointer-events: none;
     }
 
-    /* Fokus-Highlight-Rect  */
     .focus-highlight {
       stroke: #005fcc;
       fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
-    /* Abfluss */
     @keyframes drain {
       0% {
         transform: translate(0, 0) scale(1);
@@ -122,8 +118,6 @@
 
       <!-- Abfluss  -->
       <path id="Abfluss" fill="#000" d="M1154.5,389.1c0-22.8-34.5-22.3-34.5-1.3s34.5,26.1,34.5,1.3Z" />
-
-
 
       <!-- Wesen7 -->
       <g id="wesen7" class="wesen-d1" tabindex="1" role="button" aria-label="Dreck 1">
@@ -258,9 +252,8 @@
           d="M699.63,754.72c-10.07-38.6,17.6-72.48,63.62-74.6,44.79-2.06,80.03,42.43,63.56,82.18-6.09,17.72-27.93,27.57-26.14,47.8v14.5c.54,12.53-1.97,24.89-1.97,37.42s1.79,15.04-1.43,21.84c-1.43,2.86-4.3,2.86-5.73,0-2.86-6.09-1.79-13.61-1.97-20.59v-23.45s-3.4-.54-4.12-.54h-3.4s.9,22.56,0,34.02c0,5.01,0,14.5-5.55,13.07-7.34-3.4-1.97-39.39-3.22-48.34-1.79-.54-5.55,0-7.34,0,1.07,6.62-.9,14.86-1.07,21.48,0,7.34,1.43,14.86,0,22.02-1.07,6.09-6.09,6.98-7.34.54-2.69-13.43,0-29.36-.9-42.97-.9-.54-5.01-.18-6.09,0-1.43,13.43-.54,27.57-1.07,41-.9,6.62-7.52,6.98-8.77,0-1.07-13.96.26-28.51-.9-42.43-.86-10.41-5.56-29.23-11.8-36.52-19.25-22.5-22.94-25.62-28.37-46.43Z" />
       </g>
 
-      <!-- Zurück  (tabindex 11) -->
-      <a id="zurueck-btn" aria-label="Gelbes Wesen" role="button" tabindex="11"
-        style="cursor:pointer; display:none">
+      <!-- Zurück  -->
+      <a id="zurueck-btn" aria-label="Gelbes Wesen" role="button" tabindex="11" style="cursor:pointer; display:none">
         <g aria-hidden="true">
           <path style="fill: #fff706;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
             d="M699.63,754.72c-10.07-38.6,17.6-72.48,63.62-74.6,44.79-2.06,80.03,42.43,63.56,82.18-6.09,17.72-27.93,27.57-26.14,47.8v14.5c.54,12.53-1.97,24.89-1.97,37.42s1.79,15.04-1.43,21.84c-1.43,2.86-4.3,2.86-5.73,0-2.86-6.09-1.79-13.61-1.97-20.59v-23.45s-3.4-.54-4.12-.54h-3.4s.9,22.56,0,34.02c0,5.01,0,14.5-5.55,13.07-7.34-3.4-1.97-39.39-3.22-48.34-1.79-.54-5.55,0-7.34,0,1.07,6.62-.9,14.86-1.07,21.48,0,7.34,1.43,14.86,0,22.02-1.07,6.09-6.09,6.98-7.34.54-2.69-13.43,0-29.36-.9-42.97-.9-.54-5.01-.18-6.09,0-1.43,13.43-.54,27.57-1.07,41-.9,6.62-7.52,6.98-8.77,0-1.07-13.96.26-28.51-.9-42.43-.86-10.41-5.56-29.23-11.8-36.52-19.25-22.5-22.94-25.62-28.37-46.43Z" />
@@ -522,7 +515,7 @@
     function enableAllClicks() {
       allWesen.forEach((w, i) => {
         if (!w.alive) return;
-        w.el.setAttribute('tabindex', String(12 + i));  // 12–19
+        w.el.setAttribute('tabindex', String(12 + i));
         w.el.setAttribute('aria-label', 'Dreck entfernen');
 
         function remove() {
@@ -607,20 +600,20 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_6_Bad_2W_html = document.getElementById("zurueck-btn");
-  if (btn_6_Bad_2W_html) {
-    btn_6_Bad_2W_html.addEventListener("click", function() { window.location.href = "6_Bad_2W.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_6_Bad_2W_html && document.activeElement === btn_6_Bad_2W_html) {
-      e.preventDefault(); window.location.href = "6_Bad_2W.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_6_Bad_2W_html = document.getElementById("zurueck-btn");
+      if (btn_6_Bad_2W_html) {
+        btn_6_Bad_2W_html.addEventListener("click", function () { window.location.href = "6_Bad_2W.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_6_Bad_2W_html && document.activeElement === btn_6_Bad_2W_html) {
+          e.preventDefault(); window.location.href = "6_Bad_2W.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

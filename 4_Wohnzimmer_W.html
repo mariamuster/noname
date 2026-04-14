@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
     html {
       overflow-x: hidden;
     }
@@ -53,9 +51,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -73,10 +71,12 @@
       </h1>
 
       <p class="info-text">Zu <b>schwache Kontraste</b> machen Texte, Buttons und Symbole für viele Menschen
-        <b>unbenutzbar</b>. Inhalte mit Kontrasten die ein <b>tiefes Verhältnis</b> haben, sind bei eingeschränktem Sehen
+        <b>unbenutzbar</b>. Inhalte mit Kontrasten die ein <b>tiefes Verhältnis</b> haben, sind bei eingeschränktem
+        Sehen
         oder wenig Licht <b>schlecht lesbar</b>.
       </p>
-      <p class="info-text">Der <b>WCAG-Standard AA</b> sieht für gute Lesbarkeit ein <b>Kontrastverhältnis von 4.5:1</b> zwischen
+      <p class="info-text">Der <b>WCAG-Standard AA</b> sieht für gute Lesbarkeit ein <b>Kontrastverhältnis von 4.5:1</b>
+        zwischen
         Text und Hintergrund vor.
       </p>
       <p class="info-text">Der höhere <b>Standard AAA</b> ein <b>Kontrastverhältnis von 7:1 </b>.
@@ -118,20 +118,20 @@
     </svg>
 
   </div>
-<script>
-(function() {
-  var btn_5_Kueche_1_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
-  if (btn_5_Kueche_1_html) {
-    btn_5_Kueche_1_html.addEventListener("click", function() { window.location.href = "5_Kueche_1.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_5_Kueche_1_html && document.activeElement === btn_5_Kueche_1_html) {
-      e.preventDefault(); window.location.href = "5_Kueche_1.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_5_Kueche_1_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
+      if (btn_5_Kueche_1_html) {
+        btn_5_Kueche_1_html.addEventListener("click", function () { window.location.href = "5_Kueche_1.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_5_Kueche_1_html && document.activeElement === btn_5_Kueche_1_html) {
+          e.preventDefault(); window.location.href = "5_Kueche_1.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

@@ -99,7 +99,7 @@
         <path style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
           d="M146.1,432.2c-.1,7.1.2,14.6.2,21.7-5.2,0-10.4,0-15.7.2" />
       </g>
-  <text style="font-family:Lex;font-size:13px;font-weight:600;fill:#ffffff;"  transform="translate(82.6 457.2)">
+      <text style="font-family:Lex;font-size:13px;font-weight:600;fill:#ffffff;" transform="translate(82.6 457.2)">
         <tspan x="0" y="0">ENTER</tspan>
       </text>
     </svg>
@@ -187,20 +187,20 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_2_Keller_3_html = document.querySelector('[aria-label="Stromkasten"][role="button"]');
-  if (btn_2_Keller_3_html) {
-    btn_2_Keller_3_html.addEventListener("click", function() { window.location.href = "2_Keller_3.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_2_Keller_3_html && document.activeElement === btn_2_Keller_3_html) {
-      e.preventDefault(); window.location.href = "2_Keller_3.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_2_Keller_3_html = document.querySelector('[aria-label="Stromkasten"][role="button"]');
+      if (btn_2_Keller_3_html) {
+        btn_2_Keller_3_html.addEventListener("click", function () { window.location.href = "2_Keller_3.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_2_Keller_3_html && document.activeElement === btn_2_Keller_3_html) {
+          e.preventDefault(); window.location.href = "2_Keller_3.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

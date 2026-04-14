@@ -143,7 +143,6 @@
       align-self: center;
     }
 
-    /* ── CONTRAST Panel ── */
     #contrast-panel {
       display: flex;
       flex-direction: column;
@@ -174,7 +173,6 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    /* ── CONTRAST BAR ── */
     #contrast-bar-wrap {
       width: 210px;
       margin-top: 6px;
@@ -195,14 +193,12 @@
       background: #e63232;
     }
 
-    /* ── ROOM ── */
     #room-wrapper {
       width: 100%;
       max-width: 1600px;
       position: relative;
     }
 
-    /* ── OVERLAY SVG ── */
     .wohn-overlay {
       position: absolute;
       inset: 0;
@@ -211,7 +207,6 @@
       pointer-events: none;
     }
 
-    /* Pfeil hover */
     #pfeil-link>path {
       pointer-events: all;
       transition: filter 0.2s, opacity 0.2s;
@@ -227,8 +222,6 @@
       outline: none;
     }
 
-
-
     a:hover>path,
     a:hover>rect {
       fill: rgba(65, 65, 65, 0.7) !important;
@@ -241,9 +234,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #bild-small {
@@ -265,9 +258,9 @@
 
     #bild-small:focus-visible>path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #zu-button {
@@ -284,9 +277,9 @@
 
     #zu-button:focus-visible .zu-hit-area {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .text-box {
@@ -307,7 +300,6 @@
 <body>
 
   <div id="controls" aria-hidden="true">
-    <!-- Hintergrundfarbe (eingefroren) -->
     <div class="ctrl-group">
       <div class="ctrl-label">Hintergrundfarbe</div>
       <div class="ctrl-inline">
@@ -343,7 +335,7 @@
       </div>
     </div>
 
-    <!-- Linienfarbe (eingefroren) -->
+    <!-- Linienfarbe -->
     <div class="ctrl-group">
       <div class="ctrl-label">Linienfarbe</div>
       <div class="ctrl-inline">
@@ -370,7 +362,8 @@
   </div>
 
   <div class="room-wrapper">
-    <img src="img/10_Wohnzimmer.svg" alt="Das Wohnzimmer. Der Hintergrund ist dukelgrün, die Linien hellgrün. Die Leiste zeigt die Werte der beiden Farben an. Das Kontrastverhältnis ist 10.51 ZU 1. Ein Sofa in der Mitte, auf dem ein Wesen schläft. Rechts und links davon je ein Sessel. Zwei Lampen und rechts in der Ecke eine Zimmerpflanze. Über dem Sofa hängt ein Bild."
+    <img src="img/10_Wohnzimmer.svg"
+      alt="Das Wohnzimmer. Der Hintergrund ist dukelgrün, die Linien hellgrün. Die Leiste zeigt die Werte der beiden Farben an. Das Kontrastverhältnis ist 10.51 ZU 1. Ein Sofa in der Mitte, auf dem ein Wesen schläft. Rechts und links davon je ein Sessel. Zwei Lampen und rechts in der Ecke eine Zimmerpflanze. Über dem Sofa hängt ein Bild."
       class="responsive-img" tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -414,7 +407,6 @@
   </div>
 
   <script>
-    // Kontrastwert berechnen und anzeigen
     function toLinear(c) {
       const v = c / 255;
       return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
@@ -434,17 +426,16 @@
     document.getElementById('contrast-ratio').textContent = cr.toFixed(2) + ':1';
     document.getElementById('contrast-ratio').classList.toggle('pass', cr >= 7.0);
 
-    const passAA  = cr >= 4.5;
+    const passAA = cr >= 4.5;
     const passAAA = cr >= 7.0;
     const fillPct = Math.min(100, Math.max(0, (cr - 1) / 6 * 100));
     const barFill = document.getElementById('contrast-bar-fill');
-    barFill.style.width      = fillPct + '%';
+    barFill.style.width = fillPct + '%';
     barFill.style.background = passAAA ? '#44cc44' : passAA ? '#ff8800' : '#e63232';
 
-    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
     var weiterLink = document.getElementById('weiter-link');
-    weiterLink.addEventListener('click', function() { window.location.href = '11_Kueche_3.html'; });
-    weiterLink.addEventListener('keydown', function(e) {
+    weiterLink.addEventListener('click', function () { window.location.href = '11_Kueche_3.html'; });
+    weiterLink.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '11_Kueche_3.html'; }
     });
   </script>
@@ -477,16 +468,15 @@
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
 
-      // Hint text as body-level HTML so it scales with browser zoom
       var hinweisEl = document.createElement('p');
       var hinweisText = 'Ein Wort mit 7 Buchstaben. Der erste sind zwei senkrechte Striche, welche durch einen waagrechten verbunden sind. Der zweite ist ein senkrechter Strich, mit einem Punkt oberhalb. Der dritte ist ein senkrechter Strich, mit einem Bogen nach unten. Der vierte ist ein zick-zack mit Anfang und Ende oben und einer Spitze in der Mitte. Der fünfte ist ein fast geschlossener Kreis, mit einem horizontalen Strich im oberen Bereich, der es schließt. Der sechste Buchstabe ist der gleiche wie der zweite Buchstabe. Der siebte ist eine Abfolge von oben nach unten mit zwei Kurven.';
       hinweisEl.setAttribute('aria-live', 'assertive');
       hinweisEl.setAttribute('aria-atomic', 'true');
       hinweisEl.setAttribute('tabindex', '0');
       hinweisEl.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:1.4rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-      (function(){
-        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
-        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      (function () {
+        var s = document.querySelector('.room-overlay') || document.querySelector('.room-svg') || document.querySelector('svg');
+        s ? s.parentNode.insertBefore(hinweisEl, s) : document.body.appendChild(hinweisEl);
       })();
       var tabTrapFn = null;
 
@@ -494,11 +484,11 @@
         var svg = document.querySelector('.room-overlay');
         if (!svg) return;
         var r = svg.getBoundingClientRect();
-        var sx = r.width  / 1600;
+        var sx = r.width / 1600;
         var sy = r.height / 900;
-        hinweisEl.style.left      = (r.left + 390 * sx) + 'px';
-        hinweisEl.style.top       = (r.top  + 280 * sy) + 'px';
-        hinweisEl.style.width     = (820 * sx) + 'px';
+        hinweisEl.style.left = (r.left + 390 * sx) + 'px';
+        hinweisEl.style.top = (r.top + 280 * sy) + 'px';
+        hinweisEl.style.width = (820 * sx) + 'px';
         hinweisEl.style.height = (340 * sy) + 'px';
       }
 
@@ -515,11 +505,11 @@
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
           hinweisEl.textContent = hinweisText;
           hinweisEl.focus();
           if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
-          tabTrapFn = function(e) {
+          tabTrapFn = function (e) {
             if (e.key !== 'Tab') return;
             e.preventDefault();
             if (document.activeElement === zuButton) { hinweisEl.focus(); }

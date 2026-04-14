@@ -32,9 +32,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     a.d-zu-btn>path {
@@ -134,11 +134,11 @@
     .d-zu-btn {
       cursor: pointer;
     }
-      .room-wrapper {
+
+    .room-wrapper {
       position: relative;
     }
 
-    /* HTML-Dialog-Overlay: nur für Accessibility, visuell unsichtbar */
     #html-dialog {
       display: none;
       position: fixed;
@@ -184,47 +184,48 @@
 
       <a id="wanne-btn" aria-label="Umdrehen" tabindex="0" role="button">
         <g aria-hidden="true">
-          <path id="Pfeil" class="cls-1" style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
+          <path id="Pfeil" class="cls-1"
+            style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
             d="M1481.67,451.59s-81.6,90.63-100.74,113.92c0-21.3-1.26-39.9,0-61.2-32.68-1.44-62.29,0-62.29,0v-104.89s29.07-3.25,62.29,0c-.36-19.86-.72-41.89,0-61.93l100.74,113.92v.18h0Z" />
         </g>
         <path style="fill:transparent;pointer-events:all;"
           d="M1481.67,451.59s-81.6,90.63-100.74,113.92c0-21.3-1.26-39.9,0-61.2-32.68-1.44-62.29,0-62.29,0v-104.89s29.07-3.25,62.29,0c-.36-19.86-.72-41.89,0-61.93l100.74,113.92v.18h0Z" />
       </a>
-    
-      <!-- Dialog overlay merged into room SVG -->
+
       <g id="dialog-overlay-group" display="none" aria-hidden="true">
         <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
         <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
-        <path class="d-feld"
-          d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
-        <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
-           <g aria-hidden="true">
-             <path class="d-zu-shape"
-            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-             <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
-           </g>
-           <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
-             d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-         </a>
+          <path class="d-feld"
+            d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
+          <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
+            <g aria-hidden="true">
+              <path class="d-zu-shape"
+                d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+              <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153"
+                y="600">✕</text>
+            </g>
+            <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
+              d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+          </a>
 
-        <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
-          <path class="d-btn-shape"
-            d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
-            y="820">Weiter</text>
-        </a>
+          <!-- Weiter-Button -->
+          <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
+            <path class="d-btn-shape"
+              d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
+            <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
+              y="820">Weiter</text>
+          </a>
 
-        <!-- Dialogtext -->
-        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
-          y="720"></text>
-      </g>
+          <!-- Dialogtext -->
+          <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
+            y="720"></text>
+        </g>
       </g>
     </svg>
-  
 
-</div>
+
+  </div>
 
   <!-- ═══════════════════════════════════════════
        DIALOG OVERLAY 
@@ -266,14 +267,14 @@
           d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
 
         <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
-            <g aria-hidden="true">
-              <path class="d-zu-shape"
-            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-              <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
-            </g>
-            <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
+          <g aria-hidden="true">
+            <path class="d-zu-shape"
               d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-          </a>
+            <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
+          </g>
+          <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
+            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+        </a>
 
         <!-- Weiter-Button -->
         <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
@@ -320,8 +321,6 @@
     const htmlDialog = document.getElementById('html-dialog');
     const htmlDlgClose = document.getElementById('html-dlg-close');
     const htmlDlgWeiter = document.getElementById('html-dlg-weiter');
-    // Dialog text: created in <body> directly so position:fixed is always
-    // relative to the viewport, unaffected by any parent CSS filter/transform.
     var dlgTextEl = (function () {
       var el = document.getElementById('dlg1-text-html');
       if (!el) {
@@ -345,31 +344,27 @@
       var svg = document.getElementById('room-svg');
       if (!svg || !dlgTextEl) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      // SVG viewport coords (after group translate 0,-370):
-      //   bubble top y=233, text area x=240-1150, y=255-405
-      dlgTextEl.style.left      = (r.left + 240 * sx) + 'px';
-      dlgTextEl.style.top       = (r.top  + 295 * sy) + 'px';
-      dlgTextEl.style.width     = (910  * sx) + 'px';
+      dlgTextEl.style.left = (r.left + 240 * sx) + 'px';
+      dlgTextEl.style.top = (r.top + 295 * sy) + 'px';
+      dlgTextEl.style.width = (910 * sx) + 'px';
       dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
     }
     function positionDialogButtons() {
       var svg = document.getElementById('room-svg');
       if (!svg) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      // Schliessen: SVG translate(0,-370), Kreis-Mitte (153,580) -> Viewport (153,210)
-      htmlDlgClose.style.left   = (r.left + (153 - 38) * sx) + 'px';
-      htmlDlgClose.style.top    = (r.top  + (210 - 38) * sy) + 'px';
-      htmlDlgClose.style.width  = (76 * sx) + 'px';
+      htmlDlgClose.style.left = (r.left + (153 - 38) * sx) + 'px';
+      htmlDlgClose.style.top = (r.top + (210 - 38) * sy) + 'px';
+      htmlDlgClose.style.width = (76 * sx) + 'px';
       htmlDlgClose.style.height = (76 * sy) + 'px';
-      // Weiter: translate(0,-370), x=1192-1404, y=785-842 -> Viewport y=415-472
-      htmlDlgWeiter.style.left   = (r.left + 1192 * sx) + 'px';
-      htmlDlgWeiter.style.top    = (r.top  + 415  * sy) + 'px';
-      htmlDlgWeiter.style.width  = (212 * sx) + 'px';
-      htmlDlgWeiter.style.height = (57  * sy) + 'px';
+      htmlDlgWeiter.style.left = (r.left + 1192 * sx) + 'px';
+      htmlDlgWeiter.style.top = (r.top + 415 * sy) + 'px';
+      htmlDlgWeiter.style.width = (212 * sx) + 'px';
+      htmlDlgWeiter.style.height = (57 * sy) + 'px';
     }
 
     window.addEventListener('resize', function () {
@@ -393,16 +388,13 @@
       dlgTextEl.textContent = entry.text;
       dlgTextEl.style.textAlign = entry.align === 'end' ? 'right' : 'left';
       dlgTextEl.style.visibility = 'visible';
-      // SVG-Weiter (visuell)
       const w = document.getElementById(def.weiterId);
       if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
-      // HTML-Weiter (zugaenglich)
       if (convStep < def.conversation.length) {
         htmlDlgWeiter.removeAttribute('hidden');
       } else {
         htmlDlgWeiter.setAttribute('hidden', '');
       }
-      // Zu-Button erst bei letztem Schritt erreichbar
       htmlDlgClose.tabIndex = (convStep >= def.conversation.length) ? 0 : -1;
     }
 
@@ -457,24 +449,23 @@
     // HTML-Button-Handler
     htmlDlgClose.addEventListener('click', closeDialog);
     htmlDlgWeiter.addEventListener('click', advanceConversation);
-    // Mirror hover on invisible HTML buttons → SVG paths underneath
-    (function() {
-      var zuPath    = document.querySelector('.d-zu-shape');
+    (function () {
+      var zuPath = document.querySelector('.d-zu-shape');
       var weiterPath = document.querySelector('.d-btn-shape');
       var HOVER_FILL = 'rgba(65,65,65,0.7)';
       if (htmlDlgWeiter && weiterPath) {
-        htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
-        htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
+        htmlDlgWeiter.addEventListener('mouseenter', function () { weiterPath.style.fill = HOVER_FILL; });
+        htmlDlgWeiter.addEventListener('mouseleave', function () { weiterPath.style.fill = ''; });
       }
       if (htmlDlgWeiter && weiterPath) {
-        htmlDlgWeiter.addEventListener('focus', function() {
+        htmlDlgWeiter.addEventListener('focus', function () {
           if (!this.matches(':focus-visible')) return;
           weiterPath.style.fill = 'rgba(0,95,204,0.08)';
           weiterPath.style.stroke = '#005fcc';
           weiterPath.style.strokeWidth = '3px';
           weiterPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
         });
-        htmlDlgWeiter.addEventListener('blur', function() {
+        htmlDlgWeiter.addEventListener('blur', function () {
           weiterPath.style.fill = '';
           weiterPath.style.stroke = '';
           weiterPath.style.strokeWidth = '';
@@ -483,14 +474,14 @@
       }
 
       if (htmlDlgClose && zuPath) {
-        htmlDlgClose.addEventListener('focus', function() {
+        htmlDlgClose.addEventListener('focus', function () {
           if (!this.matches(':focus-visible')) return;
           zuPath.style.fill = 'rgba(0,95,204,0.08)';
           zuPath.style.stroke = '#005fcc';
           zuPath.style.strokeWidth = '3px';
           zuPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
         });
-        htmlDlgClose.addEventListener('blur', function() {
+        htmlDlgClose.addEventListener('blur', function () {
           zuPath.style.fill = '';
           zuPath.style.stroke = '';
           zuPath.style.strokeWidth = '';
@@ -521,8 +512,8 @@
       if (e.key === 'Escape') { closeDialog(); return; }
       if (e.key === 'Tab') {
         var tabbable = htmlDlgWeiter.hasAttribute('hidden')
-                  ? [dlgTextEl, htmlDlgClose]
-                  : [dlgTextEl, htmlDlgWeiter];
+          ? [dlgTextEl, htmlDlgClose]
+          : [dlgTextEl, htmlDlgWeiter];
         var first = tabbable[0], last = tabbable[tabbable.length - 1];
         if (e.shiftKey) {
           if (document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -545,20 +536,20 @@
     };
   </script>
   <script src="icons.js"></script>
-<script>
-(function() {
-  var btn_6_Bad_4_html = document.getElementById("wanne-btn");
-  if (btn_6_Bad_4_html) {
-    btn_6_Bad_4_html.addEventListener("click", function() { window.location.href = "6_Bad_4.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_6_Bad_4_html && document.activeElement === btn_6_Bad_4_html) {
-      e.preventDefault(); window.location.href = "6_Bad_4.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_6_Bad_4_html = document.getElementById("wanne-btn");
+      if (btn_6_Bad_4_html) {
+        btn_6_Bad_4_html.addEventListener("click", function () { window.location.href = "6_Bad_4.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_6_Bad_4_html && document.activeElement === btn_6_Bad_4_html) {
+          e.preventDefault(); window.location.href = "6_Bad_4.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

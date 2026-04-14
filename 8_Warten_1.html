@@ -98,9 +98,9 @@
 
     #wesen-link.active:focus-visible>path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -601,7 +601,6 @@
       </g>
     </svg>
 
-    <!-- Room state 2 — shown after RUHE! is closed -->
     <img id="room-bg-2" class="layer" src="img/8_Warten_2.svg" alt="Alle Wesen haben die Münder geschlossen"
       style="z-index:2;opacity:0;pointer-events:none;">
 
@@ -871,20 +870,20 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_8_Warten_1W_html = document.getElementById("wesen-link");
-  if (btn_8_Warten_1W_html) {
-    btn_8_Warten_1W_html.addEventListener("click", function() { window.location.href = "8_Warten_1W.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_8_Warten_1W_html && document.activeElement === btn_8_Warten_1W_html) {
-      e.preventDefault(); window.location.href = "8_Warten_1W.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_8_Warten_1W_html = document.getElementById("wesen-link");
+      if (btn_8_Warten_1W_html) {
+        btn_8_Warten_1W_html.addEventListener("click", function () { window.location.href = "8_Warten_1W.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_8_Warten_1W_html && document.activeElement === btn_8_Warten_1W_html) {
+          e.preventDefault(); window.location.href = "8_Warten_1W.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

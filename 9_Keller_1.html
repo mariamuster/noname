@@ -31,12 +31,12 @@
   }
 
   a:focus-visible>path,
-    a:focus-visible>rect {
-      stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
-      stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
-    }
+  a:focus-visible>rect {
+    stroke: #005fcc;
+    fill: rgba(0, 95, 204, 0.08);
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
+  }
 </style>
 </head>
 
@@ -49,7 +49,7 @@
 
       <a aria-label="Treppe runter" tabindex="0" role="button">
         <path id="Door" class="cls-1"
-d="M797,494.9s55.8,50.2,70.3,62.1c-13.2-.2-24.5.8-37.7,0-.8,20.3,0,38.4,0,38.4h-64.7s-2-17.9,0-38.4c-12.2.3-25.9.3-38.2,0l70.3-62.1h0Z"/>
+          d="M797,494.9s55.8,50.2,70.3,62.1c-13.2-.2-24.5.8-37.7,0-.8,20.3,0,38.4,0,38.4h-64.7s-2-17.9,0-38.4c-12.2.3-25.9.3-38.2,0l70.3-62.1h0Z" />
 
         <text class="room-label" x="46.5%" y="23%">Weiter</text>
       </a>
@@ -71,20 +71,20 @@ d="M797,494.9s55.8,50.2,70.3,62.1c-13.2-.2-24.5.8-37.7,0-.8,20.3,0,38.4,0,38.4h-
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_9_Keller_5_html = document.querySelector('[aria-label="Treppe runter"][role="button"]');
-  if (btn_9_Keller_5_html) {
-    btn_9_Keller_5_html.addEventListener("click", function() { window.location.href = "9_Keller_5.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_9_Keller_5_html && document.activeElement === btn_9_Keller_5_html) {
-      e.preventDefault(); window.location.href = "9_Keller_5.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_9_Keller_5_html = document.querySelector('[aria-label="Treppe runter"][role="button"]');
+      if (btn_9_Keller_5_html) {
+        btn_9_Keller_5_html.addEventListener("click", function () { window.location.href = "9_Keller_5.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_9_Keller_5_html && document.activeElement === btn_9_Keller_5_html) {
+          e.preventDefault(); window.location.href = "9_Keller_5.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

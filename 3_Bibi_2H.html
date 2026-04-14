@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-html, body {
+    html,
+    body {
       overflow: hidden;
       height: 100%;
     }
@@ -50,9 +50,9 @@ html, body {
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -64,7 +64,7 @@ html, body {
 
       <li><b>Grünes Buch:</b> Regal ganz <b>links</b>, <b>4. Tablar</b> von oben, <br><b>4. Buch</b> von rechts </li>
 
-   
+
 
       <li><b>Pinkes Buch:</b> Regal ganz <b>rechts</b>. <b>3. Tablar</b> von unten,<br> <b>6. Buch</b> von links.</li>
       <li>Klick auf den <b>Bücherstapel</b> auf dem Fenstersims in der Mitte. </li>
@@ -87,11 +87,11 @@ html, body {
   </div>
 
   <script>
-    (function() {
+    (function () {
       var btn = document.querySelector('[aria-label="Schliessen"]');
       if (btn) {
-        btn.addEventListener('click', function() { window.location.href = '3_Bibi_2.html'; });
-        btn.addEventListener('keydown', function(e) {
+        btn.addEventListener('click', function () { window.location.href = '3_Bibi_2.html'; });
+        btn.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '3_Bibi_2.html'; }
         });
       }

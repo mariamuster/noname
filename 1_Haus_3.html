@@ -42,9 +42,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -66,20 +66,20 @@
       </a>
     </svg> ← closes here
 
-<script>
-(function() {
-  var btn_2_Keller_1_html = document.querySelector('[aria-label="Pfeil"][role="button"]');
-  if (btn_2_Keller_1_html) {
-    btn_2_Keller_1_html.addEventListener("click", function() { window.location.href = "2_Keller_1.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_2_Keller_1_html && document.activeElement === btn_2_Keller_1_html) {
-      e.preventDefault(); window.location.href = "2_Keller_1.html"; return;
-    }
-  });
-})();
-</script>
+    <script>
+      (function () {
+        var btn_2_Keller_1_html = document.querySelector('[aria-label="Pfeil"][role="button"]');
+        if (btn_2_Keller_1_html) {
+          btn_2_Keller_1_html.addEventListener("click", function () { window.location.href = "2_Keller_1.html"; });
+        }
+        document.addEventListener("keydown", function (e) {
+          if (e.key !== "Enter" && e.key !== " ") return;
+          if (btn_2_Keller_1_html && document.activeElement === btn_2_Keller_1_html) {
+            e.preventDefault(); window.location.href = "2_Keller_1.html"; return;
+          }
+        });
+      })();
+    </script>
 </body>
 <!-- ════════════════════════════════════════════════════════════
        ICONS

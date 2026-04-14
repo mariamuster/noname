@@ -7,10 +7,8 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
- 
-    html, body {
+    html,
+    body {
       overflow: hidden;
       height: 100%;
     }
@@ -52,9 +50,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -64,7 +62,7 @@
     <img src="img/Hilfe.svg" alt="Hilfe" class="responsive-img" tabindex="0" />
 
     <ul class="instructions" tabindex="0">
-      <li>Klick auf das <b>ockerfarbene Wesen</b>  unten links der Mitte.</li>
+      <li>Klick auf das <b>ockerfarbene Wesen</b> unten links der Mitte.</li>
       <li>Klicke <b>«weiter»</b>, um das Gespräch zu führen. </li>
       <li>Klicke auf den <b>türkisfarbenen Pfeil</b> links oben. </li>
     </ul>
@@ -85,11 +83,11 @@
   </div>
 
   <script>
-    (function() {
+    (function () {
       var btn = document.querySelector('[aria-label="Schliessen"]');
       if (btn) {
-        btn.addEventListener('click', function() { window.location.href = '2_Keller_5.html'; });
-        btn.addEventListener('keydown', function(e) {
+        btn.addEventListener('click', function () { window.location.href = '2_Keller_5.html'; });
+        btn.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '2_Keller_5.html'; }
         });
       }

@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
-  html {
+    html {
       overflow-x: hidden;
     }
 
@@ -58,9 +56,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -75,7 +73,8 @@
         Zielgrösse
       </h1>
 
-      <p class="info-text">Mit <b>eingeschränkter Feinmotorik</b>, einem <b>Tremor</b> oder auf <b>Touchscreens</b> kann es frustrierend
+      <p class="info-text">Mit <b>eingeschränkter Feinmotorik</b>, einem <b>Tremor</b> oder auf <b>Touchscreens</b> kann
+        es frustrierend
         sein, Elemente wie <b>Buttons, Links, Icons</b> zu bedienen.</p>
       <p class="info-text">Der <b>WCAG-Standard AA</b> sieht als kleinste Zielgrösse <br><b>24 x 24 Pixel</b> vor.</p>
       <p class="info-text">Der höhere <b>Standard AAA</b> eine minimale Zielgrösse von <br><b>44 x 44 Pixel</b>.</p>
@@ -104,20 +103,20 @@
     </svg>
 
   </div>
-<script>
-(function() {
-  var btn_6_Bad_3_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
-  if (btn_6_Bad_3_html) {
-    btn_6_Bad_3_html.addEventListener("click", function() { window.location.href = "6_Bad_3.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_6_Bad_3_html && document.activeElement === btn_6_Bad_3_html) {
-      e.preventDefault(); window.location.href = "6_Bad_3.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_6_Bad_3_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
+      if (btn_6_Bad_3_html) {
+        btn_6_Bad_3_html.addEventListener("click", function () { window.location.href = "6_Bad_3.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_6_Bad_3_html && document.activeElement === btn_6_Bad_3_html) {
+          e.preventDefault(); window.location.href = "6_Bad_3.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

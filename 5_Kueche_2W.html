@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
-  html {
+    html {
       overflow-x: hidden;
     }
 
@@ -53,9 +51,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -71,15 +69,19 @@
 
       </h1>
 
-      <p class="info-text">Wenn mit einer <b>Tastatur navigiert</b> wird und Blöcke nicht übersprungen werden können, wird viel
+      <p class="info-text">Wenn mit einer <b>Tastatur navigiert</b> wird und Blöcke nicht übersprungen werden können,
+        wird viel
         <b>Zeit und Energie</b> verschwendet.
       </p>
-      <p class="info-text"><b>Wiederkehrende Bereiche</b> wie <b>Kopfbereiche</b> oder <b>Menüs</b> müssen übersprungen werden können, zum
-        Beispiel mit einem Link <b>«Zum Inhalt springen»</b>. Damit wird die Möglichkeit gegeben, schnell zum Hauptinhalt zu
+      <p class="info-text"><b>Wiederkehrende Bereiche</b> wie <b>Kopfbereiche</b> oder <b>Menüs</b> müssen übersprungen
+        werden können, zum
+        Beispiel mit einem Link <b>«Zum Inhalt springen»</b>. Damit wird die Möglichkeit gegeben, schnell zum
+        Hauptinhalt zu
         gelangen.
       </p>
 
-      <p class="info-text">Typische Lösungen sind <b>sichtbare Sprunglinks</b>, die beim Fokussieren erscheinen, semantische
+      <p class="info-text">Typische Lösungen sind <b>sichtbare Sprunglinks</b>, die beim Fokussieren erscheinen,
+        semantische
         HTML-Regionen wie <b>"main"</b> oder <b>"nav"</b> und <b>klare Überschriften</b>.
       </p>
 
@@ -106,20 +108,20 @@
     </svg>
 
   </div>
-<script>
-(function() {
-  var btn_5_Kueche_4_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
-  if (btn_5_Kueche_4_html) {
-    btn_5_Kueche_4_html.addEventListener("click", function() { window.location.href = "5_Kueche_4.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_5_Kueche_4_html && document.activeElement === btn_5_Kueche_4_html) {
-      e.preventDefault(); window.location.href = "5_Kueche_4.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_5_Kueche_4_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
+      if (btn_5_Kueche_4_html) {
+        btn_5_Kueche_4_html.addEventListener("click", function () { window.location.href = "5_Kueche_4.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_5_Kueche_4_html && document.activeElement === btn_5_Kueche_4_html) {
+          e.preventDefault(); window.location.href = "5_Kueche_4.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

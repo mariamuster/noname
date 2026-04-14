@@ -243,8 +243,10 @@
       background: rgb(244, 44, 44);
     }
 
-    /* kept for any other .badge usage, but hidden */
-    #wcag-badges { display: none; }
+    #wcag-badges {
+      display: none;
+    }
+
     .badge {
       font-size: 16px;
       font-weight: 600;
@@ -387,7 +389,6 @@
       }
     }
 
-    /* Creature click area */
     #creature-link {
       display: none;
     }
@@ -411,8 +412,6 @@
     #creature-link:focus {
       outline: none;
     }
-
-    /* ── DIALOG ── */
 
 
     .d-weiter-btn,
@@ -475,8 +474,7 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-  
-    /* HTML-Dialog-Overlay: nur für Accessibility, visuell unsichtbar */
+
     #html-dialog {
       display: none;
       position: fixed;
@@ -776,24 +774,24 @@
           d="M182.08,492.65c6.35,7.37,19.26,6.96,26.63,1.64,6.96-6.96,11.88-18.85,4.3-27.65-18.03-20.48-47.52,3.89-30.93,25.81v.2Z" />
       </a>
 
-      <!-- Dialog (inline in room-svg so it always scales with the image) -->
+      <!-- Dialog  -->
       <g id="dialog-overlay-group" display="none" aria-hidden="true">
         <rect width="1600" height="900" fill="rgba(0,0,0,0.45)" />
         <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
-          <!-- Dialogblase -->
           <path class="d-feld"
             d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
 
           <!-- Schliessen-Button -->
           <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
-             <g aria-hidden="true">
-               <path class="d-zu-shape"
+            <g aria-hidden="true">
+              <path class="d-zu-shape"
+                d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+              <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153"
+                y="600">✕</text>
+            </g>
+            <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
               d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-               <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
-             </g>
-             <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
-               d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-           </a>
+          </a>
 
           <!-- Weiter-Button -->
           <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
@@ -815,80 +813,80 @@
     <!-- dlgTextEl wird per JS hier eingefügt -->
     <button id="html-dlg-close" aria-label="Dialog schliessen">&#x2715;</button>
     <button id="html-dlg-weiter" aria-label="Weiter" hidden>Weiter</button>
-  </div><!-- end room-wrapper -->
+  </div>
 
 
   <div id="controls-wrapper">
-  <div id="controls">
-    <!-- Hintergrundfarbe -->
-    <div class="ctrl-group">
-      <div class="ctrl-label">Hintergrundfarbe</div>
-      <div class="ctrl-inline">
-        <div class="sliders">
-          <div class="slider-row">
-            <span class="channel-tag">R</span>
-            <input type="range" id="bg-r" min="0" max="255" value="11">
-            <span class="val-num" id="bg-r-val">11</span>
+    <div id="controls">
+      <!-- Hintergrundfarbe -->
+      <div class="ctrl-group">
+        <div class="ctrl-label">Hintergrundfarbe</div>
+        <div class="ctrl-inline">
+          <div class="sliders">
+            <div class="slider-row">
+              <span class="channel-tag">R</span>
+              <input type="range" id="bg-r" min="0" max="255" value="11">
+              <span class="val-num" id="bg-r-val">11</span>
+            </div>
+            <div class="slider-row">
+              <span class="channel-tag">G</span>
+              <input type="range" id="bg-g" min="0" max="255" value="0">
+              <span class="val-num" id="bg-g-val">0</span>
+            </div>
+            <div class="slider-row">
+              <span class="channel-tag">B</span>
+              <input type="range" id="bg-b" min="0" max="255" value="166">
+              <span class="val-num" id="bg-b-val">166</span>
+            </div>
           </div>
-          <div class="slider-row">
-            <span class="channel-tag">G</span>
-            <input type="range" id="bg-g" min="0" max="255" value="0">
-            <span class="val-num" id="bg-g-val">0</span>
-          </div>
-          <div class="slider-row">
-            <span class="channel-tag">B</span>
-            <input type="range" id="bg-b" min="0" max="255" value="166">
-            <span class="val-num" id="bg-b-val">166</span>
-          </div>
+          <div class="color-preview" id="bg-preview" style="background:rgb(11,0,166)"></div>
         </div>
-        <div class="color-preview" id="bg-preview" style="background:rgb(11,0,166)"></div>
       </div>
-    </div>
 
-    <!-- Kontrast -->
-    <div id="contrast-panel">
-      <div id="contrast-ratio">—</div>
-      <div id="contrast-label">Kontrastverhältnis</div>
-      <div id="contrast-bar-wrap">
-        <div id="contrast-bar-track">
-          <div id="contrast-bar-fill"></div>
+      <!-- Kontrast -->
+      <div id="contrast-panel">
+        <div id="contrast-ratio">—</div>
+        <div id="contrast-label">Kontrastverhältnis</div>
+        <div id="contrast-bar-wrap">
+          <div id="contrast-bar-track">
+            <div id="contrast-bar-fill"></div>
+          </div>
+        </div>
+        <div id="wcag-badges" aria-hidden="true">
+          <span class="badge" id="badge-aa">AA 4.5</span>
+          <span class="badge" id="badge-aaa">AAA 7</span>
         </div>
       </div>
-      <div id="wcag-badges" aria-hidden="true">
-        <span class="badge" id="badge-aa">AA 4.5</span>
-        <span class="badge" id="badge-aaa">AAA 7</span>
-      </div>
-    </div>
 
-    <!-- Linienfarbe -->
-    <div class="ctrl-group">
-      <div class="ctrl-label">Linienfarbe</div>
-      <div class="ctrl-inline">
-        <div class="color-preview" id="stroke-preview" style="background:rgb(255,255,255)"></div>
-        <div class="sliders">
-          <div class="slider-row">
-            <span class="channel-tag">R</span>
-            <input type="range" id="st-r" min="0" max="255" value="11">
-            <span class="val-num" id="st-r-val">11</span>
-          </div>
-          <div class="slider-row">
-            <span class="channel-tag">G</span>
-            <input type="range" id="st-g" min="0" max="255" value="0">
-            <span class="val-num" id="st-g-val">0</span>
-          </div>
-          <div class="slider-row">
-            <span class="channel-tag">B</span>
-            <input type="range" id="st-b" min="0" max="255" value="153">
-            <span class="val-num" id="st-b-val">153</span>
+      <!-- Linienfarbe -->
+      <div class="ctrl-group">
+        <div class="ctrl-label">Linienfarbe</div>
+        <div class="ctrl-inline">
+          <div class="color-preview" id="stroke-preview" style="background:rgb(255,255,255)"></div>
+          <div class="sliders">
+            <div class="slider-row">
+              <span class="channel-tag">R</span>
+              <input type="range" id="st-r" min="0" max="255" value="11">
+              <span class="val-num" id="st-r-val">11</span>
+            </div>
+            <div class="slider-row">
+              <span class="channel-tag">G</span>
+              <input type="range" id="st-g" min="0" max="255" value="0">
+              <span class="val-num" id="st-g-val">0</span>
+            </div>
+            <div class="slider-row">
+              <span class="channel-tag">B</span>
+              <input type="range" id="st-b" min="0" max="255" value="153">
+              <span class="val-num" id="st-b-val">153</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <button id="toggle-controls" aria-expanded="true" aria-controls="controls">
-    <span id="toggle-label">Regler ausblenden</span>
-    <span id="toggle-arrow">&#9650;</span>
-  </button>
+    <button id="toggle-controls" aria-expanded="true" aria-controls="controls">
+      <span id="toggle-label">Regler ausblenden</span>
+      <span id="toggle-arrow">&#9650;</span>
+    </button>
   </div><!-- end controls-wrapper -->
 
   <script>
@@ -958,7 +956,6 @@
       badgeAAA.classList.toggle('active', passAAA);
       crEl.classList.toggle('pass', passAAA);
 
-      // contrast bar: map ratio 1–7 → 0–100%, capped at full once AAA is reached
       const fillPct = Math.min(100, Math.max(0, (cr - 1) / 6 * 100));
       barFill.style.width = fillPct + '%';
       barFill.style.background = passAAA ? '#44cc44' : passAA ? '#ff8800' : 'rgb(255,44,44)';
@@ -975,7 +972,6 @@
         creatureLink.classList.add('active');
         creatureLink.setAttribute('tabindex', '0');
 
-        // Fokus auf Wesen wenn Kontrast gerade die 7:1-Schwelle überschritten hat
         if (!prevPassAAA) {
           setTimeout(function () { creatureLink.focus(); }, 100);
         }
@@ -1063,8 +1059,7 @@
       return overlayGroup.getAttribute('display') !== 'none';
     }
 
-    // Dialog text: created in <body> directly so position:fixed is always
-    // relative to the viewport, unaffected by any parent CSS filter/transform.
+
     const htmlDialog = document.getElementById('html-dialog');
     const htmlDlgClose = document.getElementById('html-dlg-close');
     const htmlDlgWeiter = document.getElementById('html-dlg-weiter');
@@ -1092,31 +1087,28 @@
       var svg = document.getElementById('room-svg');
       if (!svg || !dlgTextEl) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      // SVG viewport coords (after group translate 0,-370):
-      //   bubble top y=233, text area x=240-1150, y=255-405
-      dlgTextEl.style.left      = (r.left + 240 * sx) + 'px';
-      dlgTextEl.style.top       = (r.top  + 295 * sy) + 'px';
-      dlgTextEl.style.width     = (910  * sx) + 'px';
+
+      dlgTextEl.style.left = (r.left + 240 * sx) + 'px';
+      dlgTextEl.style.top = (r.top + 295 * sy) + 'px';
+      dlgTextEl.style.width = (910 * sx) + 'px';
       dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
     }
     function positionDialogButtons() {
       var svg = document.getElementById('room-svg');
       if (!svg) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      // Schliessen: SVG translate(0,-370), Kreis-Mitte ≈ (153,580) → Viewport (153,210)
-      htmlDlgClose.style.left   = (r.left + (153 - 38) * sx) + 'px';
-      htmlDlgClose.style.top    = (r.top  + (210 - 38) * sy) + 'px';
-      htmlDlgClose.style.width  = (76 * sx) + 'px';
+      htmlDlgClose.style.left = (r.left + (153 - 38) * sx) + 'px';
+      htmlDlgClose.style.top = (r.top + (210 - 38) * sy) + 'px';
+      htmlDlgClose.style.width = (76 * sx) + 'px';
       htmlDlgClose.style.height = (76 * sy) + 'px';
-      // Weiter: translate(0,-370), x=1192-1404, y=785-842 → Viewport y=415-472
-      htmlDlgWeiter.style.left   = (r.left + 1192 * sx) + 'px';
-      htmlDlgWeiter.style.top    = (r.top  + 415  * sy) + 'px';
-      htmlDlgWeiter.style.width  = (212 * sx) + 'px';
-      htmlDlgWeiter.style.height = (57  * sy) + 'px';
+      htmlDlgWeiter.style.left = (r.left + 1192 * sx) + 'px';
+      htmlDlgWeiter.style.top = (r.top + 415 * sy) + 'px';
+      htmlDlgWeiter.style.width = (212 * sx) + 'px';
+      htmlDlgWeiter.style.height = (57 * sy) + 'px';
     }
 
     window.addEventListener('resize', function () {
@@ -1133,16 +1125,13 @@
       dlgTextEl.textContent = entry.text;
       dlgTextEl.style.textAlign = entry.align === 'end' ? 'right' : 'left';
       dlgTextEl.style.visibility = 'visible';
-      // SVG-Weiter (visuell)
       const w = document.getElementById(def.weiterId);
       if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
-      // HTML-Weiter (zugänglich)
       if (convStep < def.conversation.length) {
         htmlDlgWeiter.removeAttribute('hidden');
       } else {
         htmlDlgWeiter.setAttribute('hidden', '');
       }
-      // Zu-Button erst bei letztem Schritt erreichbar
       htmlDlgClose.tabIndex = (convStep >= def.conversation.length) ? 0 : -1;
     }
 
@@ -1189,27 +1178,25 @@
       }
     }
 
-    // HTML-Button-Handler
     htmlDlgClose.addEventListener('click', closeDialog);
     htmlDlgWeiter.addEventListener('click', advanceConversation);
-    // Mirror hover on invisible HTML buttons → SVG paths underneath
-    (function() {
-      var zuPath    = document.querySelector('.d-zu-shape');
+    (function () {
+      var zuPath = document.querySelector('.d-zu-shape');
       var weiterPath = document.querySelector('.d-btn-shape');
       var HOVER_FILL = 'rgba(65,65,65,0.7)';
       if (htmlDlgWeiter && weiterPath) {
-        htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
-        htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
+        htmlDlgWeiter.addEventListener('mouseenter', function () { weiterPath.style.fill = HOVER_FILL; });
+        htmlDlgWeiter.addEventListener('mouseleave', function () { weiterPath.style.fill = ''; });
       }
       if (htmlDlgWeiter && weiterPath) {
-        htmlDlgWeiter.addEventListener('focus', function() {
+        htmlDlgWeiter.addEventListener('focus', function () {
           if (!this.matches(':focus-visible')) return;
           weiterPath.style.fill = 'rgba(0,95,204,0.08)';
           weiterPath.style.stroke = '#005fcc';
           weiterPath.style.strokeWidth = '3px';
           weiterPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
         });
-        htmlDlgWeiter.addEventListener('blur', function() {
+        htmlDlgWeiter.addEventListener('blur', function () {
           weiterPath.style.fill = '';
           weiterPath.style.stroke = '';
           weiterPath.style.strokeWidth = '';
@@ -1217,14 +1204,14 @@
         });
       }
       if (htmlDlgClose && zuPath) {
-        htmlDlgClose.addEventListener('focus', function() {
+        htmlDlgClose.addEventListener('focus', function () {
           if (!this.matches(':focus-visible')) return;
           zuPath.style.fill = 'rgba(0,95,204,0.08)';
           zuPath.style.stroke = '#005fcc';
           zuPath.style.strokeWidth = '3px';
           zuPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
         });
-        htmlDlgClose.addEventListener('blur', function() {
+        htmlDlgClose.addEventListener('blur', function () {
           zuPath.style.fill = '';
           zuPath.style.stroke = '';
           zuPath.style.strokeWidth = '';
@@ -1252,8 +1239,8 @@
       if (e.key === 'Escape') { closeDialog(); return; }
       if (e.key === 'Tab') {
         var tabbable = htmlDlgWeiter.hasAttribute('hidden')
-                  ? [dlgTextEl, htmlDlgClose]
-                  : [dlgTextEl, htmlDlgWeiter];
+          ? [dlgTextEl, htmlDlgClose]
+          : [dlgTextEl, htmlDlgWeiter];
         var first = tabbable[0], last = tabbable[tabbable.length - 1];
         if (e.shiftKey) {
           if (document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -1300,13 +1287,12 @@
       }
     })();
 
-    // Toggle controls panel
-    (function() {
+    (function () {
       var btn = document.getElementById('toggle-controls');
       var panel = document.getElementById('controls');
       var label = document.getElementById('toggle-label');
 
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function () {
         var collapsed = panel.classList.toggle('collapsed');
         btn.classList.toggle('is-collapsed', collapsed);
         btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
@@ -1329,27 +1315,27 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_5_Kueche_1_html = document.getElementById("door-link");
-  if (btn_5_Kueche_1_html) {
-    btn_5_Kueche_1_html.addEventListener("click", function() { window.location.href = "5_Kueche_1.html"; });
-  }
-  var btn_4_Wohnzimmer_W_html = document.getElementById("pfeil-link");
-  if (btn_4_Wohnzimmer_W_html) {
-    btn_4_Wohnzimmer_W_html.addEventListener("click", function() { window.location.href = "4_Wohnzimmer_W.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_5_Kueche_1_html && document.activeElement === btn_5_Kueche_1_html) {
-      e.preventDefault(); window.location.href = "5_Kueche_1.html"; return;
-    }
-    if (btn_4_Wohnzimmer_W_html && document.activeElement === btn_4_Wohnzimmer_W_html) {
-      e.preventDefault(); window.location.href = "4_Wohnzimmer_W.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_5_Kueche_1_html = document.getElementById("door-link");
+      if (btn_5_Kueche_1_html) {
+        btn_5_Kueche_1_html.addEventListener("click", function () { window.location.href = "5_Kueche_1.html"; });
+      }
+      var btn_4_Wohnzimmer_W_html = document.getElementById("pfeil-link");
+      if (btn_4_Wohnzimmer_W_html) {
+        btn_4_Wohnzimmer_W_html.addEventListener("click", function () { window.location.href = "4_Wohnzimmer_W.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_5_Kueche_1_html && document.activeElement === btn_5_Kueche_1_html) {
+          e.preventDefault(); window.location.href = "5_Kueche_1.html"; return;
+        }
+        if (btn_4_Wohnzimmer_W_html && document.activeElement === btn_4_Wohnzimmer_W_html) {
+          e.preventDefault(); window.location.href = "4_Wohnzimmer_W.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

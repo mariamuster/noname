@@ -23,12 +23,12 @@
   }
 
   a:focus-visible>path,
-    a:focus-visible>rect {
-      stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
-      stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
-    }
+  a:focus-visible>rect {
+    stroke: #005fcc;
+    fill: rgba(0, 95, 204, 0.08);
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
+  }
 </style>
 </head>
 
@@ -62,20 +62,20 @@ Ein  Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein tür
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_2_Keller_8_html = document.querySelector('[aria-label="Nach Links"][role="button"]');
-  if (btn_2_Keller_8_html) {
-    btn_2_Keller_8_html.addEventListener("click", function() { window.location.href = "2_Keller_8.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_2_Keller_8_html && document.activeElement === btn_2_Keller_8_html) {
-      e.preventDefault(); window.location.href = "2_Keller_8.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_2_Keller_8_html = document.querySelector('[aria-label="Nach Links"][role="button"]');
+      if (btn_2_Keller_8_html) {
+        btn_2_Keller_8_html.addEventListener("click", function () { window.location.href = "2_Keller_8.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_2_Keller_8_html && document.activeElement === btn_2_Keller_8_html) {
+          e.preventDefault(); window.location.href = "2_Keller_8.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

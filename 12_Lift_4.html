@@ -23,9 +23,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -38,7 +38,8 @@
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
       <a aria-label="Pfeil" tabindex="0" role="button">
-        <path id="Tür" d="M800,631.85s70.34,63.16,88.52,77.99c-16.75,0-31.1.96-47.37,0-.96,25.36,0,48.33,0,48.33h-81.34s-2.39-22.49,0-48.33h-48.33l88.52-77.99h0Z"/>
+        <path id="Tür"
+          d="M800,631.85s70.34,63.16,88.52,77.99c-16.75,0-31.1.96-47.37,0-.96,25.36,0,48.33,0,48.33h-81.34s-2.39-22.49,0-48.33h-48.33l88.52-77.99h0Z" />
 
       </a>
     </svg>
@@ -55,20 +56,20 @@
   <script src="icons.js"></script>
 
 
-<script>
-(function() {
-  var btn_12_Warten_1_html = document.querySelector('[aria-label="Pfeil"][role="button"]');
-  if (btn_12_Warten_1_html) {
-    btn_12_Warten_1_html.addEventListener("click", function() { window.location.href = "12_Warten_1.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_12_Warten_1_html && document.activeElement === btn_12_Warten_1_html) {
-      e.preventDefault(); window.location.href = "12_Warten_1.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_12_Warten_1_html = document.querySelector('[aria-label="Pfeil"][role="button"]');
+      if (btn_12_Warten_1_html) {
+        btn_12_Warten_1_html.addEventListener("click", function () { window.location.href = "12_Warten_1.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_12_Warten_1_html && document.activeElement === btn_12_Warten_1_html) {
+          e.preventDefault(); window.location.href = "12_Warten_1.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

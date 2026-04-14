@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
-     html {
+    html {
       overflow-x: hidden;
     }
 
@@ -58,9 +56,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -75,18 +73,21 @@
         Unterbrechungen
       </h1>
 
-      <p class="info-text"><b>Unerwartete Reaktionen</b> der Webseite, etwa durch das Setzen des Fokus oder durch eine Eingabe, können
+      <p class="info-text"><b>Unerwartete Reaktionen</b> der Webseite, etwa durch das Setzen des Fokus oder durch eine
+        Eingabe, können
         <b>verwirrend</b> wirken.
       </p>
-      <p class="info-text"><b>Unterbrechungen</b> oder <b>Änderungen</b> sollten für Nutzer:innen immer <b>vorhersehbar</b> sein.
+      <p class="info-text"><b>Unterbrechungen</b> oder <b>Änderungen</b> sollten für Nutzer:innen immer
+        <b>vorhersehbar</b> sein.
       </p>
-      <p class="info-text">Es ist wichtig, dass jede Veränderung <b>rechtzeitig angekündigt</b> wird, damit sich alle darauf
+      <p class="info-text">Es ist wichtig, dass jede Veränderung <b>rechtzeitig angekündigt</b> wird, damit sich alle
+        darauf
         einstellen können und die Nutzung <b>verständlich</b> und <b>kontrollierbar</b> bleibt.
       </p>
       <br><br>
       <br><br>
       <br><br>
-   
+
       <br><br>
 
       <a href=https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html target="_blank" rel="noopener noreferrer"
@@ -115,20 +116,20 @@
     </svg>
 
   </div>
-<script>
-(function() {
-  var btn_8_Warten_2_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
-  if (btn_8_Warten_2_html) {
-    btn_8_Warten_2_html.addEventListener("click", function() { window.location.href = "8_Warten_2.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_8_Warten_2_html && document.activeElement === btn_8_Warten_2_html) {
-      e.preventDefault(); window.location.href = "8_Warten_2.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_8_Warten_2_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
+      if (btn_8_Warten_2_html) {
+        btn_8_Warten_2_html.addEventListener("click", function () { window.location.href = "8_Warten_2.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_8_Warten_2_html && document.activeElement === btn_8_Warten_2_html) {
+          e.preventDefault(); window.location.href = "8_Warten_2.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

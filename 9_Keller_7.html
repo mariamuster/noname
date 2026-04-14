@@ -32,9 +32,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #bild-small {
@@ -56,9 +56,9 @@
 
     #bild-small:focus-visible>path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #zu-button {
@@ -75,9 +75,9 @@
 
     #zu-button:focus-visible .zu-hit-area {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .text-box {
@@ -99,8 +99,8 @@
   <div class="room-wrapper">
     <img src="img/9_Keller_7.svg"
       alt="Ein Eingangsbereich mit 2 hängenden, leuchtenden Lampen. Darunter eine Garderobe. Rechts unten eine Sitzbank, darüber ein blaues Rechteck. 
-Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türkisfarbener Pfeil aus dem Bildschirm hinaus."
-      class="responsive-img" tabindex="0" />
+Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türkisfarbener Pfeil aus dem Bildschirm hinaus." class="responsive-img"
+      tabindex="0" />
 
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -147,10 +147,9 @@ Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türk
       menuUrl: 'levels.html'
     };
 
-    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
     var weiterLink = document.getElementById('weiter-link');
-    weiterLink.addEventListener('click', function() { window.location.href = '9_Keller_8.html'; });
-    weiterLink.addEventListener('keydown', function(e) {
+    weiterLink.addEventListener('click', function () { window.location.href = '9_Keller_8.html'; });
+    weiterLink.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '9_Keller_8.html'; }
     });
   </script>
@@ -168,16 +167,15 @@ Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türk
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
 
-      // Hint text as body-level HTML so it scales with browser zoom
       var hinweisEl = document.createElement('p');
       var hinweisText = 'Eine quadratische Fläche, mit einem Wort in der Mitte.';
       hinweisEl.setAttribute('aria-live', 'assertive');
       hinweisEl.setAttribute('aria-atomic', 'true');
       hinweisEl.setAttribute('tabindex', '0');
       hinweisEl.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:4.5rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-      (function(){
-        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
-        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      (function () {
+        var s = document.querySelector('.room-overlay') || document.querySelector('.room-svg') || document.querySelector('svg');
+        s ? s.parentNode.insertBefore(hinweisEl, s) : document.body.appendChild(hinweisEl);
       })();
       var tabTrapFn = null;
 
@@ -185,11 +183,11 @@ Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türk
         var svg = document.querySelector('.room-overlay');
         if (!svg) return;
         var r = svg.getBoundingClientRect();
-        var sx = r.width  / 1600;
+        var sx = r.width / 1600;
         var sy = r.height / 900;
-        hinweisEl.style.left      = (r.left + 520 * sx) + 'px';
-        hinweisEl.style.top       = (r.top  + 160 * sy) + 'px';
-        hinweisEl.style.width     = (550 * sx) + 'px';
+        hinweisEl.style.left = (r.left + 520 * sx) + 'px';
+        hinweisEl.style.top = (r.top + 160 * sy) + 'px';
+        hinweisEl.style.width = (550 * sx) + 'px';
         hinweisEl.style.height = (600 * sy) + 'px';
       }
 
@@ -206,11 +204,11 @@ Ein Teppich führt links aus dem Bild heraus. Links in der Mitte zeigt ein türk
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
           hinweisEl.textContent = hinweisText;
           hinweisEl.focus();
           if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
-          tabTrapFn = function(e) {
+          tabTrapFn = function (e) {
             if (e.key !== 'Tab') return;
             e.preventDefault();
             if (document.activeElement === zuButton) { hinweisEl.focus(); }

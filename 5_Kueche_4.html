@@ -23,12 +23,12 @@
   }
 
   a:focus-visible>path,
-    a:focus-visible>rect {
-      stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
-      stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
-    }
+  a:focus-visible>rect {
+    stroke: #005fcc;
+    fill: rgba(0, 95, 204, 0.08);
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
+  }
 </style>
 </head>
 
@@ -60,20 +60,20 @@
   <script src="icons.js"></script>
 
 
-<script>
-(function() {
-  var btn_6_Bad_1_html = document.querySelector('[aria-label="Zur Tür"][role="button"]');
-  if (btn_6_Bad_1_html) {
-    btn_6_Bad_1_html.addEventListener("click", function() { window.location.href = "6_Bad_1.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_6_Bad_1_html && document.activeElement === btn_6_Bad_1_html) {
-      e.preventDefault(); window.location.href = "6_Bad_1.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_6_Bad_1_html = document.querySelector('[aria-label="Zur Tür"][role="button"]');
+      if (btn_6_Bad_1_html) {
+        btn_6_Bad_1_html.addEventListener("click", function () { window.location.href = "6_Bad_1.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_6_Bad_1_html && document.activeElement === btn_6_Bad_1_html) {
+          e.preventDefault(); window.location.href = "6_Bad_1.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

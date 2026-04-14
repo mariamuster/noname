@@ -137,48 +137,49 @@
       letter-spacing: 0.08em;
     }
 
-#animation-control {
-  position: absolute;
-  top: 2%;
-  left: 65%;
-  transform: translateX(-50%);
-  z-index: 101;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1px;
-  pointer-events: all;
-}
+    #animation-control {
+      position: absolute;
+      top: 2%;
+      left: 65%;
+      transform: translateX(-50%);
+      z-index: 101;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      pointer-events: all;
+    }
 
-#animation-control label {
-  font-family: Lexend, serif;
-  font-size: 20px;
-  color: #2a1a0a;
-  letter-spacing: 0.04      em;
-  margin: 0;
-}
-#stop-animation:focus-visible {
-  outline: 3px solid #005fcc;
-  outline-offset: 6px;
-  filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
-}
+    #animation-control label {
+      font-family: Lexend, serif;
+      font-size: 20px;
+      color: #2a1a0a;
+      letter-spacing: 0.04 em;
+      margin: 0;
+    }
+
+    #stop-animation:focus-visible {
+      outline: 3px solid #005fcc;
+      outline-offset: 6px;
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
+    }
 
     .stop-btn {
       position: absolute;
       left: 35%;
-     top: 0;
-           gap: 16px;
+      top: 0;
+      gap: 16px;
       flex-direction: column;
-        transform: translateX(-50%);
+      transform: translateX(-50%);
       z-index: 101;
-       border: 3px solid rgb(255, 0, 238);
+      border: 3px solid rgb(255, 0, 238);
       border-radius: 10px;
       background: #000000;
       color: #000000;
       font-family: Lexend, sans-serif;
       font-size: 20px;
       cursor: pointer;
-            letter-spacing: 0.08em;
+      letter-spacing: 0.08em;
 
     }
 
@@ -314,12 +315,13 @@
 
 <body>
   <div class="room-wrapper">
-<div id="animation-control">
-  <label for="stop-animation">Animation stoppen</label>
-<button id="stop-animation" type="button" 
-  style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid rgba(255, 19, 240); background: #000000; color: #ffffff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; border-style: solid; box-sizing: border-box;">
-  ⏸
-</button></div>
+    <div id="animation-control">
+      <label for="stop-animation">Animation stoppen</label>
+      <button id="stop-animation" type="button"
+        style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid rgba(255, 19, 240); background: #000000; color: #ffffff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; border-style: solid; box-sizing: border-box;">
+        ⏸
+      </button>
+    </div>
 
 
     <img src="img/3_Bibi_Buch.svg"
@@ -486,19 +488,17 @@
     }
 
     let running = true;
-    let originalRightText = ''; // Store original right page text
+    let originalRightText = '';
 
     function resetLetters() {
-      // Reset left page wiggles
       document.querySelectorAll('#seite-links .dysletter').forEach(span => {
         span.style.transform = '';
         span.style.transition = '';
       });
 
-      // Reset right page swaps - rebuild from original text
       const rightPage = document.getElementById('seite-rechts');
       rightPage.innerHTML = originalRightText;
-      wrapWords(rightPage); // Re-apply wrapping
+      wrapWords(rightPage);
     }
 
     function wrapLetters(el) {
@@ -565,7 +565,6 @@
       });
     }
 
-    // Store original right page HTML before wrapping
     const rightPage = document.getElementById('seite-rechts');
     originalRightText = rightPage.innerHTML;
     wrapWords(rightPage);

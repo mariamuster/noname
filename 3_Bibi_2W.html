@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
     html {
       overflow-x: hidden;
     }
@@ -53,9 +51,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -70,13 +68,16 @@
         Farben
       </h1>
 
-      <p class="info-text">Manche Menschen können <b>Farben</b> nicht sehen oder nur <b>schlecht unterscheiden</b>. Dadurch werden
+      <p class="info-text">Manche Menschen können <b>Farben</b> nicht sehen oder nur <b>schlecht unterscheiden</b>.
+        Dadurch werden
         viele Informationen nicht erkennbar.
       </p>
-      <p class="info-text">Wichtige Informationen dürfen <b>nicht allein</b> durch <b>Farben, Formen, Positionen, Grössen,
-        Ausrichtungen oder Töne</b> vermittelt werden.
+      <p class="info-text">Wichtige Informationen dürfen <b>nicht allein</b> durch <b>Farben, Formen, Positionen,
+          Grössen,
+          Ausrichtungen oder Töne</b> vermittelt werden.
       </p>
-      <p class="info-text"><b>Farbige Hinweise</b> müssen immer durch <b>zusätzliche Auszeichnungen</b> wie Text oder Symbole ergänzt
+      <p class="info-text"><b>Farbige Hinweise</b> müssen immer durch <b>zusätzliche Auszeichnungen</b> wie Text oder
+        Symbole ergänzt
         werden. So bleiben Informationen für alle wahrnehmbar – egal, ob jemand Farben erkennt, Formen sieht oder
         Positionen wahrnimmt.
       </p>
@@ -105,20 +106,20 @@
     </svg>
 
   </div>
-<script>
-(function() {
-  var btn_3_Bibi_3_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
-  if (btn_3_Bibi_3_html) {
-    btn_3_Bibi_3_html.addEventListener("click", function() { window.location.href = "3_Bibi_3.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_3_Bibi_3_html && document.activeElement === btn_3_Bibi_3_html) {
-      e.preventDefault(); window.location.href = "3_Bibi_3.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_3_Bibi_3_html = document.querySelector('[aria-label="Schliessen"][role="button"]');
+      if (btn_3_Bibi_3_html) {
+        btn_3_Bibi_3_html.addEventListener("click", function () { window.location.href = "3_Bibi_3.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_3_Bibi_3_html && document.activeElement === btn_3_Bibi_3_html) {
+          e.preventDefault(); window.location.href = "3_Bibi_3.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

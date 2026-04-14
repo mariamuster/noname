@@ -41,22 +41,18 @@
       height: 100%;
     }
 
-    /* room background svg */
     #room-bg {
       z-index: 1;
     }
 
-    /* wesen overlay */
     #wesen-overlay {
       z-index: 3;
       pointer-events: none;
     }
 
-    /* bubble svgs injected by JS */
     .bubble-svg {
       z-index: 10;
       pointer-events: none;
-      /* individual hit paths handle this */
       animation: popIn 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
@@ -72,7 +68,6 @@
       }
     }
 
-    /* wesen link */
     #wesen-link {
       visibility: visible;
       pointer-events: all;
@@ -95,9 +90,9 @@
 
     #wesen-link:focus-visible>path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .sr-only {
@@ -122,7 +117,8 @@
     <img id="room-bg-2" class="layer" src="img/8_Warten_2.2.svg"
       alt="Ein Wartezimmer. Rechts und links an der Wand leere Bankreihen. Hinten im Raum ein leerer Empfang. Daneben eine Tür mit der Aufschrift Büro 146.">
 
-    <p class="sr-only">Ein Wartezimmer. Rechts und links an der Wand leere Bankreihen. Hinten im Raum ein leerer Empfang. Daneben eine Tür mit der Aufschrift Büro 146.</p>
+    <p class="sr-only">Ein Wartezimmer. Rechts und links an der Wand leere Bankreihen. Hinten im Raum ein leerer
+      Empfang. Daneben eine Tür mit der Aufschrift Büro 146.</p>
 
     <svg class="layer" id="wesen-overlay" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
       <a id="wesen-link" tabindex="0" role="button" aria-label="Büro 146">
@@ -156,7 +152,7 @@
     });
     document.addEventListener('keydown', function (e) {
       if ((e.key === 'Enter' || e.key === ' ') &&
-          document.activeElement && document.activeElement.id === 'wesen-link') {
+        document.activeElement && document.activeElement.id === 'wesen-link') {
         e.preventDefault();
         window.location.href = '12_Warten_2.html';
       }

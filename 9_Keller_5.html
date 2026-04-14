@@ -32,9 +32,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #bild-small {
@@ -56,9 +56,9 @@
 
     #bild-small:focus-visible>path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .d-zu-btn text {
@@ -84,9 +84,9 @@
 
     #zu-button:focus-visible .zu-hit-area {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -107,8 +107,8 @@
       <g id="bild-panel" aria-hidden="true">
         <path style="fill:#2323ff; stroke:#000; stroke-linecap:round; stroke-linejoin:round; stroke-width:3px;"
           d="M764.7,711.3c129.3.4,267.5,2.6,395.5-3,4.3-169.7-7.7-346.2,0-515.8-95.7-3.4-608.5-8.1-721.2-4.7,12.3,172.2,0,523.5,0,523.5h40s193.5,4.7,285.8,0h0Z" />
-       
-       
+
+
         <g id="zu-button" role="button" tabindex="0" aria-label="Schließen" transform="translate(50, 50)">
           <g aria-hidden="true">
             <path class="zu-circle"
@@ -148,10 +148,9 @@
       menuUrl: 'levels.html'
     };
 
-    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
     var weiterLink = document.getElementById('weiter-link');
-    weiterLink.addEventListener('click', function() { window.location.href = '9_Keller_6.html'; });
-    weiterLink.addEventListener('keydown', function(e) {
+    weiterLink.addEventListener('click', function () { window.location.href = '9_Keller_6.html'; });
+    weiterLink.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '9_Keller_6.html'; }
     });
   </script>
@@ -169,7 +168,6 @@
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
 
-      // Hinweis text as HTML element in <body> so it scales with browser zoom
       var hinweisEl = document.createElement('p');
       var hinweisText = 'Ein Hinweis.';
       hinweisEl.setAttribute('aria-live', 'assertive');
@@ -182,9 +180,9 @@
         'z-index:100', 'overflow-y:auto', 'box-sizing:border-box',
         'padding:4px 8px', 'word-break:break-word'
       ].join(';');
-      (function(){
-        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
-        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      (function () {
+        var s = document.querySelector('.room-overlay') || document.querySelector('.room-svg') || document.querySelector('svg');
+        s ? s.parentNode.insertBefore(hinweisEl, s) : document.body.appendChild(hinweisEl);
       })();
       var tabTrapFn = null;
 
@@ -192,12 +190,11 @@
         var svg = document.querySelector('.room-overlay');
         if (!svg) return;
         var r = svg.getBoundingClientRect();
-        var sx = r.width  / 1600;
+        var sx = r.width / 1600;
         var sy = r.height / 900;
-        // Panel bounds approx: x=439–1160, y=188–711
-        hinweisEl.style.width     = (721 * sx) + 'px';
-        hinweisEl.style.left      = (r.left + 439 * sx) + 'px';
-        hinweisEl.style.top       = (r.top  + 230 * sy) + 'px';
+        hinweisEl.style.width = (721 * sx) + 'px';
+        hinweisEl.style.left = (r.left + 439 * sx) + 'px';
+        hinweisEl.style.top = (r.top + 230 * sy) + 'px';
         hinweisEl.style.maxHeight = Math.max(80, 440 * sy) + 'px';
       }
 
@@ -214,11 +211,11 @@
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
           hinweisEl.textContent = hinweisText;
           hinweisEl.focus();
           if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
-          tabTrapFn = function(e) {
+          tabTrapFn = function (e) {
             if (e.key !== 'Tab') return;
             e.preventDefault();
             if (document.activeElement === zuButton) { hinweisEl.focus(); }

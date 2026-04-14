@@ -23,9 +23,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -38,8 +38,8 @@
 
       <a aria-label="Tür öffnen" tabindex="0" role="button">
 
-        <path 
- d="M797.89,750.1s71.73,65.74,90.23,80.19c-16.39,0-30.84.53-47.41,0-.53,25.38,1.23,44.76,1.23,44.76h-81.07s-3-19.03-1.06-44.76c-15.33.7-32.43,0-47.94,0l86.18-80.19h-.18Z"/>
+        <path
+          d="M797.89,750.1s71.73,65.74,90.23,80.19c-16.39,0-30.84.53-47.41,0-.53,25.38,1.23,44.76,1.23,44.76h-81.07s-3-19.03-1.06-44.76c-15.33.7-32.43,0-47.94,0l86.18-80.19h-.18Z" />
       </a>
 
     </svg>
@@ -59,20 +59,20 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_7_Lift_1_html = document.querySelector('[aria-label="Tür öffnen"][role="button"]');
-  if (btn_7_Lift_1_html) {
-    btn_7_Lift_1_html.addEventListener("click", function() { window.location.href = "7_Lift_1.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_7_Lift_1_html && document.activeElement === btn_7_Lift_1_html) {
-      e.preventDefault(); window.location.href = "7_Lift_1.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_7_Lift_1_html = document.querySelector('[aria-label="Tür öffnen"][role="button"]');
+      if (btn_7_Lift_1_html) {
+        btn_7_Lift_1_html.addEventListener("click", function () { window.location.href = "7_Lift_1.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_7_Lift_1_html && document.activeElement === btn_7_Lift_1_html) {
+          e.preventDefault(); window.location.href = "7_Lift_1.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

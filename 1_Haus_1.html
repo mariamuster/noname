@@ -30,9 +30,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -45,11 +45,10 @@
 
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
       xmlns="http://www.w3.org/2000/svg">
-    <a tabindex="0" aria-label="Gehe zum Amt" role="button">
-  <path id="Door1" class="cls-1"
-  
-d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,36,6,10.1,11.7,8.4,26.5,8.9,40.9,1.1,31.4,0,68.1,0,99.4l-.02.57c-5.83-.22-11.15-.54-15.58-.97-12.42-1.19-34.05-.86-53.3-.31v-.69Z"/>
-</a>
+      <a tabindex="0" aria-label="Gehe zum Amt" role="button">
+        <path id="Door1" class="cls-1"
+          d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,36,6,10.1,11.7,8.4,26.5,8.9,40.9,1.1,31.4,0,68.1,0,99.4l-.02.57c-5.83-.22-11.15-.54-15.58-.97-12.42-1.19-34.05-.86-53.3-.31v-.69Z" />
+      </a>
 
 
 
@@ -69,10 +68,10 @@ d="M760,773.4c-.5-28.5-.2-59.7,0-88.2-.2-22.7-2.4-48.1,24-56.7,11.8-3.7,26.7-3,3
   <script src="icons.js"></script>
 
   <script>var doorBtn = document.querySelector('[aria-label="Gehe zum Amt"]');
-doorBtn.addEventListener('click', function() { window.location.href = '1_Haus_2.html'; });
-doorBtn.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '1_Haus_2.html'; }
-});</script>
+    doorBtn.addEventListener('click', function () { window.location.href = '1_Haus_2.html'; });
+    doorBtn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '1_Haus_2.html'; }
+    });</script>
 </body>
 
 </html>

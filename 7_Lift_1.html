@@ -23,9 +23,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -39,7 +39,7 @@
     <svg class="room-overlay" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
       <a aria-label="Lift holen" tabindex="0" role="button">
         <path id="Button" class="cls-1"
- d="M919.94,600.79s36.16,58.72,45.84,73.35c-11.95-3.72-33.81-8.53-33.81-8.53l-10.75,34.49-58.06-18.09s3.29-16.58,10.75-34.49c-10.93-3.4-23.22-7.24-34.49-10.75l80.53-35.98h0Z"/>
+          d="M919.94,600.79s36.16,58.72,45.84,73.35c-11.95-3.72-33.81-8.53-33.81-8.53l-10.75,34.49-58.06-18.09s3.29-16.58,10.75-34.49c-10.93-3.4-23.22-7.24-34.49-10.75l80.53-35.98h0Z" />
       </a>
 
 
@@ -61,20 +61,20 @@
     };
   </script>
   <script src="icons.js"></script>
-<script>
-(function() {
-  var btn_7_Lift_2_html = document.querySelector('[aria-label="Lift holen"][role="button"]');
-  if (btn_7_Lift_2_html) {
-    btn_7_Lift_2_html.addEventListener("click", function() { window.location.href = "7_Lift_2.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_7_Lift_2_html && document.activeElement === btn_7_Lift_2_html) {
-      e.preventDefault(); window.location.href = "7_Lift_2.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_7_Lift_2_html = document.querySelector('[aria-label="Lift holen"][role="button"]');
+      if (btn_7_Lift_2_html) {
+        btn_7_Lift_2_html.addEventListener("click", function () { window.location.href = "7_Lift_2.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_7_Lift_2_html && document.activeElement === btn_7_Lift_2_html) {
+          e.preventDefault(); window.location.href = "7_Lift_2.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

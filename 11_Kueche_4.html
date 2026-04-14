@@ -22,12 +22,12 @@
   }
 
   a:focus-visible>path,
-    a:focus-visible>rect {
-      stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
-      stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
-    }
+  a:focus-visible>rect {
+    stroke: #005fcc;
+    fill: rgba(0, 95, 204, 0.08);
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
+  }
 
   /* Panel-Overlays */
   .panel-overlay {
@@ -49,7 +49,6 @@
     height: 100%;
   }
 
-  /* Pfeil zunächst versteckt */
   #pfeil-link {
     display: none;
   }
@@ -59,17 +58,17 @@
   }
 
   .text-box {
-      font-family: 'Lex', sans-serif;
-      font-size: 3.75rem;
-      padding: 0px;
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      box-sizing: border-box;
-      background: transparent;
-      color: #fff;
-      word-break: break-word;
-    }
+    font-family: 'Lex', sans-serif;
+    font-size: 3.75rem;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: transparent;
+    color: #fff;
+    word-break: break-word;
+  }
 </style>
 
 <body>
@@ -157,19 +156,18 @@
 
   </div>
 
-    <script>
+  <script>
     var gesehen = { panel1: false, panel2: false };
 
-    // Hint text as body-level HTML so it scales with browser zoom
     var hinweisEl1 = document.createElement('p');
     var hinweisText1 = 'Sieben Buchstaben, die ein Wort bilden.';
     hinweisEl1.setAttribute('aria-live', 'assertive');
     hinweisEl1.setAttribute('aria-atomic', 'true');
     hinweisEl1.setAttribute('tabindex', '0');
     hinweisEl1.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:3.75rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-x:hidden', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-    (function(){
-      var s=document.querySelector('.room-overlay')||document.querySelector('svg');
-      s?s.parentNode.insertBefore(hinweisEl1,s):document.body.appendChild(hinweisEl1);
+    (function () {
+      var s = document.querySelector('.room-overlay') || document.querySelector('svg');
+      s ? s.parentNode.insertBefore(hinweisEl1, s) : document.body.appendChild(hinweisEl1);
     })();
 
     var hinweisEl2 = document.createElement('p');
@@ -178,9 +176,9 @@
     hinweisEl2.setAttribute('aria-atomic', 'true');
     hinweisEl2.setAttribute('tabindex', '0');
     hinweisEl2.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:3.75rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-x:hidden', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-    (function(){
-      var s=document.querySelector('.room-overlay')||document.querySelector('svg');
-      s?s.parentNode.insertBefore(hinweisEl2,s):document.body.appendChild(hinweisEl2);
+    (function () {
+      var s = document.querySelector('.room-overlay') || document.querySelector('svg');
+      s ? s.parentNode.insertBefore(hinweisEl2, s) : document.body.appendChild(hinweisEl2);
     })();
     var tabTrapFn = null;
 
@@ -188,11 +186,11 @@
       var svg = document.querySelector('.room-overlay');
       if (!svg) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      el.style.left      = (r.left + foX * sx) + 'px';
-      el.style.top       = (r.top  + foY * sy) + 'px';
-      el.style.width     = (foW * sx) + 'px';
+      el.style.left = (r.left + foX * sx) + 'px';
+      el.style.top = (r.top + foY * sy) + 'px';
+      el.style.width = (foW * sx) + 'px';
       el.style.height = (foH * sy) + 'px';
     }
 
@@ -221,15 +219,15 @@
       }
       var textToShow = (panelId === 'panel1') ? hinweisText1 : hinweisText2;
       var activeZuId = zuId;
-      document.getElementById('bild1-btn').setAttribute('tabindex','-1');
-      document.getElementById('bild2-btn').setAttribute('tabindex','-1');
-      setTimeout(function() {
+      document.getElementById('bild1-btn').setAttribute('tabindex', '-1');
+      document.getElementById('bild2-btn').setAttribute('tabindex', '-1');
+      setTimeout(function () {
         if (hinweisElToShow) {
           hinweisElToShow.textContent = textToShow;
           hinweisElToShow.focus();
           if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
           var activeZu = document.getElementById(activeZuId);
-          tabTrapFn = function(e) {
+          tabTrapFn = function (e) {
             if (e.key !== 'Tab') return;
             e.preventDefault();
             if (document.activeElement === activeZu) { hinweisElToShow.focus(); }
@@ -242,8 +240,8 @@
 
     function schliessePanel(panelId) {
       if (tabTrapFn) { document.removeEventListener('keydown', tabTrapFn); tabTrapFn = null; }
-      document.getElementById('bild1-btn').setAttribute('tabindex','0');
-      document.getElementById('bild2-btn').setAttribute('tabindex','0');
+      document.getElementById('bild1-btn').setAttribute('tabindex', '0');
+      document.getElementById('bild2-btn').setAttribute('tabindex', '0');
       document.getElementById(panelId).classList.remove('aktiv');
       hinweisEl1.style.display = 'none';
       hinweisEl1.textContent = '';
@@ -283,11 +281,11 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); schliessePanel('panel2'); }
     });
 
-    // Navigation für pfeil-link
+    // Pfeil-link
     var pfeilLink = document.getElementById('pfeil-link');
     if (pfeilLink) {
-      pfeilLink.addEventListener('click', function() { window.location.href = '12_Bad_3.html'; });
-      pfeilLink.addEventListener('keydown', function(e) {
+      pfeilLink.addEventListener('click', function () { window.location.href = '12_Bad_3.html'; });
+      pfeilLink.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '12_Bad_3.html'; }
       });
     }

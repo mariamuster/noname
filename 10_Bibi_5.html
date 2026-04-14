@@ -32,9 +32,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #bild-small {
@@ -56,9 +56,9 @@
 
     #bild-small:focus-visible>path {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     #zu-button {
@@ -75,9 +75,9 @@
 
     #zu-button:focus-visible .zu-hit-area {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .text-box {
@@ -131,10 +131,10 @@
       <a id="weiter-link" tabindex="0" aria-label="Durch die Tür" role="button" aria-hidden="true">
         <g aria-hidden="true">
           <path style="fill:aqua;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;"
-d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.8s-2.4-17.2-.9-38c-12.4.6-26.3,0-38.9,0l69.9-65.1h-.1.1Z"/>
+            d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.8s-2.4-17.2-.9-38c-12.4.6-26.3,0-38.9,0l69.9-65.1h-.1.1Z" />
         </g>
         <path style="fill:transparent;pointer-events:all;"
-d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.8s-2.4-17.2-.9-38c-12.4.6-26.3,0-38.9,0l69.9-65.1h-.1.1Z"/>
+          d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.8s-2.4-17.2-.9-38c-12.4.6-26.3,0-38.9,0l69.9-65.1h-.1.1Z" />
         <text class="room-label" x="9%" y="50%">Weiter</text>
       </a>
 
@@ -152,10 +152,9 @@ d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.
       menuUrl: 'levels.html'
     };
 
-    // Navigation für weiter-link (href entfernt um URL-Vorlesen zu vermeiden)
     var weiterLink = document.getElementById('weiter-link');
-    weiterLink.addEventListener('click', function() { window.location.href = '10_Wohnzimmer.html'; });
-    weiterLink.addEventListener('keydown', function(e) {
+    weiterLink.addEventListener('click', function () { window.location.href = '10_Wohnzimmer.html'; });
+    weiterLink.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '10_Wohnzimmer.html'; }
     });
   </script>
@@ -173,16 +172,15 @@ d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.
       weiterLink.setAttribute('tabindex', '-1');
       weiterLink.setAttribute('aria-hidden', 'true');
 
-      // Hint text as body-level HTML so it scales with browser zoom
       var hinweisEl = document.createElement('p');
       var hinweisText = 'Ein Rechteck mit lateinischen Zeichen in der Schriftart Lexend.';
       hinweisEl.setAttribute('aria-live', 'assertive');
       hinweisEl.setAttribute('aria-atomic', 'true');
       hinweisEl.setAttribute('tabindex', '0');
       hinweisEl.style.cssText = ['display:none', 'position:fixed', 'margin:0', "font-family:'Lex',sans-serif", 'font-size:2.7rem', 'color:#ffffff', 'line-height:1.2', 'z-index:100', 'overflow-x:hidden', 'overflow-y:auto', 'box-sizing:border-box', 'padding:4px 8px', 'word-break:break-word'].join(';');
-      (function(){
-        var s=document.querySelector('.room-overlay')||document.querySelector('.room-svg')||document.querySelector('svg');
-        s?s.parentNode.insertBefore(hinweisEl,s):document.body.appendChild(hinweisEl);
+      (function () {
+        var s = document.querySelector('.room-overlay') || document.querySelector('.room-svg') || document.querySelector('svg');
+        s ? s.parentNode.insertBefore(hinweisEl, s) : document.body.appendChild(hinweisEl);
       })();
       var tabTrapFn = null;
 
@@ -190,11 +188,11 @@ d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.
         var svg = document.querySelector('.room-overlay');
         if (!svg) return;
         var r = svg.getBoundingClientRect();
-        var sx = r.width  / 1600;
+        var sx = r.width / 1600;
         var sy = r.height / 900;
-        hinweisEl.style.left      = (r.left + 620 * sx) + 'px';
-        hinweisEl.style.top       = (r.top  + 160 * sy) + 'px';
-        hinweisEl.style.width     = (350 * sx) + 'px';
+        hinweisEl.style.left = (r.left + 620 * sx) + 'px';
+        hinweisEl.style.top = (r.top + 160 * sy) + 'px';
+        hinweisEl.style.width = (350 * sx) + 'px';
         hinweisEl.style.height = (560 * sy) + 'px';
       }
 
@@ -211,11 +209,11 @@ d="M798.35,619.1s58.2,53.3,73.2,65.1c-13.3,0-25,.4-38.5,0-.4,20.6,1,38,1,38h-65.
         bildPanel.setAttribute('aria-hidden', 'false');
         positionHinweis();
         hinweisEl.style.display = 'block';
-        setTimeout(function() {
+        setTimeout(function () {
           hinweisEl.textContent = hinweisText;
           hinweisEl.focus();
           if (tabTrapFn) document.removeEventListener('keydown', tabTrapFn);
-          tabTrapFn = function(e) {
+          tabTrapFn = function (e) {
             if (e.key !== 'Tab') return;
             e.preventDefault();
             if (document.activeElement === zuButton) { hinweisEl.focus(); }

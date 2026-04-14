@@ -32,9 +32,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     a.d-zu-btn>path {
@@ -191,11 +191,11 @@
     .d-zu-btn {
       cursor: pointer;
     }
-      .room-wrapper {
+
+    .room-wrapper {
       position: relative;
     }
 
-    /* HTML-Dialog-Overlay: nur für Accessibility, visuell unsichtbar */
     #html-dialog {
       display: none;
       position: fixed;
@@ -284,37 +284,37 @@
           d="M1093.14,276.63c-10.07-38.6,17.6-72.48,63.62-74.6,44.79-2.06,80.03,42.43,63.56,82.18-6.09,17.72-27.93,27.57-26.14,47.8v14.5c.54,12.53-1.97,24.89-1.97,37.42s1.79,15.04-1.43,21.84c-1.43,2.86-4.3,2.86-5.73,0-2.86-6.09-1.79-13.61-1.97-20.59v-23.45s-3.4-.54-4.12-.54h-3.4s.9,22.56,0,34.02c0,5.01,0,14.5-5.55,13.07-7.34-3.4-1.97-39.39-3.22-48.34-1.79-.54-5.55,0-7.34,0,1.07,6.62-.9,14.86-1.07,21.48,0,7.34,1.43,14.86,0,22.02-1.07,6.09-6.09,6.98-7.34.54-2.69-13.43,0-29.36-.9-42.97-.9-.54-5.01-.18-6.09,0-1.43,13.43-.54,27.57-1.07,41-.9,6.62-7.52,6.98-8.77,0-1.07-13.96.26-28.51-.9-42.43-.86-10.41-5.56-29.23-11.8-36.52-19.25-22.5-22.94-25.62-28.37-46.43Z" />
       </a>
 
-    
 
-      <!-- Dialog overlay merged into room SVG -->
+
       <g id="dialog-overlay-group" display="none" aria-hidden="true">
         <rect width="1600" height="900" fill="rgba(0,0,0,0)" />
 
         <g id="dlg-1" visibility="hidden" transform="translate(0,-370)">
-        <path class="d-feld"
-          d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
-        <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
-           <g aria-hidden="true">
-             <path class="d-zu-shape"
-            d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-             <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153" y="600">✕</text>
-           </g>
-           <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
-             d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
-         </a>
+          <path class="d-feld"
+            d="M1450,603.2c-.4-10.5-399,8.8-613.1,3.2-235.4,3.5-686.9-2.1-686.9-2.1,12.6,47.4-2.3,96.7,8.5,144.4,1.8,23.9-7.4,117.9-7.4,117.9,252.4,10.3,506.1-7.2,758.8,5.1,169.1-13.7,531.7-7.9,531.7-7.9,0,0-2.7-170.6,8.5-260.6Z" />
+          <a class="d-zu-btn" href="#" id="dlg1-zu" tabindex="-1" aria-hidden="true">
+            <g aria-hidden="true">
+              <path class="d-zu-shape"
+                d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+              <text font-family="Lex,sans-serif" font-size="40" fill="#000" text-anchor="middle" x="153"
+                y="600">✕</text>
+            </g>
+            <path class="d-zu-hit-area" style="fill:transparent;pointer-events:all;"
+              d="M172.3,544.5c-11.5-9.2-28.2-2.6-38.4,3.9-24.3,11.8-33.3,52.6-11.5,71.1,21.8,17.1,56.3,13.2,70.4-11.8,16.6-26.3,2.6-48.7-20.5-63.2Z" />
+          </a>
 
-        <!-- Weiter-Button -->
-        <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
-          <path class="d-btn-shape"
-            d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
-            y="820">Weiter</text>
-        </a>
+          <!-- Weiter-Button -->
+          <a class="d-weiter-btn" href="#" id="dlg1-weiter" tabindex="-1" aria-hidden="true" visibility="hidden">
+            <path class="d-btn-shape"
+              d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
+            <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
+              y="820">Weiter</text>
+          </a>
 
-        <!-- Dialogtext -->
-        <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
-          y="720"></text>
-      </g>
+          <!-- Dialogtext -->
+          <text id="dlg1-line1" font-family="Lex,sans-serif" font-size="40" fill="#000" visibility="hidden" x="300"
+            y="720"></text>
+        </g>
       </g>
 
     </svg>
@@ -352,8 +352,6 @@
     const htmlDialog = document.getElementById('html-dialog');
     const htmlDlgClose = document.getElementById('html-dlg-close');
     const htmlDlgWeiter = document.getElementById('html-dlg-weiter');
-    // Dialog text: created in <body> directly so position:fixed is always
-    // relative to the viewport, unaffected by any parent CSS filter/transform.
     var dlgTextEl = (function () {
       var el = document.getElementById('dlg1-text-html');
       if (!el) {
@@ -377,31 +375,27 @@
       var svg = document.getElementById('room-svg');
       if (!svg || !dlgTextEl) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      // SVG viewport coords (after group translate 0,-370):
-      //   bubble top y=233, text area x=240-1150, y=255-405
-      dlgTextEl.style.left      = (r.left + 240 * sx) + 'px';
-      dlgTextEl.style.top       = (r.top  + 295 * sy) + 'px';
-      dlgTextEl.style.width     = (910  * sx) + 'px';
+      dlgTextEl.style.left = (r.left + 240 * sx) + 'px';
+      dlgTextEl.style.top = (r.top + 295 * sy) + 'px';
+      dlgTextEl.style.width = (910 * sx) + 'px';
       dlgTextEl.style.maxHeight = Math.max(40, 160 * sy) + 'px';
     }
     function positionDialogButtons() {
       var svg = document.getElementById('room-svg');
       if (!svg) return;
       var r = svg.getBoundingClientRect();
-      var sx = r.width  / 1600;
+      var sx = r.width / 1600;
       var sy = r.height / 900;
-      // Schliessen: SVG translate(0,-370), Kreis-Mitte (153,580) -> Viewport (153,210)
-      htmlDlgClose.style.left   = (r.left + (153 - 38) * sx) + 'px';
-      htmlDlgClose.style.top    = (r.top  + (210 - 38) * sy) + 'px';
-      htmlDlgClose.style.width  = (76 * sx) + 'px';
+      htmlDlgClose.style.left = (r.left + (153 - 38) * sx) + 'px';
+      htmlDlgClose.style.top = (r.top + (210 - 38) * sy) + 'px';
+      htmlDlgClose.style.width = (76 * sx) + 'px';
       htmlDlgClose.style.height = (76 * sy) + 'px';
-      // Weiter: translate(0,-370), x=1192-1404, y=785-842 -> Viewport y=415-472
-      htmlDlgWeiter.style.left   = (r.left + 1192 * sx) + 'px';
-      htmlDlgWeiter.style.top    = (r.top  + 415  * sy) + 'px';
-      htmlDlgWeiter.style.width  = (212 * sx) + 'px';
-      htmlDlgWeiter.style.height = (57  * sy) + 'px';
+      htmlDlgWeiter.style.left = (r.left + 1192 * sx) + 'px';
+      htmlDlgWeiter.style.top = (r.top + 415 * sy) + 'px';
+      htmlDlgWeiter.style.width = (212 * sx) + 'px';
+      htmlDlgWeiter.style.height = (57 * sy) + 'px';
     }
 
     window.addEventListener('resize', function () {
@@ -445,16 +439,13 @@
       dlgTextEl.textContent = entry.text;
       dlgTextEl.style.textAlign = entry.align === 'end' ? 'right' : 'left';
       dlgTextEl.style.visibility = 'visible';
-      // SVG-Weiter (visuell)
       const w = document.getElementById(def.weiterId);
       if (w) w.setAttribute('visibility', convStep >= def.conversation.length ? 'hidden' : 'visible');
-      // HTML-Weiter (zugaenglich)
       if (convStep < def.conversation.length) {
         htmlDlgWeiter.removeAttribute('hidden');
       } else {
         htmlDlgWeiter.setAttribute('hidden', '');
       }
-      // Zu-Button erst bei letztem Schritt erreichbar
       htmlDlgClose.tabIndex = (convStep >= def.conversation.length) ? 0 : -1;
     }
 
@@ -510,24 +501,23 @@
     // HTML-Button-Handler
     htmlDlgClose.addEventListener('click', closeDialog);
     htmlDlgWeiter.addEventListener('click', advanceConversation);
-    // Mirror hover on invisible HTML buttons → SVG paths underneath
-    (function() {
-      var zuPath    = document.querySelector('.d-zu-shape');
+    (function () {
+      var zuPath = document.querySelector('.d-zu-shape');
       var weiterPath = document.querySelector('.d-btn-shape');
       var HOVER_FILL = 'rgba(65,65,65,0.7)';
       if (htmlDlgWeiter && weiterPath) {
-        htmlDlgWeiter.addEventListener('mouseenter', function() { weiterPath.style.fill = HOVER_FILL; });
-        htmlDlgWeiter.addEventListener('mouseleave', function() { weiterPath.style.fill = ''; });
+        htmlDlgWeiter.addEventListener('mouseenter', function () { weiterPath.style.fill = HOVER_FILL; });
+        htmlDlgWeiter.addEventListener('mouseleave', function () { weiterPath.style.fill = ''; });
       }
       if (htmlDlgWeiter && weiterPath) {
-        htmlDlgWeiter.addEventListener('focus', function() {
+        htmlDlgWeiter.addEventListener('focus', function () {
           if (!this.matches(':focus-visible')) return;
           weiterPath.style.fill = 'rgba(0,95,204,0.08)';
           weiterPath.style.stroke = '#005fcc';
           weiterPath.style.strokeWidth = '3px';
           weiterPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
         });
-        htmlDlgWeiter.addEventListener('blur', function() {
+        htmlDlgWeiter.addEventListener('blur', function () {
           weiterPath.style.fill = '';
           weiterPath.style.stroke = '';
           weiterPath.style.strokeWidth = '';
@@ -536,14 +526,14 @@
       }
 
       if (htmlDlgClose && zuPath) {
-        htmlDlgClose.addEventListener('focus', function() {
+        htmlDlgClose.addEventListener('focus', function () {
           if (!this.matches(':focus-visible')) return;
           zuPath.style.fill = 'rgba(0,95,204,0.08)';
           zuPath.style.stroke = '#005fcc';
           zuPath.style.strokeWidth = '3px';
           zuPath.style.filter = 'drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4))';
         });
-        htmlDlgClose.addEventListener('blur', function() {
+        htmlDlgClose.addEventListener('blur', function () {
           zuPath.style.fill = '';
           zuPath.style.stroke = '';
           zuPath.style.strokeWidth = '';
@@ -574,8 +564,8 @@
       if (e.key === 'Escape') { closeDialog(); return; }
       if (e.key === 'Tab') {
         var tabbable = htmlDlgWeiter.hasAttribute('hidden')
-                  ? [dlgTextEl, htmlDlgClose]
-                  : [dlgTextEl, htmlDlgWeiter];
+          ? [dlgTextEl, htmlDlgClose]
+          : [dlgTextEl, htmlDlgWeiter];
         var first = tabbable[0], last = tabbable[tabbable.length - 1];
         if (e.shiftKey) {
           if (document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -604,20 +594,20 @@
   </script>
   <script src="icons.js"></script>
 
-<script>
-(function() {
-  var btn_6_Bad_1W_html = document.getElementById("wanne-btn");
-  if (btn_6_Bad_1W_html) {
-    btn_6_Bad_1W_html.addEventListener("click", function() { window.location.href = "6_Bad_1W.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_6_Bad_1W_html && document.activeElement === btn_6_Bad_1W_html) {
-      e.preventDefault(); window.location.href = "6_Bad_1W.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_6_Bad_1W_html = document.getElementById("wanne-btn");
+      if (btn_6_Bad_1W_html) {
+        btn_6_Bad_1W_html.addEventListener("click", function () { window.location.href = "6_Bad_1W.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_6_Bad_1W_html && document.activeElement === btn_6_Bad_1W_html) {
+          e.preventDefault(); window.location.href = "6_Bad_1W.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

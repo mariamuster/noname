@@ -7,9 +7,8 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-   
-
-   html, body {
+    html,
+    body {
       overflow: hidden;
       height: 100%;
     }
@@ -51,9 +50,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -69,7 +68,7 @@
       <li>Klicke <b>«weiter»</b>, um das Gespräch zu führen. </li>
       <li>Klick auf das <b>gelbe Wesen</b> links in der Mitte.</li>
       <li>Schliesse das Fenster oben links, um weiterzukommen. </li>
- </ul>
+    </ul>
 
 
     <svg class="room-overlay" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" fill="none"
@@ -87,11 +86,11 @@
   </div>
 
   <script>
-    (function() {
+    (function () {
       var btn = document.querySelector('[aria-label="Schliessen"]');
       if (btn) {
-        btn.addEventListener('click', function() { window.location.href = '4_Wohnzimmer.html'; });
-        btn.addEventListener('keydown', function(e) {
+        btn.addEventListener('click', function () { window.location.href = '4_Wohnzimmer.html'; });
+        btn.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = '4_Wohnzimmer.html'; }
         });
       }

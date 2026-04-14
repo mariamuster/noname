@@ -23,9 +23,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
   </style>
 </head>
@@ -58,20 +58,20 @@
     };
   </script>
   <script src="icons.js"></script>
-<script>
-(function() {
-  var btn_7_Lift_3_html = document.querySelector('[aria-label="Zu den Knöpfen"][role="button"]');
-  if (btn_7_Lift_3_html) {
-    btn_7_Lift_3_html.addEventListener("click", function() { window.location.href = "7_Lift_3.html"; });
-  }
-  document.addEventListener("keydown", function(e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (btn_7_Lift_3_html && document.activeElement === btn_7_Lift_3_html) {
-      e.preventDefault(); window.location.href = "7_Lift_3.html"; return;
-    }
-  });
-})();
-</script>
+  <script>
+    (function () {
+      var btn_7_Lift_3_html = document.querySelector('[aria-label="Zu den Knöpfen"][role="button"]');
+      if (btn_7_Lift_3_html) {
+        btn_7_Lift_3_html.addEventListener("click", function () { window.location.href = "7_Lift_3.html"; });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (btn_7_Lift_3_html && document.activeElement === btn_7_Lift_3_html) {
+          e.preventDefault(); window.location.href = "7_Lift_3.html"; return;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

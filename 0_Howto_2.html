@@ -3,13 +3,15 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Instruktionen</title>
+  <title>Intro</title>
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
-    html { overflow: hidden; }
+    html {
+      overflow: hidden;
+    }
 
-   
+
 
     body {
       background-color: rgb(0, 200, 0);
@@ -38,9 +40,9 @@
     a:focus-visible>path,
     a:focus-visible>rect {
       stroke: #005fcc;
-      fill: rgba(0,95,204,0.08);
+      fill: rgba(0, 95, 204, 0.08);
       stroke-width: 3px;
-      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0,95,204,0.4));
+      filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
     }
 
     .weiter-svg {
@@ -65,35 +67,17 @@
       fill: rgba(65, 65, 65, 0.7);
     }
 
-    /* Text panel — positioned to the right of the icons */
-    .text-panel {
-      position: absolute;
-      top: 15%;
-      left: 34%;
-      right: 25%;
-      bottom: 10%;
-      overflow: hidden auto;
-      pointer-events: auto;
-      z-index: 5;
-      font-family: 'Lexend', sans-serif;
-      color: #1a1a1a;
-      padding-right: 1.5em;
+    /* Override vw-based sizes from icons.css with rem so browser text size works */
+    h1.start-text {
+      font-size: 2.2rem !important;
+      display: block !important;
+      text-align: left !important;
       overflow-wrap: break-word;
       word-wrap: break-word;
     }
 
-    .text-panel h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin: 0 0 0.6em 0;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-    }
-
-    .text-panel p {
-      font-size: 1.6rem;
-      margin: 0 0 1.2em 0;
-      line-height: 1.2;
+    p.start-text {
+      font-size: 1.6rem !important;
       overflow-wrap: break-word;
       word-wrap: break-word;
     }
@@ -102,26 +86,40 @@
 
 <body>
   <div class="room-wrapper">
-    <div class="text-panel">
-      <h1>Instruktionen</h1>
-      <p>Du musst auf dem Amt in Büro 146 etwas holen.</p>
-      <p>Wenn das gelbe Wesen erscheint, musst du etwas lernen, um weiterzukommen. Als Quelle sind die WCAG, die «Web Content Accessibility Guidelines» verlinkt.</p>
-      <p>Beim Fragezeichen gibt es Hilfe.</p>
-      <p>Bei den drei Linien kannst du die einzelnen Levels sehen.</p>
-      <p>Benutze einen Desktop.<br>Dauer etwa 30 Minuten.</p>
-    </div>
+    <img src="img/Info_3.svg" alt="Infofenster" class="responsive-img" tabindex="0" />
 
-    <img src="img/Info_3.svg" alt="" class="responsive-img" aria-hidden="true" />
+    <div class="start-content">
+      <h1 class="start-text">
+        Instruktionen
+      </h1>
+
+      <p class="start-text">Du musst auf dem Amt in Büro 146 etwas holen.
+      </p>
+      <p class="start-text">
+        Wenn das gelbe Wesen erscheint, musst du etwas lernen, um weiterzukommen. Als Quelle sind die WCAG, die «Web
+        Content Accessibility Guidelines» verlinkt.
+      </p>
+      <p class="start-text">
+        Beim Fragezeichen gibt es Hilfe.
+      </p>
+      <p class="start-text">
+        Bei den drei Linien kannst du die einzelnen Levels sehen.
+      </p>
+      <p class="start-text">
+        Benutze einen Desktop.<br>Dauer etwa 30 Minuten.
+      </p>
+
+    </div>
 
     <svg class="weiter-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
       <g class="d-weiter-btn" id="dlg1-weiter" role="button" tabindex="0" aria-label="Start"
-         onclick="location.href='1_Haus_1.html'"
-         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='1_Haus_1.html'}">
+        onclick="location.href='1_Haus_1.html'"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();location.href='1_Haus_1.html'}">
         <g transform="translate(-200, 0)">
           <path class="weiter-path"
             d="M1192,841.7c70.8-2.1,141.4.4,212.2-3.5l4.7-56.1c-33.8-9.6-74.7,1.1-109.2.6-41.5,0-65-2.3-108.7-.8l1.1,59.8Z" />
-          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300"
-            y="820" aria-hidden="true">Start</text>
+          <text font-family="Lex,sans-serif" font-size="25" fill="#000" text-anchor="middle" x="1300" y="820"
+            aria-hidden="true">Start</text>
         </g>
       </g>
     </svg>
@@ -129,9 +127,9 @@
 
 
   <script>
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if ((e.key === 'Enter' || e.key === ' ') &&
-          document.activeElement && document.activeElement.id === 'dlg1-weiter') {
+        document.activeElement && document.activeElement.id === 'dlg1-weiter') {
         e.preventDefault();
         location.href = '1_Haus_1.html';
       }

@@ -137,21 +137,49 @@
       letter-spacing: 0.08em;
     }
 
+#animation-control {
+  position: absolute;
+  top: 2%;
+  left: 65%;
+  transform: translateX(-50%);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  pointer-events: all;
+}
+
+#animation-control label {
+  font-family: Lexend, serif;
+  font-size: 20px;
+  color: #2a1a0a;
+  letter-spacing: 0.04      em;
+  margin: 0;
+}
+#stop-animation:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 6px;
+  filter: drop-shadow(0 0 4px #005fcc) drop-shadow(0 0 8px rgba(0, 95, 204, 0.4));
+}
+
     .stop-btn {
-      position: fixed;
+      position: absolute;
       left: 35%;
-     top: 2%;
-      z-index: 99999;
-      padding: 12px 20px;
-      border: 3px;
+     top: 0;
+           gap: 16px;
+      flex-direction: column;
+        transform: translateX(-50%);
+      z-index: 101;
+       border: 3px solid rgb(255, 0, 238);
       border-radius: 10px;
       background: #000000;
-      stroke: #a40000;
-      stroke-width: 3PX;
       color: #000000;
       font-family: Lexend, sans-serif;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
+            letter-spacing: 0.08em;
+
     }
 
     .stop-btn:hover {
@@ -286,16 +314,16 @@
 
 <body>
   <div class="room-wrapper">
-    <div
-      style="position: fixed; left: 55%; top: 20%;  z-index: 99999; display: flex; align-items: center; gap: 10px;">
-      <button id="stop-animation" class="stop-btn" type="button"
-        style="width: 50px; height: 50px; border-radius: 50%; border: none; background: #222; color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">⏸</button>
-      <span style="color: #a40000; font-family: Lexend, sans-serif; font-size: 18px; font-weight: bold;">Animation
-        stoppen</span>
-    </div>
+<div id="animation-control">
+  <label for="stop-animation">Animation stoppen</label>
+<button id="stop-animation" type="button" 
+  style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid rgba(255, 19, 240); background: #000000; color: #ffffff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; border-style: solid; box-sizing: border-box;">
+  ⏸
+</button></div>
+
 
     <img src="img/3_Bibi_Buch.svg"
-      alt="Das pinke Buch liegt offen. Darin stehen Variationen des Satzes „Hier ist Büro 146 nicht“. Auf der linken Seite hüpfen die einzelnen Buchstaben auf und ab. Auf der rechten Seite verschieben sie sich innerhalb des Wortes. Oben in der Mitte hat es einen Regler, mit dem die Schriftgrösse verändert werden kann. Auf der linken Seite können verschiedene Schriftarten gewählt werden. Rechts in der Mitte das gelbe Wesen."
+      alt="Das pinke Buch liegt offen. Darin stehen Variationen des Satzes „Hier ist Büro 146 nicht“. Auf der linken Seite hüpfen die einzelnen Buchstaben auf und ab. Auf der rechten Seite verschieben sie sich innerhalb des Wortes. Oben in der links hat es einen Regler, mit dem die Schriftgrösse verändert werden kann, oben Rechts einen Button, mit dem die Animation gestoppt werden kann. Auf der linken Seite können verschiedene Schriftarten gewählt werden. Rechts in der Mitte das gelbe Wesen."
       class="responsive-img" tabindex="0" />
 
     <!-- Buchtext -->

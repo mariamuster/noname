@@ -7,10 +7,22 @@
   <link rel="stylesheet" href="image.css">
   <link rel="stylesheet" href="icons.css">
   <style>
+     @font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Regular.woff2') format('woff');
+      font-style: normal;
+      font-weight: normal;
+    }
+@font-face {
+      font-family: 'Lexend';
+      src: url('fonts/Lexend-Bold.woff2') format('woff2');
+      font-style: normal;
+      font-weight: bold;
+    }
+
     body {
       background-color: black;
       color: rgb(0, 0, 0);
-      font-family: sans-serif;
       height: 100vh;
       margin: 0;
       display: flex;
@@ -50,7 +62,6 @@
     /* Start */
     #start-btn {
       font-size: 1.4em;
-      font: Lexend;
       padding: 0.6em 1.4em;
       cursor: pointer;
       background: #ffffff;
@@ -135,7 +146,7 @@
   </svg>
 
   <h1>Kühlschrank</h1>
-  <button id="start-btn">Start</button>
+<button id="start-btn" style="font-family: Lexend;">Start</button>
   <p id="screen-reader-output" aria-live="assertive" aria-atomic="true">Finde die Zutaten für das Omelett. Navigiere mit Tab und bestätige mit Enter.</p>
 
   <div class="hidden-list" id="item-list" aria-hidden="true">
